@@ -110,5 +110,9 @@ urlpatterns = [
     path('house_plans',views.house_plans,name='house_plans'),
     path('logo_creation',views.logo_creation,name='logo_creation'),
     path('drawings',views.drawings,name='drawings'),
+
+    #shebin shaji
+
+    path('freelancers',views.freelancers,name='freelancers'),
     
 ]

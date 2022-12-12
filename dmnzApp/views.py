@@ -708,7 +708,13 @@ def registeredusers(request):
     
     use = User.objects.filter(is_superuser=0)
     return render(request, 'registeredusers.html', {'use': use,'adm':adm})
-    
+
+
+def freelancers(request):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    person=Register_freelance.objects.all()
+    return render(request, 'freelancers.html', {'person': person,'adm':adm})
 
 
 def delete(request, reg_id):
