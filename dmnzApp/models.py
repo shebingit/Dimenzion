@@ -66,6 +66,9 @@ class Register_freelance(models.Model):
     service=models.CharField(max_length=255,default='')
     skills=models.CharField(max_length=255,default='')
     over_view=models.CharField(max_length=255,default='')
+    #work
+    rating=models.IntegerField(default=1)
+    w_status=models.CharField(max_length=10,default='0')
     
 class cart(models.Model):
     product=models.ForeignKey(Product,on_delete=models.CASCADE)
@@ -84,12 +87,24 @@ class Service_form(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,default='')
     user_name=models.CharField(max_length=100,default='')
     product=models.ForeignKey(Product,on_delete=models.CASCADE,default='')
-    service_freelancer=models.ForeignKey(Register_freelance,on_delete=models.CASCADE,default='')
+    
     phone_number=models.CharField(max_length=100,default='')
     email=models.CharField(max_length=100,default='')
     Address=models.CharField(max_length=100,default='')
     description=models.CharField(max_length=100,default='')
     status=models.CharField(max_length=100,default='')
+
+
+#shebin shaji
+
+class Freelancerworks(models.Model):
+    fr_user=models.ForeignKey(User,on_delete=models.CASCADE,default='')
+    fr_product=models.ForeignKey(Product,on_delete=models.CASCADE,default='')
+    frelancer=models.ForeignKey(Register_freelance,on_delete=models.CASCADE,default='')
+    start_date=models.DateField(auto_now_add=True,null=True,blank=True)
+    end_date=models.DateField(auto_now_add=False,null=True,blank=True)
+    fr_file=models.FileField( upload_to="images/",null=True,blank=True,default='')
+    fr_status= models.CharField(max_length=40)
 
     
 

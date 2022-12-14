@@ -1,6 +1,48 @@
 {% extends 'admin_base.html' %} {% load static%} {% block body %}
 
 
+<style>
+  a
+  {
+    text-decoration: none;
+    color: black;
+  }
+  a:hover
+  {
+    text-decoration: none;
+  }
+  .status
+  {
+    border-radius:100%;
+    width: 1em;
+    height: 1em;
+    
+  animation: glowing 1500ms infinite;
+  }
+
+  
+  @keyframes glowing {
+    0% { background-color: #2ce60b; box-shadow: 0 0 3px #2ce60b; }
+    50% { background-color: #2ce60b; box-shadow: 0 0 40px #2ce60b; }
+    100% { background-color: #2ce60b; box-shadow: 0 0 3px #2ce60b; }
+  }
+  .status1
+  {
+    border-radius:100%;
+    width: 1em;
+    height: 1em;
+    
+  animation: glowing1 1500ms infinite;
+  }
+
+  
+  @keyframes glowing1 {
+    0% { background-color: #f80202; box-shadow: 0 0 3px #f80202; }
+    50% { background-color: #f80202; box-shadow: 0 0 40px #f80202; }
+    100% { background-color: #f80202; box-shadow: 0 0 3px #f80202; }
+  }
+</style>
+
 <div class="row">
     <div class="col-12 p-0">
       <div class="card">
@@ -18,29 +60,40 @@
                 
                   
                   <div class="col-md-lg-6 ">
-                  <th>Sl No.</th>
+                  
+                  <th>Photo</th>
                   <th>Full Name</th>
-                  <th>Username</th>
+                  <th>Phone Number</th>
                   <th>E-mail</th>
-                  <th>Action</th>
+                  <th>Service</th>
+                  <th>Work Status</th>
+                  
                 </tr>
               </thead>
 
               {% for i in person %}
               <tbody id="myTable">
                 <tr>
-                  <td>{{forloop.counter}}</td>
-                  <td>{{i.first_name}} {{i.last_name}}</td>
-                  <td id="username2">{{i.username}}</td>
-                  <td>{{i.email}}</td>
+                 
                   <td>
-                    <a href="#">
-                        <button type="button" class="btn btn-outline-danger">
-                            <i class="icon-trash menu-icon"></i>
-                          Delete
-                        </button>
-                      </a>
+                    {% if i.profile_pic %}
+                    <img src="{{i.profile_pic.url}}">
+                    {% endif %}
                   </td>
+                  <td><a href="{% url 'freelancer_page' i.id %}">{{i.full_name}}</a></td>
+                  <td>{{i.mobile}}</td>
+                  <td>{{i.email}}</td>
+                  <td>{{i.service}}</td>
+                  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                  <td>
+                    {% if i.w_status == '0' %}
+                    <div style="background: rgb(72, 203, 7);" class="text-center p-2 status"></div>
+                    
+                    {% else %}
+                    <div style="background: rgb(251, 5, 5);" class="text-center p-2 status1"></div>
+                    {% endif %}
+                  </td>
+                
                 </tr>
               </tbody>
               {% endfor %}
@@ -65,7 +118,8 @@
 
 
 
-       
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> 
 
 
 {% endblock %}

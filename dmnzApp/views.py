@@ -710,11 +710,7 @@ def registeredusers(request):
     return render(request, 'registeredusers.html', {'use': use,'adm':adm})
 
 
-def freelancers(request):
-    abc= request.session["admid"]
-    adm=User.objects.filter(id=abc)
-    person=Register_freelance.objects.all()
-    return render(request, 'freelancers.html', {'person': person,'adm':adm})
+
 
 
 def delete(request, reg_id):
@@ -964,6 +960,65 @@ def deletereq(request,id):
     re.delete()
     return redirect('reqlist')
 
+
+#shebin shaji
+
+def freelancers(request):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    person=Register_freelance.objects.all()
+    return render(request, 'freelancers.html', {'person': person,'adm':adm})
+
+
+def freelancer_page(request,freel_id):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    person=Register_freelance.objects.get(id=freel_id)
+    r= int(person.rating)
+    print(r)
+
+    return render(request, 'freelancer.html', {'person': person,'adm':adm,'r':range(r)})
+
+def rating(request,freel_rt):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    person=Register_freelance.objects.get(id=freel_rt)
+    if request.method=='POST':
+        person.rating=request.POST['rt']
+        person.save()
+        r= int(person.rating)
+       
+    return render(request, 'freelancer.html', {'person': person,'adm':adm,'r':range(r) })
+
+#Requested works loading
+
+def requested_work(request):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    s=Service_form.objects.all()
+    r=Register_freelance.objects.all()
+    fr=Freelancerworks.objects.all()
+    return render(request, 'requested_work.html', {'adm':adm,'r':r,'fr':fr,'s':s})
+
+
+#Freelancer Allocate
+
+def freelancer_allocate(request):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    r=Service_form.objects.all()
+    if request.method == 'POST':
+        work=Freelancerworks()
+        work.fr_user=User.objects.get(id=1)
+        work.fr_product=Product.objects.get(id=1)
+        work.frelancer=Register_freelance.objects.get(id=int(request.POST['frid']))
+        work.end_date=request.POST['fr-date']
+        work.fr_status=2
+        work.save()
+        msg='Successfuly Allocated'
+    fr=Freelancerworks.objects.all()
+    s=Service_form.objects.all()
+    return render(request, 'requested_work.html', {'adm':adm,'r':r,'msg':msg,'fr':fr,'s':s})
 
 
 

@@ -1,0 +1,279 @@
+{% extends 'admin_base.html' %} {% load static%} {% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    #rwork
+    {
+        overflow-y:scroll;
+        scroll-behavior: smooth;
+        scrollbar-color: #000;
+        
+    }
+
+    #rwork::-webkit-scrollbar {
+        width: 1.2em;
+      }
+
+.card_req
+{
+    
+    color: #2A265F;
+    border-radius:5px;
+    padding: 5px 20px;
+    margin: 2 auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    
+
+}
+.remove
+{
+    text-align: end;
+}
+.card_req h6{
+    font-size: 13px;
+    font-weight: 500;
+}
+.card_req p{
+    font-size: 12px;
+}
+.card_req img{
+    height: 10vh;
+    width: 10vh;
+    border-radius: 50%;
+}
+
+.alert-box {
+	padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;  
+    font-size: 13px;
+}
+
+.success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    display: none;
+}
+#myTable tr td
+{
+    font-size: 12px;
+}
+table .header th{
+    font-size: 12px;
+}
+  
+</style>
+
+<div class="container">
+    
+    <div class="row mt-1">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card m-1">
+                <div class="card-body" style="height:70vh" id="rwork">
+                    <h5 class="text-center mb-4"> Requested Works</h5>
+                    {% if msg %}
+                    <div class="alert-box success"> {{msg}} !!!</div>
+                    {% endif %}
+                   
+                    <div class="row mt-1  p-1">
+                        {% for i in s %}
+                        <div class="col-md-6 ">
+                         
+                        <div class="container1">
+                            <div class="card_req p-3">
+                                    
+                                        
+                                    <h6>
+                                       
+                                    {% if i.product.image %}
+                                        <img src="{{i.product.image.url}}" class="round"> hai
+                                    {% endif %}
+                                <span class="px-3">{{i.product.modelname}}</span></h6>
+                                        
+                                
+                                    
+                                    <p class="text-center">{{i.user_name}}</p>
+                                
+                                <div class="remove ">
+                                    
+                                    <i class="fa fa-trash text-danger"></i>
+                                </div>
+                            </div>
+                            <label class="p-2 mt-3">Allocate Freelancer</label>
+                            
+                            <form action="{% url 'freelancer_allocate' %}" method="post">
+                                {% csrf_token %}
+                               
+                                <div class="select-box">
+                                 <input type="text" value="{{i.id}}" hidden name="u-id">
+                                 
+                                  <select name="frid">
+                                    {% for j in r %}
+
+                                    <option value={{j.id}} selected >
+                                        
+                                         <span>{{j.full_name}}</span> -
+                                         {% if j.w_status == '0' %}  
+                                         <span> {{j.service}}</span>
+                                         {% endif %} 
+                                       
+                                    </option>
+                                    {% endfor %}
+                                    
+                                  </select>
+                                  <input type="date" class="dates" name="fr-date">
+                                  <button type="submit" class="btn1">Allocate</button>
+                                </div>
+                                 
+                              </form>  
+                              <hr>
+                        </div> 
+                        </div>
+                        {% endfor %}
+                    </div>
+                   
+
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body" style="height:70vh">
+                    <div class="text-center mb-3">
+                        <h5 class=""> Allocated Works</h5>
+                    </div>
+                    
+                    <div class="row">
+                       
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                          <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Search User" style="width:100%"/>
+                        </div>
+                      </div><br>
+                    <div class="table-responsive">
+                        <table  class="table table-striped">
+                          <thead>
+                            <tr class="header">
+                              
+                              <th>Product</th>
+                              <th>User</th>
+                              <th>Freelancers</th>
+                              <th>Start Date</th>
+                              <th>End Date</th>
+                              <th>File</th>
+                              <th>Status</th>
+                              
+                            </tr>
+                          </thead>
+            
+                          {% for i in fr %}
+                          <tbody id="myTable">
+                            <tr>
+                             <td>{{i.fr_product.modelname}}</td>
+                             <td>{{i.fr_user.fullname}}</td>
+                             <td>{{i.frelancer.full_name}}</td>
+                             <td>{{i.start_date}}</td>
+                             <td>{{i.end_date}}</td>
+                             <td></td>
+                             <td>
+                                {% if i.fr_status == '2' %}
+                                Pending
+                                {% endif %}
+
+                             </td>
+                            </tr>
+                          </tbody>
+                          {% endfor %}
+                        </table>
+                      </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    form
+    {
+        width: 100%;
+    }
+    .select-box {
+        cursor: pointer;
+        position : relative;
+        padding: 2px 10px;
+        margin: 1em;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+      
+      }
+      
+      
+      select
+       {
+        color: #414141;
+        font: 400 13px/1em 'Source Sans Pro', sans-serif;
+        width: 100%;
+        
+        padding: 5px 0;
+        height: 40px;
+        opacity: 1;
+    
+        border: 0 none;
+      }
+      .select-box1 {
+        background: #ececec;
+        width: 100%;
+      }
+     .btn1
+     {
+        background-color: #2A265F;
+        color: #fff;
+        height: 30px;
+        margin: 10px 8px;
+        border: none;
+        outline: none;
+        width: 100px;
+        font-size: 13px;
+        border-radius: 2em;
+     }
+     .dates
+     {
+        font-size: 13px;
+        height: 30px;
+        border: none;
+        outline: none;
+        margin: 10px 8px;
+       
+     }
+
+</style>
+{% if msg %}
+<script>
+   
+    $( "#success-btn" ).ready(function() {
+        $( "div.success" ).fadeIn( 300 ).delay( 2500 ).fadeOut( 400 );
+      });
+</script>
+{% endif %}
+
+<script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
+
+
+{% endblock %}

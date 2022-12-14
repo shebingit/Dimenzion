@@ -189,7 +189,7 @@
         <div class="cards-list container">
             {% for p in all %}
             <a href="{% url 'view_items' p.id  %}"
-                    class="card1 bg-light shadow-lg"
+                    class="card1 bg-light shadow-lg mb-3"
                     data-aos="fade-up"
                     data-aos-delay="50">
             <div class="card3 shadow " onclick="clicked()" id="all"
@@ -308,7 +308,7 @@
                 z-index: 0;
                 width: 100%;
                 display: flex;
-                justify-content: space-around;
+                justify-content:space-around;
                 flex-wrap: wrap;
             }
 
@@ -316,7 +316,6 @@
                 margin: 30px auto;
                 width: 400px;
                 height: 320px;
-
 
                 cursor: pointer;
                 transition: 0.4s;

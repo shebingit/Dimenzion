@@ -1,0 +1,203 @@
+{% extends 'admin_base.html' %} {% load static%} {% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
+
+<style>
+  a
+  {
+    text-decoration: none;
+    color: black;
+  }
+  a:hover
+  {
+    text-decoration: none;
+  }
+</style>
+
+<section class="profile container mt-5">
+    <div class="profile0 row bg-light shadow  mt-5">
+        <div class="col-lg-3  d-flex flex-column align-items-center pt-3 boxl">
+            <img src="{{person.profile_pic.url}}"
+                alt="" class="shadow img-fluid">
+            <h4 class="m-0 p-2">{{person.full_name}}</h4>
+            <p style="color: gray;" class="m-0 p-0">(10 Feedback)</p>
+            <p style="color: gray;" class="m-0 p-0">Member since March 26,20</p>
+        </div>
+        <div class="col-lg-6 py-4">
+            <h1 class="px-2">{{person.service}}</h1>
+            <div class="row pt-3">
+                <div class="col-4 flex grybdr">
+                    <p style="color: gray;" class="m-0 p-0">$ 650.00 / hr</p>
+                </div>
+                <div class="col-4 flex grybdr">
+                    <img src="https://cdn.britannica.com/97/1597-004-05816F4E/Flag-India.jpg" width="20px" alt="">
+                    <p style="color: gray;" class="m-0 px-2"> {{person.country}}</p>
+                </div>
+                <!--<div class="col-4 flex ">
+                    <i class="fa-solid fa-heart" style="color: rgb(255, 5, 72);"></i>
+                    <p style="color: gray;" class="m-0 px-2">Save</p>
+
+                </div>-->
+            </div>
+            <p style="color: gray; text-align: justify;" class="m-0 p-2 py-4">{{person.over_view}}</p>
+
+            <h4>Star Rating</h4>
+            {% for i in r %}
+                <span class="fa fa-star checked"></span>
+            {% endfor %}
+                
+            
+
+            <!--<div class="rdmr px-4"> <button class="bg-light px-3">Read more</button></div>-->
+
+        </div>
+        <div class="col-lg-3 bdrlft ">
+            <div class="row">
+                <div class="col-6 flex flex-column p-4">
+                    {% if person.file %}
+                    <a href="#" download="{{person.file.url}}" class="btn btn-primary">Download</a>
+                    {% endif %}
+
+                </div>
+            </div>
+                
+                    <form action="{% url 'rating' person.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="p-3 mb-3">
+                            <h5 class="pt-3">Give Rating  <span class="fa fa-star checked"></span></h5>
+                            <input type="number" min="1" max="5" step="1" value="1" name="rt">
+                            
+                           
+                        </div>
+            
+                        <div class="flex p-4">
+                            <button type="submit" class="text-light redbg btn w-50 py-2">OK</a>
+            
+                        </div>
+    
+                    </form>
+                
+           </div>
+               <!--  </div>
+                <div class="col-6 flex flex-column p-4 ">
+                    <h3 class="red">8</h3>
+                    <p>Ongoing Services</p>
+                </div>
+            </div>
+
+            <div class="row bdrbtm">
+                <div class="col-6 flex flex-column p-4">
+                    <h3 class="red">15</h3>
+                    <p>Cancelled Services</p>
+
+                </div>
+                <div class="col-6 flex flex-column p-4 dark">
+                    <h3 class="red">5</h3>
+                    <p>Completed projects</p>
+                </div>
+            </div>-->
+           
+           
+
+
+
+        </div>
+
+    </div>
+
+    <style>
+        input {
+            width: 50px;
+            height: 42px;
+            line-height: 1.65;
+            float: left;
+            display: block;
+            padding: 0;
+            margin: 5px;
+            padding-left: 20px;
+            border: 1px solid #eee;
+          }
+          
+           input:focus {
+            outline: 0;
+          }
+          
+        .profile0 {
+            margin-top: -200px;
+            border: 1px solid rgb(188, 188, 188);
+            border-radius: 10px;
+
+        }.profile0 .boxl img {
+            width: 300px;
+        }
+
+        .grybdr {
+            border-right: 1px solid rgb(200, 200, 200);
+        }
+
+        .rdmr {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+        }
+
+        .rdmr button {
+            border: 1px solid rgba(0, 0, 0, 0);
+
+            color: rgb(255, 5, 72);
+
+        }
+
+        .rdmr button:hover {
+            border: 1px solid rgb(255, 5, 72);
+            color: rgb(255, 5, 72);
+
+        }
+
+        .red {
+            color: rgb(255, 5, 72);
+
+        }
+
+        .redbg {
+            background-color: rgb(255, 5, 72);
+        }
+
+        .dark {
+            background-color: rgb(202, 218, 232);
+        }
+
+        .bdrlft {
+            border-left: 1px solid rgb(200, 200, 200);
+        }
+
+        .bdrbtm {
+            border-bottom: 1px solid rgb(200, 200, 200);
+        }
+
+        @media only screen and (max-width:990px) {
+
+            .profile0 {
+                margin-top: auto;
+            }
+
+            .profile0 .boxl img {
+                margin-top: -120px;
+                border-radius: 200px;
+                width: 200px;
+            }
+
+
+        }
+    </style>
+
+</section>
+
+
+
+
+{% endblock %}
