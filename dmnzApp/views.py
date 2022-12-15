@@ -1020,6 +1020,3 @@ def freelancer_allocate(request):
     s=Service_form.objects.all()
     return render(request, 'requested_work.html', {'adm':adm,'r':r,'msg':msg,'fr':fr,'s':s})
 
-
-
-
