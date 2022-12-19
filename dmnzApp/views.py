@@ -166,6 +166,7 @@ def freereg(request):
         addres=request.POST['address']
         # country=request.POST['country']
         profilepic=request.FILES['profile_picture']
+        uname=request.POST['user_name']
         password=request.POST['password']
         cpassword=request.POST['cpassword']
         if (password==cpassword):
@@ -183,6 +184,7 @@ def freereg(request):
                                    proffecional_title=proffectional,
                                    service=service,
                                    qualification=education,
+                                   username=uname,
                                    password=password,)
             std.save()
             # messages(request,'success')
@@ -299,13 +301,13 @@ def admin_login(request):
             else:
                 request.session['USID']=user.id
                 return redirect('userhome')  
-        if Register_freelance.objects.filter(full_name=username,password=password):
-            free=Register_freelance.objects.get(full_name=username,password=password) 
+        if Register_freelance.objects.filter(username=username,password=password).exists():
+            free=Register_freelance.objects.get(username=username,password=password) 
             request.session['F.id']=free.id
             return redirect('freelancer_home')
                         
         else:
-            print("hi3")
+    
             messages.info(request,'invalid username or password.Try again!')
             return redirect('admin_log')
        # messages.info(request, 'Invalid username or password')
@@ -1063,6 +1065,26 @@ def freelancer_allocate(request):
     return render(request, 'requested_work.html', {'adm':adm,'msg':msg,'fr':fr,'s':s})
 
 
-def call(request):
-    return redirect('/calling_page')
+#freelancer Work Section page
+
+def freelancer_work(request):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        frwork=Freelancerworks.objects.filter(frelancer=free,fr_status='2')
+        frworks=Freelancerworks.objects.filter(frelancer=free,fr_status='3')
+        return render(request, 'freelancer_works.html', {'free':free,'frwork':frwork,'frworks':frworks})
+    
+def freelancer_work_accept(request,fr_wstatus):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        frwork=Freelancerworks.objects.get(id=fr_wstatus)
+        frwork.fr_status='3'
+        frwork.save()
+        msg='Successfuly Accepted the work.'
+        frworks=Freelancerworks.objects.filter(frelancer=free,fr_status='3')
+        return render(request, 'freelancer_works.html', {'free':free,'frworks':frworks,'msg':msg})
+
+
 

@@ -68,6 +68,7 @@ class Register_freelance(models.Model):
     service=models.CharField(max_length=255,default='')
     skills=models.CharField(max_length=255,default='')
     over_view=models.CharField(max_length=255,default='')
+    username=models.CharField(max_length=255,default='')
     password=models.CharField(max_length=255,default='')
     #work
     rating=models.IntegerField(default=1)
@@ -113,7 +114,6 @@ class Freelancerworks(models.Model):
     fr_status= models.CharField(max_length=40)
 
     
-
 
 
 

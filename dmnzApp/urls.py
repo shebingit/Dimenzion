@@ -124,7 +124,12 @@ urlpatterns = [
     path('Ongoing-work',views.ongoing_work,name='ongoing_work'),
     path('Completed-work',views.completed_work,name='completed_work'),
     path('Freelancer-Allocate-work',views.freelancer_allocate,name='freelancer_allocate'),
-    path('call',views.call,name='call'),
+   
+
+    #freelancers
+
+     path('Freelancer-Work',views.freelancer_work,name='freelancer_work'),
+     path('freelancer_work_accept/<int:fr_wstatus>',views.freelancer_work_accept,name='freelancer_work_accept'),
   
 
 ]

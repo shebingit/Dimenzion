@@ -1,0 +1,264 @@
+{% extends 'base3.html' %}
+{% load static %}
+{% block body %}
+    <section class="banner">
+        <div class="inner">
+
+
+
+
+        </div>
+        <style>
+            .banner {
+                height: 50vh;
+                background-image: url(' {% static 'images/colorbnr.jpg'%}');
+                background-size: cover;
+                background-attachment: fixed;
+
+
+            }
+
+            .headtext {
+                font-size: 80px;
+            }
+
+            .inner {
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            @media all and (max-width: 500px) {
+                .banner {
+                    height: 25vh;
+
+
+                }
+
+                .headtext {
+                    font-size: 30px;
+                }
+            }
+
+            .flex {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            img{
+                max-height: 400px;
+            }
+            .work
+            {
+                height: 300px;
+            }
+         
+            .letf-side-card{
+            height: 300px;
+            border: none;
+            }
+            .letf-side-card:hover
+            {
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            }
+            
+                .card-body
+                {
+                    border: none;
+                }
+            .card-body a
+            {
+                font-size: 10px;
+                
+            }
+            .letf-side-card .card-body p{
+                font-size: 13px;
+            }
+        </style>
+    </section>
+    <section class="profile container mb-5">
+        <div class="profile0 row bg-light shadow ">
+            <div class="col-lg-3  d-flex flex-column pt-3 boxl">
+                
+               <div class="work card mt-2 p-2">
+                <h6 class="text-center pt-3 mb-2">New Works</h6>
+                {% if frwork %}
+                {% for i in frwork %}
+                <div class="card letf-side-card mb-3 p-2">
+                    <div class="card-body">
+                        <p>Category: {{i.fr_product.category.category_name}}</p>
+                        <p>Client : {{i.fr_user}}</p>
+                        <p>End Date: {{i.end_date}}</p>
+                        <a href="{% url 'freelancer_work_accept' i.id %}" class="btn btn-success">Accept</a>
+                        <a href="#" class="btn btn-danger">Reject</a>
+                    </div>
+                    
+                </div>
+               {% endfor %}
+               {% else %}
+               <div class="card letf-side-card mb-3 p-2">
+                <p class="text-center" style="font-size: 13px;"><b>You Have No Work Yet</b></p>
+               </div>
+               {% endif %}
+               </div>
+            </div>
+            <div class="col-lg-9 py-4">
+                <div class="card">
+                    <div class="card-body" style="height:70vh">
+                        <div class="text-center mb-3">
+                            <h6 class="" style="font-weight: 600;"> Accepted Works</h6>
+                        </div>
+                        
+                        <div class="row">
+                           
+                            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                              <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Search User" style="width:100%"/>
+                            </div>
+                          </div><br>
+                        <div class="table-responsive">
+                            <table  class="table table-striped" >
+                              <thead>
+                                <tr class="header">
+                                  
+                                  <th>Category</th>
+                                  <th>User</th>
+                                  <th>Start Date</th>
+                                  <th>End Date</th>
+                                  <th>File</th>
+                                  <th>Status</th>
+                                  
+                                </tr>
+                              </thead>
+                              <tbody id="myTable" >
+                              {% for i in frworks %}
+                              
+                                <tr>
+                                 <td>{{i.fr_product.category.category_name}}</td>
+                                 <td>{{i.fr_user}}</td>
+                                 
+                                 <td>{{i.start_date}}</td>
+                                 <td>{{i.end_date}}</td>
+                                 <td>
+                                    {% if i.fr_file %}
+                                    <a href="#" download="{{i.fr_file.url}}"><i class="fa fa-file" style="color: rgb(255, 5, 72);"></i></a>
+                                    {% else %} 
+                                    <a href="#" ><i class="fa fa-file" style="color: rgb(255, 5, 72);"></i></a> 
+                                    {% endif %}
+                                    
+                                 </td>
+                                 <td>
+                                    {% if i.fr_status == '3' %}
+                                    Progress
+                                    {% endif %}
+                
+                                 </td>
+                                </tr>
+                              
+                              
+                              {% endfor %}
+                            </tbody>
+                            </table>
+                          </div>
+                        
+                    </div>
+                </div>
+                
+                
+                <script>
+                    $(document).ready(function(){
+                      $("#myInput").on("keyup", function() {
+                        var value = $(this).val().toLowerCase();
+                        $("#myTable tr").filter(function() {
+                          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                      });
+                    });
+                    </script>
+
+            </div>
+           
+
+        </div>
+
+        <style>
+            .profile0 {
+                margin-top: -200px;
+                border: 1px solid rgb(188, 188, 188);
+                border-radius: 10px;
+
+            }.profile0 .boxl img {
+                width: 300px;
+            }
+
+            .grybdr {
+                border-right: 1px solid rgb(200, 200, 200);
+            }
+
+            .rdmr {
+                display: flex;
+                align-items: center;
+                justify-content: end;
+            }
+
+            .rdmr button {
+                border: 1px solid rgba(0, 0, 0, 0);
+
+                color: rgb(255, 5, 72);
+
+            }
+
+            .rdmr button:hover {
+                border: 1px solid rgb(255, 5, 72);
+                color: rgb(255, 5, 72);
+
+            }
+
+            .red {
+                color: rgb(255, 5, 72);
+
+            }
+
+            .redbg {
+                background-color: rgb(255, 5, 72);
+            }
+
+            .dark {
+                background-color: rgb(202, 218, 232);
+            }
+
+            .bdrlft {
+                border-left: 1px solid rgb(200, 200, 200);
+            }
+
+            .bdrbtm {
+                border-bottom: 1px solid rgb(200, 200, 200);
+            }
+
+            @media only screen and (max-width:990px) {
+
+                .profile0 {
+                    margin-top: auto;
+                }
+
+                .profile0 .boxl img {
+                    margin-top: -120px;
+                    border-radius: 200px;
+                    width: 200px;
+                }
+
+
+            }
+        </style>
+
+    </section>
+
+   
+
+
+
+
+    {% endblock %}

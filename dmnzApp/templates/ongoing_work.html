@@ -58,7 +58,13 @@ table .header th{
                  </td>
                  <td>
                     {% if i.fr_status == '2' %}
-                    Pending
+                    Not Accepted
+                    {% endif %}
+                    {% if i.fr_status == '3' %}
+                     Accepted
+                    {% endif %}
+                    {% if i.fr_status == '1' %}
+                     Completed
                     {% endif %}
 
                  </td>

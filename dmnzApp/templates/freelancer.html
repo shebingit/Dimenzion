@@ -216,6 +216,7 @@
 
 
         }
+       
     </style>
 
 </section>
@@ -234,7 +235,7 @@
                 </div>
               </div><br>
             <div class="table-responsive">
-                <table  class="table table-striped">
+                <table  class="table table-striped" >
                   <thead>
                     <tr class="header">
                       
@@ -247,9 +248,9 @@
                       
                     </tr>
                   </thead>
-    
+                  <tbody id="myTable" >
                   {% for i in fr %}
-                  <tbody id="myTable">
+                  
                     <tr>
                      <td>{{i.fr_product.category.category_name}}</td>
                      <td>{{i.fr_user.fullname}}</td>
