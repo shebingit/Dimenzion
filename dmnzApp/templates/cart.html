@@ -58,13 +58,16 @@
 
 
 			<div class="table-responsive" >
-				<table  class="table  ">
+				<table  class="table" style="border:1px solid ;">
 					<thead >
 					<tr>
+					  <th style="text-align: center;">SL.NO</th>
 					  <th style="text-align: center;">Item</th>
 					  <th >Price</th>
-					  <th >Quntity</th>
-					  <th style="text-align: right ;">Total</th>
+					  <!-- <th >Quntity</th> -->
+					  <th>Total</th>
+					  <th style="text-align: center;" >Action</th>
+					  
 					  
 					</tr>
 				</thead>
@@ -72,10 +75,20 @@
 				<tbody >
 					{% for p in ca %}
 					<tr>
+						<td style="text-align: center;">{{forloop.counter}}</td>
 						<td style="text-align: center;"><strong>{{p.product.modelname}}</strong></td>
 						<td ><strong>{{p.product.price|floatformat:2}}</strong></td>
-						<td><strong></strong>{{item.quantity}}</td>
-						<td style="text-align: right ;"><strong>{{p.product.price|floatformat:2}}</strong></td>
+						<!-- <td><strong></strong>{{item.quantity}}</td> -->
+						<td ><strong>{{p.product.price|floatformat:2}}</strong></td>
+
+						<td style="text-align: center;">
+							<a href="{% url 'delete_cart' p.id %}">
+								<button type="button" class='btn btn-danger w-90 mt-2 '>
+									Remove
+								</button>
+							</a>
+						   
+						</td>
 						
 						
 

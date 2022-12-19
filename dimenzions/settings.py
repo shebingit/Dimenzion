@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'dimenzions.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dmnz',
+        'NAME': 'dmnz1',
         'USER':'root',
         'PASSWORD':'',
         'HOST':'localhost',

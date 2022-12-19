@@ -270,7 +270,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-         <form action=""  autocomplete="off">
+        <form action="{% url 'view_items' std.id %}" method="post"  autocomplete="off">
+            {% csrf_token %}
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Name</label>
                 <input type="text" name="name" value="{{u.username}}" autocomplete="off"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -292,6 +293,11 @@
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Email</label>
                 <input type="email" name="email" value="{{u.email}}" class="form-control" autocomplete="off" id="exampleInputPassword1">
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">File</label>
+                <input type="file" name="extra"  class="form-control" autocomplete="off" >
               </div>
 
               <div class="mb-3">

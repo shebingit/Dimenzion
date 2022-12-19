@@ -110,14 +110,23 @@ urlpatterns = [
     path('house_plans',views.house_plans,name='house_plans'),
     path('logo_creation',views.logo_creation,name='logo_creation'),
     path('drawings',views.drawings,name='drawings'),
+    path('delete_cart/<int:pk>',views.delete_cart,name='delete_cart'),
+    path('freelance_home',views.freelancer_home,name='freelancer_home'),
 
-    #shebin shaji
+
+
+     #shebin shaji
 
     path('freelancers',views.freelancers,name='freelancers'),
     path('freelancer_page/<int:freel_id>',views.freelancer_page,name='freelancer_page'),
     path('rating/<int:freel_rt>',views.rating,name='rating'),
     path('Requested-work',views.requested_work,name='requested_work'),
-    path('Freelancer-Allocate',views.freelancer_allocate,name='freelancer_allocate'),
-    
-    
+    path('Ongoing-work',views.ongoing_work,name='ongoing_work'),
+    path('Completed-work',views.completed_work,name='completed_work'),
+    path('Freelancer-Allocate-work',views.freelancer_allocate,name='freelancer_allocate'),
+    path('call',views.call,name='call'),
+  
+
 ]
+
+

@@ -16,19 +16,37 @@
   {
     text-decoration: none;
   }
+  .dwn
+  {
+    margin-top: 10px;
+    margin-bottom: 2px;
+    border-radius: 10px;
+    height: 45px;
+    font-size: 14px;
+    background-color: rgb(26, 26, 80);
+    color: #fff; 
+    padding: 10px 8px;
+    
+  }
+  .col-lg-4
+  {
+    padding: 10px 15px;
+  }
 </style>
 
 <section class="profile container mt-5">
     <div class="profile0 row bg-light shadow  mt-5">
-        <div class="col-lg-3  d-flex flex-column align-items-center pt-3 boxl">
+        <div class="col-lg-2  d-flex flex-column align-items-center pt-3 boxl">
             <img src="{{person.profile_pic.url}}"
                 alt="" class="shadow img-fluid">
             <h4 class="m-0 p-2">{{person.full_name}}</h4>
-            <p style="color: gray;" class="m-0 p-0">(10 Feedback)</p>
-            <p style="color: gray;" class="m-0 p-0">Member since March 26,20</p>
+            <!--<p style="color: gray;" class="m-0 p-0">(10 Feedback)</p>
+            <p style="color: gray;" class="m-0 p-0">Member since March 26,20</p>-->
+           
+           
         </div>
         <div class="col-lg-6 py-4">
-            <h1 class="px-2">{{person.service}}</h1>
+            <h2 class="px-2">{{person.service}}</h2>
             <div class="row pt-3">
                 <div class="col-4 flex grybdr">
                     <p style="color: gray;" class="m-0 p-0">$ 650.00 / hr</p>
@@ -37,11 +55,16 @@
                     <img src="https://cdn.britannica.com/97/1597-004-05816F4E/Flag-India.jpg" width="20px" alt="">
                     <p style="color: gray;" class="m-0 px-2"> {{person.country}}</p>
                 </div>
-                <!--<div class="col-4 flex ">
-                    <i class="fa-solid fa-heart" style="color: rgb(255, 5, 72);"></i>
-                    <p style="color: gray;" class="m-0 px-2">Save</p>
+                <div class="col-4 flex ">
+                    {% if person.Resume %}
+                    <a href="#" download="{{person.Resume.url}}"><i class="fa fa-file" style="color: rgb(255, 5, 72);"></i></a> 
+                    {% else %}
+                    <a href="#" ><i class="fa fa-file" style="color: rgb(255, 5, 72);"></i></a> 
+                    {% endif %}
+                    
+                    <p style="color: gray;" class="m-0 px-2">Resume</p>
 
-                </div>-->
+                </div>
             </div>
             <p style="color: gray; text-align: justify;" class="m-0 p-2 py-4">{{person.over_view}}</p>
 
@@ -53,53 +76,53 @@
             
 
             <!--<div class="rdmr px-4"> <button class="bg-light px-3">Read more</button></div>-->
+            <h5 class="mt-5">Works</h5>
+            <hr>
+            <div class="row g-3 mt-3 flex text-center">
+                <div class="col-lg-4">{% if person.work_1 %}
+                    <a href="#" download="{{person.work_1.url}} " class="dwn mb-2">Download<i class="fa fa-download px-3" ></i></a>
+                    {% endif %}</div>
+                <div class="col-lg-4">{% if person.work_2 %}
+                    <a href="#" download="{{person.work_2.url}}"class="dwn mb-2" >Download<i class="fa fa-download  px-3"></i></a>
+                    {% endif %}</div>
+                <div class="col-lg-4">{% if person.work_3 %}
+                    <a href="#" download="{{person.work_3.url}}"class="dwn mb-2" >Download<i class="fa fa-download  px-3"></i></a>
+                    {% endif %}</div>
+                
+                
+                
+
+            </div>
 
         </div>
-        <div class="col-lg-3 bdrlft ">
-            <div class="row">
-                <div class="col-6 flex flex-column p-4">
-                    {% if person.file %}
-                    <a href="#" download="{{person.file.url}}" class="btn btn-primary">Download</a>
-                    {% endif %}
-
-                </div>
-            </div>
-                
-                    <form action="{% url 'rating' person.id %}" method="post">
-                        {% csrf_token %}
-                        <div class="p-3 mb-3">
-                            <h5 class="pt-3">Give Rating  <span class="fa fa-star checked"></span></h5>
-                            <input type="number" min="1" max="5" step="1" value="1" name="rt">
-                            
-                           
-                        </div>
-            
-                        <div class="flex p-4">
-                            <button type="submit" class="text-light redbg btn w-50 py-2">OK</a>
-            
-                        </div>
-    
-                    </form>
-                
-           </div>
-               <!--  </div>
-                <div class="col-6 flex flex-column p-4 ">
-                    <h3 class="red">8</h3>
-                    <p>Ongoing Services</p>
-                </div>
-            </div>
-
+        <div class="col-lg-4 bdrlft p-4">
+        
             <div class="row bdrbtm">
                 <div class="col-6 flex flex-column p-4">
-                    <h3 class="red">15</h3>
-                    <p>Cancelled Services</p>
+                    <h3 class="red">{{fr_ongoing}}</h3>
+                    <p>Ongoing Services</p>
 
                 </div>
                 <div class="col-6 flex flex-column p-4 dark">
-                    <h3 class="red">5</h3>
+                    <h3 class="red">{{fr_complete}}</h3>
                     <p>Completed projects</p>
                 </div>
-            </div>-->
+            </div>
+            <form action="{% url 'rating' person.id %}" method="post">
+                {% csrf_token %}
+                <div class="p-3 mb-3">
+                    <h5 class="pt-3">Give Rating  <span class="fa fa-star checked"></span></h5>
+                    <input type="number" min="1" max="5" step="1" value="1" name="rt">
+                    
+                   
+                </div>
+    
+                <div class="flex p-4">
+                    <button type="submit" class="text-light redbg btn w-50 py-2">OK</a>
+    
+                </div>
+
+            </form>
            
            
 
@@ -197,6 +220,77 @@
 
 </section>
 
+<section class="container mt-5">
+    <div class="card">
+        <div class="card-body" style="height:70vh">
+            <div class="text-center mb-3">
+                <h4 class="" style="font-weight: 600;"> Ongoing Works</h4>
+            </div>
+            
+            <div class="row">
+               
+                <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+                  <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Search User" style="width:100%"/>
+                </div>
+              </div><br>
+            <div class="table-responsive">
+                <table  class="table table-striped">
+                  <thead>
+                    <tr class="header">
+                      
+                      <th>Category</th>
+                      <th>User</th>
+                      <th>Start Date</th>
+                      <th>End Date</th>
+                      <th>File</th>
+                      <th>Status</th>
+                      
+                    </tr>
+                  </thead>
+    
+                  {% for i in fr %}
+                  <tbody id="myTable">
+                    <tr>
+                     <td>{{i.fr_product.category.category_name}}</td>
+                     <td>{{i.fr_user.fullname}}</td>
+                     
+                     <td>{{i.start_date}}</td>
+                     <td>{{i.end_date}}</td>
+                     <td>
+                        {% if i.fr_file %}
+                        <a href="#" download="{{i.fr_file.url}}"><i class="fa fa-file" style="color: rgb(255, 5, 72);"></i></a>
+                        {% else %} 
+                        <a href="#" ><i class="fa fa-file" style="color: rgb(255, 5, 72);"></i></a> 
+                        {% endif %}
+                        
+                     </td>
+                     <td>
+                        {% if i.fr_status == '2' %}
+                        Pending
+                        {% endif %}
+    
+                     </td>
+                    </tr>
+                  </tbody>
+                  {% endfor %}
+                </table>
+              </div>
+            
+        </div>
+    </div>
+    
+    
+    <script>
+        $(document).ready(function(){
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+        </script>
+</section>
 
 
 

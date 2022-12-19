@@ -41,7 +41,13 @@ def contact_two(request):
 def model(request):
     all=Product.objects.filter(category_id=1)
     three=Product.objects.filter(format='.3dx')
-    return render(request, 'new_models.html',{'all':all,'three':three})
+    count_a=Product.objects.filter(category_id=1).count()
+    count_b=Product.objects.filter(category_id=4).count()
+    count_c=Product.objects.filter(category_id=5).count()
+    count_d=Product.objects.filter(category_id=6).count()
+    count_e=Product.objects.filter(category_id=7).count()
+    count_f=Product.objects.filter(category_id=8).count()
+    return render(request, 'new_models.html',{'all':all,'three':three,'count_b':count_b,'count_c':count_c,'count_d':count_d,'count_e':count_e,'count_f':count_f,'count_a':count_a})
 
 def photoshop(request):
     all=Product.objects.filter(category_id=4)
@@ -131,61 +137,60 @@ def admin_log(request):
 def freereg(request):
     if request.method == 'POST':
         #education
-        ini=request.POST['insti']
-        special=request.POST['speci']
-        education=request.POST['educ']
-        start=request.POST['start']
-        end=request.POST['end']
+        # ini=request.POST['insti']
+        # special=request.POST['speci']
+        education=request.POST['quali']
+        
         #skills
-        proffectional=request.POST['proffectional']
-        title=request.POST['title']
-        skill=request.POST['skill']
+        proffectional=request.POST['desi']
+        service=request.POST['service']
+        # title=request.POST['title']
+        previous_work_1=request.FILES.get('first_work')
+        previous_work_2=request.FILES.get('example_work')
+        previous_work_3=request.FILES.get('previous_work_3')
         overview=request.POST['overview']
         #expireince
-        company=request.POST['compny']
-        position=request.POST['postn']
-        rate=request.POST['time']
-        start_date=request.POST['start_date']
-        end_date=request.POST['end_date']
+        # company=request.POST['compny']
+        # position=request.POST['postn']
+        total_exp=request.POST['Expirence']
+        
         #protfolio
-        project=request.POST['project']
-        address=request.POST['url']
-        Position2=request.POST['Position2']
-        files=request.FILES['files']
+        # project=request.POST['project']
+        # address=request.POST['url']
+        # Position2=request.POST['Position2']
+        Resume=request.FILES['resume']
         #profile
-        fullname=request.POST['fullname']
+        fullname=request.POST['name']
         email=request.POST['email']
-        mobile=request.POST['mobile']
-        country=request.POST['country']
-        profilepic=request.FILES['profilepic']
-        std=Register_freelance(college=ini,
-                               special=special,
-                               education=education,
-                               startdate=start,
-                               enddate=end,
-                               proffecional_title=proffectional,
-                               service=title,
-                               skills=skill,
-                               over_view=overview,
-                               company=company,
-                               position=position,
-                               Rate=rate,
-                               start=start_date,
-                               end=end_date,
-                               url=address,
-                               project_title=project,
-                               position2=Position2,
-                               file=files,
-                               full_name=fullname,
-                               email=email,
-                               mobile=mobile,
-                               country=country,
-                               profile_pic=profilepic)
-        std.save()
-        # messages(request,'success')
+        mobile=request.POST['phone_number']
+        addres=request.POST['address']
+        # country=request.POST['country']
+        profilepic=request.FILES['profile_picture']
+        password=request.POST['password']
+        cpassword=request.POST['cpassword']
+        if (password==cpassword):
+            std=Register_freelance(full_name=fullname,
+                                   email=email,
+                                   mobile=mobile,
+                                   Address=addres,
+                                   profile_pic=profilepic,
+                                   Resume=Resume,
+                                   Total_exp=total_exp,
+                                   over_view=overview,
+                                   work_3=previous_work_3,
+                                   work_2=previous_work_2,
+                                   work_1=previous_work_1,
+                                   proffecional_title=proffectional,
+                                   service=service,
+                                   qualification=education,
+                                   password=password,)
+            std.save()
+            # messages(request,'success')
+            return redirect('freereg')
+        messages.info(request,'password does not match')
         return redirect('freereg')
         
-    return render(request,'new_registration.html')
+    return render(request,'free_lance_reg.html')
 
 def cartitem(request,pk):
     if 'USID' in request.session:
@@ -195,8 +200,13 @@ def cartitem(request,pk):
        std=cart(product=prod,
            User=user1,)
        std.save()
-       return redirect('userhome')
+       return redirect('viewcart')
     return render('user_logout')
+
+def delete_cart(requets,pk):
+    std=cart.objects.get(id=pk)
+    std.delete()
+    return redirect('viewcart')
 
 def viewcart(request):
     if 'USID' in request.session:
@@ -222,20 +232,23 @@ def view_items(request,pk):
             address=request.POST['address']
             phone=request.POST['phone']
             description=request.POST['desc']
+            # files=request.FILES['extra']
             status='pending'
             product=std
             user_id=user
-            servicee_freelancer=0
+            service_freelancer='null'
             sfm=Service_form(user_name=name,
-                             email=email,
-                             Address=address,
-                             phone_number=phone,
-                             description=description,
-                             status=status,
-                             product=product,
-                             user=user_id,
-                             servicee_freelancer=servicee_freelancer)
+                            email=email,
+                            Address=address,
+                            phone_number=phone,
+                            description=description,
+                            status=status,
+                            product=product,
+                            user=user_id,
+                            service_freelancer=service_freelancer,
+                            )
             sfm.save()
+            return render(request,'view_item_2.html',{'std':std,'new':new,'u':user})
         return render(request,'view_item_2.html',{'std':std,'new':new,'u':user})
     return redirect('user_logout')
 
@@ -243,7 +256,7 @@ def view_items(request,pk):
 def view_items_two(request,pk):
     std=Product.objects.get(id=pk)
     new=Product.objects.filter(category=2)
-    return render(request,'view_item.html',{'st':std,'new':new})
+    return render(request,'view_item.html',{'std':std,'new':new})
   
     
 
@@ -285,7 +298,12 @@ def admin_login(request):
                 return redirect('admin_dashboard')
             else:
                 request.session['USID']=user.id
-                return redirect('userhome')           
+                return redirect('userhome')  
+        if Register_freelance.objects.filter(full_name=username,password=password):
+            free=Register_freelance.objects.get(full_name=username,password=password) 
+            request.session['F.id']=free.id
+            return redirect('freelancer_home')
+                        
         else:
             print("hi3")
             messages.info(request,'invalid username or password.Try again!')
@@ -295,6 +313,12 @@ def admin_login(request):
     return redirect('admin_log')
 
 
+def freelancer_home(request):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        return render(request,'freelance_home.html',{'p':free})
+    return redirect('user_logout')
 
 def userhome(request):
     if 'USID' in request.session: 
@@ -706,11 +730,9 @@ def registeredusers(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
     
-    use = User.objects.filter(is_superuser=0)
+    use = Service_form.objects.all()
     return render(request, 'registeredusers.html', {'use': use,'adm':adm})
-
-
-
+    
 
 
 def delete(request, reg_id):
@@ -961,6 +983,7 @@ def deletereq(request,id):
     return redirect('reqlist')
 
 
+
 #shebin shaji
 
 def freelancers(request):
@@ -975,9 +998,11 @@ def freelancer_page(request,freel_id):
     adm=User.objects.filter(id=abc)
     person=Register_freelance.objects.get(id=freel_id)
     r= int(person.rating)
-    print(r)
+    fr_ongoing=Freelancerworks.objects.filter(fr_status='2',frelancer_id=freel_id).count
+    fr_complete=Freelancerworks.objects.filter(fr_status='1',frelancer_id=freel_id).count
+    fr=Freelancerworks.objects.filter(frelancer_id=freel_id)
+    return render(request, 'freelancer.html', {'person': person,'adm':adm,'r':range(r),'fr_ongoing':fr_ongoing,'fr_complete':fr_complete,'fr':fr})
 
-    return render(request, 'freelancer.html', {'person': person,'adm':adm,'r':range(r)})
 
 def rating(request,freel_rt):
     abc= request.session["admid"]
@@ -995,28 +1020,49 @@ def rating(request,freel_rt):
 def requested_work(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
-    s=Service_form.objects.all()
-    r=Register_freelance.objects.all()
-    fr=Freelancerworks.objects.all()
-    return render(request, 'requested_work.html', {'adm':adm,'r':r,'fr':fr,'s':s})
+    s=Service_form.objects.all().order_by('-status')
+    r=Register_freelance.objects.filter(w_status='0')
+    return render(request, 'requested_work.html', {'adm':adm,'r':r,'s':s})
 
+def ongoing_work(request):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    fr=Freelancerworks.objects.all()
+    return render(request, 'ongoing_work.html', {'adm':adm,'fr':fr})
+
+def completed_work(request):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    fr=Freelancerworks.objects.filter(fr_status='1')
+    return render(request, 'completed_work.html', {'adm':adm,'fr':fr})
 
 #Freelancer Allocate
 
 def freelancer_allocate(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
-    r=Service_form.objects.all()
+    
     if request.method == 'POST':
+        sr=Service_form.objects.get(id=int(request.POST['u-id']))
         work=Freelancerworks()
         work.fr_user=User.objects.get(id=1)
-        work.fr_product=Product.objects.get(id=1)
+        work.fr_product=sr.product
         work.frelancer=Register_freelance.objects.get(id=int(request.POST['frid']))
         work.end_date=request.POST['fr-date']
         work.fr_status=2
         work.save()
         msg='Successfuly Allocated'
+        
+        sr.status=2
+        sr.save()
+        fr_st=Register_freelance.objects.get(id=int(request.POST['frid']))
+        fr_st.w_status=1
+        fr_st.save()
     fr=Freelancerworks.objects.all()
     s=Service_form.objects.all()
-    return render(request, 'requested_work.html', {'adm':adm,'r':r,'msg':msg,'fr':fr,'s':s})
+    return render(request, 'requested_work.html', {'adm':adm,'msg':msg,'fr':fr,'s':s})
+
+
+def call(request):
+    return redirect('/calling_page')
 

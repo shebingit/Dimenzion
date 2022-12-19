@@ -5,7 +5,7 @@
         <div class="inner">
             <b>
                 <h3 class="text-light headtext" style="font-family: '', sans-serif; ">
-                    <span style="color: rgb(255, 5, 72);">3D</span> ARTISTS
+                    <span style="color: rgb(255, 5, 72);">CAT</span>EGORIES
                 </h3>
             </b>
         </div>
@@ -48,256 +48,96 @@
             }
         </style>
     </section>
-    <section class="dropdowns container">
-        <nav class="navbar navbar-expand-lg navbar-light mt-3">
-            <div class="container-fluid">
-                <button class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <span class="">
-                        <i class="fa-solid fa-filter"></i>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item mt-3 mt-lg-0">
-                            <div class="dropdown ">
-                                <a class="btn btn-outline-secondary abc"
-                                   href="#"
-                                   role="button"
-                                   id="dropdownMenuLink"
-                                   data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Price <i class="fa-solid fa-chevron-down ps-5"></i>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'price_low' %}">low to high</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'price_high' %}">High to low</a>
-                                    </li>
-                                    
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item mt-3 mt-lg-0 ps-lg-3">
-                            <div class="dropdown">
-                                <a class="btn btn-outline-secondary abc"
-                                   href="#"
-                                   role="button"
-                                   id="dropdownMenuLink"
-                                   data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Formats <i class="fa-solid fa-chevron-down  ps-lg-2"></i>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    
-                                    <li>
-                                        <a   class="dropdown-item" href="{% url 'three' %}">3dx</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'fbx' %}">fbx</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'obj' %}">obj</a>
-                                    </li>
-
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'model' %}">All</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- <li class="nav-item mt-3 mt-lg-0 ps-lg-3">
-                            <div class="dropdown">
-                                <a class="btn btn-outline-secondary abcd"
-                                   href="#"
-                                   role="button"
-                                   id="dropdownMenuLink"
-                                   data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Quantity <i class="fa-solid fa-chevron-down ps-lg-2"></i>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li>
-                                        <a class="dropdown-item" href="#">Action</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li> -->
-                    </ul>
-                    <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                        <!-- <li class="nav-item mt-3 mt-lg-0">
-                            <div class="dropdown ">
-                                <a class="btn btn-outline-secondary abcd"
-                                   href="#"
-                                   role="button"
-                                   id="dropdownMenuLink"
-                                   data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Sort Best Match <i class="fa-solid fa-chevron-down "></i>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li>
-                                        <a class="dropdown-item" href="#">Action</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li> -->
-                    </ul>
+    
+    <section class="grayback " style="background-color: rgb(97, 96, 99);">
+        <section class="p-lg-5 ">
+            <h2 style="font-weight: 600;
+                       color: rgb(255, 255, 255);"
+                class="text-center pt-4 p-lg-0 "
+                data-aos="fade-up"
+                data-aos-delay="50">
+                BROWSE OUR CATEGORIES
+            </h2>
+            <div class="flexy w-100">
+                <div style="background-color: white;height: 2px; width: 20%;">
                 </div>
             </div>
-        </nav>
-        <style>
-            .abc {
-                width: 150px;
-            }
-
-            .abcd {
-                width: 200px;
-            }
-
-            @media all and (max-width: 500px) {
-
-                .abc,
-                .abcd {
-                    width: 100%;
-                }
-
-
-            }
-        </style>
-    </section>
-    <section class="products ">
-        <div class="cards-list container">
-            {% for p in all %}
-            <a href="{% url 'view_items' p.id  %}"
-                    class="card1 bg-light shadow-lg mb-3"
-                    data-aos="fade-up"
-                    data-aos-delay="50">
-            <div class="card3 shadow " onclick="clicked()" id="all"
-                 style="background-image: url('{{p.gib.url}}');background-size: 100% 100%; background-repeat: no-repeat;">
-                <div class="black_fillter">
-                    <div class="frame pt-1">
-                        <div class="top row container-fluid p-0 m-0 shadow">
-                            <div class="col-3 flex">
-                                <h6 class="m-0" style="font-weight: 800;">3D</h6>
-                            </div>
-                            <div class="col-6 flex">
-                                <h6 class="m-0"style="font-weight: 800;">{{p.modelname}}</h6>
-                            </div>
-                            <div class="col-3 flex">
-                                <h6 class="m-0"style="font-weight: 800;">{{p.price}}$</h6>
-                            </div>
-                        </div>
-                        <div class="center">
-                            <button class="p-2">
-                                <i class="fa-solid fa-heart"></i>
-                            </button>
-                        </div>
-                        <div class="bottom shadow row container-fluid p-0 m-0"
-                             style="color: rgb(255, 5, 72);">
-                            <div class="col-10 flex" style="font-weight: 800;">Details</div>
-                            <div class="col-2 flex">
-                                <i class="fa-solid fa-cart-plus"></i>
-                            </div>
-                        </div>
+            <div class="cards-list">
+                <a class="card3" href="{% url 'model'%}"
+                     style="background-image: url('{% static 'images/car-777159_960_720.jpg'%}'); ">
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            3D ARTISTS
+                        </h4>
+                        <p style="color: gray;">
+                            {{count_a}}
+                        </p>
                     </div>
-                </div>
-            </div>
-           </a>
-            
-            {% endfor %}
-         
-            <!-- category ......3dx -->
-
-          
-        <div class="row my-3">
-            <div class="col-3">
-            </div>
-            <div class="col-9 flex">
-                <a class="btn text-light next w-100 "
-                   style="background-color: rgba(255, 5, 72);">
-                    Load more
+                </a>
+                <a class="card3" href="{% url 'photoshop' %}"
+                style="background-image: url('{% static 'images/Moon-Photoshop.jpg'%}'); ">
+               
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            PHOTOSHOP
+                        </h4>
+                        <p style="color: gray;">
+                            {{count_b}} Products
+                        </p>
+                    </div>
+                </a>
+                <a class="card3" href="{% url 'ui_design' %}"
+                style="background-image: url('{% static 'images/1642762135_resized-image.jpg'%}'); ">
+                 
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            UI DESIGN
+                        </h4>
+                        <p style="color: gray;">
+                            {{count_c}}
+                        </p>
+                    </div>
+                </a>
+                <a class="card3" href="{% url 'house_plans'%}"
+                style="background-image: url('{% static 'images/RoomSketcher-High-Quality-3D-Floor-Plans.jpg'%}'); ">
+                     
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            HOUSE PLANS
+                        </h4>
+                        <p style="color: gray;">
+                            {{count_d}}
+                        </p>
+                    </div>
+                </a>
+                <a class="card3" href="{% url 'logo_creation'%}"
+                style="background-image: url('{% static 'images/b-letter-boutique-logo-design-159417325.jpg'%}'); ">
+               
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            LOGO CREATION
+                        </h4>
+                        <p style="color: gray;">
+                            {{count_e}}
+                        </p>
+                    </div>
+                </a>
+                <a class="card3" href="{% url 'drawings'%}"
+                
+                style="background-image: url('{% static 'images/images (6) 1.png'%}'); ">
+ 
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            DRAWINGS 
+                        </h4>
+                        <p style="color: gray;">
+                            {{count_f}}
+                        </p>
+                    </div>
                 </a>
             </div>
-            <div class="col-4">
-            </div>
-        </div>
-
-
-       
+        </section>
         <style>
-            .flex{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            /* frame */
-            .black_fillter {
-                background-color: rgba(0, 0, 0, 0.5);
-                width: 100%;
-                height: 100%;
-            }
-
-            .frame {
-                opacity: 0%;
-                height: 100%;
-                width: 100%;
-            }
-
-            .card3:hover .frame  ,.card3:hover .black_fillter{
-                background-color: rgba(0, 0, 0, 0.15);
-                opacity: 100%;
-                transition: opacity 1s;
-
-            }
-
-            .top {
-                background-color: white;
-                height: 13%;
-                width: 100%;
-            }
-
-            .center {
-                height: 74%;
-                width: 100%;
-                display: flex;
-                justify-content: end;
-                align-items: flex-start;
-            }
-            .center button{
-                background-color: rgba(0, 0, 0, 0);
-                height: auto;
-                width: auto;
-                border: none;
-                color: rgb(255, 5, 72);
-                 font-size: 30px;
-            }
-
-            .bottom {
-                background-color: white;
-                height: 13%;
-                width: 100%;
-            }
-
             .flex {
                 display: flex;
                 align-items: center;
@@ -308,24 +148,35 @@
                 z-index: 0;
                 width: 100%;
                 display: flex;
-                justify-content:space-around;
+                justify-content: space-around;
                 flex-wrap: wrap;
+                background-color: rgba(0, 0, 0, 0);
             }
 
             .card3 {
                 margin: 30px auto;
                 width: 400px;
-                height: 320px;
+                height: 400px;
 
+                background-size: 100% 100%;
                 cursor: pointer;
                 transition: 0.4s;
-            }
-            .hide{
-                display: none;
+                border-radius: 20px;
             }
 
+            .dark1 {
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.3);
+                border-radius: 20px;
+            }
 
 
+            .card3:hover .dark1 {
+                background-color: rgba(0, 0, 0, 0.8);
+                transition: 1s;
+
+            }
 
             @media all and (max-width: 800px) {
                 .card-list {
@@ -334,32 +185,14 @@
                 }
 
                 .card3 {
-
-                    width:100%;
+                    margin: 10px auto;
+                    width: 90%;
                     height: 250px;
                 }
 
-                .card3 .card_title p {
 
-                    margin-top: -100px;
-                }
 
             }
-
-
-            /* .card {
-        margin: 30px auto;
-        width: 300px;
-        height: 300px;
-        border-radius: 40px;
-        background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-repeat: no-repeat;
-      box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
-        transition: 0.4s;
-      } */
         </style>
     </section>
 {% endblock %}

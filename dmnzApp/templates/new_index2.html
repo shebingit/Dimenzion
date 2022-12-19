@@ -11,12 +11,12 @@
             </b>
             <div class="my-3">
                 <a href="{% url 'model' %}"
-                   class="btn mx-2"
+                   class="btn w-100 mx-2"
                    style="background-color: rgb(255, 5, 72);
                           color: white;">Buy 3D Model</a>
-                <a href="{% url 'freelancer'%}"
+                 {% comment %} <a href="{% url 'freelancer'%}"
                    class="btn mx-2 text-light"
-                   style="background-color: gray;">Frelancer</a>
+                   style="background-color: gray;">Frelancer</a>  {% endcomment %}
             </div>
         </div>
         <style>
@@ -63,60 +63,139 @@
             }
         </style>
     </section>
-    <section class=" pinkbox  w-100 ">
-        <div class="pinkbox0 container">
-            <div class="row  text-light p-0 m-0">
-                <div class="col-lg-3  flex flex-column pbox">
-                    <i class="fa-solid fa-mobile-screen p-3" style="font-size: 45px;"></i>
-                    <h4>Responsive Design</h4>
-                    <p style="text-align: center;" class="p-3">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
-                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
-                    </p>
+
+
+    
+    <section class="designers">
+        <div class="cover1">
+            <div class="left2 p-lg-5 p-4 text-center">
+                <h3 style="font-weight: 600;">
+                    TOP DESIGNERS OF THIS WEEK
+                </h3>
+                <P>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque suscipit beatae quas.
+                </P>
+                <div class="row container-fluid">
+                    <div class="col-lg-4 flexy my-2">
+                        <img src="https://png.pngitem.com/pimgs/s/627-6275754_chad-profile-pic-profile-photo-circle-png-transparent.png"
+                             alt=""
+                             width="150px"
+                             class="rounded rounded-circle">
+                        <h6>
+                            name
+                        </h6>
+                        <p style=" color: rgb(255, 5, 72);">
+                            View More
+                        </p>
+                    </div>
+                    <div class="col-lg-4 flexy">
+                        <img src="https://png.pngitem.com/pimgs/s/627-6275754_chad-profile-pic-profile-photo-circle-png-transparent.png"
+                             alt=""
+                             width="150px"
+                             class="rounded rounded-circle">
+                        <h6>
+                            name
+                        </h6>
+                        <p style=" color: rgb(255, 5, 72);">
+                            View More
+                        </p>
+                    </div>
+                    <div class="col-lg-4 flexy">
+                        <img src="https://png.pngitem.com/pimgs/s/627-6275754_chad-profile-pic-profile-photo-circle-png-transparent.png"
+                             alt=""
+                             width="150px"
+                             class="rounded rounded-circle">
+                        <h6>
+                            name
+                        </h6>
+                        <p style=" color: rgb(255, 5, 72);">
+                            View More
+                        </p>
+                    </div>
                 </div>
-                <div class="col-lg-3  flex flex-column  pbox p-4">
-                    <i class="fa-solid fa-gem p-3" style="font-size: 45px;"></i>
-                    <h4>Award Winning</h4>
-                    <p style="text-align: center;" class="p-3">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
-                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
-                    </p>
-                </div>
-                <div class="col-lg-3 flex flex-column pbox p-4">
-                    <i class="fa-solid fa-laptop p-3" style="font-size: 45px;"></i>
-                    <h4>Video tutorial</h4>
-                    <p style="text-align: center;" class="p-3">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
-                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
-                    </p>
-                </div>
-                <div class="col-lg-3 flex flex-column pbox p-4">
-                    <i class="fa-solid fa-gift p-3" style="font-size: 45px;"></i>
-                    <h4>Awesome Gift</h4>
-                    <p style="text-align: center;" class="p-3">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
-                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
-                    </p>
-                </div>
+            </div>
+            <div class="right2 container-fluid">
+                <img src="{% static 'images/ptree.png' %}" class="tree " alt="">
             </div>
         </div>
         <style>
-            .pinkbox {
-                background-color: rgb(255, 5, 72);
-                background-image: url('{% static 'images/triangle.png' %}');
-                background-size: contain;
+            .right2 .tree {
+                width: 550px;
+                margin-top: -120px;
+
             }
 
-            .pbox:hover {
-                background-color: rgba(0, 0, 0, 0.3);
-                transition: 1s;
+            .flexy {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .designers {
+
+
+                background-image: url('https://img.freepik.com/free-vector/3d-shapes-sky-tones-background_52683-35351.jpg?w=2000');
+                background-attachment: fixed;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+
+            .cover1 {
+                background-color: rgba(255, 255, 255, 0.6);
+                width: 100%;
+                height: 100%;
+                display: flex;
+
+            }
+
+            .left2 {
+                width: 60%;
+            }
+
+            .right2 {
+                width: 40%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+            }
+
+            .right2 img {
+                width: 400px;
+            }
+
+            @media only screen and (max-width:800px) {
+                .cover1 {
+                    display: block;
+                }
+
+                .left2 {
+                    width: 100%;
+                }
+
+                .right2 {
+                    width: 100%;
+                }
+
+                .designers {
+                    height: auto;
+                }
+
+                .right2 .tree {
+                    width: 250px;
+                    margin-top: auto;
+                    display: none;
+
+                }
+
             }
         </style>
     </section>
+
+
+
+
     <section class="tabs m-3">
         <ul class="nav nav-tabs d-flex align-items-center justify-content-center border-0"
             id="myTab"
@@ -461,132 +540,67 @@
             }
         </style>
     </section>
-    <section class="designers">
-        <div class="cover1">
-            <div class="left2 p-lg-5 p-4 text-center">
-                <h3 style="font-weight: 600;">
-                    TOP DESIGNERS OF THIS WEEK
-                </h3>
-                <P>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque suscipit beatae quas.
-                </P>
-                <div class="row container-fluid">
-                    <div class="col-lg-4 flexy my-2">
-                        <img src="https://png.pngitem.com/pimgs/s/627-6275754_chad-profile-pic-profile-photo-circle-png-transparent.png"
-                             alt=""
-                             width="150px"
-                             class="rounded rounded-circle">
-                        <h6>
-                            name
-                        </h6>
-                        <p style=" color: rgb(255, 5, 72);">
-                            View More
-                        </p>
-                    </div>
-                    <div class="col-lg-4 flexy">
-                        <img src="https://png.pngitem.com/pimgs/s/627-6275754_chad-profile-pic-profile-photo-circle-png-transparent.png"
-                             alt=""
-                             width="150px"
-                             class="rounded rounded-circle">
-                        <h6>
-                            name
-                        </h6>
-                        <p style=" color: rgb(255, 5, 72);">
-                            View More
-                        </p>
-                    </div>
-                    <div class="col-lg-4 flexy">
-                        <img src="https://png.pngitem.com/pimgs/s/627-6275754_chad-profile-pic-profile-photo-circle-png-transparent.png"
-                             alt=""
-                             width="150px"
-                             class="rounded rounded-circle">
-                        <h6>
-                            name
-                        </h6>
-                        <p style=" color: rgb(255, 5, 72);">
-                            View More
-                        </p>
-                    </div>
+
+
+
+    <section class=" pinkbox  w-100 ">
+        <div class="pinkbox0 container">
+            <div class="row  text-light p-0 m-0">
+                <div class="col-lg-3  flex flex-column pbox">
+                    <i class="fa-solid fa-mobile-screen p-3" style="font-size: 45px;"></i>
+                    <h4>Responsive Design</h4>
+                    <p style="text-align: center;" class="p-3">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
+                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
+                    </p>
                 </div>
-            </div>
-            <div class="right2 container-fluid">
-                <img src="{% static 'images/ptree.png' %}" class="tree " alt="">
+                <div class="col-lg-3  flex flex-column  pbox p-4">
+                    <i class="fa-solid fa-gem p-3" style="font-size: 45px;"></i>
+                    <h4>Award Winning</h4>
+                    <p style="text-align: center;" class="p-3">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
+                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
+                    </p>
+                </div>
+                <div class="col-lg-3 flex flex-column pbox p-4">
+                    <i class="fa-solid fa-laptop p-3" style="font-size: 45px;"></i>
+                    <h4>Video tutorial</h4>
+                    <p style="text-align: center;" class="p-3">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
+                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
+                    </p>
+                </div>
+                <div class="col-lg-3 flex flex-column pbox p-4">
+                    <i class="fa-solid fa-gift p-3" style="font-size: 45px;"></i>
+                    <h4>Awesome Gift</h4>
+                    <p style="text-align: center;" class="p-3">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
+                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
+                    </p>
+                </div>
             </div>
         </div>
         <style>
-            .right2 .tree {
-                width: 550px;
-                margin-top: -120px;
-
+            .pinkbox {
+                background-color: rgb(255, 5, 72);
+                background-image: url('{% static 'images/triangle.png' %}');
+                background-size: contain;
             }
 
-            .flexy {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-            }
-
-            .designers {
-
-
-                background-image: url('https://img.freepik.com/free-vector/3d-shapes-sky-tones-background_52683-35351.jpg?w=2000');
-                background-attachment: fixed;
-                background-size: cover;
-                background-repeat: no-repeat;
-            }
-
-            .cover1 {
-                background-color: rgba(255, 255, 255, 0.6);
-                width: 100%;
-                height: 100%;
-                display: flex;
-
-            }
-
-            .left2 {
-                width: 60%;
-            }
-
-            .right2 {
-                width: 40%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-            }
-
-            .right2 img {
-                width: 400px;
-            }
-
-            @media only screen and (max-width:800px) {
-                .cover1 {
-                    display: block;
-                }
-
-                .left2 {
-                    width: 100%;
-                }
-
-                .right2 {
-                    width: 100%;
-                }
-
-                .designers {
-                    height: auto;
-                }
-
-                .right2 .tree {
-                    width: 250px;
-                    margin-top: auto;
-                    display: none;
-
-                }
-
+            .pbox:hover {
+                background-color: rgba(0, 0, 0, 0.3);
+                transition: 1s;
             }
         </style>
     </section>
+   
+
+
+
     <section class="grayback " style="background-color: rgb(97, 96, 99);">
         <section class="p-lg-5 ">
             <h2 style="font-weight: 600;
@@ -828,3 +842,4 @@
         </style>
     </section>
     {% endblock %}
+

@@ -189,7 +189,7 @@
         <div class="cards-list container">
             {% for p in all %}
           
-            <div class="card3 shadow " onclick="tap()" id="all"
+            <div class="card3 shadow bg-light " onclick="tap()" id="all"
                  style="background-image: url('{{p.gib.url}}');background-size: 100% 100%; background-repeat: no-repeat;">
                 <div class="black_fillter">
                     <div class="frame pt-1">
@@ -206,7 +206,7 @@
                         </div>
                         <div class="center">
                             <button class="p-2">
-                                <i class="fa-solid fa-heart"></i>
+                                {% comment %} <i class="fa-solid fa-heart"></i> {% endcomment %}
                             </button>
                         </div>
                         <div class="bottom shadow row container-fluid p-0 m-0"
@@ -279,9 +279,16 @@
                 transition: opacity 1s;
 
             }
+            .card3,.frame,.black_fillter{
+
+                background-color: rgba(0, 0, 0, 0.15);
+                opacity: 100%;
+                transition: opacity 1s;
+
+            }
 
             .top {
-                background-color: white;
+                background-color:rgba(255, 255, 255, 0.3) ;
                 height: 13%;
                 width: 100%;
             }

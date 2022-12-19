@@ -12,22 +12,8 @@
 
     #rwork::-webkit-scrollbar {
         width: 1.2em;
-      }
-
-.card_req
-{
-    
-    color: #2A265F;
-    border-radius:5px;
-    padding: 5px 20px;
-    margin: 2 auto;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-    
-
-}
+    }
+  
 .remove
 {
     text-align: end;
@@ -66,138 +52,83 @@
 table .header th{
     font-size: 12px;
 }
-  
+
 </style>
 
 <div class="container">
-    
-    <div class="row mt-1">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card m-1">
-                <div class="card-body" style="height:70vh" id="rwork">
-                    <h5 class="text-center mb-4"> Requested Works</h5>
-                    {% if msg %}
-                    <div class="alert-box success"> {{msg}} !!!</div>
-                    {% endif %}
-                   
-                    <div class="row mt-1  p-1">
-                        {% for i in s %}
-                        <div class="col-md-6 ">
-                         
-                        <div class="container1">
-                            <div class="card_req p-3">
-                                    
-                                        
-                                    <h6>
-                                       
-                                    {% if i.product.image %}
-                                        <img src="{{i.product.image.url}}" class="round"> hai
-                                    {% endif %}
-                                <span class="px-3">{{i.product.modelname}}</span></h6>
-                                        
+    <h5 class="text-center mb-4"> Requested Works</h5>
+    {% if msg %}
+    <div class="alert-box success"> {{msg}} !!!</div>
+    {% endif %}
                                 
-                                    
-                                    <p class="text-center">{{i.user_name}}</p>
-                                
-                                <div class="remove ">
-                                    
-                                    <i class="fa fa-trash text-danger"></i>
-                                </div>
-                            </div>
-                            <label class="p-2 mt-3">Allocate Freelancer</label>
-                            
-                            <form action="{% url 'freelancer_allocate' %}" method="post">
-                                {% csrf_token %}
-                               
-                                <div class="select-box">
-                                 <input type="text" value="{{i.id}}" hidden name="u-id">
-                                 
-                                  <select name="frid">
-                                    {% for j in r %}
-
-                                    <option value={{j.id}} selected >
-                                        
-                                         <span>{{j.full_name}}</span> -
-                                         {% if j.w_status == '0' %}  
-                                         <span> {{j.service}}</span>
-                                         {% endif %} 
-                                       
-                                    </option>
-                                    {% endfor %}
-                                    
-                                  </select>
-                                  <input type="date" class="dates" name="fr-date">
-                                  <button type="submit" class="btn1">Allocate</button>
-                                </div>
-                                 
-                              </form>  
-                              <hr>
-                        </div> 
-                        </div>
-                        {% endfor %}
-                    </div>
-                   
-
-                    
-                </div>
-            </div>
-        </div>
-        
-        <div class="col-md-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body" style="height:70vh">
-                    <div class="text-center mb-3">
-                        <h5 class=""> Allocated Works</h5>
-                    </div>
-                    
-                    <div class="row">
-                       
-                        <div class="col-md-12 col-lg-12 col-sm-12 col-12">
-                          <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Search User" style="width:100%"/>
-                        </div>
-                      </div><br>
-                    <div class="table-responsive">
-                        <table  class="table table-striped">
-                          <thead>
-                            <tr class="header">
-                              
-                              <th>Product</th>
-                              <th>User</th>
-                              <th>Freelancers</th>
-                              <th>Start Date</th>
-                              <th>End Date</th>
-                              <th>File</th>
-                              <th>Status</th>
-                              
-                            </tr>
-                          </thead>
-            
-                          {% for i in fr %}
-                          <tbody id="myTable">
-                            <tr>
-                             <td>{{i.fr_product.modelname}}</td>
-                             <td>{{i.fr_user.fullname}}</td>
-                             <td>{{i.frelancer.full_name}}</td>
-                             <td>{{i.start_date}}</td>
-                             <td>{{i.end_date}}</td>
-                             <td></td>
-                             <td>
-                                {% if i.fr_status == '2' %}
-                                Pending
-                                {% endif %}
-
-                             </td>
-                            </tr>
-                          </tbody>
-                          {% endfor %}
-                        </table>
-                      </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
+
+<div class="table-responsive">
+    <table  class="table table-striped">
+      <thead>
+        <tr class="header">
+          
+          <th>Category</th>
+          <th>User</th>
+          <th>Freelancers</th>
+          <th>End Date</th>
+          <th>Action</th>
+          
+          
+        </tr>
+      </thead>
+
+    
+      <tbody id="myTable">
+        {% for i in s %}
+        <form action="{% url 'freelancer_allocate' %}" method="post">
+            {% csrf_token %}
+            
+            <tr>
+            <td>{{i.product.category.category_name}}</td>
+            <td> {{i.user_name}} <input type="text" value="{{i.id}}" hidden name="u-id"></td>
+            <td>
+                <select name="frid" class="p-2">
+                    {% for j in r %}
+
+                    <option value={{j.id}} selected  clas="p-2">
+                        
+                        <span>{{j.full_name}}</span> -
+                        {% if j.w_status == '0' %}  
+                        <span> {{j.service}}</span>
+                            {% if j.rating == 1 %}
+                            <span> &nbsp; &nbsp; &nbsp;★</span>
+                            {% elif j.rating == 2 %}
+                            <span style=" color: orange;">  &nbsp; &nbsp; &nbsp; ★★</span>
+                            {% elif j.rating == 3 %}
+                            <span >  &nbsp; &nbsp; &nbsp; ★★★</span>
+                            {% elif j.rating == 4 %}
+                            <span>  &nbsp; &nbsp; &nbsp;★★★★</span>
+                            {% elif j.rating == 5 %}
+                            <span> &nbsp; &nbsp; &nbsp;★★★★★</span>
+                            {% endif %}
+                        {% endif %} 
+                    
+                    </option>
+                    {% endfor %}
+                
+                </select>
+            </td>
+            <td> <input type="date" class="dates p-2" name="fr-date" required></td>
+            <td>{% if i.status == '2' %}  <button type="button" class="btn1" style="background-color: #28932a;">Allocated</button>
+               {% else %}<button type="submit" class="btn1">Allocate</button>
+               {% endif %}
+            </td>
+            
+            </tr>
+        </form>
+      </tbody>
+      {% endfor %}
+    </table>
+  </div>
+
+ 
+
 
 <style>
     form

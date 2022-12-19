@@ -1,0 +1,86 @@
+{% extends 'admin_base.html' %} {% load static%} {% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    #myTable tr td
+{
+    font-size: 12px;
+}
+table .header th{
+    font-size: 12px;
+}
+</style>
+
+
+<div class="card">
+    <div class="card-body" style="height:70vh">
+        <div class="text-center mb-3">
+            <h5 class=""> Allocated Works</h5>
+        </div>
+        
+        <div class="row">
+           
+            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+              <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Search User" style="width:100%"/>
+            </div>
+          </div><br>
+        <div class="table-responsive">
+            <table  class="table table-striped">
+              <thead>
+                <tr class="header">
+                  
+                  <th>Category</th>
+                  <th>User</th>
+                  <th>Freelancers</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                  <th>File</th>
+                  <th>Status</th>
+                  
+                </tr>
+              </thead>
+
+              {% for i in fr %}
+              <tbody id="myTable">
+                <tr>
+                 <td>{{i.fr_product.category.category_name}}</td>
+                 <td>{{i.fr_user.fullname}}</td>
+                 <td>{{i.frelancer.full_name}}</td>
+                 <td>{{i.start_date}}</td>
+                 <td>{{i.end_date}}</td>
+                 <td>
+                  {% if i.fr_file %}
+                        <a href="#" download="{{i.fr_file.url}}"><i class="fa fa-file" style="color: rgb(255, 5, 72);"></i></a>
+                  {% else %} 
+                        <a href="#" ><i class="fa fa-file" style="color: rgb(255, 5, 72);"></i></a> 
+                  {% endif %}
+                  
+                 </td>
+                 <td>
+                    {% if i.fr_status == '2' %}
+                    Pending
+                    {% endif %}
+
+                 </td>
+                </tr>
+              </tbody>
+              {% endfor %}
+            </table>
+          </div>
+        
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    </script>
+
+{% endblock %}

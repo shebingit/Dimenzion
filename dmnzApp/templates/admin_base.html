@@ -329,7 +329,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'admin_dashboard' %}">
                             <i class="icon-grid menu-icon"></i>
-                            <span class="menu-title">Dashboard</span>
+                            <span class="menu-title">Dashboard </span>
                         </a>
                     </li>
                     
@@ -345,12 +345,28 @@
                             <span class="menu-title">Freelancers</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a class="nav-link" href="{% url 'requested_work' %}">
                             <i class="icon-columns menu-icon"></i>
-                            <span class="menu-title">Requested Works</span>
+                            <span class="menu-title">Requested Work</span>
                         </a>
+                    
                     </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'ongoing_work' %}">
+                            <i class="icon-columns menu-icon"></i>
+                            <span class="menu-title">Ondoing  Work</span>
+                        </a>
+                    
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{% url 'completed_work' %}">
+                            <i class="icon-columns menu-icon"></i>
+                            <span class="menu-title">Completed Work</span>
+                        </a>
+                    
+                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'addmodel' %}">
                             <i class="icon-columns menu-icon"></i>

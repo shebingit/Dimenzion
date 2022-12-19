@@ -44,32 +44,36 @@ class Register_freelance(models.Model):
     mobile=models.CharField(max_length=255,default='')
     email=models.CharField(max_length=255,default='')
     profile_pic=models.FileField(upload_to="profile/",null=True,blank=True,default='')
+    Address=models.CharField(max_length=255,default='')
     #portfio
-    url=models.CharField(max_length=255,default='')
-    project_title=models.CharField(max_length=255,default='')
     position2=models.CharField(max_length=255,default='')
-    file=models.FileField( upload_to="images/",null=True,blank=True,default='')
+    work_1=models.FileField( upload_to="images/",null=True,blank=True,default='')
+    work_2=models.FileField( upload_to="images/",null=True,blank=True,default='')
+    work_3=models.FileField( upload_to="images/",null=True,blank=True,default='')
+  
     #Expirence
+    Total_exp=models.CharField(max_length=255,default='')
     company=models.CharField(max_length=255,default='')
     position=models.CharField(max_length=255,default='')
     Rate=models.CharField(max_length=255,default='')
-    start=models.DateField()
-    end=models.DateField()
+    Resume=models.FileField( upload_to="images/",null=True,blank=True,default='')
+   
     #education
-    startdate=models.DateField()
-    enddate=models.DateField()
+    
     college=models.CharField(max_length=255,default='')
     special=models.CharField(max_length=255,default='')
-    education=models.CharField(max_length=255,default='')
+    qualification=models.CharField(max_length=255,default='')
     #skills
     proffecional_title=models.CharField(max_length=255,default='')
     service=models.CharField(max_length=255,default='')
     skills=models.CharField(max_length=255,default='')
     over_view=models.CharField(max_length=255,default='')
+    password=models.CharField(max_length=255,default='')
     #work
     rating=models.IntegerField(default=1)
     w_status=models.CharField(max_length=10,default='0')
-    
+
+
 class cart(models.Model):
     product=models.ForeignKey(Product,on_delete=models.CASCADE)
     User=models.ForeignKey(User,on_delete=models.CASCADE)    
@@ -87,15 +91,17 @@ class Service_form(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE,default='')
     user_name=models.CharField(max_length=100,default='')
     product=models.ForeignKey(Product,on_delete=models.CASCADE,default='')
-    
+    service_freelancer=models.CharField(max_length=100,default='')
     phone_number=models.CharField(max_length=100,default='')
     email=models.CharField(max_length=100,default='')
     Address=models.CharField(max_length=100,default='')
     description=models.CharField(max_length=100,default='')
     status=models.CharField(max_length=100,default='')
+    file=models.FileField(upload_to="image",null=True,default='null')
 
 
-#shebin shaji
+
+    #shebin shaji
 
 class Freelancerworks(models.Model):
     fr_user=models.ForeignKey(User,on_delete=models.CASCADE,default='')
