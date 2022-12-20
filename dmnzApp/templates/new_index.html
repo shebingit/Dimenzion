@@ -9,31 +9,20 @@
             <b>
                 <h1 style="color: rgb(255, 5, 72);" class="headtext">3D Models</h1>
             </b>
-            <div class="my-3" >
-                  <button  style="background-color: rgb(255, 5, 72); " class="btn mx-2 text-white" onclick="tap()" >
-                   BUY 3D MODEL
-                  </button>
-                <button onclick="tap()"
+            <div class="my-3">
+                <a href="{% url 'model' %}"
+                   class="btn w-100 mx-2"
+                   style="background-color: rgb(255, 5, 72);
+                          color: white;">Buy 3D Model</a>
+                 {% comment %} <a href="{% url 'freelancer'%}"
                    class="btn mx-2 text-light"
-                   style="background-color: gray;">Frelancer</button>
+                   style="background-color: gray;">Frelancer</a>  {% endcomment %}
             </div>
-            <script>
-                const tap=()=>{
-                    var a=confirm('please login')
-                    if(a==false){
-                        event.preventDefault()
-                    }    
-                    else if(a==true){
-                        window.location.href='{% url "admin_log" %}'
-                    
-                    }
-                }
-            </script>
         </div>
         <style>
             .banner {
                 height: 80vh;
-                background-image: url('{% static "images/assn.png" %}');
+                background-image: url('{% static 'images/assn.png' %}');
                 background-size: 100% 100%;
                 background-attachment: fixed;
 
@@ -74,396 +63,9 @@
             }
         </style>
     </section>
-    <section class=" pinkbox  w-100 ">
-        <div class="pinkbox0 container">
-            <div class="row  text-light p-0 m-0">
-                <div class="col-lg-3  flex flex-column pbox">
-                    <i class="fa-solid fa-mobile-screen p-3" style="font-size: 45px;"></i>
-                    <h4>Responsive Design</h4>
-                    <p style="text-align: center;" class="p-3">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
-                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
-                    </p>
-                </div>
-                <div class="col-lg-3  flex flex-column  pbox p-4">
-                    <i class="fa-solid fa-gem p-3" style="font-size: 45px;"></i>
-                    <h4>Award Winning</h4>
-                    <p style="text-align: center;" class="p-3">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
-                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
-                    </p>
-                </div>
-                <div class="col-lg-3 flex flex-column pbox p-4">
-                    <i class="fa-solid fa-laptop p-3" style="font-size: 45px;"></i>
-                    <h4>Video tutorial</h4>
-                    <p style="text-align: center;" class="p-3">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
-                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
-                    </p>
-                </div>
-                <div class="col-lg-3 flex flex-column pbox p-4">
-                    <i class="fa-solid fa-gift p-3" style="font-size: 45px;"></i>
-                    <h4>Awesome Gift</h4>
-                    <p style="text-align: center;" class="p-3">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
-                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
-                    </p>
-                </div>
-            </div>
-        </div>
-        <style>
-            .pinkbox {
-                background-color: rgb(255, 5, 72);
-                background-image: url('{% static "images/triangle.png" %}');
-                background-size: contain;
-            }
-
-            .pbox:hover {
-                background-color: rgba(0, 0, 0, 0.3);
-                transition: 1s;
-            }
-        </style>
-    </section>
-    <section class="tabs m-3">
-        <ul class="nav nav-tabs d-flex align-items-center justify-content-center border-0"
-            id="myTab"
-            role="tablist">
-            <li class="nav-item  blink0" role="presentation">
-                <button class="nav-link active px-5 blink"
-                        id="home-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#new"
-                        type="button"
-                        role="tab"
-                        aria-controls="new"
-                        aria-selected="true">
-                    <h4>New</h4>
-                </button>
-            </li>
-            <li class="nav-item blink0" role="presentation">
-                <button class="nav-link px-5 blink"
-                        id="profile-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#special"
-                        type="button"
-                        role="tab"
-                        aria-controls="special"
-                        aria-selected="false">
-                    <h4>Special</h4>
-                </button>
-            </li>
-            <li class="nav-item  blink0" role="presentation">
-                <button class="nav-link px-5 blink"
-                        id="contact-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#collection"
-                        type="button"
-                        role="tab"
-                        aria-controls="collection"
-                        aria-selected="false">
-                    <h4>Collection</h4>
-                </button>
-            </li>
-            <li class="nav-item blink0" role="presentation">
-                <button class="nav-link px-5 blink"
-                        id="contact-tab"
-                        data-bs-toggle="tab"
-                        data-bs-target="#featured"
-                        type="button"
-                        role="tab"
-                        aria-controls="featured"
-                        aria-selected="false">
-                    <h4>featured</h4>
-                </button>
-            </li>
-        </ul>
-       
-        <div class="tab-content border-0" id="myTabContent">
-            <div class="tab-pane fade show active container"
-                 id="new"
-                 role="tabpanel"
-                 aria-labelledby="home-tab">
-                <div class="cards-list">
-                    {% for p in new %}
-                    <div onclick="tap()"
-                       class="card1 bg-light shadow-lg"
-                       data-aos="fade-up"
-                       data-aos-delay="50">
-                        <div class="card border-0 " style="height: 100%; width:100%;">
-                            <img src="{{p.gib.url}}" style="max-width:100%; max-height:280px " class="card-img-top" alt="...">
-                            <div class="card-body d-flex container">
-                                <div class="left">
-                                    <h5 class="card-title text-dark">{{p.modelname}}</h5>
-                                    <div class="star">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star "></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <h5 class="price my-2">{{p.price}} Rs</h5>
-                                </div>
-                                <div class="right">
-                                    <h5>3D</h5>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    {% endfor %} 
-                </div>
-            </div>
-            
 
 
-
-            <div class="tab-pane fade"
-                 id="special"
-                 role="tabpanel"
-                 aria-labelledby="profile-tab">
-                <div class="cards-list container">
-                    {% for p in sp %}
-                    <div onclick="tap()"
-                      class="card1 shadow-lg" data-aos="fade-up" data-aos-delay="50">
-                        <div class="card border-0 "  style="height: 100%; width:100%;">
-                            <img src="{{p.gib.url}}"
-                                 class="card-img-top"
-                                 alt="..." style="max-width:100%; max-height:280px ">
-                            <div class="card-body d-flex container">
-                                <div class="left">
-                                    <h5 class="card-title text-dark">
-                                        {{p.modelname}}
-                                    </h5>
-                                    <div class="star">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star "></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <h5 class="price my-2">
-                                        {{p.price}} Rs
-                                    </h5>
-                                </div>
-                                <div class="right">
-                                    <h5>
-                                        3D
-                                    </h5>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>    
-
-            </div>    
-            
-                   
-            <div class="tab-pane fade"
-                 id="collection"
-                 role="tabpanel"
-                 aria-labelledby="contact-tab">
-                <div class="cards-list container">
-                    {% for p in new %}
-                    <div onclick="tap()"
-                      class="card1 shadow-lg" data-aos="fade-up" data-aos-delay="50">
-                        <div class="card border-0 " style="height: 100%; width:100%;">
-                            <img src="{{p.gib.url}}"
-                                 class="card-img-top"
-                                 alt="..." style="max-width:100%; max-height:280px">
-                            <div class="card-body d-flex container">
-                                <div class="left">
-                                    <h5 class="card-title text-dark">
-                                        {{p.modelname}}
-                                    </h5>
-                                    <div class="star">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star "></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <h5 class="price my-2">
-                                        {{p.price}}
-                                    </h5>
-                                </div>
-                                <div class="right">
-                                    <h5>
-                                        3D
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>        
-                   
-                   
-            <div class="tab-pane fade"
-                 id="featured"
-                 role="tabpanel"
-                 aria-labelledby="contact-tab">
-                <div class="cards-list">
-                    {% for p in fea %}
-                    <div onclick="tap()"
-                     class="card1  shadow-lg" data-aos="fade-up" data-aos-delay="50">
-                        <div class="card border-0 " style="height: 100%; width:100%;">
-                            <img src="{{p.gib.url}}"
-                                 class="card-img-top"
-                                 alt="..." style="max-width:100%; max-height:280px">
-                            <div class="card-body d-flex container">
-                                <div class="left">
-                                    <h5 class="card-title text-dark">
-                                        {{p.modelname}}
-                                    </h5>
-                                    <div class="star">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star "></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <h5 class="price my-2">
-                                        {{p.price}}
-                                    </h5>
-                                </div>
-                                <div class="right">
-                                    <h5>
-                                        3D
-                                    </h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-        <style>
-            a{
-                text-decoration: none;
-                color: gray;
-            }
-            .left {
-                width: 50%;
-
-            }
-
-            .right {
-                width: 50%;
-            }
-
-            .right h5 {
-                text-align: end;
-            }
-
-            .nav-item button {
-                color: black;
-            }
-
-            .nav-item:hover button {
-                color: rgb(255, 5, 72);
-                border: none;
-            }
-
-
-
-            .topclr {
-
-                font-weight: 600;
-                color: rgb(176, 176, 176);
-
-            }
-
-            .topclr:hover {
-                color: rgb(255, 5, 72);
-
-            }
-
-            .nav-tabs .nav-item .nav-link {
-                background-color: white color: gray;
-            }
-
-            .nav-tabs .nav-item .nav-link.active {
-                color: rgb(255, 5, 72);
-                border: none;
-            }
-
-            .tab-content {
-                border: 1px solid #dee2e6;
-                border-top: transparent;
-                padding: 15px;
-            }
-
-            .tab-content .tab-pane {
-                background-color: #FFF;
-                color: gray;
-                min-height: 200px;
-                height: auto;
-            }
-
-            .card img {}
-
-            .card1 {
-                background-color: rgba(0, 0, 0, 3);
-                margin: 10px auto;
-                width: 400px;
-                min-height: 350px;
-
-                border: none;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-
-                cursor: pointer;
-                transition: 0.4s;
-            }
-
-
-            .star {
-                color: rgb(228, 228, 228);
-                text-shadow: 1px 1px 1px black;
-            }
-
-            .checked {
-                color: rgb(255, 5, 72);
-            }
-
-            .price {
-                color: gray;
-            }
-
-            @media only screen and (max-width:800px) {
-                .blink {
-                    width: 100%;
-                }
-
-                .blink0 {
-                    width: 100%;
-                }
-                .left{
-                    height: auto;
-
-                }
-                .right{
-                    height: auto;
-                    
-                }
-                .card1{
-                    min-height: auto;
-                }
-
-
-            }
-        </style>
-    </section>
+    
     <section class="designers">
         <div class="cover1">
             <div class="left2 p-lg-5 p-4 text-center">
@@ -590,6 +192,415 @@
             }
         </style>
     </section>
+
+
+
+
+    <section class="tabs m-3">
+        <ul class="nav nav-tabs d-flex align-items-center justify-content-center border-0"
+            id="myTab"
+            role="tablist">
+            <li class="nav-item  blink0" role="presentation">
+                <button class="nav-link active px-5 blink"
+                        id="home-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#new"
+                        type="button"
+                        role="tab"
+                        aria-controls="new"
+                        aria-selected="true">
+                    <h4>New</h4>
+                </button>
+            </li>
+            <li class="nav-item blink0" role="presentation">
+                <button class="nav-link px-5 blink"
+                        id="profile-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#special"
+                        type="button"
+                        role="tab"
+                        aria-controls="special"
+                        aria-selected="false">
+                    <h4>Special</h4>
+                </button>
+            </li>
+            <li class="nav-item  blink0" role="presentation">
+                <button class="nav-link px-5 blink"
+                        id="contact-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#collection"
+                        type="button"
+                        role="tab"
+                        aria-controls="collection"
+                        aria-selected="false">
+                    <h4>Collection</h4>
+                </button>
+            </li>
+            <li class="nav-item blink0" role="presentation">
+                <button class="nav-link px-5 blink"
+                        id="contact-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#featured"
+                        type="button"
+                        role="tab"
+                        aria-controls="featured"
+                        aria-selected="false">
+                    <h4>featured</h4>
+                </button>
+            </li>
+        </ul>
+        <div class="tab-content border-0" id="myTabContent">
+            <div class="tab-pane fade show active container"
+                 id="new"
+                 role="tabpanel"
+                 aria-labelledby="home-tab">
+                <div class="cards-list">
+                    {% for p in new %}
+                    <a href="{% url 'view_items' p.id  %}">
+                   
+                    <div onclick="tap()"
+                       class="card1 bg-light shadow-lg"
+                       data-aos="fade-up"
+                       data-aos-delay="50">
+                        <div class="card border-0 " style="height: 100%; width:100%;">
+                            <img src="{{p.gib.url}}" style="max-width:100%; max-height:280px " class="card-img-top" alt="...">
+                            <div class="card-body d-flex container">
+                                <div class="left">
+                                    <h5 class="card-title text-dark">{{p.modelname}}</h5>
+                                    <div class="star">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                    <h5 class="price my-2">{{p.price}} Rs</h5>
+                                </div>
+                                <div class="right">
+                                    <h5>3D</h5>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    {% endfor %} 
+                    </a>
+                </div>
+            </div>
+            
+
+
+
+            <div class="tab-pane fade"
+                 id="special"
+                 role="tabpanel"
+                 aria-labelledby="profile-tab">
+                <div class="cards-list container">
+                    {% for p in sp %}
+                    <a href="{% url 'view_items' p.id  %}">
+                    <div onclick="tap()"
+                      class="card1 shadow-lg" data-aos="fade-up" data-aos-delay="50">
+                        <div class="card border-0 "  style="height: 100%; width:100%;">
+                            <img src="{{p.gib.url}}"
+                                 class="card-img-top"
+                                 alt="..." style="max-width:100%; max-height:280px ">
+                            <div class="card-body d-flex container">
+                                <div class="left">
+                                    <h5 class="card-title text-dark">
+                                        {{p.modelname}}
+                                    </h5>
+                                    <div class="star">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                    <h5 class="price my-2">
+                                        {{p.price}} Rs
+                                    </h5>
+                                </div>
+                                <div class="right">
+                                    <h5>
+                                        3D
+                                    </h5>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    {% endfor %}
+                    </a>
+                </div>    
+
+            </div>    
+            
+                   
+            <div class="tab-pane fade"
+                 id="collection"
+                 role="tabpanel"
+                 aria-labelledby="contact-tab">
+                <div class="cards-list container">
+                    {% for p in new %}
+                    <a href="{% url 'view_items' p.id  %}">
+                    <div onclick="tap()"
+                      class="card1 shadow-lg" data-aos="fade-up" data-aos-delay="50">
+                        <div class="card border-0 " style="height: 100%; width:100%;">
+                            <img src="{{p.gib.url}}"
+                                 class="card-img-top"
+                                 alt="..." style="max-width:100%; max-height:280px">
+                            <div class="card-body d-flex container">
+                                <div class="left">
+                                    <h5 class="card-title text-dark">
+                                        {{p.modelname}}
+                                    </h5>
+                                    <div class="star">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                    <h5 class="price my-2">
+                                        {{p.price}}
+                                    </h5>
+                                </div>
+                                <div class="right">
+                                    <h5>
+                                        3D
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    </a>
+                </div>
+            </div>        
+                   
+                   
+            <div class="tab-pane fade"
+                 id="featured"
+                 role="tabpanel"
+                 aria-labelledby="contact-tab">
+                <div class="cards-list">
+                    {% for p in fea %}
+                    <a href="{% url 'view_items' p.id  %}">
+                    <div onclick="tap()"
+                     class="card1  shadow-lg" data-aos="fade-up" data-aos-delay="50">
+                        <div class="card border-0 " style="height: 100%; width:100%;">
+                            <img src="{{p.gib.url}}"
+                                 class="card-img-top"
+                                 alt="..." style="max-width:100%; max-height:280px">
+                            <div class="card-body d-flex container">
+                                <div class="left">
+                                    <h5 class="card-title text-dark">
+                                        {{p.modelname}}
+                                    </h5>
+                                    <div class="star">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star "></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                    <h5 class="price my-2">
+                                        {{p.price}}
+                                    </h5>
+                                </div>
+                                <div class="right">
+                                    <h5>
+                                        3D
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    </a>
+                </div>
+            </div>
+        </div>
+        <style>
+            a{
+                text-decoration: none;
+                color: gray;
+            }
+            .left {
+                width: 50%;
+
+            }
+
+            .right {
+                width: 50%;
+            }
+
+            .right h5 {
+                text-align: end;
+            }
+
+            .nav-item button {
+                color: black;
+            }
+
+            .nav-item:hover button {
+                color: rgb(255, 5, 72);
+                border: none;
+            }
+
+
+
+            .topclr {
+
+                font-weight: 600;
+                color: rgb(176, 176, 176);
+
+            }
+
+            .topclr:hover {
+                color: rgb(255, 5, 72);
+
+            }
+
+            .nav-tabs .nav-item .nav-link {
+                background-color: white color: gray;
+            }
+
+            .nav-tabs .nav-item .nav-link.active {
+                color: rgb(255, 5, 72);
+                border: none;
+            }
+
+            .tab-content {
+                border: 1px solid #dee2e6;
+                border-top: transparent;
+                padding: 15px;
+            }
+
+            .tab-content .tab-pane {
+                background-color: #FFF;
+                color: gray;
+                min-height: 200px;
+                height: auto;
+            }
+
+            .card img {}
+
+            .card1 {
+                background-color: rgba(0, 0, 0, 3);
+                margin: 10px auto;
+                width: 400px;
+                min-height: 350px;
+
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+
+                cursor: pointer;
+                transition: 0.4s;
+            }
+
+
+            .star {
+                color: rgb(228, 228, 228);
+                text-shadow: 1px 1px 1px black;
+            }
+
+            .checked {
+                color: rgb(255, 5, 72);
+            }
+
+            .price {
+                color: gray;
+            }
+
+            @media only screen and (max-width:800px) {
+                .blink {
+                    width: 100%;
+                }
+
+                .blink0 {
+                    width: 100%;
+                }
+                .left{
+                    height: auto;
+
+                }
+                .right{
+                    height: auto;
+                    
+                }
+                .card1{
+                    min-height: auto;
+                }
+
+
+            }
+        </style>
+    </section>
+
+
+
+    <section class=" pinkbox  w-100 ">
+        <div class="pinkbox0 container">
+            <div class="row  text-light p-0 m-0">
+                <div class="col-lg-3  flex flex-column pbox">
+                    <i class="fa-solid fa-mobile-screen p-3" style="font-size: 45px;"></i>
+                    <h4>Responsive Design</h4>
+                    <p style="text-align: center;" class="p-3">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
+                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
+                    </p>
+                </div>
+                <div class="col-lg-3  flex flex-column  pbox p-4">
+                    <i class="fa-solid fa-gem p-3" style="font-size: 45px;"></i>
+                    <h4>Award Winning</h4>
+                    <p style="text-align: center;" class="p-3">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
+                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
+                    </p>
+                </div>
+                <div class="col-lg-3 flex flex-column pbox p-4">
+                    <i class="fa-solid fa-laptop p-3" style="font-size: 45px;"></i>
+                    <h4>Video tutorial</h4>
+                    <p style="text-align: center;" class="p-3">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
+                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
+                    </p>
+                </div>
+                <div class="col-lg-3 flex flex-column pbox p-4">
+                    <i class="fa-solid fa-gift p-3" style="font-size: 45px;"></i>
+                    <h4>Awesome Gift</h4>
+                    <p style="text-align: center;" class="p-3">
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                        Atque temporibus, at non harum sunt nostrum deserunt debitis, excepturi, quia est dignissimos?
+                        Officia sapiente ex non dicta possimus facilis quisquam nisi?
+                    </p>
+                </div>
+            </div>
+        </div>
+        <style>
+            .pinkbox {
+                background-color: rgb(255, 5, 72);
+                background-image: url('{% static 'images/triangle.png' %}');
+                background-size: contain;
+            }
+
+            .pbox:hover {
+                background-color: rgba(0, 0, 0, 0.3);
+                transition: 1s;
+            }
+        </style>
+    </section>
+   
+
+
+
     <section class="grayback " style="background-color: rgb(97, 96, 99);">
         <section class="p-lg-5 ">
             <h2 style="font-weight: 600;
@@ -604,18 +615,18 @@
                 </div>
             </div>
             <div class="cards-list">
-                <a class="card3" href="{% url 'model_two'%}"
+                <a class="card3" href="{% url 'price_low' %}"
                      style="background-image: url('{% static 'images/car-777159_960_720.jpg'%}'); ">
                     <div class="dark1 flex flex-column">
                         <h4 class="text-light">
                             3D ARTISTS
                         </h4>
                         <p style="color: gray;">
-                            300 Products
+                            {{count_a}}
                         </p>
                     </div>
                 </a>
-                <a class="card3" href="{% url 'model_two'%}"
+                <a class="card3" href="{% url 'photoshop' %}"
                 style="background-image: url('{% static 'images/Moon-Photoshop.jpg'%}'); ">
                
                     <div class="dark1 flex flex-column">
@@ -623,11 +634,11 @@
                             PHOTOSHOP
                         </h4>
                         <p style="color: gray;">
-                            300 Products
+                            {{count_b}} Products
                         </p>
                     </div>
                 </a>
-                <a class="card3" href="{% url 'model_two'%}"
+                <a class="card3" href="{% url 'ui_design' %}"
                 style="background-image: url('{% static 'images/1642762135_resized-image.jpg'%}'); ">
                  
                     <div class="dark1 flex flex-column">
@@ -635,11 +646,11 @@
                             UI DESIGN
                         </h4>
                         <p style="color: gray;">
-                            300 Products
+                            {{count_c}}
                         </p>
                     </div>
                 </a>
-                <a class="card3" href="{% url 'model_two'%}"
+                <a class="card3" href="{% url 'house_plans'%}"
                 style="background-image: url('{% static 'images/RoomSketcher-High-Quality-3D-Floor-Plans.jpg'%}'); ">
                      
                     <div class="dark1 flex flex-column">
@@ -647,11 +658,11 @@
                             HOUSE PLANS
                         </h4>
                         <p style="color: gray;">
-                            300 Products
+                            {{count_d}}
                         </p>
                     </div>
                 </a>
-                <a class="card3" href="{% url 'model_two'%}"
+                <a class="card3" href="{% url 'logo_creation'%}"
                 style="background-image: url('{% static 'images/b-letter-boutique-logo-design-159417325.jpg'%}'); ">
                
                     <div class="dark1 flex flex-column">
@@ -659,11 +670,11 @@
                             LOGO CREATION
                         </h4>
                         <p style="color: gray;">
-                            300 Products
+                            {{count_e}}
                         </p>
                     </div>
                 </a>
-                <a class="card3" href="{% url 'model_two'%}"
+                <a class="card3" href="{% url 'drawings'%}"
                 
                 style="background-image: url('{% static 'images/images (6) 1.png'%}'); ">
  
@@ -672,7 +683,7 @@
                             DRAWINGS 
                         </h4>
                         <p style="color: gray;">
-                            300 Products
+                            {{count_f}}
                         </p>
                     </div>
                 </a>
@@ -783,7 +794,7 @@
             }
 
             .left4 {
-                background-image: url('{%static "images/soon2.png" %}');
+                background-image: url('{%static 'images/soon2.png' %}');
                 background-size: 100% 100%;
                 
                 background-repeat: no-repeat;
@@ -795,7 +806,7 @@
 
             .right4 {
                 background-color: rgb(255, 5, 72);
-                background-image: url('{%static "images/triangle.png" %}');
+                background-image: url('{%static 'images/triangle.png' %}');
                 background-size: cover;
                 width: 50%;
                 display: flex;
@@ -831,3 +842,4 @@
         </style>
     </section>
     {% endblock %}
+

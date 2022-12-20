@@ -5,7 +5,7 @@ from django.shortcuts import render,redirect
 from .models import *
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import User,auth
-
+import datetime
 
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
@@ -14,6 +14,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.conf import settings
 from django.db.models import Min,Max
+from django.db.models import Q
 
 # Create your views here.
 
@@ -985,6 +986,100 @@ def deletereq(request,id):
     return redirect('reqlist')
 
 
+def photoshop(request):
+    if 'USID' in request.session:
+        all=Product.objects.filter(category_id=4)
+        price_low=Product.objects.filter(category_id=4).order_by('price')
+        price_high=Product.objects.filter(category_id=4).order_by('-price')
+        return render(request,'category_photoshop.html',{'all':all,'three':price_low,'high_to':price_high})
+    else:
+        all=Product.objects.filter(category_id=4)
+        price_low=Product.objects.filter(category_id=4).order_by('price')
+        price_high=Product.objects.filter(category_id=4).order_by('-price')
+        return render(request,'photoshop_without_user.html',{'all':all,'three':price_low,'high_to':price_high})
+
+def ui_design(request):
+    if 'USID' in request.session:
+        all=Product.objects.filter(category_id=5)
+        price_low=Product.objects.filter(category_id=5).order_by('price')
+        price_high=Product.objects.filter(category_id=5).order_by('-price')
+        return render(request,'category_uidesign.html',{'all':all,'three':price_low,'high_to':price_high})
+    else:
+        all=Product.objects.filter(category_id=5)
+        price_low=Product.objects.filter(category_id=5).order_by('price')
+        price_high=Product.objects.filter(category_id=5).order_by('-price')
+        return render(request,'ui_design_without_user.html',{'all':all,'three':price_low,'high_to':price_high})
+        
+
+def house_plans(request):
+    if 'USID' in request.session:
+        all=Product.objects.filter(category_id=6)
+        price_low=Product.objects.filter(category_id=6).order_by('price')
+        price_high=Product.objects.filter(category_id=6).order_by('-price')
+        return render(request,'category_houseplans.html',{'all':all,'three':price_low,'high_to':price_high})
+    else:
+        all=Product.objects.filter(category_id=6)
+        price_low=Product.objects.filter(category_id=6).order_by('price')
+        price_high=Product.objects.filter(category_id=6).order_by('-price')
+        return render(request,'houseplan_without_user.html',{'all':all,'three':price_low,'high_to':price_high})
+        
+
+def logo_creation(request):
+    if 'USID' in request.session:
+        all=Product.objects.filter(category_id=7)
+        price_low=Product.objects.filter(category_id=7).order_by('price')
+        price_high=Product.objects.filter(category_id=7).order_by('-price')
+        return render(request,'category_logo.html',{'all':all,'three':price_low,'high_to':price_high})
+    else:
+        all=Product.objects.filter(category_id=7)
+        price_low=Product.objects.filter(category_id=7).order_by('price')
+        price_high=Product.objects.filter(category_id=7).order_by('-price')
+        return render(request,'logo_without_user.html',{'all':all,'three':price_low,'high_to':price_high})
+
+def drawings(request):
+    if 'USID' in request.session:
+        all=Product.objects.filter(category_id=8)
+        price_low=Product.objects.filter(category_id=8).order_by('price')
+        price_high=Product.objects.filter(category_id=8).order_by('-price')
+        return render(request,'category_drawings.html',{'all':all,'three':price_low,'high_to':price_high})
+    else:
+        all=Product.objects.filter(category_id=8)
+        price_low=Product.objects.filter(category_id=8).order_by('price')
+        price_high=Product.objects.filter(category_id=8).order_by('-price')
+        return render(request,'drawing_without_user.html',{'all':all,'three':price_low,'high_to':price_high})
+
+
+
+
+def price_low(request):
+    if 'USID' in request.session:
+        default=Product.objects.filter(category_id=1)
+        price_low=Product.objects.filter(category_id=1).order_by('price')
+        price_high=Product.objects.filter(category_id=1).order_by('-price')
+        return render(request,'cat_price_low.html',{'three':price_low,'normal':default,'high':price_high})
+    else:
+        default=Product.objects.filter(category_id=1)
+        price_low=Product.objects.filter(category_id=1).order_by('price')
+        price_high=Product.objects.filter(category_id=1).order_by('-price')
+        return render(request,'3dmodel_without_user.html',{'three':price_low,'normal':default,'high':price_high})
+
+
+
+def view_items_two(request,pk):
+    if 'USID' in request.session:
+        std=Product.objects.get(id=pk)
+        new=Product.objects.filter(category=2)
+        return render(request,'view_item.html',{'std':std,'new':new})
+    else:
+        std=Product.objects.get(id=pk)
+        new=Product.objects.filter(category=2)
+        return render(request,'view_item_2_without.html',{'std':std,'new':new})
+        
+
+
+
+
+
 
 #shebin shaji
 
@@ -1049,6 +1144,7 @@ def freelancer_allocate(request):
         work=Freelancerworks()
         work.fr_user=User.objects.get(id=1)
         work.fr_product=sr.product
+        work.fr_service_id=sr.id
         work.frelancer=Register_freelance.objects.get(id=int(request.POST['frid']))
         work.end_date=request.POST['fr-date']
         work.fr_status=2
@@ -1072,7 +1168,7 @@ def freelancer_work(request):
         std=request.session['F.id']
         free=Register_freelance.objects.get(id=std)
         frwork=Freelancerworks.objects.filter(frelancer=free,fr_status='2')
-        frworks=Freelancerworks.objects.filter(frelancer=free,fr_status='3')
+        frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='1'),frelancer=free)
         return render(request, 'freelancer_works.html', {'free':free,'frwork':frwork,'frworks':frworks})
     
 def freelancer_work_accept(request,fr_wstatus):
@@ -1083,8 +1179,49 @@ def freelancer_work_accept(request,fr_wstatus):
         frwork.fr_status='3'
         frwork.save()
         msg='Successfuly Accepted the work.'
-        frworks=Freelancerworks.objects.filter(frelancer=free,fr_status='3')
+        frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='1'),frelancer=free)
         return render(request, 'freelancer_works.html', {'free':free,'frworks':frworks,'msg':msg})
+    
+def freelancer_work_reject(request,fr_wrejejct):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        free.w_status='0'
+        free.save()
+        frwork=Freelancerworks.objects.get(id=fr_wrejejct)
+        frwork.fr_status='4'
+        frwork.save()
+        rej='Successfuly Rejected the work.'
+        serv=Service_form.objects.get(id=frwork.fr_service_id)
+        serv.status='0'
+        serv.save()
+        frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='1'),frelancer=free)
+        return render(request, 'freelancer_works.html', {'free':free,'frworks':frworks,'rej':rej})
+
+def freelancer_workfile_submit(request,fr_workfile):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        if  request.method == 'POST':
+            files= request.FILES.get('work_file')
+            frwork=Freelancerworks.objects.get(id=fr_workfile)
+            frwork.fr_status='1'
+            frwork.fr_file =files
+            frwork.submitte_date=datetime.date.today()
+            frwork.save()
+            file_msg='Successfuly Uploaded the work File.'
+            
+            frwrk=Freelancerworks.objects.filter(Q(fr_status='2') | Q(fr_status='3'),frelancer=free)
+            if frwrk:
+                free.w_status='1'
+                free.save()
+            else:
+                free.w_status='0'
+                free.save()
+
+            frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='1'),frelancer=free)
+            return render(request, 'freelancer_works.html', {'free':free,'frworks':frworks,'file_msg':file_msg})
+        
 
 
 

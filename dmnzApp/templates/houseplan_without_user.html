@@ -1,0 +1,882 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    <section class="banner">
+        <div class="inner">
+            <b>
+                <h3 class="text-light headtext" style="font-family: '', sans-serif; ">
+                    <span style="color: rgb(255, 5, 72);">HOUSE</span>PLANS
+                </h3>
+            </b>
+            <p class="text-center text-white p-5">The most adventurous and ambitious endeavor is to getting the best house plans and architectural designs for your Dream Home. With the assistance of the top architects and designers in Dimensions, you can make your dream of an elegant home or office space in Kerala a reality.</p>
+        </div>
+        <style>
+            .banner {
+                height: 50vh;
+                background-image: url('https://c4.wallpaperflare.com/wallpaper/995/152/891/assassins-creed-4k-windows-wallpaper-preview.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+
+
+            }
+            li{
+                cursor: pointer;
+            }
+
+            .headtext {
+                font-size: 50px;
+                font-weight: 600;
+            }
+
+            .inner {
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+            #low{
+                display: none;
+            }
+            #high{
+                display: none;
+            }
+
+            @media all and (max-width: 500px) {
+                .banner {
+                    height: 30vh;
+
+
+                }
+
+                .headtext {
+                    font-size: 30px;
+                }
+            }
+
+        </style>
+
+        <script>
+
+            const price_low=()=>{
+                document.getElementById('low').style.display='flex';
+                document.getElementById('all').style.display='none';
+                document.getElementById('high').style.display='none';
+            }
+
+            const price_high=()=>{
+                document.getElementById('low').style.display='none';
+                document.getElementById('all').style.display='none';
+                document.getElementById('high').style.display='flex';
+            }
+
+        </script>
+
+
+    </section>
+    <section class="dropdowns container">
+        <nav class="navbar navbar-expand-lg navbar-light mt-3">
+            <div class="container-fluid">
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="">
+                        <i class="fa-solid fa-filter"></i>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item mt-3 mt-lg-0">
+                            <div class="dropdown ">
+                                <a class="btn btn-outline-secondary abc"
+                                   href="#"
+                                   role="button"
+                                   id="dropdownMenuLink"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    Price <i class="fa-solid fa-chevron-down ps-5"></i>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li>
+                                        <a class="dropdown-item" onclick="price_low()">low to high</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" onclick="price_high()" >High to low</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </li>
+                        {% comment %} <li class="nav-item mt-3 mt-lg-0 ps-lg-3">
+                            <div class="dropdown">
+                                <a class="btn btn-outline-secondary abc"
+                                   href="#"
+                                   role="button"
+                                   id="dropdownMenuLink"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    Formats <i class="fa-solid fa-chevron-down  ps-lg-2"></i>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    
+                                    <li>
+                                        <a   class="dropdown-item" href="{% url 'three' %}">3dx</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'fbx' %}">fbx</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'obj' %}">obj</a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'model' %}">All</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> {% endcomment %}
+                        <!-- <li class="nav-item mt-3 mt-lg-0 ps-lg-3">
+                            <div class="dropdown">
+                                <a class="btn btn-outline-secondary abcd"
+                                   href="#"
+                                   role="button"
+                                   id="dropdownMenuLink"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    Quantity <i class="fa-solid fa-chevron-down ps-lg-2"></i>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> -->
+                    </ul>
+                    <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                        <!-- <li class="nav-item mt-3 mt-lg-0">
+                            <div class="dropdown ">
+                                <a class="btn btn-outline-secondary abcd"
+                                   href="#"
+                                   role="button"
+                                   id="dropdownMenuLink"
+                                   data-bs-toggle="dropdown"
+                                   aria-expanded="false">
+                                    Sort Best Match <i class="fa-solid fa-chevron-down "></i>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <style>
+            .abc {
+                width: 150px;
+            }
+
+            .abcd {
+                width: 200px;
+            }
+
+            @media all and (max-width: 500px) {
+
+                .abc,
+                .abcd {
+                    width: 100%;
+                }
+
+
+            }
+        </style>
+    </section>
+    <section class="products " id="all" >
+        <div class="cards-list container">
+            {% for p in all %}
+            <a href="{% url 'view_items' p.id  %}"
+                    class="card1 bg-light shadow-lg"
+                    data-aos="fade-up"
+                    data-aos-delay="50">
+            <div class="card3 shadow " onclick="clicked()" id="all"
+                 style="background-image: url('{{p.gib.url}}');background-size: 100% 100%; background-repeat: no-repeat;">
+                <div class="black_fillter">
+                    <div class="frame pt-1">
+                        <div class="top row container-fluid p-0 m-0 shadow">
+                            <div class="col-3 flex">
+                                <h6 class="m-0" style="font-weight: 800;">3D</h6>
+                            </div>
+                            <div class="col-6 flex">
+                                <h6 class="m-0"style="font-weight: 800;">{{p.modelname}}</h6>
+                            </div>
+                            <div class="col-3 flex">
+                                <h6 class="m-0"style="font-weight: 800;">{{p.price}}$</h6>
+                            </div>
+                        </div>
+                        <div class="center">
+                            <button class="p-2">
+                                <i class="fa-solid fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="bottom shadow row container-fluid p-0 m-0"
+                             style="color: rgb(255, 5, 72);">
+                            <div class="col-10 flex" style="font-weight: 800;">Details</div>
+                            <div class="col-2 flex">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </a>
+            
+            {% endfor %}
+         
+            <!-- category ......3dx -->
+
+          
+        <!-- <div class="row my-3">
+            <div class="col-3">
+            </div>
+            <div class="col-9 flex">
+                <a class="btn text-light next w-100 "
+                   style="background-color: rgba(255, 5, 72);">
+                    Load more
+                </a>
+            </div>
+            <div class="col-4">
+            </div>
+        </div> -->
+
+
+       
+        <style>
+            .flex{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            /* frame */
+            .black_fillter {
+                background-color: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                height: 100%;
+            }
+
+            .frame {
+                opacity: 0%;
+                height: 100%;
+                width: 100%;
+            }
+
+            .card3:hover .frame  ,.card3:hover .black_fillter{
+                background-color: rgba(0, 0, 0, 0.15);
+                opacity: 100%;
+                transition: opacity 1s;
+
+            }
+
+            .top {
+                background-color: white;
+                height: 13%;
+                width: 100%;
+            }
+
+            .center {
+                height: 74%;
+                width: 100%;
+                display: flex;
+                justify-content: end;
+                align-items: flex-start;
+            }
+            .center button{
+                background-color: rgba(0, 0, 0, 0);
+                height: auto;
+                width: auto;
+                border: none;
+                color: rgb(255, 5, 72);
+                 font-size: 30px;
+            }
+
+            .bottom {
+                background-color: white;
+                height: 13%;
+                width: 100%;
+            }
+
+            .flex {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .cards-list {
+                z-index: 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .card3 {
+                margin: 30px auto;
+                width: 400px;
+                height: 320px;
+
+
+                cursor: pointer;
+                transition: 0.4s;
+            }
+            .hide{
+                display: none;
+            }
+
+
+
+
+            @media all and (max-width: 800px) {
+                .card-list {
+                    /* On small screens, we are no longer using row direction but column */
+                    flex-direction: column;
+                }
+
+                .card3 {
+
+                    width:100%;
+                    height: 250px;
+                }
+
+                .card3 .card_title p {
+
+                    margin-top: -100px;
+                }
+
+            }
+
+
+            /* .card {
+        margin: 30px auto;
+        width: 300px;
+        height: 300px;
+        border-radius: 40px;
+        background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-repeat: no-repeat;
+      box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+        transition: 0.4s;
+      } */
+        </style>
+    </section>
+
+
+
+
+    <section class="products " id="low" >
+        <div class="cards-list container">
+            {% for p in three %}
+            <a href="{% url 'view_items' p.id  %}"
+                    class="card1 bg-light shadow-lg"
+                    data-aos="fade-up"
+                    data-aos-delay="50">
+            <div class="card3 shadow " onclick="clicked()" id="all"
+                 style="background-image: url('{{p.gib.url}}');background-size: 100% 100%; background-repeat: no-repeat;">
+                <div class="black_fillter">
+                    <div class="frame pt-1">
+                        <div class="top row container-fluid p-0 m-0 shadow">
+                            <div class="col-3 flex">
+                                <h6 class="m-0" style="font-weight: 800;">3D</h6>
+                            </div>
+                            <div class="col-6 flex">
+                                <h6 class="m-0"style="font-weight: 800;">{{p.modelname}}</h6>
+                            </div>
+                            <div class="col-3 flex">
+                                <h6 class="m-0"style="font-weight: 800;">{{p.price}}$</h6>
+                            </div>
+                        </div>
+                        <div class="center">
+                            <button class="p-2">
+                                <i class="fa-solid fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="bottom shadow row container-fluid p-0 m-0"
+                             style="color: rgb(255, 5, 72);">
+                            <div class="col-10 flex" style="font-weight: 800;">Details</div>
+                            <div class="col-2 flex">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </a>
+            
+            {% endfor %}
+         
+            <!-- category ......3dx -->
+
+          
+        <!-- <div class="row my-3">
+            <div class="col-3">
+            </div>
+            <div class="col-9 flex">
+                <a class="btn text-light next w-100 "
+                   style="background-color: rgba(255, 5, 72);">
+                    Request
+                </a>
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+ -->
+
+       
+        <style>
+            .flex{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            /* frame */
+            .black_fillter {
+                background-color: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                height: 100%;
+            }
+
+            .frame {
+                opacity: 0%;
+                height: 100%;
+                width: 100%;
+            }
+
+            .card3:hover .frame  ,.card3:hover .black_fillter{
+                background-color: rgba(0, 0, 0, 0.15);
+                opacity: 100%;
+                transition: opacity 1s;
+
+            }
+
+            .top {
+                background-color: white;
+                height: 13%;
+                width: 100%;
+            }
+
+            .center {
+                height: 74%;
+                width: 100%;
+                display: flex;
+                justify-content: end;
+                align-items: flex-start;
+            }
+            .center button{
+                background-color: rgba(0, 0, 0, 0);
+                height: auto;
+                width: auto;
+                border: none;
+                color: rgb(255, 5, 72);
+                 font-size: 30px;
+            }
+
+            .bottom {
+                background-color: white;
+                height: 13%;
+                width: 100%;
+            }
+
+            .flex {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .cards-list {
+                z-index: 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .card3 {
+                margin: 30px auto;
+                width: 400px;
+                height: 320px;
+
+
+                cursor: pointer;
+                transition: 0.4s;
+            }
+            .hide{
+                display: none;
+            }
+
+
+
+
+            @media all and (max-width: 800px) {
+                .card-list {
+                    /* On small screens, we are no longer using row direction but column */
+                    flex-direction: column;
+                }
+
+                .card3 {
+
+                    width:100%;
+                    height: 250px;
+                }
+
+                .card3 .card_title p {
+
+                    margin-top: -100px;
+                }
+
+            }
+
+
+            /* .card {
+        margin: 30px auto;
+        width: 300px;
+        height: 300px;
+        border-radius: 40px;
+        background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-repeat: no-repeat;
+      box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+        transition: 0.4s;
+      } */
+        </style>
+    </section>
+
+    <!-- category proice high to low -->
+
+    <section class="products " id="high" >
+        <div class="cards-list container">
+            {% for p in high_to %}
+            <a href="{% url 'view_items' p.id  %}"
+                    class="card1 bg-light shadow-lg"
+                    data-aos="fade-up"
+                    data-aos-delay="50">
+            <div class="card3 shadow " onclick="clicked()" id="all"
+                 style="background-image: url('{{p.gib.url}}');background-size: 100% 100%; background-repeat: no-repeat;">
+                <div class="black_fillter">
+                    <div class="frame pt-1">
+                        <div class="top row container-fluid p-0 m-0 shadow">
+                            <div class="col-3 flex">
+                                <h6 class="m-0" style="font-weight: 800;">3D</h6>
+                            </div>
+                            <div class="col-6 flex">
+                                <h6 class="m-0"style="font-weight: 800;">{{p.modelname}}</h6>
+                            </div>
+                            <div class="col-3 flex">
+                                <h6 class="m-0"style="font-weight: 800;">{{p.price}}$</h6>
+                            </div>
+                        </div>
+                        <div class="center">
+                            <button class="p-2">
+                                <i class="fa-solid fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="bottom shadow row container-fluid p-0 m-0"
+                             style="color: rgb(255, 5, 72);">
+                            <div class="col-10 flex" style="font-weight: 800;">Details</div>
+                            <div class="col-2 flex">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </a>
+            
+            {% endfor %}
+         
+            <!-- category ......3dx -->
+
+          
+        <!-- <div class="row my-3">
+            <div class="col-3">
+            </div>
+            <div class="col-9 flex">
+                <a class="btn text-light next w-100 "
+                   style="background-color: rgba(255, 5, 72);">
+                    load_more
+                </a>
+            </div>
+            <div class="col-4">
+            </div>
+        </div> -->
+
+
+       
+        <style>
+            .flex{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            /* frame */
+            .black_fillter {
+                background-color: rgba(0, 0, 0, 0.5);
+                width: 100%;
+                height: 100%;
+            }
+
+            .frame {
+                opacity: 0%;
+                height: 100%;
+                width: 100%;
+            }
+
+            .card3:hover .frame  ,.card3:hover .black_fillter{
+                background-color: rgba(0, 0, 0, 0.15);
+                opacity: 100%;
+                transition: opacity 1s;
+
+            }
+
+            .top {
+                background-color: white;
+                height: 13%;
+                width: 100%;
+            }
+
+            .center {
+                height: 74%;
+                width: 100%;
+                display: flex;
+                justify-content: end;
+                align-items: flex-start;
+            }
+            .center button{
+                background-color: rgba(0, 0, 0, 0);
+                height: auto;
+                width: auto;
+                border: none;
+                color: rgb(255, 5, 72);
+                 font-size: 30px;
+            }
+
+            .bottom {
+                background-color: white;
+                height: 13%;
+                width: 100%;
+            }
+
+            .flex {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .cards-list {
+                z-index: 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .card3 {
+                margin: 30px auto;
+                width: 400px;
+                height: 320px;
+
+
+                cursor: pointer;
+                transition: 0.4s;
+            }
+            .hide{
+                display: none;
+            }
+
+
+
+
+            @media all and (max-width: 800px) {
+                .card-list {
+                    /* On small screens, we are no longer using row direction but column */
+                    flex-direction: column;
+                }
+
+                .card3 {
+
+                    width:100%;
+                    height: 250px;
+                }
+
+                .card3 .card_title p {
+
+                    margin-top: -100px;
+                }
+
+            }
+
+
+            /* .card {
+        margin: 30px auto;
+        width: 300px;
+        height: 300px;
+        border-radius: 40px;
+        background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-repeat: no-repeat;
+      box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+        transition: 0.4s;
+      } */
+        </style>
+    </section>
+
+    <div class="row my-3">
+        <div class="col-4">
+        </div>
+        <div class="col-4 flex">
+            <a class="btn text-light next w-50 " type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal"
+               style="background-color: rgba(255, 5, 72);">
+                Request for another
+            </a>
+        </div>
+        <div class="col-4">
+        </div>
+    </div>
+
+
+
+
+
+      <!-- modal -->
+
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">REQUEST FORM</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <form id="form_save" action="" method="post"  autocomplete="off">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Name</label>
+                    <input type="text" name="name" value="{{u.username}}" autocomplete="off" required  class="form-control" id="fullname" aria-describedby="emailHelp">
+                  
+                  </div>
+    
+                 
+    
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Address</label>
+                    <textarea type="text" name="address"  class="form-control" autocomplete="off" id="address"></textarea>
+                  </div>
+    
+    
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Phone number</label>
+                    <input type="number" name="phone" class="form-control" autocomplete="off" id="phone_number">
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Email</label>
+                    <input type="email" name="email" value="{{u.email}}" class="form-control" autocomplete="off" id="email" >
+                  </div>
+    
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">File</label>
+                    <input type="file" name="example"  class="form-control" autocomplete="off" id="file" >
+                  </div>
+    
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Description</label>
+                    <textarea type="text" name="description" class="form-control" autocomplete="off" id="desc"></textarea>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                  </div>
+                 
+             </form>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script>
+
+    $(document).on('submit', '#form_save',function(e){
+        e.preventDefault()
+        console.log('clicked')
+
+        $.ajax({
+            type:'post',
+            url:'request_form/',
+            data:{
+                name:$('#fullname').val(),
+                email:$('#email').val(),
+                address:$('#address').val(),
+                phone:$('#phone_number').val(),
+                description:$('#desc').val(),
+                examp_file:$('#file').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+
+            },
+            success:function(data){
+                alert(data)
+            }
+           
+        })
+        $('#exampleModal').modal('hide');
+
+        document.getElementById('fullname').value="" ;
+        document.getElementById('email').value="" ;
+        document.getElementById('address').value="" ;
+        document.getElementById('phone_number').value="" ;
+        document.getElementById('desc').value="" ;
+        document.getElementById('file').value="" ;
+        
+
+    })
+
+</script>
+
+
+
+
+
+
+
+{% endblock %}

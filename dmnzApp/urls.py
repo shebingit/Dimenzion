@@ -113,6 +113,16 @@ urlpatterns = [
     path('delete_cart/<int:pk>',views.delete_cart,name='delete_cart'),
     path('freelance_home',views.freelancer_home,name='freelancer_home'),
 
+    
+
+    #20-12-22- vishnu
+    path('photoshop',views.photoshop,name='photoshop'),
+    path('ui_design',views.ui_design,name='ui_design'),
+    path('house_plans',views.house_plans,name='house_plans'),
+    path('logo_creation',views.logo_creation,name='logo_creation'),
+    path('drawings',views.drawings,name='drawings'),
+    path('price_low',views.price_low,name='price_low'),
+    path('view_items_two/<int:pk>',views.view_items_two,name='view_items_two'),
 
 
      #shebin shaji
@@ -124,12 +134,15 @@ urlpatterns = [
     path('Ongoing-work',views.ongoing_work,name='ongoing_work'),
     path('Completed-work',views.completed_work,name='completed_work'),
     path('Freelancer-Allocate-work',views.freelancer_allocate,name='freelancer_allocate'),
+     
    
 
     #freelancers
 
      path('Freelancer-Work',views.freelancer_work,name='freelancer_work'),
      path('freelancer_work_accept/<int:fr_wstatus>',views.freelancer_work_accept,name='freelancer_work_accept'),
+     path('freelancer_work_reject/<int:fr_wrejejct>',views.freelancer_work_reject,name='freelancer_work_reject'),
+     path('freelancer_workfile_submit/<int:fr_workfile>',views.freelancer_workfile_submit,name='freelancer_workfile_submit'),
   
 
 ]

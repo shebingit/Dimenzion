@@ -1,0 +1,15 @@
+url
+ path('DEVaction>', views.DEVaction, name='DEVaction'),
+
+
+views
+# acations taken to developer 
+def DEVaction(request):
+    if request.session.has_key('devid'):
+        devid = request.session['devid']
+    else:
+       return redirect('/')
+    dev = user_registration.objects.filter(id=devid)
+    devp = user_registration.objects.get(id=devid)
+    action_take=wrdata.objects.filter(wrn_develp=devp)
+    return render(request, 'DEVaction.html', {'dev': dev, 'devp': devp,  'action_take':action_take})
