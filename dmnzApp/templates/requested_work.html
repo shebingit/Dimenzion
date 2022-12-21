@@ -85,7 +85,7 @@ table .header th{
             {% csrf_token %}
             
             <tr>
-            <td>{{i.product.category.category_name}}</td>
+            <td>{{i.categori}}</td>
             <td> {{i.user_name}} <input type="text" value="{{i.id}}" hidden name="u-id"></td>
             <td>
                 <select name="frid" class="p-2">
@@ -94,7 +94,7 @@ table .header th{
                     <option value={{j.id}} selected  clas="p-2">
                         
                         <span>{{j.full_name}}</span> -
-                        {% if j.w_status == '0' %}  
+                         
                         <span> {{j.service}}</span>
                             {% if j.rating == 1 %}
                             <span> &nbsp; &nbsp; &nbsp;★</span>
@@ -107,7 +107,7 @@ table .header th{
                             {% elif j.rating == 5 %}
                             <span> &nbsp; &nbsp; &nbsp;★★★★★</span>
                             {% endif %}
-                        {% endif %} 
+                       
                     
                     </option>
                     {% endfor %}

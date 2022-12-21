@@ -29,13 +29,13 @@ table .header th{
               <thead>
                 <tr class="header">
                   
-                  <th>Product</th>
+                  <th>Category</th>
                   <th>User</th>
                   <th>Freelancers</th>
                   <th>Start Date</th>
                   <th>End Date</th>
                   <th>File</th>
-                  <th>Status</th>
+                  
                   
                 </tr>
               </thead>
@@ -43,18 +43,19 @@ table .header th{
               {% for i in fr %}
               <tbody id="myTable">
                 <tr>
-                 <td>{{i.fr_product.modelname}}</td>
-                 <td>{{i.fr_user.fullname}}</td>
+                 <td>{{i.fr_categori}}</td>
+                 <td>{{i.fr_user}}</td>
                  <td>{{i.frelancer.full_name}}</td>
                  <td>{{i.start_date}}</td>
                  <td>{{i.end_date}}</td>
-                 <td></td>
                  <td>
-                    {% if i.fr_status == '2' %}
-                    Pending
-                    {% endif %}
-
+                  {% if i.fr_file %}
+                  <a href="#" download="{{i.fr_file.url}}"><i class="fa fa-file" style="color: rgb(255, 5, 72);"></i></a>
+                  {% else %} 
+                  <a href="#" ><i class="fa fa-file" style="color: rgb(255, 5, 72);"></i></a> 
+                  {% endif %}
                  </td>
+                
                 </tr>
               </tbody>
               {% endfor %}

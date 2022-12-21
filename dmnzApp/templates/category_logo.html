@@ -8,6 +8,7 @@
                     <span style="color: rgb(255, 5, 72);">LOGO</span>CREATION
                 </h3>
             </b>
+            <p class="text-center text-white p-5">A logo unquestionably makes a good first impression for your company; it lingers in the audience's mind and aids in forging a unique connection with them. We deliver the logo after carefully capturing the spirit of your company's market-leading brand objectives.</p>
         </div>
         <style>
             .banner {
@@ -257,7 +258,7 @@
             <!-- category ......3dx -->
 
           
-        <div class="row my-3">
+        {% comment %} <div class="row my-3">
             <div class="col-3">
             </div>
             <div class="col-9 flex">
@@ -268,7 +269,7 @@
             </div>
             <div class="col-4">
             </div>
-        </div>
+        </div> {% endcomment %}
 
 
        
@@ -439,7 +440,7 @@
             <!-- category ......3dx -->
 
           
-        <div class="row my-3">
+        {% comment %} <div class="row my-3">
             <div class="col-3">
             </div>
             <div class="col-9 flex">
@@ -450,7 +451,7 @@
             </div>
             <div class="col-4">
             </div>
-        </div>
+        </div> {% endcomment %}
 
 
        
@@ -620,7 +621,7 @@
             <!-- category ......3dx -->
 
           
-        <div class="row my-3">
+        {% comment %} <div class="row my-3">
             <div class="col-3">
             </div>
             <div class="col-9 flex">
@@ -631,7 +632,7 @@
             </div>
             <div class="col-4">
             </div>
-        </div>
+        </div> {% endcomment %}
 
 
        
@@ -754,6 +755,91 @@
       } */
         </style>
     </section>
+    <div class="row my-3">
+        <div class="col-4">
+        </div>
+        <div class="col-4 flex">
+            <a class="btn text-light next w-50 " type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal"
+               style="background-color: rgba(255, 5, 72);">
+                Request for another
+            </a>
+        </div>
+        <div class="col-4">
+        </div>
+    </div>
+
+
+
+
+
+      <!-- modal -->
+
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">REQUEST FORM</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form  action="{% url 'Request_form' %}" method="post"  autocomplete="off" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Name</label>
+                        <input type="text" name="name"  autocomplete="off" required  class="form-control" id="fullname" aria-describedby="emailHelp" >
+                      
+                      </div>
+        
+                     
+        
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Address</label>
+                        <textarea type="text" name="address" required  class="form-control" autocomplete="off" id="address"></textarea>
+                      </div>
+        
+        
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Phone number</label>
+                        <input type="number" name="phone" required class="form-control" autocomplete="off" id="phone_number">
+                      </div>
+    
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Email</label>
+                        <input type="email" name="email" required  class="form-control" autocomplete="off" id="email" >
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Category</label>
+                        <input type="text" name="cate" value="{{categ.category_name}}" autocomplete="off" required  class="form-control" id="cate"  >
+                      
+                      </div>
+        
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">File</label>
+                        <input type="file" name="example" required  class="form-control" autocomplete="off" id="file" >
+                      </div>
+        
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Description</label>
+                        <textarea type="text" name="description" required class="form-control" autocomplete="off" id="desc"></textarea>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                      </div>
+                     
+                 </form>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
 
 
 

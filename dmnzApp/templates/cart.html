@@ -63,6 +63,7 @@
 					<tr>
 					  <th style="text-align: center;">SL.NO</th>
 					  <th style="text-align: center;">Item</th>
+					  <th style="text-align: center;"></th>
 					  <th >Price</th>
 					  <!-- <th >Quntity</th> -->
 					  <th>Total</th>
@@ -77,6 +78,7 @@
 					<tr>
 						<td style="text-align: center;">{{forloop.counter}}</td>
 						<td style="text-align: center;"><strong>{{p.product.modelname}}</strong></td>
+						<td ><img class="mr-5" style="width:100px; " src="{{p.product.gib.url}}" alt=""></td>
 						<td ><strong>{{p.product.price|floatformat:2}}</strong></td>
 						<!-- <td><strong></strong>{{item.quantity}}</td> -->
 						<td ><strong>{{p.product.price|floatformat:2}}</strong></td>

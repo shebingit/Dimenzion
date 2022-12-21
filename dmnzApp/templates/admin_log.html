@@ -14,7 +14,7 @@
                             {% if messages %}
                                 <div class="messages alert-warning p-3">
                                     {% for message in messages %}
-                                        <h6{% if message.tags %} class="{{ message.tags }} p-0 m-0"{% endif %}>{{ message }}</h6>
+                                        <h6>{% if message.tags %} class="{{ message.tags }} p-0 m-0"{% endif %}>{{ message }}</h6>
                                     {% endfor %}
                                 </div>
                             {% endif %}

@@ -9,6 +9,11 @@
 table .header th{
     font-size: 12px;
 }
+.table-responsive
+{
+  max-height: 320px;
+  overflow-y: scroll;
+}
 </style>
 
 
@@ -43,8 +48,8 @@ table .header th{
               {% for i in fr %}
               <tbody id="myTable">
                 <tr>
-                 <td>{{i.fr_product.category.category_name}}</td>
-                 <td>{{i.fr_user.fullname}}</td>
+                 <td>{{i.fr_categori}}</td>
+                 <td>{{i.fr_user}}</td>
                  <td>{{i.frelancer.full_name}}</td>
                  <td>{{i.start_date}}</td>
                  <td>{{i.end_date}}</td>

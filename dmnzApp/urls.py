@@ -19,7 +19,8 @@ urlpatterns = [
     re_path(r'^registration$', views.registration, name='registration'),
     re_path(r'^freelancer$', views.freelancer, name='freelancer'),
     # re_path(r'^login/$', views.login, name="login"),
-    re_path(r'^registration$', views.registration, name='registration'),
+    
+   
 
 
 
@@ -112,17 +113,7 @@ urlpatterns = [
     path('drawings',views.drawings,name='drawings'),
     path('delete_cart/<int:pk>',views.delete_cart,name='delete_cart'),
     path('freelance_home',views.freelancer_home,name='freelancer_home'),
-
-    
-
-    #20-12-22- vishnu
-    path('photoshop',views.photoshop,name='photoshop'),
-    path('ui_design',views.ui_design,name='ui_design'),
-    path('house_plans',views.house_plans,name='house_plans'),
-    path('logo_creation',views.logo_creation,name='logo_creation'),
-    path('drawings',views.drawings,name='drawings'),
-    path('price_low',views.price_low,name='price_low'),
-    path('view_items_two/<int:pk>',views.view_items_two,name='view_items_two'),
+    path('request_form/',views.Request_form,name='Request_form'),
 
 
      #shebin shaji
@@ -143,8 +134,6 @@ urlpatterns = [
      path('freelancer_work_accept/<int:fr_wstatus>',views.freelancer_work_accept,name='freelancer_work_accept'),
      path('freelancer_work_reject/<int:fr_wrejejct>',views.freelancer_work_reject,name='freelancer_work_reject'),
      path('freelancer_workfile_submit/<int:fr_workfile>',views.freelancer_workfile_submit,name='freelancer_workfile_submit'),
-  
 
+      path('check_username',views.check_username,name='check_username'),
 ]
-
-

@@ -54,7 +54,7 @@
             }
         </style>
     </section>
-    <section class="profile container">
+    <section class="profile container mb-5">
         <div class="profile0 row bg-light shadow ">
             <div class="col-lg-3  d-flex flex-column align-items-center pt-3 boxl">
                 <img src="{{p.profile_pic.url}}"
@@ -130,10 +130,10 @@
 
                 </div>
 
-                <div class="flex p-4">
+                {% comment %} <div class="flex p-4">
                     <a href=" " class="text-light redbg btn w-50 py-2"> Send Offer</a>
 
-                </div>
+                </div> {% endcomment %}
 
 
 
@@ -213,7 +213,7 @@
 
     </section>
 
-    <section class="services container bg-lights p-3">
+    {% comment %} <section class="services container bg-lights p-3">
         <h3 class="px-4">Services</h3>
 
         <div class="cards-list container">
@@ -339,11 +339,11 @@
                 }
             }
         </style>
-    </section>
+    </section> {% endcomment %}
 
 
 
-    <section class="skills_awards container p-0">
+    {% comment %} <section class="skills_awards container p-0">
         <div class="skills_awards0 row container-fluid m-0 ">
             <div class="col-lg-7 py-4 m-0 ">
                 <h3 class="m-0 p-0">My Skills</h3>
@@ -565,6 +565,6 @@
                 /* style rules */
             }
         </style>
-    </section>
+    </section> {% endcomment %}
 
     {% endblock %}

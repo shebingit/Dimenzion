@@ -89,9 +89,9 @@ class designation(models.Model):
         return self.designations
 
 class Service_form(models.Model):
-    user=models.ForeignKey(User,on_delete=models.CASCADE,default='')
     user_name=models.CharField(max_length=100,default='')
-    product=models.ForeignKey(Product,on_delete=models.CASCADE,default='')
+    categori=models.CharField(max_length=100,default='')
+    product=models.IntegerField(default='0')
     service_freelancer=models.CharField(max_length=100,default='')
     phone_number=models.CharField(max_length=100,default='')
     email=models.CharField(max_length=100,default='')
@@ -105,8 +105,9 @@ class Service_form(models.Model):
     #shebin shaji
 
 class Freelancerworks(models.Model):
-    fr_user=models.ForeignKey(User,on_delete=models.CASCADE,default='')
-    fr_product=models.ForeignKey(Product,on_delete=models.CASCADE,default='')
+    fr_user=models.CharField(max_length=100,default='')
+    fr_categori=models.CharField(max_length=100,default='')
+    fr_product=models.IntegerField(default='0')
     frelancer=models.ForeignKey(Register_freelance,on_delete=models.CASCADE,default='')
     fr_service_id=models.IntegerField(default='0')
     start_date=models.DateField(auto_now_add=True,null=True,blank=True)

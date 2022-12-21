@@ -1,0 +1,175 @@
+
+  #shebin shaji
+
+    path('freelancers',views.freelancers,name='freelancers'),
+    path('freelancer_page/<int:freel_id>',views.freelancer_page,name='freelancer_page'),
+    path('rating/<int:freel_rt>',views.rating,name='rating'),
+    path('Requested-work',views.requested_work,name='requested_work'),
+    path('Ongoing-work',views.ongoing_work,name='ongoing_work'),
+    path('Completed-work',views.completed_work,name='completed_work'),
+    path('Freelancer-Allocate-work',views.freelancer_allocate,name='freelancer_allocate'),
+     
+   
+
+    #freelancers
+
+     path('Freelancer-Work',views.freelancer_work,name='freelancer_work'),
+     path('freelancer_work_accept/<int:fr_wstatus>',views.freelancer_work_accept,name='freelancer_work_accept'),
+     path('freelancer_work_reject/<int:fr_wrejejct>',views.freelancer_work_reject,name='freelancer_work_reject'),
+     path('freelancer_workfile_submit/<int:fr_workfile>',views.freelancer_workfile_submit,name='freelancer_workfile_submit'),
+
+
+
+
+def freelancers(request):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    person=Register_freelance.objects.all()
+    return render(request, 'freelancers.html', {'person': person,'adm':adm})
+
+
+def freelancer_page(request,freel_id):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    person=Register_freelance.objects.get(id=freel_id)
+    r= int(person.rating)
+    fr_ongoing=Freelancerworks.objects.filter(fr_status='2',frelancer_id=freel_id).count
+    fr_complete=Freelancerworks.objects.filter(fr_status='1',frelancer_id=freel_id).count
+    fr=Freelancerworks.objects.filter(frelancer_id=freel_id)
+    return render(request, 'freelancer.html', {'person': person,'adm':adm,'r':range(r),'fr_ongoing':fr_ongoing,'fr_complete':fr_complete,'fr':fr})
+
+
+def rating(request,freel_rt):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    person=Register_freelance.objects.get(id=freel_rt)
+    if request.method=='POST':
+        person.rating=request.POST['rt']
+        person.save()
+        r= int(person.rating)
+       
+    return render(request, 'freelancer.html', {'person': person,'adm':adm,'r':range(r) })
+
+#Requested works loading
+
+def requested_work(request):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    s=Service_form.objects.all().order_by('-status')
+    r=Register_freelance.objects.filter(w_status='0')
+    return render(request, 'requested_work.html', {'adm':adm,'r':r,'s':s})
+
+def ongoing_work(request):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    fr=Freelancerworks.objects.all()
+    return render(request, 'ongoing_work.html', {'adm':adm,'fr':fr})
+
+def completed_work(request):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    fr=Freelancerworks.objects.filter(fr_status='1')
+    return render(request, 'completed_work.html', {'adm':adm,'fr':fr})
+
+#Freelancer Allocate
+
+def freelancer_allocate(request):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    
+    if request.method == 'POST':
+        sr=Service_form.objects.get(id=int(request.POST['u-id']))
+        work=Freelancerworks()
+        work.fr_user=User.objects.get(id=1)
+        work.fr_product=sr.product
+        work.fr_service_id=sr.id
+        work.frelancer=Register_freelance.objects.get(id=int(request.POST['frid']))
+        work.end_date=request.POST['fr-date']
+        work.fr_status=2
+        work.save()
+        msg='Successfuly Allocated'
+        
+        sr.status=2
+        sr.save()
+        fr_st=Register_freelance.objects.get(id=int(request.POST['frid']))
+        fr_st.w_status=1
+        fr_st.save()
+    fr=Freelancerworks.objects.all()
+    s=Service_form.objects.all()
+    return render(request, 'requested_work.html', {'adm':adm,'msg':msg,'fr':fr,'s':s})
+
+
+#freelancer Work Section page
+
+def freelancer_work(request):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        frwork=Freelancerworks.objects.filter(frelancer=free,fr_status='2')
+        frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='1'),frelancer=free)
+        return render(request, 'freelancer_works.html', {'free':free,'frwork':frwork,'frworks':frworks})
+    
+def freelancer_work_accept(request,fr_wstatus):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        frwork=Freelancerworks.objects.get(id=fr_wstatus)
+        frwork.fr_status='3'
+        frwork.save()
+        msg='Successfuly Accepted the work.'
+        frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='1'),frelancer=free)
+        return render(request, 'freelancer_works.html', {'free':free,'frworks':frworks,'msg':msg})
+    
+def freelancer_work_reject(request,fr_wrejejct):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        free.w_status='0'
+        free.save()
+        frwork=Freelancerworks.objects.get(id=fr_wrejejct)
+        frwork.fr_status='4'
+        frwork.save()
+        rej='Successfuly Rejected the work.'
+        serv=Service_form.objects.get(id=frwork.fr_service_id)
+        serv.status='0'
+        serv.save()
+        frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='1'),frelancer=free)
+        return render(request, 'freelancer_works.html', {'free':free,'frworks':frworks,'rej':rej})
+
+def freelancer_workfile_submit(request,fr_workfile):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        if  request.method == 'POST':
+            files= request.FILES.get('work_file')
+            frwork=Freelancerworks.objects.get(id=fr_workfile)
+            frwork.fr_status='1'
+            frwork.fr_file =files
+            frwork.submitte_date=datetime.date.today()
+            frwork.save()
+            file_msg='Successfuly Uploaded the work File.'
+            
+            frwrk=Freelancerworks.objects.filter(Q(fr_status='2') | Q(fr_status='3'),frelancer=free)
+            if frwrk:
+                free.w_status='1'
+                free.save()
+            else:
+                free.w_status='0'
+                free.save()
+
+            frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='1'),frelancer=free)
+            return render(request, 'freelancer_works.html', {'free':free,'frworks':frworks,'file_msg':file_msg})
+
+
+freelancers.html
+freelancer.html
+requested_work.html
+ongoing_work.html
+completed_work.html
+freelancer_works.html
+base3.html
+admin_base.html
+
+
+import datetime
+from django.db.models import Q

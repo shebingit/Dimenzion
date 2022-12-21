@@ -786,11 +786,11 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <form id="form_save" action="" method="post"  autocomplete="off">
+            <form  action="{% url 'Request_form' %}" method="post"  autocomplete="off" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Name</label>
-                    <input type="text" name="name" value="{{u.username}}" autocomplete="off" required  class="form-control" id="fullname" aria-describedby="emailHelp" >
+                    <input type="text" name="name"  autocomplete="off" required  class="form-control" id="fullname" aria-describedby="emailHelp" >
                   
                   </div>
     
@@ -809,7 +809,12 @@
 
                   <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Email</label>
-                    <input type="email" name="email" required value="{{u.email}}" class="form-control" autocomplete="off" id="email" >
+                    <input type="email" name="email" required  class="form-control" autocomplete="off" id="email" >
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Category</label>
+                    <input type="text" name="cate" value="{{categ.category_name}}" autocomplete="off" required  class="form-control" id="cate"  >
+                  
                   </div>
     
                   <div class="mb-3">
@@ -834,45 +839,9 @@
       </div>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" ></script>
 
 
-<script>
-
-    $(document).on('submit', '#form_save',function(e){
-        e.preventDefault()
-        console.log('clicked')
-
-        $.ajax({
-            type:'post',
-            url:'request_form/',
-            data:{
-                name:$('#fullname').val(),
-                email:$('#email').val(),
-                address:$('#address').val(),
-                phone:$('#phone_number').val(),
-                description:$('#desc').val(),
-                examp_file:$('#file').val(),
-                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-
-            },
-            success:function(data){
-                alert(data)
-            }
-        })
-        $('#exampleModal').modal('hide');
-
-        document.getElementById('fullname').value="" ;
-        document.getElementById('email').value="" ;
-        document.getElementById('address').value="" ;
-        document.getElementById('phone_number').value="" ;
-        document.getElementById('desc').value="" ;
-        document.getElementById('file').value="" ;
-        
-
-    })
-
-</script>
 
 
 
