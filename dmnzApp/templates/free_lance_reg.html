@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+
+
+
 {% block body %}
     <section class="reg ">
         <div class="container-scroller reg1 py-lg-4">
@@ -15,13 +18,7 @@
                                     FREELANCE<span class="text-danger "> REGISTER</span>
                                 </h2>
                                 <h6 class="text-center">Hello! let's get started</h6>
-                                {% if messages %}
-                                    <div class="messages alert-success p-3 alert">
-                                        {% for message in messages %}
-                                            <h6{% if message.tags %} class="{{ message.tags }} p-0 m-0"{% endif %}>{{ message }}</h6>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
+                                
                                 <form class="pt-3 "
                                       action="{% url 'freereg' %}"
                                       method="post"
@@ -60,11 +57,13 @@
                                                autocomplete
                                                off
                                                Required>
+                                               <br>
+                                               <span id="useremail-message"></span>
                                     </div>
                                     <div class="form-group">
                                         <input type="number"
                                                class="form-control form-control-lg "
-                                               id="exampleInputEmail1"
+                                               
                                                name="phone_number"
                                                placeholder="phone number"
                                                autocomplete
@@ -72,11 +71,11 @@
                                                Required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg " id="exampleInputEmail1" name="quali" placeholder="Qualification" autocomplet off Required>
+                                        <input type="text" class="form-control form-control-lg "  name="quali" placeholder="Qualification" autocomplet off Required>
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-lg " id="exampleInputEmail1" name="desi" placeholder="Designation" autocomplet off Required>
+                                        <input type="text" class="form-control form-control-lg "  name="desi" placeholder="Designation" autocomplet off Required>
                                     </div>
 
                                     <div class="form-group">
@@ -129,30 +128,66 @@
                                     <div class="form-group">
                                         <input type="text"
                                                class="form-control form-control-lg "
+                                               id="username"
                                                name="user_name"
                                                placeholder="username"
                                                autocomplete
                                                off
                                                Required>
+<br>
+                                               <span id="username-message" class=" pl-3"></span>
                                     </div>
 
                               
                                     <div class="form-group">
-                                        <input type="password" onclick="set_password()"
+                                        <input type="password" id="password"
                                                class="form-control form-control-lg "
-                                               id="newpass"
+                                              
                                                name="password"
                                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$"
                                                placeholder="Password"
                                                autocomplete
                                                off
                                                Required>
-                                               <ul id="password_set" class="hide mt-2">
-                                                <li>password must have 8 characters</li>
-                                                <li>Require at least one uppercase</li>
-                                                <li>Require at least one number</li>
-                                                <li>Require at least one symbol</li>
-                                               </ul>
+                                              <br>
+                                               <span id="password-strength" ></span>
+                                               
+                                               <script>
+                                                 // Get the password input field and the password strength message
+                                                 const passwordInput = document.getElementById("password");
+                                                 const passwordStrength = document.getElementById("password-strength");
+                                                 
+                                                 // Add an event listener to the password input field to check the strength of the password when it is changed
+                                                 passwordInput.addEventListener("input", function() {
+                                                   // Get the password from the input field
+                                                   const password = passwordInput.value;
+                                                   
+                                                   // Check the password strength
+                                                   if (password.length < 8 ) {
+                                                   
+                                                     // If the password is less than 8 characters, show a message indicating that it is too short
+                                                     passwordStrength.innerHTML = "Password must be at least 8 characters long";
+                                                     passwordStrength.style.color = "blue";
+                                                     passwordStrength.style.fontSize = "13px";
+                                                   } else {
+                                                     // If the password is at least 8 characters, check if it meets the other strength requirements (uppercase, lowercase, digit, special character)
+                                                     const strengthRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+                                                     if (strengthRegex.test(password)) {
+                                                       // If the password meets the other strength requirements, show a message indicating that it is strong
+                                                       passwordStrength.innerHTML = "Strong password";
+                                                       passwordStrength.style.color = "green";
+                                                       passwordStrength.style.fontSize = "13px";
+                                                     } else {
+                                                       // If the password does not meet the other strength requirements, show a message indicating that it is weak
+                                                       passwordStrength.innerHTML = "Weak password";
+                                                       passwordStrength.style.color = "red";
+                                                       passwordStrength.style.fontSize = "13px";
+                                                     }
+                                                   }
+                                                 });
+                                                 
+                                               </script>
+                                               
                                     </div>
                                     <div class="form-group">
                                         <input type="password"
@@ -163,18 +198,48 @@
                                                autocomplete
                                                off
                                                Required>
+
+                                               <br>
+
+                                               <span id="password-match"></span>
+
+                                            <script>
+                                            // Get the password input fields and the password match message
+                                            const password1Input = document.getElementById("password");
+                                            const password2Input = document.getElementById("conpassword");
+                                            const passwordMatch = document.getElementById("password-match");
+
+                                            // Add an event listener to the password input fields to check if the passwords match when either of them is changed
+                                            password1Input.addEventListener("input", checkPasswords);
+                                            password2Input.addEventListener("input", checkPasswords);
+
+                                            function checkPasswords() {
+                                                // Get the passwords from the input fields
+                                                const password1 = password1Input.value;
+                                                const password2 = password2Input.value;
+
+                                                // Check if the passwords match
+                                                if (password1 === password2) {
+                                                // If the passwords match, show a message indicating that they match
+                                                passwordMatch.innerHTML = "Passwords match";
+                                                passwordMatch.style.color = "green";
+                                                passwordMatch.style.fontSize = "13px";
+                                                
+                                                } else {
+                                                // If the passwords don't match, show a message indicating that they don't match
+                                                passwordMatch.innerHTML = "Passwords do not match";
+                                                passwordMatch.style.color = "red";
+                                                passwordMatch.style.fontSize = "13px";
+                                                
+                                                }
+                                            }
+                                            </script>
+
                                     </div>
-                                    <span id='message'></span>
-                                    <br>
+                                   
+                                    
                                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-                                    <script>
-                     $('#conpassword').on('change', function () {
-                      if ($('#newpass').val() == $('#conpassword').val()) {
-                        $('#message').html('Password Matching').css('color', 'green');
-                      } else 
-                        $('#message').html('Password Not Matching').css('color', 'red');
-                    });
-                                    </script>
+                                    
                                     <style>i
                             input:-webkit-autofill {
                             color: #2a2a2a !important;
@@ -244,5 +309,77 @@
         swal("Good job!", '{{msg}}', "success")
     </script>
     {% endif %}
+
+    <script>
+        // Get the username input field and the username message element
+        const useremailInput = document.getElementById("email");
+        const useremailMessage = document.getElementById("useremail-message");
+      
+        // Add an event listener to the username input field to listen for changes
+        useremailInput.addEventListener("input", function() {
+          // Get the value of the username input field
+          const useremail = useremailInput.value;
+      
+          // Send an Ajax request to the check_username route with the username as a parameter
+          $.ajax({
+            url: '{% url "check_useremail" %}',
+            data: {
+              'useremail': useremail
+            },
+            dataType: 'json',
+            success: function (data) {
+              if (data.exists) {
+                // If the username exists, show a message indicating that it exists
+                useremailMessage.innerHTML = "Email id already exists";
+                useremailMessage.style.color = "red"
+                useremailMessage.style.fontSize = "12px"
+  
+              }
+             
+            }
+          })
+          useremailInput.addEventListener("input", function() {
+            useremailMessage.innerHTML = "";
+          })
+      })
+              
+      </script>
+
+
+
+    <script>
+        // Get the username input field and the username message element
+        const usernameInput = document.getElementById("username");
+        const usernameMessage = document.getElementById("username-message");
+      
+        // Add an event listener to the username input field to listen for changes
+        usernameInput.addEventListener("input", function() {
+          // Get the value of the username input field
+          const username = usernameInput.value;
+      
+          // Send an Ajax request to the check_username route with the username as a parameter
+          $.ajax({
+            url: '{% url "check_username" %}',
+            data: {
+              'username': username
+            },
+            dataType: 'json',
+            success: function (data) {
+              if (data.exists) {
+                // If the username exists, show a message indicating that it exists
+                usernameMessage.innerHTML = "Username already exists";
+                usernameMessage.style.color = "red"
+                usernameMessage.style.fontSize = "12px"
+  
+              }
+             
+            }
+          })
+          usernameInput.addEventListener("input", function() {
+              usernameMessage.innerHTML = "";
+          })
+      })
+              
+      </script>
     
 {% endblock %}

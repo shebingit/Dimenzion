@@ -55,15 +55,26 @@ def contact_two(request):
     return render(request, 'new_contact_two.html')
 
 def model(request):
-    all=Product.objects.filter(category_id=1)
-    three=Product.objects.filter(format='.3dx')
-    count_a=Product.objects.filter(category_id=1).count()
-    count_b=Product.objects.filter(category_id=4).count()
-    count_c=Product.objects.filter(category_id=5).count()
-    count_d=Product.objects.filter(category_id=6).count()
-    count_e=Product.objects.filter(category_id=7).count()
-    count_f=Product.objects.filter(category_id=8).count()
-    return render(request, 'new_models.html',{'all':all,'three':three,'count_b':count_b,'count_c':count_c,'count_d':count_d,'count_e':count_e,'count_f':count_f,'count_a':count_a})
+    if 'USID' in request.session:
+        all=Product.objects.filter(category_id=1)
+        three=Product.objects.filter(format='.3dx')
+        count_a=Product.objects.filter(category_id=1).count()
+        count_b=Product.objects.filter(category_id=4).count()
+        count_c=Product.objects.filter(category_id=5).count()
+        count_d=Product.objects.filter(category_id=6).count()
+        count_e=Product.objects.filter(category_id=7).count()
+        count_f=Product.objects.filter(category_id=8).count()
+        return render(request, 'new_models.html',{'all':all,'three':three,'count_b':count_b,'count_c':count_c,'count_d':count_d,'count_e':count_e,'count_f':count_f,'count_a':count_a})
+    else:
+        all=Product.objects.filter(category_id=1)
+        three=Product.objects.filter(format='.3dx')
+        count_a=Product.objects.filter(category_id=1).count()
+        count_b=Product.objects.filter(category_id=4).count()
+        count_c=Product.objects.filter(category_id=5).count()
+        count_d=Product.objects.filter(category_id=6).count()
+        count_e=Product.objects.filter(category_id=7).count()
+        count_f=Product.objects.filter(category_id=8).count()
+        return render(request, 'category_models.html',{'all':all,'three':three,'count_b':count_b,'count_c':count_c,'count_d':count_d,'count_e':count_e,'count_f':count_f,'count_a':count_a})
 
 def photoshop(request):
     if 'USID' in request.session:
@@ -258,7 +269,7 @@ def freereg(request):
             std.save()
             msg="Registraion  successfully"
             return render(request,'free_lance_reg.html',{'msg':msg})
-        messages.info(request,'password does not match')
+       
         return redirect('freereg')
         
     return render(request,'free_lance_reg.html')
@@ -436,12 +447,27 @@ def check_username(request):
         username = request.GET.get('username')
 
         # Check if the username exists in the database
-        if User.objects.filter(username=username).exists():
+        if User.objects.filter(username=username).exists() or Register_freelance.objects.filter(username=username):
             # If the username exists, return a JSON response indicating that it exists
             return JsonResponse({'exists': True})
         else:
             # If the username does not exist, return a JSON response indicating that it does not exist
             return JsonResponse({'exists': False})
+
+def check_useremail(request):
+    
+        # Get the username from the request
+        useremail = request.GET.get('useremail')
+
+        # Check if the username exists in the database
+        if User.objects.filter(email=useremail).exists() or Register_freelance.objects.filter(email=useremail):
+            # If the username exists, return a JSON response indicating that it exists
+            return JsonResponse({'exists': True})
+        else:
+            # If the username does not exist, return a JSON response indicating that it does not exist
+            return JsonResponse({'exists': False})
+        
+        
 #..................login..................................
 
 def admin_login(request): 
@@ -476,7 +502,9 @@ def freelancer_home(request):
     if 'F.id' in request.session:
         std=request.session['F.id']
         free=Register_freelance.objects.get(id=std)
-        return render(request,'freelance_home.html',{'p':free})
+        fr_ongoing=Freelancerworks.objects.filter(fr_status='2',frelancer_id=std).count
+        fr_complete=Freelancerworks.objects.filter(fr_status='1',frelancer_id=std).count
+        return render(request,'freelance_home.html',{'p':free,'fr_ongoing':fr_ongoing,'fr_complete':fr_complete})
     return redirect('user_logout')
 
 def userhome(request):
@@ -1185,13 +1213,13 @@ def requested_work(request):
 def ongoing_work(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
-    fr=Freelancerworks.objects.all()
+    fr=Freelancerworks.objects.all().order_by('-id')
     return render(request, 'ongoing_work.html', {'adm':adm,'fr':fr})
 
 def completed_work(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
-    fr=Freelancerworks.objects.filter(fr_status='1')
+    fr=Freelancerworks.objects.filter(fr_status='1').order_by('-id')
     return render(request, 'completed_work.html', {'adm':adm,'fr':fr})
 
 #Freelancer Allocate
@@ -1258,8 +1286,9 @@ def freelancer_work_reject(request,fr_wrejejct):
         serv=Service_form.objects.get(id=frwork.fr_service_id)
         serv.status='0'
         serv.save()
+        frwork=Freelancerworks.objects.filter(frelancer=free,fr_status='2')
         frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='1'),frelancer=free)
-        return render(request, 'freelancer_works.html', {'free':free,'frworks':frworks,'rej':rej})
+        return render(request, 'freelancer_works.html', {'free':free,'frworks':frworks,'rej':rej,'frwork':frwork})
 
 def freelancer_workfile_submit(request,fr_workfile):
     if 'F.id' in request.session:
@@ -1287,3 +1316,11 @@ def freelancer_workfile_submit(request,fr_workfile):
 
 
 
+# user uploaded design file view
+
+def uploaded_design_view(request,pk):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    s=Service_form.objects.get(id=pk)
+    p=Product.objects.all()
+    return render(request, 'user_design_file.html', {'adm':adm,'s':s,'p':p})

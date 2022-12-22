@@ -135,5 +135,10 @@ urlpatterns = [
      path('freelancer_work_reject/<int:fr_wrejejct>',views.freelancer_work_reject,name='freelancer_work_reject'),
      path('freelancer_workfile_submit/<int:fr_workfile>',views.freelancer_workfile_submit,name='freelancer_workfile_submit'),
 
-      path('check_username',views.check_username,name='check_username'),
+     path('check_username',views.check_username,name='check_username'),
+     path('check_useremail',views.check_useremail,name='check_useremail'),
+     
+     
+     path('uploaded_design_view/<int:pk>',views.uploaded_design_view,name='uploaded_design_view'),
+
 ]

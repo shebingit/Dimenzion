@@ -59,9 +59,9 @@
             <div class="col-lg-3  d-flex flex-column align-items-center pt-3 boxl">
                 <img src="{{p.profile_pic.url}}"
                     alt="" class="shadow img-fluid">
-                <h4 class="m-0 p-2">{{p.full_name}}</h4>
-                <p style="color: gray;" class="m-0 p-0">(10 Feedback)</p>
-                <p style="color: gray;" class="m-0 p-0">Member since March 26,20</p>
+                <h5 class="mt-2 p-2">{{p.full_name}}</h5>
+              <!--  <p style="color: gray;" class="m-0 p-0">(10 Feedback)</p>
+                <p style="color: gray;" class="m-0 p-0">Member since March 26,20</p>-->
             </div>
             <div class="col-lg-5 py-4">
                 <h1 class="px-2">{{p.service}}</h1>
@@ -85,28 +85,24 @@
                     cumque reprehenderit deserunt maxime facere? Perferendis debitis praesentium exercitationem nihil
                     autem eligendi.</p> {% endcomment %}
 
-                <div class="rdmr px-4"> <button class="bg-light px-3">Read more</button></div>
+               <!-- <div class="rdmr px-4"> <button class="bg-light px-3">Read more</button></div>-->
 
             </div>
             <div class="col-lg-4 bdrlft ">
                 <div class="row">
                     <div class="col-6 flex flex-column p-4">
-                        <h3 class="red">15</h3>
+                        <h3 class="red">{{fr_ongoing}}</h3>
                         <p>Ongoing projects</p>
 
                     </div>
                     <div class="col-6 flex flex-column p-4 dark">
-                        <h3 class="red">10</h3>
+                        <h3 class="red">{{fr_complete}}</h3>
                         <p>Completed projects</p>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-12 flex flex-column p-4 ">
-                        <h3 class="red">1</h3>
-                        <p>Cancelled projects</p>
-
-                    </div>
+                    
                     {% comment %} <div class="col-6 flex flex-column p-4 ">
                         <h3 class="red">8</h3>
                         <p>Ongoing Services</p>
@@ -124,11 +120,7 @@
                         <p>Completed projects</p>
                     </div>
                 </div> {% endcomment %}
-                <div class="p-3">
-                    <h5>$ 25000.00</h5>
-                    <h6>Total Earnings</h6>
-
-                </div>
+                
 
                 {% comment %} <div class="flex p-4">
                     <a href=" " class="text-light redbg btn w-50 py-2"> Send Offer</a>
