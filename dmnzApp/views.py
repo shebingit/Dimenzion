@@ -1324,3 +1324,8 @@ def uploaded_design_view(request,pk):
     s=Service_form.objects.get(id=pk)
     p=Product.objects.all()
     return render(request, 'user_design_file.html', {'adm':adm,'s':s,'p':p})
+
+
+def products(request):
+   
+    return render(request, 'footer.html')

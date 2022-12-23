@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background-color:#fcfcfc ;
+    }
+    footer
+    {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right:0;
+        background: #111;
+        height: auto;
+        width: 100vw;
+        font-family: "Open Sans";
+        padding-top: 40px;
+        color: #fff;
+    }
+    .footer-content
+    {
+        display: flex;
+        align-items: center;
+        justify-content:space-around;
+        flex-direction: row;
+        text-align: center;
+
+       
+    }
+    @media(max-width:932px)
+    {
+        .footer-content
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    }
+    .footer-content h3{
+        font-size: 1.6rem;
+        font-weight: 400;
+        text-transform: capitalize;
+        line-height: 3rem;
+    }
+    .footer-content p{
+        max-width: 500px;
+        margin: 10px auto;
+        line-height: 28px;
+        font-size:14px;
+        font-family:Arial, Helvetica, sans-serif
+    }
+    .footer-content p i{
+        color: rgb(236, 165, 13);
+        padding-left: 1rem;
+    }
+    .socials
+    {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem 0 1.3rem 0;
+    }
+    .socials li{
+        margin: 0 10px;
+    }
+    .socials a{
+        text-decoration: none;
+        color: #fff;
+
+    }
+    .socials a i{
+        font-size: 1.1rem;
+        color: rgb(241, 205, 90);
+    }
+    .socials a:hover i
+    {
+        color: aqua;
+    }
+    .news-letter h4
+    {
+        display: flex;
+        flex-direction: column;
+        margin: 1em;
+        color: rgb(252, 252, 252);
+        font-weight: 600;
+        font-size:1.2em
+    }
+    .news-letter form input{
+        height: 40px;
+        width:20vw;
+        padding: 0 1rem;
+        outline: none;
+    }
+    @media (max-width:932px)
+    {
+        .news-letter form input{
+            height: 40px;
+            width:70%;
+            padding: 0 1rem;
+            outline: none;
+        }
+    }
+    .news-letter form button{
+        height: 40px;
+        width: 5em;
+        color: #fff;
+        background: rgb(237, 17, 5);
+        border: none;
+        outline: none;
+    }
+    .news-letter form button:hover{
+        background: rgb(247, 17, 5);
+    }
+    
+    .footer-bottom
+    {
+        background: #000;
+        width:100vw;
+        padding: 20px 0;
+        text-align:center;
+    }
+    .footer-bottom p{
+        font-size:14px;
+        word-spacing: 2px;
+        text-transform: capitalize;
+    }
+    .footer-bottom span
+    {
+        text-transform: uppercase;
+        opacity: .4;
+        font-weight: 200;
+    }
+</style>
+
+</head>
+
+<body>
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3><img src="{% static 'images/logod.png' %}" alt=""></h3>
+           
+            
+            </div>
+            <div class="contact">
+                <p>
+                    <i class="fa fa-map-marker"></i> &nbsp; Dimenzions PLtd., XI/105-C1,  Civil LaneRoad, Kochi<br>
+                    <i class="fa fa-envelope"></i>&nbsp; dimensions@example.com <br>
+                    <i class="fa fa-phone"></i>&nbsp;  +91-847547924 <br>
+                </p>
+            </div>
+            <div class="news-letter">
+                <h4>SIGNUP FOR NEWSLETTER</h4>
+                <form action="#">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">News</button>
+
+                </form>
+                <ul class="socials">
+                    <li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="footer-bottom">
+
+        </div>
+        
+    </footer>
+    
+</body>
+</html>

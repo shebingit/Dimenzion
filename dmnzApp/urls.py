@@ -141,4 +141,7 @@ urlpatterns = [
      
      path('uploaded_design_view/<int:pk>',views.uploaded_design_view,name='uploaded_design_view'),
 
+     path('products',views.products,name='products'),
+
+
 ]

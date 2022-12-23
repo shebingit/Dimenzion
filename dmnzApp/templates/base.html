@@ -14,18 +14,158 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Anton&family=Asap+Condensed&family=Bebas+Neue&family=Cinzel+Decorative:wght@700&family=Fjalla+One&family=Fugaz+One&family=Hubballi&family=Koulen&family=League+Gothic&family=Lobster&family=Oswald:wght@500&family=Pacifico&family=Playfair+Display&family=Poppins&family=Rambla&family=Righteous&family=Ropa+Sans&family=Staatliches&family=Yanone+Kaffeesatz:wght@500&display=swap');
     </style>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            
         }
+        .navbar
+        {
+            background: transparent;
+            
+        }
+        footer
+        {
+        position: static;
+        bottom: 0;
+        left: 0;
+        right:0;
+        background-color:#212529;
+        height: auto;
+        width: 100%;
+        font-family: "Open Sans";
+        padding-top: 20px;
+        color: #fff;
+        padding-bottom: 30px;
+        
+    }
+    .footer-content
+    {
+        display: flex;
+        align-items: center;
+        justify-content:space-around;
+        flex-direction: row;
+        text-align: center;
+        padding: 1rem;
+
+       
+    }
+    @media(max-width:932px)
+    {
+        .footer-content
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 1.9rem;
+    }
+
+    }
+    .footer-content h3{
+        font-size: 1.6rem;
+        font-weight: 400;
+        text-transform: capitalize;
+        line-height: 3rem;
+    }
+    .footer-content p{
+        max-width: 500px;
+        margin: 10px auto;
+        line-height: 28px;
+        font-size:14px;
+        font-family:Arial, Helvetica, sans-serif;
+        background-color: #212529;
+    }
+    .footer-content p i{
+        color: rgb(236, 165, 13);
+        padding-left: 1rem;
+    }
+ .socials
+    {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem 0 1.3rem 0;
+    }
+ .socials li{
+        margin: 0 10px;
+    }
+.socials a{
+        text-decoration: none;
+        color: #fff;
+
+    }
+    .socials a i{
+        font-size: 1.1rem;
+        color: rgb(241, 205, 90);
+    }
+    .left-side .socials a:hover .fa-brands
+    {
+        color: aqua;
+    }
+    .news-letter h4
+    {
+        display: flex;
+        flex-direction: column;
+        margin: 1em;
+        color: rgb(252, 252, 252);
+        font-weight: 600;
+        font-size:1.2em
+    }
+    .news-letter form input{
+        height: 40px;
+        width:20vw;
+        padding: 0 1rem;
+        outline: none;
+    }
+    @media (max-width:932px)
+    {
+        .news-letter form input{
+            height: 40px;
+            width:70%;
+            padding: 0 1rem;
+            outline: none;
+        }
+    }
+    .news-letter form button{
+        height: 40px;
+        width: 5em;
+        color: #fff;
+        background: rgb(220, 24, 24);
+        border: none;
+        outline: none;
+    }
+    .news-letter form button:hover{
+        background: rgb(247, 17, 5);
+    }
+    
+    .footer-bottom
+    {
+        background-color:#212529;
+        width: 100%;
+        padding: 20px 0;
+        text-align:center;
+    }
+    .footer-bottom p{
+        font-size:14px;
+        word-spacing: 2px;
+        text-transform: capitalize;
+    }
+    .footer-bottom span
+    {
+        text-transform: uppercase;
+        opacity: .4;
+        font-weight: 200;
+    }
+    
     </style>
 </head>
 
@@ -84,7 +224,7 @@
         </nav>
         <style>
             .nav-item a {
-                font-size: 18px;
+                font-size: 15px;
             }
 
             .nav-link {
@@ -96,6 +236,7 @@
             }
         </style>
     </section>
+ 
     {% block body %} 
 
     {% endblock %}
@@ -104,263 +245,48 @@
 
 
     <section>
-
-        <!--footer starts from here-->
-        <footer class="footer p-4 fadeInUp wow p-3" data-wow-delay="0.5s">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-3"></div>
-                    <div class=" col-sm-5 ">
-                        <h5 class="headin5_amrc col_white_amrc pt2 " style="color:rgb(255, 5, 72)"><img
-                            src="{% static 'images/logod.png' %}" alt="" alt=""></h5>
-                        <!--headin5_amrc-->
+        <footer>
+            <div class="footer-content">
+                <div class="left-side">
+                    <h3> <img src="{% static 'images/logod.png' %}" alt=""></h3> 
+                    
+                    <div class="contact">
                         <p>
-                            <span style=""><i class="fa-solid fa-location-dot"></i> &ensp;</span> Dimenzions P
-                            Ltd., XI/105-C1,<br> &ensp;&ensp;&ensp; Civil Lane
-                            Road, Kochi
+                            <i class="fa fa-map-marker"></i> &nbsp; Dimenzions PLtd., XI/105-C1,  Civil LaneRoad, Kochi<br>
+                            <i class="fa fa-envelope"></i>&nbsp; dimensions@example.com <br>
+                            <i class="fa fa-phone"></i>&nbsp;  +91-847547924 <br>
                         </p>
-                        <p class="my-4">
-                            <i class="fa-solid fa-envelope-open-text"></i> &ensp; dimensions@example.com
-                        </p>
-                        <p class="my-4">
-                            <i class="fa-solid fa-phone"></i>  &ensp;+91-847547924
-                        </p>
-                        
                     </div>
-                   
-                    {% comment %} <div class=" col-sm-4 col-md   ">
-                        <h5 class="headin5_amrc col_white_amrc pt2 text-light " style="font-weight: 800;">Recent Post</h5>
-                        <!--headin5_amrc-->
-                        <ul class="footer_ul_amrc">
-                            <li>
-                                <div class="d-flex my-2">
-                                    <img src="https://cdn01.alison-static.net/public/html/site/img/coronavirus/touch-typing.png"
-                                        alt="" width="80px">
-                                    <p class="p-2 pe-lg-5" style="text-align: justify;">Lorem ipsum, dolor sit amet
-                                        consectetur adipisicing elit. Reiciendis autem eaque quidem accusantium. Libero,
-                                        nulla? </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex my-2">
-                                    <img src="https://cdn01.alison-static.net/public/html/site/img/coronavirus/touch-typing.png"
-                                        alt="" width="80px">
-                                    <p class="p-2 pe-lg-5" style="text-align: justify;">Lorem ipsum, dolor sit amet
-                                        consectetur adipisicing elit. Reiciendis autem eaque quidem accusantium. Libero,
-                                        nulla? </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex my-2">
-                                    <img src="https://cdn01.alison-static.net/public/html/site/img/coronavirus/touch-typing.png"
-                                        alt="" width="80px">
-                                    <p class="p-2 pe-lg-5" style="text-align: justify;">Lorem ipsum, dolor sit amet
-                                        consectetur adipisicing elit. Reiciendis autem eaque quidem accusantium. Libero,
-                                        nulla? </p>
-                                </div>
-                            </li>
-                        </ul>
-                        <!--footer_ul_amrc ends here-->
-                    </div> {% endcomment %}
-                    <div class=" col-sm-2 col-md  col-6 py-0 col">
-                        <h5 class="headin5_amrc col_white_amrc pt2 text-light" style="font-weight: 800;">
-                            Pages
-                        </h5>
-                        <!--headin5_amrc-->
-                        <ul class="footer_ul_amrc">
-                            <li class="py-2">
-                                <a href="#">
-                                    <h6>Home</h6>
-                                </a>
-                            </li>
-                            <li class="py-2">
-                                <a href="#">
-                                    <h6>About</h6>
-                                </a>
-                            </li>
-                            <li class="py-2">
-                                <a href="#">
-                                    <h6>Pages</h6>
-                                </a>
-                            </li>
-                            <li class="py-2">
-                                <a href="#">
-                                    <h6>Categoty</h6>
-                                </a>
-                            </li>
-
-                        </ul>
-                        <!--footer_ul_amrc ends here-->
-                    </div>
-
+                    
+                
                 </div>
+               
+                
+                <div class="news-letter ">
+                    <ul class="socials">
+                        <li><a href=""><i class="fa-brands fa-facebook-f" style=" color: rgb(244, 193, 26);" ></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-twitter" style=" color: rgb(244, 193, 26);"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-instagram" style=" color:rgb(244, 193, 26);"></i></a></li>
+                    </ul>
+                    <h4>Signup for Newsletter</h4>
+                    <form action="#">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit"> <i class="fa-solid fa-paper-plane"></i></button>
+    
+                    </form>
+                    
+                </div>
+                
+                
             </div>
-
+            <!-- <div class="footer-bottom">
+    
+            </div> 
+             -->
         </footer>
-        <div class="black p-3">
-            <!--foote_bottom_ul_amrc ends here-->
-
-            <ul class="social_footer_ul m-0 p-0 flexyy">
-                <li>
-                    <a href="http://fb.com" style="color:white;"><i class="fab fa-facebook-f"></i></a>
-                </li>
-                <li>
-                    <a href="http://linkedin.com" style="color:white;"><i class="fab fa-twitter"></i></a>
-                </li>
-
-                <li>
-                    <a href="http://webenlance.com" style="color:white;"><i class="fab fa-instagram"></i></a>
-                </li>
-            </ul>
-
-        </div>
-        <style>
-            *footer*/ .col_white_amrc {
-                color: #FFF;
-            }
-
-            footer {
-                width: 100%;
-                background-color: rgb(74, 72, 77);
-                min-height: 250px;
-                padding: 10px 0px 25px 0px;
-
-            }
-
-            .pt2 {
-                padding-top: 40px;
-                margin-bottom: 20px;
-            }
-
-            footer p {
-                font-size: 13px;
-                color: #CCC;
-                padding-bottom: 0px;
-                margin-bottom: 8px;
-            }
-
-            .mb10 {
-                padding-bottom: 15px;
-            }
-
-            .footer_ul_amrc {
-                margin: 0px;
-                list-style-type: none;
-                font-size: 14px;
-                padding: 0px 0px 10px 0px;
-            }
-
-            .footer_ul_amrc li {
-                padding: 0px 0px 5px 0px;
-            }
-
-            .footer_ul_amrc li a {
-                color: #CCC;
-            }
-
-            .footer_ul_amrc li a:hover {
-                color: #fff;
-                text-decoration: none;
-            }
-
-            .fleft {
-                float: left;
-            }
-
-            .padding-right {
-                padding-right: 10px;
-            }
-
-            .footer_ul2_amrc {
-                margin: 0px;
-                list-style-type: none;
-                padding: 0px;
-            }
-
-            .footer_ul2_amrc li p {
-                display: table;
-            }
-
-            .footer_ul2_amrc li a:hover {
-                text-decoration: none;
-            }
-
-            .footer_ul2_amrc li i {
-                margin-top: 5px;
-            }
-
-            .bottom_border {
-                border-bottom: 1px solid #323f45;
-                padding-bottom: 20px;
-            }
-
-            .foote_bottom_ul_amrc {
-                list-style-type: none;
-                padding: 0px;
-                display: table;
-                margin-top: 10px;
-                margin-right: auto;
-                margin-bottom: 10px;
-                margin-left: auto;
-            }
-
-            .foote_bottom_ul_amrc li {
-                display: inline;
-            }
-
-            .foote_bottom_ul_amrc li a {
-                color: #999;
-                margin: 0 12px;
-            }
-
-            .black {
-                background-color: black;
-
-            }
-
-            .social_footer_ul {
-                width: 100%;
-                display: table;
-                margin: 0;
-                list-style-type: none;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .social_footer_ul li {
-                padding-left: 20px;
-                padding-top: 10px;
-                float: left;
-            }
-
-            .social_footer_ul li a {
-                color: white;
-                border: 1px solid white;
-                padding: 8px 13px;
-                border-radius: 100%;
-            }
-
-            .social_footer_ul li i {
-                width: 30px;
-                height: 30px;
-                text-align: center;
-            }
-
-            a {
-                text-decoration: none;
-            }
-
-            .flexyy {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            /* Credit to https://bootsnipp.com/snippets/bxDBA */
-        </style>
     </section>
 
+    
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
