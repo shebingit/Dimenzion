@@ -1327,5 +1327,5 @@ def uploaded_design_view(request,pk):
 
 
 def products(request):
-   
-    return render(request, 'footer.html')
+    all=Product.objects.filter(category_id=6)
+    return render(request, 'footer.html',{'all':all})

@@ -25,6 +25,9 @@
             font-family: 'Roboto', sans-serif;
             
         }
+        a{
+            text-decoration: none;
+        }
         .navbar
         {
             background: transparent;
@@ -42,8 +45,7 @@
         font-family: "Open Sans";
         padding-top: 20px;
         color: #fff;
-        padding-bottom: 30px;
-        
+       
     }
     .footer-content
     {
@@ -52,9 +54,8 @@
         justify-content:space-around;
         flex-direction: row;
         text-align: center;
-        padding: 1rem;
+        padding: 30px;
 
-       
     }
     @media(max-width:932px)
     {
@@ -65,7 +66,7 @@
         justify-content: center;
         flex-direction: column;
         text-align: center;
-        padding: 1.9rem;
+       
     }
 
     }
@@ -76,96 +77,74 @@
         line-height: 3rem;
     }
     .footer-content p{
-        max-width: 500px;
-        margin: 10px auto;
+        max-width: 400px;
+        margin: 5px auto;
         line-height: 28px;
         font-size:14px;
         font-family:Arial, Helvetica, sans-serif;
         background-color: #212529;
+        color: #808080;
     }
-    .footer-content p i{
-        color: rgb(236, 165, 13);
-        padding-left: 1rem;
-    }
- .socials
+    
+    footer .socials
+ {
+     margin-top: 2rem;
+     display: flex;
+ }
+ footer .socials li{
+     list-style:none ;
+ }
+ footer .socials li a{
+    
+     width:2rem;
+     height:2rem;
+    
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     align-items: center;
+     margin-right:.40rem ;
+     text-decoration: none;
+     border-radius: 4px;
+ }
+ footer .socials li a:hover{
+     background: #f00;
+     color: #fff;
+     font-size: 1rem;
+ }
+ 
+ footer .news-letter h4
     {
-        list-style: none;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 1rem 0 1.3rem 0;
-    }
- .socials li{
-        margin: 0 10px;
-    }
-.socials a{
-        text-decoration: none;
-        color: #fff;
-
-    }
-    .socials a i{
-        font-size: 1.1rem;
-        color: rgb(241, 205, 90);
-    }
-    .left-side .socials a:hover .fa-brands
-    {
-        color: aqua;
-    }
-    .news-letter h4
-    {
-        display: flex;
+        justify-content: space-around;
         flex-direction: column;
-        margin: 1em;
+
         color: rgb(252, 252, 252);
         font-weight: 600;
         font-size:1.2em
     }
-    .news-letter form input{
-        height: 40px;
-        width:20vw;
-        padding: 0 1rem;
-        outline: none;
-    }
-    @media (max-width:932px)
-    {
-        .news-letter form input{
-            height: 40px;
-            width:70%;
-            padding: 0 1rem;
-            outline: none;
-        }
-    }
-    .news-letter form button{
-        height: 40px;
-        width: 5em;
-        color: #fff;
-        background: rgb(220, 24, 24);
-        border: none;
-        outline: none;
-    }
-    .news-letter form button:hover{
-        background: rgb(247, 17, 5);
-    }
     
-    .footer-bottom
-    {
-        background-color:#212529;
-        width: 100%;
-        padding: 20px 0;
-        text-align:center;
+   
+  
+    footer  .news-letter .quicklinks a:hover{
+        padding: .80em;
+     align-items: center;
+     background: #f00;
+     color: #fff;
+     
     }
-    .footer-bottom p{
-        font-size:14px;
-        word-spacing: 2px;
-        text-transform: capitalize;
-    }
-    .footer-bottom span
-    {
+    footer  .quicklinks a{
         text-transform: uppercase;
-        opacity: .4;
-        font-weight: 200;
-    }
-    
+        font-size: 12px;
+        }
+        @media(max-width:932px)
+        {
+            footer  .news-letter  .contact
+            {
+                margin-top:2rem;
+            }
+        }
+        
     </style>
 </head>
 
@@ -240,7 +219,7 @@
     {% block body %} 
 
     {% endblock %}
-
+<a href="{% url 'products' %}">Click</a>
 
 
 
@@ -249,40 +228,42 @@
             <div class="footer-content">
                 <div class="left-side">
                     <h3> <img src="{% static 'images/logod.png' %}" alt=""></h3> 
-                    
-                    <div class="contact">
+                    <ul class="socials">
+                        <li><a href=""style="color:#fff"><i class="fa-brands fa-facebook"  ></i></a></li>
+                        <li><a href=""style="color:#fff"><i class="fa-brands fa-twitter" ></i></a></li>
+                        <li><a href=""style="color:#fff"><i class="fa-brands fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+         
+                <div class="news-letter">
+              
+                    <h4 class="mt-4">Quick Link</h4>
+                    <hr>
+                    <p class="quicklinks">
+                       <a href="{% url 'home'%}" style="color:#fff">Home</a><br>
+                       <a href="{% url 'about'%}"style="color:#fff">About</a><br>
+                        <a href="{% url 'contact'%}"style=";color:#fff">Contact Us</a><br>
+                        <a href="{% url 'model'%}"style="color:#fff">Category</a>
+                    </p>
+              
+                       
+                    </ul>
+                   
+                </div>
+                
+                <div class="news-letter"style="background-color: #212529;">
+                   
+                    <h4 class="contact" style="background: #212529;">Contact</h4>
+                    <hr>
                         <p>
                             <i class="fa fa-map-marker"></i> &nbsp; Dimenzions PLtd., XI/105-C1,  Civil LaneRoad, Kochi<br>
                             <i class="fa fa-envelope"></i>&nbsp; dimensions@example.com <br>
-                            <i class="fa fa-phone"></i>&nbsp;  +91-847547924 <br>
+                            <i class="fa fa-phone"></i>&nbsp;  +91-847547924 
                         </p>
-                    </div>
-                    
-                
+
                 </div>
-               
-                
-                <div class="news-letter ">
-                    <ul class="socials">
-                        <li><a href=""><i class="fa-brands fa-facebook-f" style=" color: rgb(244, 193, 26);" ></i></a></li>
-                        <li><a href=""><i class="fa-brands fa-twitter" style=" color: rgb(244, 193, 26);"></i></a></li>
-                        <li><a href=""><i class="fa-brands fa-instagram" style=" color:rgb(244, 193, 26);"></i></a></li>
-                    </ul>
-                    <h4>Signup for Newsletter</h4>
-                    <form action="#">
-                        <input type="email" placeholder="Enter your email">
-                        <button type="submit"> <i class="fa-solid fa-paper-plane"></i></button>
-    
-                    </form>
-                    
-                </div>
-                
-                
             </div>
-            <!-- <div class="footer-bottom">
-    
-            </div> 
-             -->
+            
         </footer>
     </section>
 
