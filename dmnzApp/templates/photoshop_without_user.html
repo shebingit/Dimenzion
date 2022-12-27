@@ -75,325 +75,286 @@
 
         </script>
 
-
     </section>
-    <section class="dropdowns container">
-        <nav class="navbar navbar-expand-lg navbar-light mt-3">
-            <div class="container-fluid">
-                <button class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <span class="">
-                        <i class="fa-solid fa-filter"></i>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item mt-3 mt-lg-0">
-                            <div class="dropdown ">
-                                <a class="btn btn-outline-secondary abc"
-                                   href="#"
-                                   role="button"
-                                   id="dropdownMenuLink"
-                                   data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Price <i class="fa-solid fa-chevron-down ps-5"></i>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li>
-                                        <a class="dropdown-item" onclick="price_low()">low to high</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" onclick="price_high()" >High to low</a>
-                                    </li>
-                                    
-                                </ul>
-                            </div>
-                        </li>
-                        {% comment %} <li class="nav-item mt-3 mt-lg-0 ps-lg-3">
-                            <div class="dropdown">
-                                <a class="btn btn-outline-secondary abc"
-                                   href="#"
-                                   role="button"
-                                   id="dropdownMenuLink"
-                                   data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Formats <i class="fa-solid fa-chevron-down  ps-lg-2"></i>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    
-                                    <li>
-                                        <a   class="dropdown-item" href="{% url 'three' %}">3dx</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'fbx' %}">fbx</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'obj' %}">obj</a>
-                                    </li>
+    <!-- <div class="row my-3">
+       
+        <div class="col-lg-4 col-sm-12">
+            <a class="btn text-light next w-50 " type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal"
+               style="background-color: rgba(255, 5, 72);">
+                Request for another
+            </a>
+        </div>
+        
+    </div> -->
 
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'model' %}">All</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li> {% endcomment %}
-                        <!-- <li class="nav-item mt-3 mt-lg-0 ps-lg-3">
-                            <div class="dropdown">
-                                <a class="btn btn-outline-secondary abcd"
-                                   href="#"
-                                   role="button"
-                                   id="dropdownMenuLink"
-                                   data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Quantity <i class="fa-solid fa-chevron-down ps-lg-2"></i>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li>
-                                        <a class="dropdown-item" href="#">Action</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li> -->
-                    </ul>
-                    <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                        <!-- <li class="nav-item mt-3 mt-lg-0">
-                            <div class="dropdown ">
-                                <a class="btn btn-outline-secondary abcd"
-                                   href="#"
-                                   role="button"
-                                   id="dropdownMenuLink"
-                                   data-bs-toggle="dropdown"
-                                   aria-expanded="false">
-                                    Sort Best Match <i class="fa-solid fa-chevron-down "></i>
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <li>
-                                        <a class="dropdown-item" href="#">Action</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li> -->
-                    </ul>
-                </div>
+   
+
+    <style>
+        .row 
+        {
+            margin-left: 0.5em;
+            margin-right: 0.5em;
+        }
+        .row .col-lg-3
+        {
+            padding: 1em;
+        }
+        #products
+        {
+            padding: 12px 13px;
+            border-radius: 10px;
+            box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+            margin-bottom: 1em;
+        }
+        #products .image 
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #products .image img
+        {
+          
+            max-height: 200px;
+            transform: scale(.9);
+            z-index: -1;
+        }
+        #products .image img:hover{
+           
+            transform: scale(1);
+            transition: 3s;
+        }
+        .content 
+        {
+            padding-top: 2em;
+            font-size: 0.85em;
+        }
+        .content .review
+        {
+            display: flex;
+            text-align: center;
+            justify-content: space-between;
+            flex-direction: row;
+            gap: 1em;
+        }
+        .content .review h5{
+            font-weight: 600;
+            font-size: 1.5em;
+        }
+        .stars 
+        {
+            color: rgb(255, 237, 72);
+            font-size: 0.85em;
+        }
+        .stars span{
+            color: black;
+            font-weight: 600;
+            font-size: 1em;
+        }
+        .name
+        {
+            font-size: 1.5em;
+            font-weight: 600;
+            gap:2em;
+        }
+        .btn-box
+        {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2px 4px;
+        }
+        .btn-box .like{
+            color: rgb(71, 68, 68);
+            background-color: rgba(220, 219, 219, 0.74);
+            border-radius: 50%;
+            text-align: center;
+            min-width: 40px;
+            min-height: 40px;
+            padding-top: 0.83em;
+           
+        }
+        .btn-box .like .fa-heart:hover
+        {
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+           transform: scale(1.1);
+           color: rgb(255, 17, 17);
+        }
+        .btn-box .btn{
+           display: flex;
+            background-color: rgb(46, 44, 44);
+            color: #fff;
+            border-radius: 10px;
+            min-width: 150px;
+            flex-direction: row;
+            padding: 0px 10px;
+            max-height: 40px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        }
+        .btn-box .btn:hover{
+            background-color: rgb(4, 4, 4);
+        }
+        .btn-box .btn p{
+            padding: 3px 15px;
+            margin-top: 5px;
+            font-size: .85em;
+        }
+        .btn-box .cart-icon
+        {
+            margin-top: 5px;    
+        }
+        .filter
+        {
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            flex-direction: row;
+            padding: 0px 15px;
+
+        }
+        .fa-filter:hover 
+        {
+            opacity: 0.6;
+        }
+        #myDiv 
+        {
+            border: none;
+            padding: 2em 1em;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+            max-width: 250px;
+            max-height: 170px;
+            position: absolute;
+        }
+        #myDiv .filter-form span
+        {
+            padding-right: 1em;
+        }
+       
+        #myDiv .filter-form label 
+        {
+            font-size: 0.85em;
+        }
+         .filter-form .search-btn
+         {
+            padding-top: 1em;
+           
+           
+           text-align: center;
+         }
+        .filter-form button
+        {
+            border: none;
+            outline: none;
+            border-radius: 50%;
+            font-weight: 600;
+            background: rgb(255, 255, 255);
+           
+        }
+        .filter-form button:hover{
+            transform: scale(1.1);
+            text-shadow: 20px 10px;
+    
+        }
+        #request
+        {
+            background: rgb(242, 14, 14);
+            color: #fff;
+            padding: 10px 15px;
+            font-size: 0.90em;
+            font-weight: 600;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+    </style>
+      <div class="container p-1 mb-5">
+        <div class="filter mb-3 mt-3 ">
+            <div class="col-lg-3 col-md-6  p-2">
+               <a  id="toggleButton"><i class="fa fa-filter"style="font-size:0.95em;"></i>&nbsp;<span style="font-size:0.90em; color:black">Filter</span></a>
             </div>
-        </nav>
-        <style>
-            .abc {
-                width: 150px;
-            }
+            <div class="col-lg-9  col-md-6 col-sm-12 p-2 text-center">
+                <a href="#" id="request" data-bs-toggle="modal" data-bs-target="#exampleModal">Need Another <i class="fa fa-question"></i></a>
+            </div>
+        </div>
+        <div class="card " id="myDiv" style="display:none">
+            <form action="#" method="post" class="filter-form">
+            {% csrf_token %}
+              <span>
+                    <input type="radio" name="styles" id="default" checked>
+                    <label for="default">Price-low</label>
+              </span>
+              <span>
+                <input type="radio" name="styles" id="default" >
+                <label for="default">Price-high</label>
+              </span>
+                   
+               
+                
+                <div class="text-center search-btn">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            
+            </form>
 
-            .abcd {
-                width: 200px;
-            }
-
-            @media all and (max-width: 500px) {
-
-                .abc,
-                .abcd {
-                    width: 100%;
-                }
-
-
-            }
-        </style>
-    </section>
-    <section class="products " id="all" >
-        <div class="cards-list container">
+        </div>
+        <div class="row g-4">
             {% for p in all %}
-            <a href="{% url 'view_items' p.id  %}"
-                    class="card1 bg-light shadow-lg"
-                    data-aos="fade-up"
-                    data-aos-delay="50">
-            <div class="card3 shadow " onclick="clicked()" id="all"
-                 style="background-image: url('{{p.gib.url}}');background-size: 100% 100%; background-repeat: no-repeat;">
-                <div class="black_fillter">
-                    <div class="frame pt-1">
-                        <div class="top row container-fluid p-0 m-0 shadow">
-                            <div class="col-3 flex">
-                                <h6 class="m-0" style="font-weight: 800;">3D</h6>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="container" id="products">
+                    <div class="image">
+                        {% if p.gib %}
+                        <img src="{{p.gib.url}}" alt="Photo shop image">
+                        {% endif %}
+                    </div>
+                    <div class="content">
+                        <div class="review">
+                            <div class="stars">
+                                <span>Reviews</span>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                               
                             </div>
-                            <div class="col-6 flex">
-                                <h6 class="m-0"style="font-weight: 800;">{{p.modelname}}</h6>
-                            </div>
-                            <div class="col-3 flex">
-                                <h6 class="m-0"style="font-weight: 800;">{{p.price}}$</h6>
-                            </div>
+                            <h5>₹ {{p.price}}</h5>
                         </div>
-                        <div class="center">
-                            <button class="p-2">
-                                <i class="fa-solid fa-heart"></i>
-                            </button>
+                        <h4 class="name">{{p.modelname}}</h4>
+                        <div class="detail">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas
+                                aliquam quan, at ullamcorper massa tincidunt nec. Integer dian justo, ultrices nec velit et,
+                                mattis finibus orci
+                            <p>
                         </div>
-                        <div class="bottom shadow row container-fluid p-0 m-0"
-                             style="color: rgb(255, 5, 72);">
-                            <div class="col-10 flex" style="font-weight: 800;">Details</div>
-                            <div class="col-2 flex">
-                                <i class="fa-solid fa-cart-plus"></i>
+                        <div class="btn-box">
+                            <span class="like"><i class="fa fa-heart"  ></i></span>
+                            <a href="{% url 'view_items' p.id  %}">
+                            <div class="btn">
+                                <p>Add to cart</p>
+                                <div class="cart-icon">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                </div>
                             </div>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-           </a>
-            
             {% endfor %}
-         
-            <!-- category ......3dx -->
-
-{% comment %}           
-        <div class="row my-3">
-            <div class="col-3">
-            </div>
-            <div class="col-9 flex">
-                <a class="btn text-light next w-100 "
-                   style="background-color: rgba(255, 5, 72);">
-                    Load more
-                </a>
-            </div>
-            <div class="col-4">
-            </div>
-        </div> {% endcomment %}
+        </div>
+      </div>  
+   
 
 
-       
-        <style>
-            .flex{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            /* frame */
-            .black_fillter {
-                background-color: rgba(0, 0, 0, 0.5);
-                width: 100%;
-                height: 100%;
-            }
-
-            .frame {
-                opacity: 0%;
-                height: 100%;
-                width: 100%;
-            }
-
-            .card3:hover .frame  ,.card3:hover .black_fillter{
-                background-color: rgba(0, 0, 0, 0.15);
-                opacity: 100%;
-                transition: opacity 1s;
-
-            }
-
-            .top {
-                background-color: white;
-                height: 13%;
-                width: 100%;
-            }
-
-            .center {
-                height: 74%;
-                width: 100%;
-                display: flex;
-                justify-content: end;
-                align-items: flex-start;
-            }
-            .center button{
-                background-color: rgba(0, 0, 0, 0);
-                height: auto;
-                width: auto;
-                border: none;
-                color: rgb(255, 5, 72);
-                 font-size: 30px;
-            }
-
-            .bottom {
-                background-color: white;
-                height: 13%;
-                width: 100%;
-            }
-
-            .flex {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .cards-list {
-                z-index: 0;
-                width: 100%;
-                display: flex;
-                justify-content: space-around;
-                flex-wrap: wrap;
-            }
-
-            .card3 {
-                margin: 30px auto;
-                width: 400px;
-                height: 320px;
-
-
-                cursor: pointer;
-                transition: 0.4s;
-            }
-            .hide{
-                display: none;
-            }
-
-
-
-
-            @media all and (max-width: 800px) {
-                .card-list {
-                    /* On small screens, we are no longer using row direction but column */
-                    flex-direction: column;
-                }
-
-                .card3 {
-
-                    width:100%;
-                    height: 250px;
-                }
-
-                .card3 .card_title p {
-
-                    margin-top: -100px;
-                }
-
-            }
-
-
-            /* .card {
-        margin: 30px auto;
-        width: 300px;
-        height: 300px;
-        border-radius: 40px;
-        background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-repeat: no-repeat;
-      box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
-        transition: 0.4s;
-      } */
-        </style>
-    </section>
-
-
+<script>
+  document.getElementById('toggleButton').addEventListener('click', function() {
+    var div = document.getElementById('myDiv');
+    if (div.style.display === 'none') {
+      div.style.display = 'block';
+    } else {
+      div.style.display = 'none';
+    }
+  });
+</script>
 
 
     <section class="products " id="low" >
@@ -577,6 +538,8 @@
 
     <!-- category proice high to low -->
 
+   
+
     <section class="products " id="high" >
         <div class="cards-list container">
             {% for p in high_to %}
@@ -756,19 +719,7 @@
         </style>
     </section>
 
-    <div class="row my-3">
-        <div class="col-4">
-        </div>
-        <div class="col-4 flex">
-            <a class="btn text-light next w-50 " type="submit" data-bs-toggle="modal" data-bs-target="#exampleModal"
-               style="background-color: rgba(255, 5, 72);">
-                Request for another
-            </a>
-        </div>
-        <div class="col-4">
-        </div>
-    </div>
-
+    
 
 
      <!-- modal -->
@@ -836,8 +787,6 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-
 
 
 

@@ -144,7 +144,15 @@
                 margin-top:2rem;
             }
         }
-        
+        .btn
+        {
+            border: none;
+            outline: none;
+        }
+        .nav-item .active {
+            color: #ff0000; /* change to desired color */
+        }
+     
     </style>
 </head>
 
@@ -162,7 +170,7 @@
                 <div class="collapse navbar-collapse justify-content-end " id="navbarNavDropdown2">
                     <ul class="navbar-nav ">
                         <li class="nav-item ">
-                            <a class="nav-link" style="color: rgb(255, 5, 72);" aria-current="page"
+                            <a class="nav-link active"  aria-current="page"
                                 href="{% url 'home'%}">HOME</a>
                         </li>
 
@@ -175,14 +183,14 @@
                         <li class="nav-item mx-lg-3">
                             <a class="nav-link " href="{% url 'model'%}">CATEGORY</a>
                         </li>
-                        <li class="nav-item mx-lg-3">
+                        <!-- <li class="nav-item mx-lg-3">
                             <form class="d-flex">
-                                <input class="form-control me-0 rounded-0" type="search" placeholder="Search"
+                                <input class="form-control me-0 rounded-0 " type="search" placeholder="Search"
                                     aria-label="Search">
                                 <button class="  text-light p-2" style="background-color: rgb(255, 5, 72); border: 0;"
                                     type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
-                        </li>
+                        </li> -->
 
                         <li class="nav-item mx-lg-3 my-2 my-lg-0">
 
@@ -201,25 +209,21 @@
                 </div>
             </div>
         </nav>
-        <style>
+         <style>
             .nav-item a {
-                font-size: 15px;
+                font-size: 14px;
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
             }
 
-            .nav-link {
-                font-family: Arial, Helvetica, sans-serif;
-                color:white;
-            }
-            .nav-item:hover .nav-link {
-                color:red;
-            }
-        </style>
+          
+        </style> 
     </section>
+   
  
     {% block body %} 
 
     {% endblock %}
-<a href="{% url 'products' %}">Click</a>
+
 
 
 
@@ -229,9 +233,21 @@
                 <div class="left-side">
                     <h3> <img src="{% static 'images/logod.png' %}" alt=""></h3> 
                     <ul class="socials">
-                        <li><a href=""style="color:#fff"><i class="fa-brands fa-facebook"  ></i></a></li>
-                        <li><a href=""style="color:#fff"><i class="fa-brands fa-twitter" ></i></a></li>
-                        <li><a href=""style="color:#fff"><i class="fa-brands fa-instagram"></i></a></li>
+                         <li><!--<a href=""style="color:#fff"><i class="fa-brands fa-facebook" style="color: #3b5998;" ></i></a> -->
+                            <a class="btn btn-primary btn-lg btn-floating" style=" background: #3B5998;" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li><!--<a href=""style="color:#fff"><i class="fa-brands fa-instagram" style="color: #ac2bac;"></i></a>-->
+                            <a class="btn btn-primary btn-lg btn-floating" style="background: linear-gradient(
+                                45deg,
+                                #f09433 0%,
+                                #e6683c 25%,
+                                #dc2743 50%,
+                                #cc2366 75%,
+                                #bc1888 100%
+                              );" href="#!" role="button"><i class="fab fa-instagram"></i></a></li>
+                        <li><!--<a href=""style="color:#fff"><i class="fa-brands fa-twitter" style="color: #55acee;"></i></a>-->
+                            <a class="btn btn-primary btn-lg btn-floating" style="background: #55ACEE;"  href="#!" role="button"><i class="fab fa-twitter"></i></a></li>
+                        
                     </ul>
                 </div>
          
@@ -267,6 +283,7 @@
         </footer>
     </section>
 
+
     
 
 
@@ -279,6 +296,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
+
+       
 </body>
 
 </html>
