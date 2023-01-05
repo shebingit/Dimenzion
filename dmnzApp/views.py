@@ -37,7 +37,10 @@ def home(request):
     count_d=Product.objects.filter(category_id=6).count()
     count_e=Product.objects.filter(category_id=7).count()
     count_f=Product.objects.filter(category_id=8).count()
-    return render(request, 'new_index.html',{'new':new,'fea':feature,'sp':special,'new':new,'sp':special,'fea':feature,'count_b':count_b,'count_c':count_c,'count_d':count_d,'count_e':count_e,'count_f':count_f,'count_a':count_a})
+    persons=Register_freelance.objects.filter(ranking=1)
+    return render(request, 'new_index.html',{'new':new,'fea':feature,'sp':special,'new':new,
+        'sp':special,'fea':feature,'count_b':count_b,'count_c':count_c,'count_d':count_d,'count_e':count_e,
+        'count_f':count_f,'count_a':count_a,'persons':persons})
 
 def about(request):
     return render(request, 'new_about.html')
@@ -159,15 +162,17 @@ def model_two(request):
 
 def price_low(request):
     if 'USID' in request.session:
+        categ=categories.objects.get(id=1)
         default=Product.objects.filter(category_id=1)
         price_low=Product.objects.filter(category_id=1).order_by('price')
         price_high=Product.objects.filter(category_id=1).order_by('-price')
-        return render(request,'cat_price_low.html',{'three':price_low,'normal':default,'high':price_high})
+        return render(request,'cat_price_low.html',{'three':price_low,'normal':default,'high':price_high,'categ':categ})
     else:
         default=Product.objects.filter(category_id=1)
+        categ=categories.objects.get(id=1)
         price_low=Product.objects.filter(category_id=1).order_by('price')
         price_high=Product.objects.filter(category_id=1).order_by('-price')
-        return render(request,'3dmodel_without_user.html',{'three':price_low,'normal':default,'high':price_high})
+        return render(request,'3dmodel_without_user.html',{'three':price_low,'normal':default,'high':price_high,'categ':categ})
 
 
 def price_high(request):
@@ -528,7 +533,8 @@ def admin_dashboard(request):
         adm=User.objects.filter(id=abc)
         users = User.objects.all().count()
         models = Product.objects.all().count()
-        return render(request, 'admin_dashboard.html',{'adm': adm, 'users': users, 'models': models,})
+        messg=Messagebox.objects.all().order_by('-id')
+        return render(request, 'admin_dashboard.html',{'adm': adm, 'users': users, 'models': models,'messg':messg})
     return redirect('user_logout')
 
 
@@ -917,7 +923,7 @@ def registeredusers(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
     
-    use = Service_form.objects.all()
+    use = User.objects.filter(is_superuser=0)
     return render(request, 'registeredusers.html', {'use': use,'adm':adm})
     
 
@@ -1329,3 +1335,35 @@ def uploaded_design_view(request,pk):
 def products(request):
     all=Product.objects.filter(category_id=6)
     return render(request, 'footer.html',{'all':all})
+
+
+def send_message(request):
+    if request.method =='POST':
+        send_msg=Messagebox()
+        send_msg.name= request.POST['name']
+        send_msg.email= request.POST['email']
+        send_msg.phno= request.POST['phone']
+        send_msg.company_name= request.POST['company']
+        send_msg.messag= request.POST['message']
+        send_msg.files= request.FILES.get('file-img')
+        send_msg.save()
+        messages.info(request,'Thank you for your Time, We will catch you soon..')
+        return redirect('contact')
+    
+    else:
+        return redirect('contact')
+    
+def add_toplist(request,pk):
+    person=Register_freelance.objects.get(id=pk)
+    person.ranking=1
+    person.save()
+    return redirect('freelancer_page',pk)
+
+
+def remove_toplist(request,pk):
+    person=Register_freelance.objects.get(id=pk)
+    person.ranking=0
+    person.save()
+    return redirect('freelancer_page',pk)
+        
+

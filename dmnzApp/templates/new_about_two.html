@@ -1,250 +1,602 @@
 {% extends 'base2.html' %}
 {% load static %}
 {% block body %}
-    <section class="banner">
-        <div class="inner">
-            <b>
-                <h1 class="text-light headtext text-center px-5 px-lg-0">
-                ABOUT</span>
-            </h1>
-        </b>
+<section class="banner">
+    <div class="inner">
         <b>
-            <h1 style="color: rgb(255, 5, 72);" class="headtext"></h1>
-        </b>
-    </div>
-    <style>
-            .banner {
-                height: 50vh;
-                background-image: url('{% static 'images/assn.png' %}');
-                background-size: cover;
-
-                background-attachment: fixed;
-
-
-            }
-
-            .headtext {
-                font-size: 50px;
-                font-weight: 600;
-            }
-
-            .inner {
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.7);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-            }
-
-            @media only screen and (max-width:800px) {
-
-                .headtext {
-                    font-size: 30px;
-                    font-weight: 600;
-                }
-
-                .banner {
-                    height: 30vh;
-
-
-
-                }
-            }
-    </style>
-</section>
-<!-- content goes here -->
-<section class="container p-5">
-    <div class="row">
-        <div class="col-lg-6">
-            <h3 class="bld pb-3">
-                Released <span class="red bld py-4">3D Models</span>
-            </h3>
-            <p style="text-align: justify;" class="pe-lg-4">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium iure eum eveniet quasi unde dolor veniam, veritatis facere, corrupti a velit repellat, perferendis molestias beatae explicabo officia eos quis natus.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem rerum doloremque beatae necessitatibus. Numquam accusamus, nihil qui ullam odit quibusdam, temporibus eaque aliquam expedita ab atque, odio voluptas placeat saepe.
-                <br>
-                <br>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste magni nobis ducimus. Doloremque, velit voluptatum. Magni soluta voluptatibus, atque doloremque sequi distinctio reiciendis ipsa quia architecto ratione cumque dignissimos aut?
-            </p>
-            <a href="{% url 'registration'%}" class="btn btn-danger">Join Now</a>
-        </div>
-        <div class="col-lg-6">
-            <img class="img-fluid"
-                 src="{% static 'images/inner_about_img01 1.png' %}"
-                 alt="">
-            <img class="imagedown img-fluid"
-                 src="{% static 'images/inner_about_img02 1.png' %}"
-                 alt="">
-        </div>
-    </div>
-</section>
+            <h1 class="text-light headtext text-center px-5 px-lg-0">
+            ABOUT</span>
+        </h1>
+    </b>
+    <b>
+        <h1 style="color: rgb(255, 5, 72);" class="headtext">Dimenzions</h1>
+    </b>
+</div>
 <style>
-        .imagedown{
-            margin-top: -200px;
-            margin-left: -40px;
-
-        }
-        .red{
-        color: rgb(255, 5, 72);
-        }
-        .bld{
-            font-weight: 700;
-        }
-        @media only screen and (max-width:800px) {
-            .imagedown{
-            margin-top: auto;
-            margin-left: auto;
-
-        }
-        }
-</style>
-<section class="container p-5">
-    <h3 class="bld text-center mb-4">
-        OUR <span class="red bld ">TEAM <span class="red bld">MEMBERS</span>
-    </h3>
-    <div class="row container text-center">
-        <div class="col-lg-3">
-            <div class="redbgl">
-                <img src="{% static 'images/team-member-1 2.png' %}" alt="">
-            </div>
-            <h6 class="bld mt2">JAMES WISEMAN</h6>
-            <p class="gry">Web Developer</p>
-        </div>
-        <div class="col-lg-3">
-            <div class="redbgl">
-                <img src="{% static 'images/team-member-3 1.png' %}" alt="">
-            </div>
-            <h6 class="bld mt-2">JAMES WISEMAN</h6>
-            <p class="gry">Web Developer</p>
-        </div>
-
-        <div class="col-lg-3">
-            <div class="redbgl">
-                <img src="{% static 'images/team-member-4 1.png' %}" alt="">
-            </div>
-            <h6 class="bld mt-2">JAMES WISEMAN</h6>
-            <p class="gry">Web Developer</p>
-        </div>
-        <div class="col-lg-3 ">
-            <div class="redbgl">
-                <div> <img src="{% static 'images/team-member-1 2.png' %}" alt=""></div>
-            </div>
-            <h6 class="bld mt-2">JAMES WISEMAN</h6>
-            <p class="gry">Web Developer</p>
-        </div>
-    </div>
-    <style>
-            .gry{
-                color: rgb(191, 191, 191);
-            }
-            .redbgl:hover{
-                background-color: red;
-            }
-            
-    </style>
-</section>
-<section class="soon">
-    <div class="left4">
-        <div style="background-color: rgba(0,0,0,.5);
-                    height: 100%;
-                    width: 100%;"
-             class="flexy">
-            <h2 class="text-light" style="font-weight: 600;">
-                COMING SOON !
-            </h2>
-        </div>
-    </div>
-    <div class="right4 p-4">
-        <H4 class="text-light" style="font-weight: 600;">
-            SIGNUP FOR NEWSLETTER
-        </H4>
-        <form class="d-flex mt-3">
-            <input class="px-3 me-0 rounded-0 border-0 search"
-                   type="search"
-                   placeholder="Search"
-                   aria-label="Search">
-            <button class=" p-2 rocket"
-                    style="background-color: white;
-                           border: 0;"
-                    type="submit">
-                <i class="fa-solid fa-paper-plane"></i>
-            </button>
-        </form>
-    </div>
-    <style>
-        .soon {
-            display: flex;
-        }
-
-        .rocket {
-            color: rgb(255, 5, 72);
-
-        }
-
-        .search {
-            width: 450px;
-        }
-
-        .soon {
-            height: 30vh;
-        }
-
-        .left4 {
-            background-image: url('{%static 'images/soon2.png' %}');
-            background-size: 100% 100%;
-            
-            background-repeat: no-repeat;
-            width: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .right4 {
-            background-color: rgb(255, 5, 72);
-            background-image: url('{%static 'images/triangle.png' %}');
+        .banner {
+            height: 50vh;
+            background-image: url('{% static 'images/assn.png' %}');
             background-size: cover;
-            width: 50%;
+
+            background-attachment: fixed;
+
+
+        }
+
+        .headtext {
+            font-size: 50px;
+            font-weight: 600;
+        }
+
+        .inner {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-
-        }
-        .flexy {
-            display: flex;
-            align-items: center;
-            justify-content: center;
             
         }
 
-        @media all and (max-width: 800px) {
-            .right4 {
-                width: 100%;
+        @media only screen and (max-width:800px) {
+
+            .headtext {
+                font-size: 30px;
+                font-weight: 600;
             }
 
-            .left4 {
-                width: 100%;
-                height: 200px;
-                background-size: cover;
-            }
+            .banner {
+                height: 30vh;
 
-            .search {
-                width: auto;
-            }
 
-            .soon {
-                height: auto;
-            }
 
-            .soon {
-                display: block;
             }
-            
         }
-    </style>
+        .pe-lg-4
+        {
+            font-size: .91em;
+        }
+        
+
+       
+        
+
+                    
+</style>
 </section>
-<!-- content ends here -->
+<!-- content goes here -->
+<section class="container p-2">
+<div class="row">
+    <div class="col-lg-8">
+        <!-- <h3 class="bld pb-3">
+            About <span class="red bld py-4">Dimenzions</span>
+        </h3> -->
+        <p style="text-align: justify;" class="pe-lg-4 p-1">
+            Dimenzions is known as one of the leading corporate branding service providers 
+            for its amazing 3D designs, logo designing and other works aimed at providing the 
+            best for our clients. Having been a creative design agency, we employ a talented 
+            team of employees who bring a combination of creativity and technology to the table. 
+            The role of brand awareness in successfully establishing a business is well understood 
+            at Dimenzions. 3D animation company in Kerala with its original concepts, cutting-edge 
+            technology, technical competence, and in-depth knowledge is stable, trustworthy, durable, 
+            and sustainable. </p>
+
+          <p  class="pe-lg-4 p-1" style="text-align: justify;"> 
+            In place of following trends, we aim to create trends that offer perfection. 
+            By combining unrivalled animation solutions with immaculate artistry, 
+            we help you establish a distinctive brand identity among the competitors. 
+            With the help of our team of animators and artists, we ensure that our 
+            animation solutions are the best in the world. Throughout the entire process, 
+            our team is constantly looking for ways to improve our strategies based on the 
+            pace faster than the market. The 3D printing industry is a full-time profession 
+            for us, and we are eager to provide our clients with numerous 3D capabilities. 
+            We provide 3D modelling services for various purposes, such as presentations, 
+            medical and business needs, character sketches, game creations, automotive needs,
+             animations, and more. We are also taking the design industry to new heights by 
+             providing services like Logo creation, UI/UX designing, Interior design for homes 
+             and offices, Character sketching, Caricature drawing, Letterhead designs, and all 
+             kinds of graphic design works affordably.
+        </p>
+        
+        
+        <a href="{% url 'registration'%}" class="btn btn-danger">Join Now</a>
+    </div>
+    <div class="col-lg-4">
+        <img class="img-fluid"
+             src="{% static 'images/inner_about_img01 1.png' %}"
+             alt="">
+        <img class="imagedown img-fluid"
+             src="{% static 'images/inner_about_img02 1.png' %}"
+             alt="">
+    </div>
+</div>
+</section>
+<style>
+    .imagedown{
+        margin-top: -200px;
+        margin-left: -40px;
+
+    }
+    .red{
+    color: rgb(255, 5, 72);
+    }
+    .bld{
+        font-weight: 700;
+    }
+    @media only screen and (max-width:800px) {
+        .imagedown{
+        margin-top: auto;
+        margin-left: auto;
+
+    }
+    }
+    #first-content h2
+    {
+        text-align: center;
+    }
+    #first-content ul li{
+        list-style: none;
+        padding: 0.30em 0.50em;
+        font-size: 0.90em;
+    }
+    #first-content ul li span{
+        color: orange;
+        padding: 0 0.25em;
+        font-weight: 1000;
+        font-size: 13px;
+    }
+    #first-content p{
+        font-size: 0.90em;
+        line-height: 1.7em;
+        color: #1f194c;
+    }
+</style>
+
+<section class="mt-4" id="first-content">
+<div class="container p-2">
+    <h2 class="bld pb-3 mb-3 pl-2 ">
+        Why prefer 3D <span class="red bld py-4">modelling</span>
+    </h2>
+    <div class="row">
+        <div class="col-lg-5">
+            <ul>
+                <li> <span>✓</span>Branding for your business</li>
+                <li> <span>✓</span>Better product development</li>
+                <li> <span>✓</span>Easy product testing and prototyping</li>
+                <li> <span>✓</span>More precise measurements</li>
+                <li><span>✓</span>	3D modelling fixes errors before the final product design </li>
+                <li><span>✓</span> Highly efficient and save time during presentations</li>
+                <li><span>✓</span> Excellent communication tool for your end users</li>
+                <li> <span>✓</span>It helps in visualizing the scenario</li>
+                <li> <span>✓</span> Highly realistic and cost-effective</li>
+            </ul>
+
+        </div>
+        <div class="col-lg-7">
+            <p>
+                Since our inception, we have been satisfying the demands of our valued clients, 
+                providing excellent and accurate services on time, and have become the recognized 
+                name in 3D modelling, rendering, sketching caricature and many more. In order to 
+                create a highly realistic final product, we have the best platforms and software. 
+                The solution we provide spans the entire process of conceptualizing, sketching, 
+                and building a 3D model. In addition to using these models in your presentation, 
+                they can also assist employees and engineers in gaining a greater understanding of 
+                the product. Our design and development enable you to achieve fantastic outcomes and 
+                provide a powerful resource for your communication needs of your business.
+            </p>
+        </div>
+    </div>
+    
+    
+</div>
+</section>
+
+
+
+<style>
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .column {
+    width: 100%;
+    padding: 0 1em 1em 1em;
+    text-align: center;
+  }
+  .card {
+    width: 100%;
+    height: 100%;
+    padding: 1em 1.5em;
+    background: linear-gradient(#ffffff 50%, #2c7bfe 50%);
+    background-size: 100% 200%;
+    background-position: 0 2.5%;
+    border-radius: 5px;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f194c;
+    margin: 1em 0;
+  }
+  p {
+    color: #575a7b;
+    font-size: 13px;
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+  }
+  .icon-wrapper {
+    background-color: #2c7bfe;
+    position: relative;
+    margin: auto;
+    font-size: 20px;
+    height: 1.5em;
+    width: 1.5em;
+    color: #ffffff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: 0.5s;
+  }
+  .card:hover {
+    background-position: 0 100%;
+  }
+  .card:hover .icon-wrapper {
+    background-color: #ffffff;
+    color: #2c7bfe;
+  }
+  .card:hover h3 {
+    color: #ffffff;
+  }
+  .card:hover p {
+    color: #f0f0f0;
+  }
+  @media screen and (min-width: 768px) {
+    .servi {
+      padding: 1 2em;
+    }
+    .column {
+      flex: 0 50%;
+      max-width: 50%;
+    }
+  }
+  @media screen and (min-width: 992px) {
+    .servi {
+      padding: 1em 3em;
+    }
+    .column {
+      flex: 0 0 33.33%;
+      max-width: 33.33%;
+    }
+  }
+</style>
+
+<section class="servi">
+<div class="row text-center">
+    <h2 class="bld pb-3 mb-4">
+        Services <span class="red bld py-4">We Offer</span>
+    </h2>
+</div>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <div class="icon-wrapper">
+        <i class="fas fa-hammer"></i>
+      </div>
+      <h3>Logo Creation</h3>
+      <p>
+        An elegant Logo Design is what make your brand immortal, 
+        leaving an impression worth a llifetime etched into the hearts 
+        of audience. One can say that you are at the right place, 
+        given the circumstance that you are searching for one right 
+        now. Dimenzions is one the leading Logo designing company 
+        in Kerala and cover your requirements by providing the best 
+        logo one ever going to get. Wordmarks/logotypes, Letterforms, 
+        Monogram logos, with symbols/brand marks/pictorial marks, 
+        Abstract logo marks, Mascots, we deliver as your choice.
+      </p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <div class="icon-wrapper">
+        <i class="fas fa-brush"></i>
+      </div>
+      <h3>UI/UX Designing (front end)</h3>
+      <p>
+        We at Dimenzions understand that user experience pertains 
+                to everything that affects users and their interactions with 
+                a product. It is our goal to create products that enhance the 
+                digital experience for organizations and help brand custodians 
+                unlock growth, credibility, and ROI. Designing digital experiences 
+                that are clear, purposeful, and visually captivating is our specialty. 
+                Our SEO-friendly websites are tested with various quality controls to 
+                ensure that they're bug-free, easy to use, and aesthetically pleasing.
+      </p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <div class="icon-wrapper">
+        <i class="fas fa-wrench"></i>
+      </div>
+      <h3>3D Artistg</h3>
+      <p>
+        3D artists - highly sought after personnel in fields such 
+        as medicine, automotive, gaming, and many others, who keep 
+        perfecting & nurturing their gifts. From characters to 
+        environments to special effects, they create images with 
+        a keen eye for composition, photo-realism, and lighting. 
+        3ds Max, V-Ray, Adobe Creative Suite, Maya are only a few 
+        of the tools they are dancing with. Our 3D Rendering Artist 
+        team builder will help you hire the right people to succeed.
+      </p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <div class="icon-wrapper">
+        <i class="fas fa-truck-pickup"></i>
+      </div>
+      <h3>Photoshop</h3>
+      <p>
+        The art of graphic design consists of making use of 
+                various design elements to convey information about 
+                a product or anything else. Making the audience consume 
+                what you imply. We offer Graphic design services within reach, 
+                ranging from publications, social media posters, Visiting 
+                cards, Packet designing, ID cards, Brochure creation, 
+                Flyer Design, Flex Design, and magazines to websites and billboards.
+      </p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <div class="icon-wrapper">
+        <i class="fas fa-broom"></i>
+      </div>
+      <h3>House Plan</h3>
+      <p>
+        Has there ever been a place that would blow your mind off 
+                and grab your attention with its sheer elegance and brilliance? 
+                As the best interior designer in Kochi, we create the trends 
+                of tomorrow's exquisite residential spaces of all kinds. 
+                Each interior design requirement is treated with the utmost 
+                professionalism by our interior designers. Architect your 
+                home in luxury with the help of master minds of Dimenzions. 
+                The brilliance in setting Home & Offices Interior & Exterior 
+                is yours to unlock.
+      </p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <div class="icon-wrapper">
+        <i class="fas fa-plug"></i>
+      </div>
+      <h3>Drawings</h3>
+      <p>
+        Immerse yourself in the beauty of handcrafted drawings of 
+        your favourite places, persons, or anything. Photo sketches, 
+        Caricature works, Photo frame pictures, let it be anything; 
+        the magic hands are ready to pull out the best in them within 
+        a short period of time, effortlessly. Sketches, watercolour, 
+        oil, acrylic, marble, and granite drawings are born again with 
+        an elegant touch of expertise.
+      </p>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<style>
+#content-bottom{
+    margin: 0.25em;
+}
+#content-bottom .container
+{
+   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+   padding: 1em 1.2em;
+}
+#content-bottom h3{
+    font-size: 1.3em;
+    font-weight: 600;
+}
+#content-bottom .box-disp {
+    position: relative;
+   
+    color: #fff;
+    background: transparent;
+    overflow: hidden;
+    border-top: 2px solid rgba(255, 49, 49, 0.5);
+    border-right: 2px solid rgba(0, 255, 255, 0.5);
+    border-bottom: 2px solid rgba(57, 255, 20, 0.5);
+    border-left: 2px solid rgba(255, 255, 113, 0.5);
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  
+  }
+
+  #content-bottom p {
+    font-size: 0.92rem;
+    text-align: center;
+  }
+
+  #content-bottom span {
+    position: absolute;
+    border-radius: 100vmax;
+  }
+
+  #content-bottom .top {
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 5px;
+    background: linear-gradient(
+      90deg,
+      transparent 50%,
+      rgba(255, 49, 49, 0.5),
+      rgb(255, 49, 49)
+    );
+  }
+
+  #content-bottom .bottom {
+    right: 0;
+    bottom: 0;
+    height: 5px;
+    background: linear-gradient(
+      90deg,
+      rgb(57, 255, 20),
+      rgba(57, 255, 20, 0.5),
+      transparent 50%
+    );
+  }
+
+  #content-bottom .right {
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 30%,
+      rgba(0, 255, 255, 0.5),
+      rgb(0, 255, 255)
+    );
+  }
+
+  #content-bottom .left {
+    left: 0;
+    bottom: 0;
+    width: 5px;
+    height: 0;
+    background: linear-gradient(
+      180deg,
+      rgb(255, 255, 113),
+      rgba(255, 255, 113, 0.5),
+      transparent 70%
+    );
+  }
+
+  #content-bottom .top {
+    animation: animateTop 3s ease-in-out infinite;
+  }
+
+  #content-bottom .bottom {
+    animation: animateBottom 3s ease-in-out infinite;
+  }
+
+  #content-bottom .right {
+    animation: animateRight 3s linear infinite;
+  }
+
+  #content-bottom .left {
+    animation: animateLeft 3s ease-in-out infinite;
+  }
+
+  @keyframes animateTop {
+    25% {
+      width: 100%;
+      opacity: 1;
+    }
+
+    30%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes animateBottom {
+    0%,
+    50% {
+      opacity: 0;
+      width: 0;
+    }
+
+    75% {
+      opacity: 1;
+      width: 100%;
+    }
+
+    76%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes animateRight {
+    0%,
+    25% {
+      opacity: 0;
+      height: 0;
+    }
+
+    50% {
+      opacity: 1;
+      height: 100%;
+    }
+
+    55%,
+    100% {
+      height: 100%;
+      opacity: 0;
+    }
+  }
+
+  @keyframes animateLeft {
+    0%,
+    75% {
+      opacity: 0;
+      bottom: 0;
+      height: 0;
+    }
+
+    100% {
+      opacity: 1;
+      height: 100%;
+    }
+  }
+
+</style>
+
+<section class="mt-3 mb-4" id="content-bottom">
+<div class="container box-disp" >
+    <h3>Freelance</h3>
+    <p class="content">Looking for extra income is always appreciated. Though, are you satisfied with 
+        your current part-time job, which does not help in building your career? Well, 
+        you are not alone. We are here to help you.
+        <br>
+        Dimenzions opens a door to whole other levels of opportunities in freelancing services 
+        in Kerala. Work from anywhere, at your own disposal, all you have to do is register your 
+        expertise with Dimenzions. Website development, Digital marketing, Game development, Auditing, 
+        Graphic designing, Content writing, Video editing, whatever profession you are looking for 
+        will be available at your fingertips.
+    </p>
+<span class="top"></span>
+  <span class="right"></span>
+  <span class="bottom"></span>
+  <span class="left"></span>
+</div>
+</section>
+
+
+
+   
+<style>
+        .gry{
+            color: rgb(97, 95, 95);
+        }
+       
+        
+        
+</style>
+</section>
 {% endblock %}

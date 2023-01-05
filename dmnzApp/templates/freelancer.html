@@ -123,10 +123,26 @@
                 </div>
 
             </form>
-           
-           
-
-
+            <style>
+                .add-list button
+                {
+                    border: none;
+                    outline: none;
+                    color: #fff;
+                    padding: 0.50em 1em;
+                    background: rgb(250, 26, 78);
+                }
+                .add-list a
+                {
+                    font-size: 13px;
+                    font-weight: 700;
+                    color: #fff;
+                }
+            </style>
+            <div class="add-list text-center">
+                <button><a href="{% url 'add_toplist' person.id %}">Add to top list</a></button>
+                <button><a href="{% url 'remove_toplist' person.id %}"> Remove from list</a></button>
+            </div>
 
         </div>
 

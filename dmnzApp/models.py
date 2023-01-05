@@ -72,6 +72,7 @@ class Register_freelance(models.Model):
     password=models.CharField(max_length=255,default='')
     #work
     rating=models.IntegerField(default=1)
+    ranking=models.IntegerField(default=0)
     w_status=models.CharField(max_length=10,default='0')
 
 
@@ -116,6 +117,14 @@ class Freelancerworks(models.Model):
     fr_file=models.FileField( upload_to="images/",null=True,blank=True,default='')
     fr_status= models.CharField(max_length=40)
 
+class Messagebox(models.Model):
+    name=models.CharField(max_length=100,default='')
+    email=models.EmailField()
+    phno=models.CharField(max_length=100,default='')
+    company_name=models.CharField(max_length=100,default='')
+    messag=models.TextField()
+    mg_date=models.DateField(auto_now_add=True,null=True,blank=True)
+    files=models.FileField(upload_to="files")
     
 
 

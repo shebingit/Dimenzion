@@ -4,18 +4,69 @@
         border-radius: 10px;
         box-shadow: 0 0 10px 0 rgba(100, 100, 100, 0.26);
     }
+    .dwn
+    {
+        border: none;
+        outline: none;
+        padding: 0.50em 1em;
+        background: rgb(31, 10, 125);
+        border-radius: 10px;
+        
+    }
+    .dwn a{
+        color: #fff;
+    }
 </style>
 
 
 <div class="container">
-    <label for="" style="font-weight: 700;">Dashboard</label>
+    {% for i in adm %}
+
+
+    <label for="" style="font-weight: 700;">Welcome To {{ i.username}} &nbsp;Dashboard</label>
+    {% endfor %}
     <div class="row mt-3">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
-                <div class="card-body" style="height:50vh">
-                    {% for i in adm %}
-                    <p class="card-title mb-0 mt-3" style="font-weight: 600;">Welcome {{ i.username}}</p>
-                    {% endfor %}
+                <h5 class="mt-2 p-2"> Messages</h5>
+                <div class="card-body overflow-auto p-1" style="height:52vh">
+                   
+                    <div class="container mt-4 mb-3">
+                        <table class="table mb-2">
+                            <thead class="table-dark">
+                              <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Full Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Phone No</th>
+                                <th scope="col">Company Name</th>
+                                <th scope="col">Message</th>
+                                <th scope="col">Upload File</th>
+                                
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in messg %}
+                              <tr>
+                                
+                                <td>{{i.mg_date}}</td>
+                                <td>{{i.name}}</td>
+                                <td>{{i.email}}</td>
+                                <td>{{i.phno}}</td>
+                                <td>{{i.company_name}}</td>
+                                <td>{{i.messag}}</td>
+                                <td>
+                                    {% if i.files %}
+                                    <button class="dwn"><a href="#"  download="{{i.files.url}}">Download</a></button>
+                                    
+                                    {% endif %}
+                                </td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+
+                    </div>
                 </div>
             </div>
         </div>

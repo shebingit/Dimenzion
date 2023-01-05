@@ -143,5 +143,12 @@ urlpatterns = [
 
      path('products',views.products,name='products'),
 
+     path('Send',views.send_message,name='send_message'),#message Send
+     path('Add-To-List/<int:pk>',views.add_toplist,name='add_toplist'),
+     path('Remove-From-List/<int:pk>',views.remove_toplist,name='remove_toplist'),
+
+
+     
+
 
 ]

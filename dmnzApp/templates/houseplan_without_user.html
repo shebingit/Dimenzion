@@ -1,82 +1,87 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
-    <section class="banner">
-        <div class="inner">
-            <b>
-                <h3 class="text-light headtext" style="font-family: '', sans-serif; ">
-                    <span style="color: rgb(255, 5, 72);">HOUSE</span>PLANS
-                </h3>
-            </b>
-            <p class="text-center text-white p-5">The most adventurous and ambitious endeavor is to getting the best house plans and architectural designs for your Dream Home. With the assistance of the top architects and designers in Dimensions, you can make your dream of an elegant home or office space in Kerala a reality.</p>
-        </div>
-        <style>
-            .banner {
-                height: 50vh;
-                background-image: url('https://c4.wallpaperflare.com/wallpaper/995/152/891/assassins-creed-4k-windows-wallpaper-preview.jpg');
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
 
+<style>
+    body
+    {
+        background: rgb(250, 250, 250);
+    }
+    #content-box
+    {
+        margin-top: 2em;
+        margin-bottom: 1em;
+        
+    }
+    #content-box .container{
+        padding: 1em 2em;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        gap: 2.5em;
+        background: rgb(244, 241, 241);
+        
+    }
+    #content-box .container .content-box h4{
+        font-weight: 700;
+        margin-bottom: 1.5em;
+        margin-top: 0.50em;
+    }
+    #content-box .container .content-box h4 span{
+        color: #d2274c;
+        font-size: 1.11em;
+    }
+    #content-box .container .content-box p{
+        font-size: 0.85em;
+        text-align: justify;
+        color: rgb(54, 52, 52);
+        font-weight: 500;
+        line-height: 1.70em;
+    }
+    #content-box .content-imge img
+    {
+       border-radius: 20px;
+       max-width: 400px;
+    }
+   @media(max-width:932px)
+   {
+    #content-box
+    {
+        margin-top: .020em;
+        
+    }
+    #content-box .container{
+        flex-direction: column;
+        gap: 0.5em;
+    }
+    #content-box .content-imge img
+    {
+       border-radius: 20px;
+       max-width: 350px;
+    }
+   }
+</style>
+    
 
-            }
-            li{
-                cursor: pointer;
-            }
+    
+    
+<section id="content-box">
+    <div class="container">
+      <div  class="content-box">
+        <h4 class=""><span>HOUSE&nbsp;</span>PLANS</h4>
+        <p class="">
+            The most adventurous and ambitious endeavor is to getting the best house plans and architectural designs 
+            for your Dream Home. With the assistance of the top architects and designers 
+            in Dimensions, you can make your dream of an elegant home or office space in Kerala a reality.
+        </p>
+      </div>
+      <div class="content-imge">
+        <img src="static/images/house.webp">
+      </div>
 
-            .headtext {
-                font-size: 50px;
-                font-weight: 600;
-            }
-
-            .inner {
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.7);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-            }
-            #low{
-                display: none;
-            }
-            #high{
-                display: none;
-            }
-
-            @media all and (max-width: 500px) {
-                .banner {
-                    height: 30vh;
-
-
-                }
-
-                .headtext {
-                    font-size: 30px;
-                }
-            }
-
-        </style>
-
-        <script>
-
-            const price_low=()=>{
-                document.getElementById('low').style.display='flex';
-                document.getElementById('all').style.display='none';
-                document.getElementById('high').style.display='none';
-            }
-
-            const price_high=()=>{
-                document.getElementById('low').style.display='none';
-                document.getElementById('all').style.display='none';
-                document.getElementById('high').style.display='flex';
-            }
-
-        </script>
-
-
-    </section>
+        
+    </div>
+</section>
 
     <style>
         .row 
@@ -97,9 +102,11 @@
         }
         #products .image 
         {
-            display: flex;
+           display: flex;
             justify-content: center;
             align-items: center;
+           
+          
         }
         #products .image img
         {
@@ -195,10 +202,10 @@
         .filter
         {
             display: flex;
-            justify-content:space-between;
+            justify-content:space-around;
             align-items: center;
             flex-direction: row;
-            padding: 0px 15px;
+            
 
         }
         .fa-filter:hover 
@@ -255,6 +262,14 @@
             border: none;
             outline: none;
         }
+        @media(max-width:932px)
+        {
+            #request
+            {
+                font-size: 0.80em;
+                padding: 8px 10px;
+            }
+        }
     </style>
       <div class="container p-1 mb-5">
         <div class="filter mb-3 mt-3 ">
@@ -262,7 +277,7 @@
                <a  id="toggleButton"><i class="fa fa-filter"style="font-size:0.95em;"></i>&nbsp;<span style="font-size:0.90em; color:black">Filter By Price</span></a>
             </div>
             <div class="col-lg-9  col-md-6 col-sm-12 p-2 text-center">
-                <a href="#" id="request" data-bs-toggle="modal" data-bs-target="#exampleModal">Need Another <i class="fa fa-question"></i></a>
+                <a href="#" id="request" data-bs-toggle="modal" data-bs-target="#exampleModal">Need Another Design <i class="fa fa-question"></i></a>
             </div>
         </div>
         <div class="card " id="myDiv" style="display:none">
@@ -288,8 +303,9 @@
         </div>
         <div class="row g-4">
             {% for p in all %}
-            <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="col-lg-4 col-md-4 col-sm-12" class="product">
                 <div class="container" id="products">
+                   
                     <div class="image">
                         {% if p.gib %}
                         <img src="{{p.gib.url}}" alt="Photo shop image">
@@ -326,6 +342,7 @@
                             </a>
                         </div>
                     </div>
+                
                 </div>
             </div>
             {% endfor %}

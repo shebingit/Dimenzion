@@ -175,9 +175,9 @@
                                  </td>
                                  <td>
                                     {% if i.fr_status == '1' %}
-                                        <a href="#" class="btn btn-success"> Submitted</a>
+                                    <button  class="bt-submited"><a href="#"> Submitted</a></button>
                                     {% else %}
-                                        <a href="#demo-modal{{i.id}}" class="btn btn-success"> Submitt</a>
+                                        <button  class="bt-submit"><a href="#demo-modal{{i.id}}"> Submitt</a></button>
                                     {% endif %}
                                  </td>
                                 </tr>
@@ -199,6 +199,30 @@
         </div>
 
         <style>
+            .bt-submit{
+                border: none;
+               outline: none;
+               width: 100px;
+               background: rgb(6, 6, 112);
+               color: #fff;
+               padding: 0.65em 1.2em;
+               font-weight: 600;
+            }
+            .bt-submited
+            {
+                border: none;
+               outline: none;
+               width: 100px;
+               background: rgb(35, 194, 46);
+               color: #fff;
+               padding: 0.65em 1.2em;
+               font-weight: 600;
+            }
+            .bt-submit a, .bt-submited a
+                {
+                    color: #fff;
+                }
+            
             .profile0 {
                 margin-top: -200px;
                 border: 1px solid rgb(188, 188, 188);

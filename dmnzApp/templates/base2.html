@@ -14,18 +14,145 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Anton&family=Asap+Condensed&family=Bebas+Neue&family=Cinzel+Decorative:wght@700&family=Fjalla+One&family=Fugaz+One&family=Hubballi&family=Koulen&family=League+Gothic&family=Lobster&family=Oswald:wght@500&family=Pacifico&family=Playfair+Display&family=Poppins&family=Rambla&family=Righteous&family=Ropa+Sans&family=Staatliches&family=Yanone+Kaffeesatz:wght@500&display=swap');
     </style>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            
         }
+        a{
+            text-decoration: none;
+        }
+        .navbar
+        {
+            background: transparent;
+            
+        }
+        footer
+        {
+        position: static;
+        bottom: 0;
+        left: 0;
+        right:0;
+        background-color:#212529;
+        height: auto;
+        width: 100%;
+        font-family: "Open Sans";
+        padding-top: 20px;
+        color: #fff;
+       
+    }
+    .footer-content
+    {
+        display: flex;
+        align-items: center;
+        justify-content:space-around;
+        flex-direction: row;
+        text-align: center;
+        padding: 30px;
+
+    }
+    @media(max-width:932px)
+    {
+        .footer-content
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+       
+    }
+
+    }
+    .footer-content h3{
+        font-size: 1.6rem;
+        font-weight: 400;
+        text-transform: capitalize;
+        line-height: 3rem;
+    }
+    .footer-content p{
+        max-width: 400px;
+        margin: 5px auto;
+        line-height: 28px;
+        font-size:14px;
+        font-family:Arial, Helvetica, sans-serif;
+        background-color: #212529;
+        color: #808080;
+    }
+    
+    footer .socials
+ {
+     margin-top: 2rem;
+     display: flex;
+ }
+ footer .socials li{
+     list-style:none ;
+ }
+ footer .socials li a{
+    
+     width:2rem;
+     height:2rem;
+    
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     align-items: center;
+     margin-right:.40rem ;
+     text-decoration: none;
+     border-radius: 4px;
+ }
+ footer .socials li a:hover{
+     background: #f00;
+     color: #fff;
+     font-size: 1rem;
+ }
+ 
+ footer .news-letter h4
+    {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+
+        color: rgb(252, 252, 252);
+        font-weight: 600;
+        font-size:1.2em
+    }
+    
+   
+  
+    footer  .news-letter .quicklinks a:hover{
+        padding: .80em;
+     align-items: center;
+     background: #f00;
+     color: #fff;
+     
+    }
+    footer  .quicklinks a{
+        text-transform: uppercase;
+        font-size: 12px;
+        }
+        @media(max-width:932px)
+        {
+            footer  .news-letter  .contact
+            {
+                margin-top:2rem;
+            }
+        }
+        .btn
+        {
+            border: none;
+            outline: none;
+        }
+        .nav-item .active {
+            color: #ff0000; /* change to desired color */
+        }
+     
     </style>
 </head>
 
@@ -43,7 +170,7 @@
                 <div class="collapse navbar-collapse justify-content-end " id="navbarNavDropdown2">
                     <ul class="navbar-nav ">
                         <li class="nav-item ">
-                            <a class="nav-link" style="color: rgb(255, 5, 72);" aria-current="page"
+                            <a class="nav-link"  aria-current="page"
                                 href="{% url 'userhome'%}">HOME</a>
                         </li>
 
@@ -59,14 +186,14 @@
                         <li class="nav-item mx-lg-3">
                             <a class="nav-link " href="{% url 'viewcart' %}">CART</a>
                         </li>
-                        <li class="nav-item mx-lg-3">
+                        <!-- <li class="nav-item mx-lg-3">
                             <form class="d-flex">
                                 <input class="form-control me-0 rounded-0" type="search" placeholder="Search"
                                     aria-label="Search">
                                 <button class="  text-light p-2" style="background-color: rgb(255, 5, 72); border: 0;"
                                     type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
-                        </li>
+                        </li> -->
                         <li class="nav-item mx-lg-3">
                             <a class="nav-link " href="{% url 'model'%}">{{member.first_name}}</a>
                         </li>
@@ -90,16 +217,11 @@
         </nav>
         <style>
             .nav-item a {
-                font-size: 18px;
+                font-size: 14px;
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
             }
 
-            .nav-link {
-                font-family: Arial, Helvetica, sans-serif;
-                color:white;
-            }
-            .nav-item:hover .nav-link {
-                color:red;
-            }
+          
         </style>
     </section>
     {% block body %} 
@@ -109,268 +231,66 @@
 
 
 
+    
     <section>
-
-        <!--footer starts from here-->
-        <footer class="footer p-4 fadeInUp wow p-3" data-wow-delay="0.5s">
-            <div class="container">
-                <div class="row">
-                    <div class=" col-sm-4 ">
-                        <h5 class="headin5_amrc col_white_amrc pt2 " style="color:rgb(255, 5, 72)"><img
-                            src="{% static 'images/logod.png' %}" alt="" alt=""></h5>
-                        <!--headin5_amrc-->
-                        <p>
-                            <span style=""><i class="fa-solid fa-location-dot"></i> &ensp;</span> Dimenzions P
-                            Ltd., XI/105-C1,<br> &ensp;&ensp;&ensp; Civil Lane
-                            Road, Kochi
-                        </p>
-                        <p class="my-4">
-                            <i class="fa-solid fa-envelope-open-text"></i> &ensp; dimensions@example.com
-                        </p>
-                        <p class="my-4">
-                            <i class="fa-solid fa-phone"></i>  &ensp;+91-847547924
-                        </p>
+        <footer>
+            <div class="footer-content">
+                <div class="left-side">
+                    <h3> <img src="{% static 'images/logod.png' %}" alt=""></h3> 
+                    <ul class="socials">
+                         <li><!--<a href=""style="color:#fff"><i class="fa-brands fa-facebook" style="color: #3b5998;" ></i></a> -->
+                            <a class="btn btn-primary btn-lg btn-floating" style=" background: #3B5998;" href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li><!--<a href=""style="color:#fff"><i class="fa-brands fa-instagram" style="color: #ac2bac;"></i></a>-->
+                            <a class="btn btn-primary btn-lg btn-floating" style="background: linear-gradient(
+                                45deg,
+                                #f09433 0%,
+                                #e6683c 25%,
+                                #dc2743 50%,
+                                #cc2366 75%,
+                                #bc1888 100%
+                              );" href="#!" role="button"><i class="fab fa-instagram"></i></a></li>
+                        <li><!--<a href=""style="color:#fff"><i class="fa-brands fa-twitter" style="color: #55acee;"></i></a>-->
+                            <a class="btn btn-primary btn-lg btn-floating" style="background: #55ACEE;"  href="#!" role="button"><i class="fab fa-twitter"></i></a></li>
                         
-                    </div>
-                    <div class=" col-sm-5 col-md   ">
-                        <h5 class="headin5_amrc col_white_amrc pt2 text-light " style="font-weight: 800;">Recent Post</h5>
-                        <!--headin5_amrc-->
-                        <ul class="footer_ul_amrc">
-                            <li>
-                                <div class="d-flex my-2">
-                                    <img src="https://cdn01.alison-static.net/public/html/site/img/coronavirus/touch-typing.png"
-                                        alt="" width="80px">
-                                    <p class="p-2 pe-lg-5" style="text-align: justify;">Lorem ipsum, dolor sit amet
-                                        consectetur adipisicing elit. Reiciendis autem eaque quidem accusantium. Libero,
-                                        nulla? </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex my-2">
-                                    <img src="https://cdn01.alison-static.net/public/html/site/img/coronavirus/touch-typing.png"
-                                        alt="" width="80px">
-                                    <p class="p-2 pe-lg-5" style="text-align: justify;">Lorem ipsum, dolor sit amet
-                                        consectetur adipisicing elit. Reiciendis autem eaque quidem accusantium. Libero,
-                                        nulla? </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex my-2">
-                                    <img src="https://cdn01.alison-static.net/public/html/site/img/coronavirus/touch-typing.png"
-                                        alt="" width="80px">
-                                    <p class="p-2 pe-lg-5" style="text-align: justify;">Lorem ipsum, dolor sit amet
-                                        consectetur adipisicing elit. Reiciendis autem eaque quidem accusantium. Libero,
-                                        nulla? </p>
-                                </div>
-                            </li>
-                        </ul>
-                        <!--footer_ul_amrc ends here-->
-                    </div>
-                    <div class=" col-sm-3 col-md  col-6 py-0 col">
-                        <h5 class="headin5_amrc col_white_amrc pt2 text-light" style="font-weight: 800;">
-                            Pages
-                        </h5>
-                        <!--headin5_amrc-->
-                        <ul class="footer_ul_amrc">
-                            <li class="py-2">
-                                <a href="#">
-                                    <h6>Home</h6>
-                                </a>
-                            </li>
-                            <li class="py-2">
-                                <a href="#">
-                                    <h6>About</h6>
-                                </a>
-                            </li>
-                            <li class="py-2">
-                                <a href="#">
-                                    <h6>Pages</h6>
-                                </a>
-                            </li>
-                            <li class="py-2">
-                                <a href="{% url 'model' %}">
-                                    <h6>Categoty</h6>
-                                </a>
-                            </li>
-
-                            <li class="py-2">
-                                <a href="{% url 'model' %}">
-                                    <h6>Cart</h6>
-                                </a>
-                            </li>
-
-                        </ul>
-                        <!--footer_ul_amrc ends here-->
-                    </div>
+                    </ul>
+                </div>
+         
+                <div class="news-letter">
+              
+                    <h4 class="mt-4">Quick Link</h4>
+                    <hr>
+                    <p class="quicklinks">
+                       <a href="{% url 'userhome'%}" style="color:#fff">Home</a><br>
+                       <a href="{% url 'about_two'%}"style="color:#fff">About</a><br>
+                        <a href="{% url 'contact_two'%}"style=";color:#fff">Contact Us</a><br>
+                        <a href="{% url 'model'%}"style="color:#fff">Category</a><br>
+                        <a href="{% url 'viewcart'%}"style="color:#fff">CART</a>
+                    </p>
+              
+                       
+                    </ul>
+                   
+                </div>
+                
+                <div class="news-letter"style="background-color: #212529;">
+                   
+                    <h4 class="contact" style="background: #212529;">Contact</h4>
+                    <hr>
+                        <p>
+                            <i class="fa fa-map-marker"></i> &nbsp; Dimenzions PLtd., XI/105-C1,  Civil LaneRoad, Kochi<br>
+                            <i class="fa fa-envelope"></i>&nbsp; dimensions@example.com <br>
+                            <i class="fa fa-phone"></i>&nbsp;  +91-847547924 
+                        </p>
 
                 </div>
             </div>
-
+            
         </footer>
-        <div class="black p-3">
-            <!--foote_bottom_ul_amrc ends here-->
-
-            <ul class="social_footer_ul m-0 p-0 flexyy">
-                <li>
-                    <a href="http://fb.com" style="color:white;"><i class="fab fa-facebook-f"></i></a>
-                </li>
-                <li>
-                    <a href="http://linkedin.com" style="color:white;"><i class="fab fa-twitter"></i></a>
-                </li>
-
-                <li>
-                    <a href="http://webenlance.com" style="color:white;"><i class="fab fa-instagram"></i></a>
-                </li>
-            </ul>
-
-        </div>
-        <style>
-            *footer*/ .col_white_amrc {
-                color: #FFF;
-            }
-
-            footer {
-                width: 100%;
-                background-color: rgb(74, 72, 77);
-                min-height: 250px;
-                padding: 10px 0px 25px 0px;
-
-            }
-
-            .pt2 {
-                padding-top: 40px;
-                margin-bottom: 20px;
-            }
-
-            footer p {
-                font-size: 13px;
-                color: #CCC;
-                padding-bottom: 0px;
-                margin-bottom: 8px;
-            }
-
-            .mb10 {
-                padding-bottom: 15px;
-            }
-
-            .footer_ul_amrc {
-                margin: 0px;
-                list-style-type: none;
-                font-size: 14px;
-                padding: 0px 0px 10px 0px;
-            }
-
-            .footer_ul_amrc li {
-                padding: 0px 0px 5px 0px;
-            }
-
-            .footer_ul_amrc li a {
-                color: #CCC;
-            }
-
-            .footer_ul_amrc li a:hover {
-                color: #fff;
-                text-decoration: none;
-            }
-
-            .fleft {
-                float: left;
-            }
-
-            .padding-right {
-                padding-right: 10px;
-            }
-
-            .footer_ul2_amrc {
-                margin: 0px;
-                list-style-type: none;
-                padding: 0px;
-            }
-
-            .footer_ul2_amrc li p {
-                display: table;
-            }
-
-            .footer_ul2_amrc li a:hover {
-                text-decoration: none;
-            }
-
-            .footer_ul2_amrc li i {
-                margin-top: 5px;
-            }
-
-            .bottom_border {
-                border-bottom: 1px solid #323f45;
-                padding-bottom: 20px;
-            }
-
-            .foote_bottom_ul_amrc {
-                list-style-type: none;
-                padding: 0px;
-                display: table;
-                margin-top: 10px;
-                margin-right: auto;
-                margin-bottom: 10px;
-                margin-left: auto;
-            }
-
-            .foote_bottom_ul_amrc li {
-                display: inline;
-            }
-
-            .foote_bottom_ul_amrc li a {
-                color: #999;
-                margin: 0 12px;
-            }
-
-            .black {
-                background-color: black;
-
-            }
-
-            .social_footer_ul {
-                width: 100%;
-                display: table;
-                margin: 0;
-                list-style-type: none;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .social_footer_ul li {
-                padding-left: 20px;
-                padding-top: 10px;
-                float: left;
-            }
-
-            .social_footer_ul li a {
-                color: white;
-                border: 1px solid white;
-                padding: 8px 13px;
-                border-radius: 100%;
-            }
-
-            .social_footer_ul li i {
-                width: 30px;
-                height: 30px;
-                text-align: center;
-            }
-
-            a {
-                text-decoration: none;
-            }
-
-            .flexyy {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            /* Credit to https://bootsnipp.com/snippets/bxDBA */
-        </style>
     </section>
 
+
+    
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
@@ -382,6 +302,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
+
+       
 </body>
 
 </html>

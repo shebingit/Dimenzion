@@ -1,83 +1,84 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
-    <section class="banner">
-        <div class="inner">
-            <b>
-                <h3 class="text-light headtext" style="font-family: '', sans-serif; ">
-                    <span style="color: rgb(255, 5, 72);">LOGO</span>CREATION
-                </h3>
-            </b>
-            <p class="text-center text-white p-5">A logo unquestionably makes a good first impression for your company; it lingers in the audience's mind and aids in forging a unique connection with them. We deliver the logo after carefully capturing the spirit of your company's market-leading brand objectives.</p>
-        </div>
-        <style>
-            .banner {
-                height: 50vh;
-                background-image: url('https://c4.wallpaperflare.com/wallpaper/995/152/891/assassins-creed-4k-windows-wallpaper-preview.jpg');
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
 
-
-            }
-            li{
-                cursor: pointer;
-            }
-
-            .headtext {
-                font-size: 50px;
-                font-weight: 600;
-            }
-
-            .inner {
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.7);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
-            }
-            #low{
-                display: none;
-            }
-            #high{
-                display: none;
-            }
-
-            @media all and (max-width: 500px) {
-                .banner {
-                    height: 30vh;
-
-
-                }
-
-                .headtext {
-                    font-size: 30px;
-                }
-            }
-
-        </style>
-
-        <script>
-
-            const price_low=()=>{
-                document.getElementById('low').style.display='flex';
-                document.getElementById('all').style.display='none';
-                document.getElementById('high').style.display='none';
-            }
-
-            const price_high=()=>{
-                document.getElementById('low').style.display='none';
-                document.getElementById('all').style.display='none';
-                document.getElementById('high').style.display='flex';
-            }
-
-        </script>
-
-
-    </section>
+<style>
+    body
+    {
+        background: rgb(250, 250, 250);
+    }
+    #content-box
+    {
+        margin-top: 2em;
+        margin-bottom: 1em;
+        
+    }
+    #content-box .container{
+        padding: 1em 2em;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        gap: 2.5em;
+        background: rgb(244, 241, 241);
+        
+    }
+    #content-box .container .content-box h4{
+        font-weight: 700;
+        margin-bottom: 1.5em;
+        margin-top: 0.50em;
+    }
+    #content-box .container .content-box h4 span{
+        color: #d2274c;
+        font-size: 1.11em;
+    }
+    #content-box .container .content-box p{
+        font-size: 0.85em;
+        text-align: justify;
+        color: rgb(54, 52, 52);
+        font-weight: 500;
+        line-height: 1.70em;
+    }
+    #content-box .content-imge img
+    {
+       border-radius: 20px;
+       max-width: 400px;
+    }
+   @media(max-width:932px)
+   {
+    #content-box
+    {
+        margin-top: .020em;
+        
+    }
+    #content-box .container{
+        flex-direction: column;
+        gap: 0.5em;
+    }
+    #content-box .content-imge img
+    {
+       border-radius: 20px;
+       max-width: 350px;
+    }
+   }
+</style>
     
+
+    
+<section id="content-box">
+    <div class="container">
+        <div class="content-box">
+            <h4 class="p-2"><span>LOGO&nbsp;</span>CREATION</h4>
+            <p class="">
+                A logo unquestionably makes a good first impression for your company; 
+                it lingers in the audience's mind and aids in forging a unique connection 
+                with them. We deliver the logo after carefully capturing the spirit of your company's market-leading brand objectives.
+            </p>
+        </div>
+        <div class="content-imge">
+            <img src="static/images/logomaker.webp">
+          </div>
+    </div>
+</section>
     
     <style>
         .row 
@@ -199,8 +200,7 @@
             justify-content:space-between;
             align-items: center;
             flex-direction: row;
-            padding: 0px 15px;
-
+           
         }
         .fa-filter:hover 
         {
@@ -256,6 +256,14 @@
             border: none;
             outline: none;
         }
+        @media(max-width:932px)
+        {
+            #request
+            {
+                font-size: 0.80em;
+                padding: 8px 10px;
+            }
+        }
     </style>
       <div class="container p-1 mb-5">
         <div class="filter mb-3 mt-3 ">
@@ -263,7 +271,7 @@
                <a  id="toggleButton"><i class="fa fa-filter"style="font-size:0.95em;"></i>&nbsp;<span style="font-size:0.90em; color:black">Filter By Price</span></a>
             </div>
             <div class="col-lg-9  col-md-6 col-sm-12 p-2 text-center">
-                <a href="#" id="request" data-bs-toggle="modal" data-bs-target="#exampleModal">Need Another <i class="fa fa-question"></i></a>
+                <a href="#" id="request" data-bs-toggle="modal" data-bs-target="#exampleModal">Need Another Design<i class="fa fa-question"></i></a>
             </div>
         </div>
         <div class="card " id="myDiv" style="display:none">

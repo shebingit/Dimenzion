@@ -6,10 +6,10 @@
             <b>
                 <h1 class="text-light headtext">Create your own</h1>
             </b>
-            <b>
+            <!-- <b>
                 <h1 style="color: rgb(255, 5, 72);" class="headtext">3D Models</h1>
-            </b>
-            <div class="my-3">
+            </b> -->
+            <!-- <div class="my-3">
                 <a href="{% url 'model' %}"
                    class="btn w-100 mx-2"
                    style="background-color: rgb(255, 5, 72);
@@ -17,7 +17,7 @@
                  {% comment %} <a href="{% url 'freelancer'%}"
                    class="btn mx-2 text-light"
                    style="background-color: gray;">Frelancer</a>  {% endcomment %}
-            </div>
+            </div> -->
         </div>
         <style>
             .banner {
@@ -63,7 +63,152 @@
             }
         </style>
     </section>
+    <section class="grayback " style="background-color: rgb(97, 96, 99);">
+        <section class="p-lg-5 ">
+            <h2 style="font-weight: 600;
+                       color: rgb(255, 255, 255);"
+                class="text-center pt-4 p-lg-0 "
+                data-aos="fade-up"
+                data-aos-delay="50">
+                CHECK OUT OUR CATEGORIES
+            </h2>
+            <div class="flexy w-100">
+                <div style="background-color: white;height: 2px; width: 20%;">
+                </div>
+            </div>
+            <div class="cards-list">
+                <a class="card3" href="{% url 'price_low' %}"
+                     style="background-image: url('{% static 'images/car-777159_960_720.jpg'%}'); ">
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            3D ARTISTS
+                        </h4>
+                        <p style="color: gray;">
+                            {{count_a}}
+                        </p>
+                    </div>
+                </a>
+                <a class="card3" href="{% url 'photoshop' %}"
+                style="background-image: url('{% static 'images/Moon-Photoshop.jpg'%}'); ">
+               
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            PHOTOSHOP
+                        </h4>
+                        <p style="color: gray;">
+                            {{count_b}} Products
+                        </p>
+                    </div>
+                </a>
+                <a class="card3" href="{% url 'ui_design' %}"
+                style="background-image: url('{% static 'images/1642762135_resized-image.jpg'%}'); ">
+                 
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            UI DESIGN
+                        </h4>
+                        <p style="color: gray;">
+                            {{count_c}}
+                        </p>
+                    </div>
+                </a>
+                <a class="card3" href="{% url 'house_plans'%}"
+                style="background-image: url('{% static 'images/RoomSketcher-High-Quality-3D-Floor-Plans.jpg'%}'); ">
+                     
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            HOUSE PLANS
+                        </h4>
+                        <p style="color: gray;">
+                            {{count_d}}
+                        </p>
+                    </div>
+                </a>
+                <a class="card3" href="{% url 'logo_creation'%}"
+                style="background-image: url('{% static 'images/b-letter-boutique-logo-design-159417325.jpg'%}'); ">
+               
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            LOGO CREATION
+                        </h4>
+                        <p style="color: gray;">
+                            {{count_e}}
+                        </p>
+                    </div>
+                </a>
+                <a class="card3" href="{% url 'drawings'%}"
+                
+                style="background-image: url('{% static 'images/images (6) 1.png'%}'); ">
+ 
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            DRAWINGS 
+                        </h4>
+                        <p style="color: gray;">
+                            {{count_f}}
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <style>
+            .flex {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
+            .cards-list {
+                z-index: 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                background-color: rgba(0, 0, 0, 0);
+            }
+
+            .card3 {
+                margin: 30px auto;
+                width: 400px;
+                height: 400px;
+
+                background-size: 100% 100%;
+                cursor: pointer;
+                transition: 0.4s;
+                border-radius: 20px;
+            }
+
+            .dark1 {
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.3);
+                border-radius: 20px;
+            }
+
+
+            .card3:hover .dark1 {
+                background-color: rgba(0, 0, 0, 0.8);
+                transition: 1s;
+
+            }
+
+            @media all and (max-width: 800px) {
+                .card-list {
+                    /* On small screens, we are no longer using row direction but column */
+                    flex-direction: column;
+                }
+
+                .card3 {
+                    margin: 10px auto;
+                    width: 90%;
+                    height: 250px;
+                }
+
+
+
+            }
+        </style>
+    </section>
 
     
     <section class="designers">
@@ -196,7 +341,7 @@
 
 
 
-    <section class="tabs m-3">
+    <!-- <section class="tabs m-3">
         <ul class="nav nav-tabs d-flex align-items-center justify-content-center border-0"
             id="myTab"
             role="tablist">
@@ -539,7 +684,7 @@
 
             }
         </style>
-    </section>
+    </section> -->
 
 
 
@@ -601,153 +746,8 @@
 
 
 
-    <section class="grayback " style="background-color: rgb(97, 96, 99);">
-        <section class="p-lg-5 ">
-            <h2 style="font-weight: 600;
-                       color: rgb(255, 255, 255);"
-                class="text-center pt-4 p-lg-0 "
-                data-aos="fade-up"
-                data-aos-delay="50">
-                BROWSE OUR CATEGORIES
-            </h2>
-            <div class="flexy w-100">
-                <div style="background-color: white;height: 2px; width: 20%;">
-                </div>
-            </div>
-            <div class="cards-list">
-                <a class="card3" href="{% url 'price_low' %}"
-                     style="background-image: url('{% static 'images/car-777159_960_720.jpg'%}'); ">
-                    <div class="dark1 flex flex-column">
-                        <h4 class="text-light">
-                            3D ARTISTS
-                        </h4>
-                        <p style="color: gray;">
-                            {{count_a}}
-                        </p>
-                    </div>
-                </a>
-                <a class="card3" href="{% url 'photoshop' %}"
-                style="background-image: url('{% static 'images/Moon-Photoshop.jpg'%}'); ">
-               
-                    <div class="dark1 flex flex-column">
-                        <h4 class="text-light">
-                            PHOTOSHOP
-                        </h4>
-                        <p style="color: gray;">
-                            {{count_b}} Products
-                        </p>
-                    </div>
-                </a>
-                <a class="card3" href="{% url 'ui_design' %}"
-                style="background-image: url('{% static 'images/1642762135_resized-image.jpg'%}'); ">
-                 
-                    <div class="dark1 flex flex-column">
-                        <h4 class="text-light">
-                            UI DESIGN
-                        </h4>
-                        <p style="color: gray;">
-                            {{count_c}}
-                        </p>
-                    </div>
-                </a>
-                <a class="card3" href="{% url 'house_plans'%}"
-                style="background-image: url('{% static 'images/RoomSketcher-High-Quality-3D-Floor-Plans.jpg'%}'); ">
-                     
-                    <div class="dark1 flex flex-column">
-                        <h4 class="text-light">
-                            HOUSE PLANS
-                        </h4>
-                        <p style="color: gray;">
-                            {{count_d}}
-                        </p>
-                    </div>
-                </a>
-                <a class="card3" href="{% url 'logo_creation'%}"
-                style="background-image: url('{% static 'images/b-letter-boutique-logo-design-159417325.jpg'%}'); ">
-               
-                    <div class="dark1 flex flex-column">
-                        <h4 class="text-light">
-                            LOGO CREATION
-                        </h4>
-                        <p style="color: gray;">
-                            {{count_e}}
-                        </p>
-                    </div>
-                </a>
-                <a class="card3" href="{% url 'drawings'%}"
-                
-                style="background-image: url('{% static 'images/images (6) 1.png'%}'); ">
- 
-                    <div class="dark1 flex flex-column">
-                        <h4 class="text-light">
-                            DRAWINGS 
-                        </h4>
-                        <p style="color: gray;">
-                            {{count_f}}
-                        </p>
-                    </div>
-                </a>
-            </div>
-        </section>
-        <style>
-            .flex {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .cards-list {
-                z-index: 0;
-                width: 100%;
-                display: flex;
-                justify-content: space-around;
-                flex-wrap: wrap;
-                background-color: rgba(0, 0, 0, 0);
-            }
-
-            .card3 {
-                margin: 30px auto;
-                width: 400px;
-                height: 400px;
-
-                background-size: 100% 100%;
-                cursor: pointer;
-                transition: 0.4s;
-                border-radius: 20px;
-            }
-
-            .dark1 {
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.3);
-                border-radius: 20px;
-            }
-
-
-            .card3:hover .dark1 {
-                background-color: rgba(0, 0, 0, 0.8);
-                transition: 1s;
-
-            }
-
-            @media all and (max-width: 800px) {
-                .card-list {
-                    /* On small screens, we are no longer using row direction but column */
-                    flex-direction: column;
-                }
-
-                .card3 {
-                    margin: 10px auto;
-                    width: 90%;
-                    height: 250px;
-                }
-
-
-
-            }
-        </style>
-    </section>
-    <section class="soon">
+    
+    <!-- <section class="soon">
         <div class="left4">
             <div style="background-color: rgba(0,0,0,.5);
                         height: 100%;
@@ -840,6 +840,6 @@
                 }
             }
         </style>
-    </section>
+    </section> -->
     {% endblock %}
 
