@@ -523,7 +523,9 @@ def userhome(request):
        count_d=Product.objects.filter(category_id=6).count()
        count_e=Product.objects.filter(category_id=7).count()
        count_f=Product.objects.filter(category_id=8).count()
-       return render(request, 'new_index2.html',{'new':new,'sp':special,'fea':feature,'count_b':count_b,'count_c':count_c,'count_d':count_d,'count_e':count_e,'count_f':count_f,'count_a':count_a})
+       persons=Register_freelance.objects.filter(ranking=1)
+       return render(request, 'new_index2.html',{'new':new,'sp':special,'fea':feature,'count_b':count_b,'count_c':count_c,
+           'count_d':count_d,'count_e':count_e,'count_f':count_f,'count_a':count_a,'persons':persons})
     return redirect('user_logout')
 
 

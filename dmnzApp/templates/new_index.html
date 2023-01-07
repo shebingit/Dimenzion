@@ -2,18 +2,156 @@
 {% load static %}
 {% block body %}
 
+<style>
+   @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@600;700&display=swap'); 
+    .top-content-right .container {
+        position: absolute;
+        width: 320px;
+        margin: 100px auto 0 auto;
+        perspective: 1000px;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+      
+      .carousel {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d; 
+        animation: rotate360 60s infinite forwards linear;
+      }
+      .carousel__face { 
+        position: absolute;
+        width: 200px;
+        height: 157px;
+        top: 20px;
+       
+        right: 4em;
+        background-size: cover;
+        box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);
+        display: flex;
+      }
+      
+      span {
+        margin: auto;
+        font-size: 2rem;
+      }
+      
+      
+      .carousel__face:nth-child(1) {
+        background-image: url("static/images/b1.jpg");
+        transform: rotateY(  0deg) translateZ(180px); }
+      .carousel__face:nth-child(2) { 
+        background-image: url("static/images/b2.jpg");
+          transform: rotateY( 60deg) translateZ(180px); }
+      .carousel__face:nth-child(3) {
+        background-image: url("static/images/b4.jpg");
+        transform: rotateY( 120deg) translateZ(180px); }
+      .carousel__face:nth-child(4) {
+        background-image: url("static/images/b3.jpg");
+        transform: rotateY(180deg) translateZ(180px); }
+      .carousel__face:nth-child(5) { 
+        background-image: url("static/images/b5.jpg");
+       transform: rotateY(240deg) translateZ(180px); }
+      .carousel__face:nth-child(6) { 
+        background-image: url("static/images/b6.jpg");
+       transform: rotateY(300deg) translateZ(180px); }
+      .carousel__face:nth-child(7) { 
+        background-image: url("");
+       transform: rotateY(360deg) translateZ(180px); }
+      
+      
+      
+      @keyframes rotate360 {
+        from {
+          transform: rotateY(0deg);
+        }
+        to {
+          transform: rotateY(-360deg);
+        }
+      }
+
+      .top-content-left
+      {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin:0 auto;
+        padding: 0em 4.6em;
+        flex-direction: column;
+
+      }
+      .top-content-left p{
+        line-height: 1.7em;
+        font-weight: 500;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-style: italic;
+
+      }
+      .top-content-left .head-top-span{
+        font-size: 2em;
+        font-weight: 700;
+        color:orange;
+        margin-right: 0.30em;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+       font-style:initial
+        
+      }
+      .top-content-left .btn1-frl
+      {
+        border: none;
+        outline: none;
+        padding: 0.60em .90em;
+        background:rgb(255, 55, 55);
+        color: #fff;
+        font-weight: 600;
+        margin-top: 1em;
+      }
+      .top-content-left .btn1-frl a{
+        color: #fff;
+        font-size: 1.05em;
+        font-family: ;
+      }
+    
+</style>
+
 
     <section class="banner">
         <div class="inner">
+            
+            <div class="top-content-left">
+                <p><span  class="head-top-span">Dimenzions</span> is known as one of the leading 
+                  corporate branding  service providers 
+                    for its amazing 3D designs, logo designing and  other works aimed at providing the 
+                    best for our clients.
+                </p>
+                <div class="btn-freelancer">
+                    <button class="btn1-frl"><a href="{% url 'freereg' %}">Join As Freelancer</a></button>
+                </div>
+               
+            </div>
+            <div class="top-content-right">
+                <div class="container">
+                    <div class="carousel">
+                      <div class="carousel__face"><span></span></div>
+                      <div class="carousel__face"><span></span></div>
+                      <div class="carousel__face"><span></span></div>
+                      <div class="carousel__face"><span></span></div>
+                      <div class="carousel__face"><span></span></div>
+                      <div class="carousel__face"><span></span></div>
+                      <div class="carousel__face"><span></span></div>
+                    </div>
+                  </div>
+
+            </div>
        
             <!-- <b>
                 <h1 class="text-light headtext">Create your own</h1>
-            </b> -->
-            <
-            <!-- <b>
+            </b> 
+            
+            <b>
                 <h1 style="color: rgb(255, 5, 72);" class="headtext">3D Models</h1>
-            </b> -->
-            <!-- <div class="my-3">
+            </b> 
+            <div class="my-3">
                 <a href="{% url 'model' %}"
                    class="btn w-100 mx-2"
                    style="background-color: rgb(255, 5, 72);
@@ -21,8 +159,8 @@
                  {% comment %} <a href="{% url 'freelancer'%}"
                    class="btn mx-2 text-light"
                    style="background-color: gray;">Frelancer</a>  {% endcomment %}
-            </div> -->
-        </div>
+            </div>
+        </div> -->
         <style>
             .banner {
                 height: 80vh;
@@ -37,16 +175,47 @@
                 font-size: 70px;
                 font-weight: 600;
             }
+            span {
+                margin: auto;
+              font-size: 0.80rem; 
+              }
 
             .inner {
                 width: 100%;
                 height: 100%;
                 background-color: rgba(0, 0, 0, 0.7);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                flex-direction: column;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                color: rgb(178, 178, 177);
+               
             }
+            @media(max-width:932px)
+            {
+                .banner {
+                    height: 60vh;
+                    }
+            
+                .top-content-left
+                {
+                    margin:0 auto;
+                    padding: 0.70em 1em;
+                  
+
+                }
+                .top-content-left p {
+                    font-size: 0.90em;
+                    line-height: 2em;
+                }
+                            .inner {
+                                grid-template-columns: repeat(1,1fr);
+                               
+                            }
+               .top-content-right
+               {
+                display: none;
+               }
+                
+        }
 
             @media only screen and (max-width:800px) {
 
@@ -56,12 +225,9 @@
                 }
 
                 .banner {
-                    height: 50vh;
+                   
 
                     background-size: cover;
-
-
-
 
                 }
             }
@@ -223,9 +389,9 @@
                 <h3 style="font-weight: 600;">
                     TOP DESIGNERS OF THIS WEEK
                 </h3>
-                <P>
+                <!-- <P>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque suscipit beatae quas.
-                </P>
+                </P> -->
                 <div class="row container-fluid">
                     {% for i in persons %}
                     <div class="col-lg-4 flexy my-2">

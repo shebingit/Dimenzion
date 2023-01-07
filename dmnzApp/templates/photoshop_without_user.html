@@ -3,101 +3,247 @@
 {% block body %}
 
 <style>
-    body
+    body{
+        background-color: #f2efec;
+    }
+    #Top-postion
     {
-        background: rgb(250, 250, 250);
-    }
-    #content-box
-    {
-        margin-top: 2em;
-        margin-bottom: 1em;
-        
-    }
-    #content-box .container{
-        padding: 1em 2em;
-        display: flex;
-        justify-content:space-between;
-        align-items: center;
-        gap: 1.5em;
-        background: rgb(244, 241, 241);
-        
-    }
-    #content-box .container .content-box h4{
-        font-weight: 700;
-        margin-bottom: 1.5em;
-        margin-top: 0.50em;
-    }
-    #content-box .container .content-box h4 span{
-        color: #d2274c;
-        font-size: 1.11em;
-    }
-    #content-box .container .content-box p{
-        font-size: 0.85em;
-        text-align: justify;
-        color: rgb(54, 52, 52);
-        font-weight: 500;
-        line-height: 1.70em;
-    }
-    
-    #content-box .content-imge img
-    {
-       border-radius: 20%;
-       max-width: 400px;
-    }
-   @media(max-width:932px)
-   {
-    #content-box
-    {
-        margin-top: .020em;
-        
-    }
-    #content-box .container{
-        flex-direction: column;
-        gap: 0.5em;
-    }
-    #content-box .content-imge img
-    {
-       border-radius: 20%
-    }
-   }
-</style>
-    
-    
-
-    <section id="content-box">
-        <div class="container">
-            <div class="content-box">
-                <h4 class="p-2"><span>PHOTO&nbsp;</span>SHOPS</h4>
-                <p class="">
-                    At Dimenzions, we pride ourselves on offering professional, high-quality Photoshop services to our
-                    clients. With years of experience and a team of skilled designers, we can take on any project, big or
-                    small. Whether you need basic photo editing, such as cropping and colour correction, or more
-                    complex design work, such as creating a custom logo or manipulating images for a marketing
-                    campaign, we have the expertise to get the job done.
-                    <br>
-                    One of the unique aspects of our Photoshop services is our ability to work with clients from a variety
-                    of industries.
-                </p>
-            </div>
-            <div class="content-imge">
-                <img src="static/images/photoshop.webp">
-            </div>
-            <div class="content-box">
-                <p class="">
-                 We have experience in everything from fashion and retail to real estate and
-                technology. No matter what your needs are, we can deliver high-quality results that will exceed your
-                expectations. Besides offering a broad range of capabilities, we also offer flexible pricing options.
-                Our solutions suit a range of needs, from one-time projects to ongoing support.
-                <br>
-                If you're interested in learning more about our Photoshop services or if you have a project in mind,
-            don't hesitate to get in touch. We also offer consultations to help you determine the best course of
-            action for your project and provide you with a detailed quote.
-                </p>
-            </div>
        
+        margin-top: .40em; 
+        padding: 0.30em 0.90em;
+    }
+    #second-potion
+    {
+        margin-top:1em ;
+        padding: 0.30em 0.90em;
+    }
+    #bottom-potion
+    {
+        margin-top: 1em;
+        padding: 0.30em 0.90em;
+    }
+    #Top-postion .container{
+        
+        background-color: #f7f5f4;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        border-radius: 40px;
+    }
+    #Top-postion .right-side
+    {
+       /*background: #a57781;8*/
+      
+       
+        justify-content: center;
+    }
+    #Top-postion .right-side h4
+    {
+        font-weight: 700;
+        padding: 0.40em  0.50em;
+    }
+    #Top-postion .right-side span{
+        color: #d2274c;
+    }
+    #Top-postion .right-side p
+    {
+        padding: 0.40em  0.70em;
+        font-size: 0.89em;
+        line-height: 1.6em;
+        text-align: center;
+    }
+    .request-box
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1em 0.40em;
+        
+    }
+    #Top-postion .left-side
+    {
+        /*background: #a57781;8*/
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .img-box1
+    {
+        width:350px;
+        height: 300px;
+        padding: 1em 0.50em;
+    }
+    .img-box1 img 
+    
+    {
+        width: 350px;
+        height: 100%;
+        border-radius: 40px;
+    }
+    #second-potion .container
+    {
+        background: #ebeced;
+        border-radius: 40px;
+    }
+    #second-potion .container h5
+    {
+        text-align: center;
+        font-weight: 500;
+        padding: 1em 0.40em;
+    }
+    #second-potionn .our-products .product
+    {
+       
+        text-align: center;
+        justify-content: center;
+       
+    }
+    #second-potion .product-img
+    {
+        width: 250px;
+    }
+    #second-potion .product-img img{
+        width:100%;
+        height:190px;
+        border-radius: 30px;
+    }
+    .review span
+    {
+        font-weight: 500;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        padding:0.30em
+    }
+    #bottom-potion .container{
+        background: #ece9ea;
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 40px;
+    }
+    #bottom-potion .container p{
+        font-size: 0.90em;
+        text-align: center;
+        line-height: 1.7em;
+        padding: 0.50em 1em;
+    }
 
+    @media(max-width:932px)
+    {
+        #Top-postion .container{
+           
+            grid-template-columns:repeat(1,1fr);
+        }
+        #Top-postion .container {
+           display: flex;
+           justify-content:center ;
+           flex-direction:column-reverse;
+            align-items: center;
+        }
+        .img-box1
+            {
+                width:300px;
+                height: 300px;
+                padding: 1em 0.50em;
+            }
+            .img-box1 img 
+            
+            {
+                width: 280px;
+                height: 90%;
+                border-radius: 40px;
+            }
+            #Top-postion .right-side h4
+            {
+                text-align: center;
+                margin-top: 1em;
+            }
+            
+    }
+   
+    
+</style>
+
+
+<section id="Top-postion">
+   <div class="container">
+   <div class="left-side">
+    <div class="img-box1">
+        <img src="static/images/Moon-Photoshop.jpg">
+    </div>
+    
+   </div>
+   <div class="right-side">
+   
+    <h4 class="p-2"><span>PHOTO&nbsp;</span>SHOPS</h4>
+    <p>
+        At Dimenzions, we pride ourselves on offering professional, high-quality Photoshop services to our
+                        clients. With years of experience and a team of skilled designers,
+    </p>
+    <div class="request-box">
+        <a href="#" id="request" data-bs-toggle="modal" data-bs-target="#exampleModal">Need Another Design <i class="fa fa-question"></i></a>
+    </div>
+   
+   </div>
+   </div>
+</section>
+
+
+
+<section id="second-potion">
+    <div class="container">
+
+        <h5>Top Picks Products Of The Week</h5>
+
+        <div class="row our-products">
+            {% for p in all %}
+            <div class="col-lg-3 col-sm-12 col-md-6 product text-center">
+                <div class="product-img">
+                    {% if p.gib %}
+                    <img src="{{p.gib.url}}" alt="Photo shop image">
+                    {% endif %}
+                </div> 
+                <div class="review">
+                    <span>{{p.modelname}}</span><br>
+                    <span>₹ {{p.price}}</span>
+                    <div class="stars">
+                        
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                         
+                    </div> 
+                   
+                </div>
+                  
+            </div>
+            {% endfor %}
         </div>
-    </section>
+
+    </div>
+
+</section>
+
+<section id="bottom-potion">
+    <div class="container">
+        <p><i class="fa fa-quote-left" style=" color: orange;"></i>
+            &nbsp;One of the unique aspects of our Photoshop services is our ability to work with clients from a variety
+            of industries.
+            <br>
+            We have experience in everything from fashion and retail to real estate and
+            technology. No matter what your needs are, we can deliver high-quality results that will exceed your
+            expectations. Besides offering a broad range of capabilities, we also offer flexible pricing options.
+            Our solutions suit a range of needs, from one-time projects to ongoing support.
+            <br>
+                    If you're interested in learning more about our Photoshop services or if you have a project in mind,
+                don't hesitate to get in touch. We also offer consultations to help you determine the best course of
+                action for your project and provide you with a detailed quote.&nbsp;
+                <i class="fa fa-quote-right"  style=" color: orange;"></i>
+           </p>
+    </div>
+</section>
     
 
     <style>
@@ -112,10 +258,12 @@
         }
         #products
         {
-            padding: 12px 13px;
-            border-radius: 10px;
-            box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+            padding:1em 2em;
+           
+            box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.07) 0px 8px 32px;
             margin-bottom: 1em;
+            background-color: #ffac81;
+            background-image: linear-gradient(315deg, #ffac81 0%, #ff928b 74%);
         }
         #products .image 
         {
@@ -128,7 +276,7 @@
           
             max-height: 200px;
             transform: scale(.9);
-            z-index: -1;
+            
         }
         #products .image img:hover{
            
@@ -139,6 +287,7 @@
         {
             padding-top: 2em;
             font-size: 0.85em;
+         
         }
         .content .review
         {
@@ -151,6 +300,7 @@
         .content .review h5{
             font-weight: 600;
             font-size: 1.5em;
+           
         }
         .stars 
         {
@@ -176,8 +326,8 @@
             padding: 2px 4px;
         }
         .btn-box .like{
-            color: rgb(71, 68, 68);
-            background-color: rgba(220, 219, 219, 0.74);
+            color: rgb(241, 11, 11);
+            background-color: rgba(255, 255, 255, 0.74);
             border-radius: 50%;
             text-align: center;
             min-width: 40px;
@@ -193,13 +343,13 @@
         }
         .btn-box .btn{
            display: flex;
-            background-color: rgb(46, 44, 44);
-            color: #fff;
+            background-color: rgb(18, 6, 113);
+            color: rgb(251, 249, 249);
             border-radius: 10px;
             min-width: 150px;
             flex-direction: row;
             padding: 0px 10px;
-            max-height: 40px;
+            max-height: 35px;
             box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
         }
         .btn-box .btn:hover{
@@ -212,7 +362,8 @@
         }
         .btn-box .cart-icon
         {
-            margin-top: 5px;    
+            margin-top: 5px;   
+            color:orange; 
         }
         .filter
         {
@@ -232,9 +383,8 @@
             border: none;
             padding: 2em 1em;
             box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-            max-width: 250px;
             max-height: 170px;
-            position: absolute;
+            
         }
         #myDiv .filter-form span
         {
@@ -270,8 +420,8 @@
         {
             background: rgb(242, 14, 14);
             color: #fff;
-            padding: 10px 15px;
-            font-size: 0.90em;
+            padding: 0.60em 2em;
+            font-size: 1m;
             font-weight: 600;
             border-radius: 5px;
             border: none;
@@ -289,14 +439,15 @@
 
       <div class="container p-1 mb-5">
         <div class="filter mb-3 mt-3 ">
-            <div class="col-lg-3 col-md-6  p-2">
-               <a  id="toggleButton"><i class="fa fa-filter"style="font-size:0.95em;"></i>&nbsp;<span style="font-size:0.90em; color:black">Filter</span></a>
-            </div>
-            <div class="col-lg-9  col-md-6 col-sm-12 p-2 text-center">
+<!--             
+            <div class="col-lg-9  col-md-6 col-sm-12 p-2">
                 <a href="#" id="request" data-bs-toggle="modal" data-bs-target="#exampleModal">Need Another Design <i class="fa fa-question"></i></a>
-            </div>
+            </div> -->
+            <!-- <div class="col-lg-3 col-md-6  p-2">
+                <a  id="toggleButton"><i class="fa fa-filter"style="font-size:0.95em;"></i>&nbsp;<span style="font-size:0.90em; color:black">Filter</span></a>
+             </div> -->
         </div>
-        <div class="card " id="myDiv" style="display:none">
+        <!-- <div class="card " id="myDiv" style="display:none">
             <form action="#" method="post" class="filter-form">
             {% csrf_token %}
               <span>
@@ -316,8 +467,8 @@
             
             </form>
 
-        </div>
-        <div class="row g-4">
+        </div> -->
+        <!-- <div class="row g-4">
             {% for p in all %}
             <div class="col-lg-4 col-md-4 col-sm-12">
                 <div class="container" id="products">
@@ -328,27 +479,27 @@
                     </div>
                     <div class="content">
                         <div class="review">
-                            <div class="stars">
+                          <div class="stars">
                                 <span>Reviews</span>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                
-                            </div>
+                            </div> 
                             <h5>₹ {{p.price}}</h5>
                         </div>
                         <h4 class="name">{{p.modelname}}</h4>
-                        <div class="detail">
+                      <div class="detail">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut egestas
                                 aliquam quan, at ullamcorper massa tincidunt nec. Integer dian justo, ultrices nec velit et,
                                 mattis finibus orci
                             <p>
-                        </div>
+                        </div> 
                         <div class="btn-box">
                             <span class="like"><i class="fa fa-heart"  ></i></span>
                             <a href="{% url 'view_items' p.id  %}">
-                            <div class="btn">
+                            <div class="btn ">
                                 <p>Add to cart</p>
                                 <div class="cart-icon">
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>
@@ -360,9 +511,104 @@
                 </div>
             </div>
             {% endfor %}
-        </div>
+        </div> -->
       </div>  
 
+
+      <style>
+       
+        #content-box
+        {
+            margin-top: 2em;
+            margin-bottom: 1em;
+            
+        }
+        #content-box .container{
+            padding: 0.70em 2em;
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            gap: 1.5em;
+          
+            
+        }
+        #content-box .container .content-box h4{
+            font-weight: 700;
+            margin-bottom: 1.5em;
+            margin-top: 0.50em;
+        }
+        #content-box .container .content-box h4 span{
+            color: #d2274c;
+            font-size: 1.11em;
+        }
+        #content-box .container .content-box p{
+            font-size: 0.85em;
+            text-align: justify;
+            color: rgb(54, 52, 52);
+            font-weight: 500;
+            line-height: 1.70em;
+        }
+        
+        #content-box .content-imge img
+        {
+           border-radius: 20%;
+           max-width: 400px;
+         
+        }
+       @media(max-width:932px)
+       {
+        #content-box
+        {
+            margin-top: .020em;
+            
+        }
+        #content-box .container{
+            flex-direction: column;
+            gap: 0.5em;
+        }
+        #content-box .content-imge img
+        {
+           border-radius: 20%
+        }
+       }
+    </style>
+        
+        
+    
+        <!-- <section id="content-box">
+            <div class="container">
+                <div class="content-box">
+                    <h4 class="p-2"><span>PHOTO&nbsp;</span>SHOPS</h4>
+                    <p class="">
+                        At Dimenzions, we pride ourselves on offering professional, high-quality Photoshop services to our
+                        clients. With years of experience and a team of skilled designers, we can take on any project, big or
+                        small. Whether you need basic photo editing, such as cropping and colour correction, or more
+                        complex design work, such as creating a custom logo or manipulating images for a marketing
+                        campaign, we have the expertise to get the job done.
+                        <br>
+                        One of the unique aspects of our Photoshop services is our ability to work with clients from a variety
+                        of industries.
+                    </p>
+                </div>
+                <div class="content-imge">
+                    <img src="static/images/photoshop.webp">
+                </div>
+                <div class="content-box">
+                    <p class="">
+                     We have experience in everything from fashion and retail to real estate and
+                    technology. No matter what your needs are, we can deliver high-quality results that will exceed your
+                    expectations. Besides offering a broad range of capabilities, we also offer flexible pricing options.
+                    Our solutions suit a range of needs, from one-time projects to ongoing support.
+                    <br>
+                    If you're interested in learning more about our Photoshop services or if you have a project in mind,
+                don't hesitate to get in touch. We also offer consultations to help you determine the best course of
+                action for your project and provide you with a detailed quote.
+                    </p>
+                </div>
+           
+    
+            </div>
+        </section> -->
 
 
     
@@ -374,11 +620,14 @@
      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">REQUEST FORM</h5>
+            <div class="modal-header" style="border: none;">
+                <span class="padding-bottom--15">REQUEST FORM</span>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                
+                       
+                      
                 <form  action="{% url 'Request_form' %}" method="post"  autocomplete="off" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="mb-3">
@@ -424,7 +673,7 @@
                         <button type="submit" class="btn btn-primary">Save changes</button>
                       </div>
                      
-                 </form>
+                 </form> 
             </div>
            
           </div>
@@ -436,6 +685,16 @@
 
 
 
+<script>
+    document.getElementById('toggleButton').addEventListener('click', function() {
+      var div = document.getElementById('myDiv');
+      if (div.style.display === 'none') {
+        div.style.display = 'block';
+      } else {
+        div.style.display = 'none';
+      }
+    });
+  </script>
 
 
 
