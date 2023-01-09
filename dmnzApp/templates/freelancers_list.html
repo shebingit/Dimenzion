@@ -1,0 +1,67 @@
+<!-- Begin Page Content -->
+<div class="container-fluid mt-2" id="details">
+  <div class="row g-2" >
+  {% for i in person %}
+ 
+  <div class="col-lg-3 col-md-5 col-sm-12">
+    <div class="card mt-2" id="card-details{{i.id}}">
+      <input type="text" value="{{i.id}}" id="perid{{i.id}}" hidden>
+     
+      <div class="img-avatar">
+        <img src="{{i.profile_pic.url}}">
+      </div>
+     
+      <div class="card-text">
+     
+        <div class="title-total">   
+          <h6 class="title">{{i.full_name}}</h6>
+         
+          <h6>{{i.service}}</h6> 
+        
+        <div class="desc">
+          <span>{{i.mobile}}</span>&nbsp;
+          <span>{{i.email}}</span>
+          <!-- <p></p> -->
+        </div>
+        <div class="actions">
+          <button> 
+            <span style="color: #000;">&nbsp;{{i.rating}}</span> 
+            <i class="fa fa-star checked"></i>&nbsp; 
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  </div>  
+  
+  {% endfor %}
+  </div> 
+  
+</div>
+
+<!-- /.container-fluid -->
+
+
+{% for i in person %}
+<script type="text/javascript">
+  $("#card-details{{i.id}}").click(function () {
+    const persid = $('#perid{{i.id}}').val();
+    console.log(persid);
+      $.ajax({
+          url: '{% url "freelances_details"%}',
+          data: {
+              'persid': persid
+          },
+
+          success: function (data) {
+              $("#full-deatils").html(data);
+              console.log(data);
+          }
+      });
+
+  });
+
+</script>
+{% endfor %}
+

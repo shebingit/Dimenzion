@@ -1,75 +1,87 @@
-{% extends 'admin_base.html' %}  {% block body %}
+{% extends 'admin_base.html' %}
+  {% block body %}
 
- 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Registered Users</title>
+ <style>
+  #dataTable
+  {
+    font-size: 13px;
+   text-align: center;
+  }
+  #dataTable thead td{
+    font-weight: 500;
+  }
+  #dataTable tbody
+  {
+    background-color: rgb(36, 204, 204);
+  }
+  #dataTable tbody tr td{
+    color: rgb(9, 9, 9);
+    padding: 0.70em 0.1em;
+  }
+  #dataTable tbody tr td:hover
+  {
+    background-color: rgb(239, 241, 241);
+  }
 
-  </head>
-  <body>
-      <!-- partial -->
-          <div class="row">
-            <div class="col-12 p-0">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Registered Users</h4>
-                  <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12 col-12">
-                      <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Search User" style="width:100%"/>
-                    </div>
-                  </div><br>
-                  <div class="table-responsive">
-                    <table  class="table table-striped">
-                      <thead>
-                        <tr class="header">
-                        
-                          
-                          <div class="col-md-lg-6 ">
-                            <th>Sl No.</th>
-                          <th>Full Name</th>
-                          <th>Username</th>
-                          <th>E-mail</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
+ </style>
 
-                      {% for i in use %}
-                      <tbody id="myTable">
-                        <tr>
-                          <td>{{forloop.counter}}</td>
-                          <td>{{i.first_name}} {{i.last_name}}</td>
-                          <td id="username2">{{i.username}}</td>
-                          <td>{{i.email}}</td>
-                          <td>
-                            <a href="#">
-                                <button type="button" class="btn btn-outline-danger">
-                                    <i class="icon-trash menu-icon"></i>
-                                  Delete
-                                </button>
-                              </a>
-                          </td>
-                        </tr>
-                      </tbody>
-                      {% endfor %}
-                    </table>
-                  </div>
-                  </div>
-                  <script>
-                    $(document).ready(function(){
-                      $("#myInput").on("keyup", function() {
-                        var value = $(this).val().toLowerCase();
-                        $("#myTable tr").filter(function() {
-                          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                        });
-                      });
-                    });
-                    </script>
-                </div>
-              </div>
-            </div>
-          </div>
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Registered Users</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead class="table-dark">
+                    <tr >
+                      <th>Sl No.</th>
+                      <th>Full Name</th>
+                      <th>Username</th>
+                      <th>E-mail</th>
+                      <th>Action</th>
+                    </tr>
+                </thead>
+                <tfoot >
+                    <tr>
+                      <th>Sl No.</th>
+                      <th>Full Name</th>
+                      <th>Username</th>
+                      <th>E-mail</th>
+                      <th>Action</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                  {% for i in use %}
+                  <tr >
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.first_name}} {{i.last_name}}</td>
+                    <td id="username2">{{i.username}}</td>
+                    <td>{{i.email}}</td>
+                    <td>
+                      <a href="#" class="">
+                         
+                            <i class="fa fa-trash text-danger" aria-hidden="true" style="font-size:10px;"></i>
+                           
+                         
+                        </a>
+                    </td>
+                  </tr>
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
         </div>
-  </body>
-</html>
+    </div>
+</div>
+
+</div>
+<!-- /.container-fluid -->
+
+
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> 
+
+
 {% endblock %}

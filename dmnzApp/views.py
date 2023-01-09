@@ -213,6 +213,7 @@ def admin_log(request):
 
 
 def freereg(request):
+    cate=categories.objects.all()
     if request.method == 'POST':
         #education
         # ini=request.POST['insti']
@@ -273,11 +274,11 @@ def freereg(request):
                                    password=password,)
             std.save()
             msg="Registraion  successfully"
-            return render(request,'free_lance_reg.html',{'msg':msg})
+            return render(request,'free_lance_reg.html',{'msg':msg,'cate':cate})
        
         return redirect('freereg')
-        
-    return render(request,'free_lance_reg.html')
+  
+    return render(request,'free_lance_reg.html',{'cate':cate})
 
 def cartitem(request,pk):
     if 'USID' in request.session:
@@ -1204,19 +1205,18 @@ def rating(request,freel_rt):
     person=Register_freelance.objects.get(id=freel_rt)
     if request.method=='POST':
         person.rating=request.POST['rt']
-        person.save()
-        r= int(person.rating)
-       
-    return render(request, 'freelancer.html', {'person': person,'adm':adm,'r':range(r) })
+        person.save()  
+    return redirect('freelancers')
 
 #Requested works loading
 
 def requested_work(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
-    s=Service_form.objects.all().order_by('-status')
+    s=Service_form.objects.all().order_by('-id')
+    serv=Freelancerworks.objects.all()
     r=Register_freelance.objects.all()
-    return render(request, 'requested_work.html', {'adm':adm,'r':r,'s':s})
+    return render(request, 'requested_work.html', {'adm':adm,'r':r,'s':s,'serv':serv})
 
 def ongoing_work(request):
     abc= request.session["admid"]
@@ -1245,6 +1245,7 @@ def freelancer_allocate(request):
         work.fr_service_id=sr.id
         work.frelancer=Register_freelance.objects.get(id=int(request.POST['frid']))
         work.end_date=request.POST['fr-date']
+        work.fr_desecr =request.POST['admin_dese']
         work.fr_status=2
         work.save()
         msg='Successfuly Allocated'
@@ -1254,9 +1255,8 @@ def freelancer_allocate(request):
         fr_st=Register_freelance.objects.get(id=int(request.POST['frid']))
         fr_st.w_status=1
         fr_st.save()
-        r=Register_freelance.objects.all()
         s=Service_form.objects.all()
-        return render(request, 'requested_work.html', {'adm':adm,'msg':msg,'r':r,'s':s})
+        return redirect('requested_work')
 
 
 #freelancer Work Section page
@@ -1331,7 +1331,8 @@ def uploaded_design_view(request,pk):
     adm=User.objects.filter(id=abc)
     s=Service_form.objects.get(id=pk)
     p=Product.objects.all()
-    return render(request, 'user_design_file.html', {'adm':adm,'s':s,'p':p})
+    r=Register_freelance.objects.all()
+    return render(request, 'user_design_file.html', {'adm':adm,'s':s,'p':p,'r':r})
 
 
 def products(request):
@@ -1367,5 +1368,40 @@ def remove_toplist(request,pk):
     person.ranking=0
     person.save()
     return redirect('freelancer_page',pk)
-        
+
+
+def sortby_freelances(request,pk):
+    if pk==1:
+        person=Register_freelance.objects.filter(service='UI DESIGN')
+        return render(request,'freelancers_list.html',{'person':person})
+    elif pk==2:
+        person=Register_freelance.objects.filter(service='PHOTOSHOP')
+        return render(request,'freelancers_list.html',{'person':person})
+    elif pk==3:
+        person=Register_freelance.objects.filter(service='HOUSE PLANS')
+        return render(request,'freelancers_list.html',{'person':person})
+    elif pk==4:
+        person=Register_freelance.objects.filter(service='LOGO CREATION')
+        return render(request,'freelancers_list.html',{'person':person})
+    elif pk==5:
+        person=Register_freelance.objects.filter(service='DRAWINGS')
+        return render(request,'freelancers_list.html',{'person':person})
+    elif pk==6:
+        person=Register_freelance.objects.filter(service='3D')
+        return render(request,'freelancers_list.html',{'person':person})
+
+  
+def freelances_details(request):
+    pr_id = request.GET.get('persid')
+    per=Register_freelance.objects.get(id=pr_id)
+    r= int(per.rating)
+    fr_ongoing=Freelancerworks.objects.filter(fr_status='2',frelancer=per.id).count
+    fr_complete=Freelancerworks.objects.filter(fr_status='1',frelancer=per.id).count
+
+    return render(request,'freelancers_details.html',{'per':per,'r':range(r),'fr_ongoing':fr_ongoing,'fr_complete':fr_complete})
+
+
+
+
+
 

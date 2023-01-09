@@ -90,6 +90,7 @@ class designation(models.Model):
         return self.designations
 
 class Service_form(models.Model):
+    req_date=models.DateField(auto_now_add=True,null=True,blank=True)
     user_name=models.CharField(max_length=100,default='')
     categori=models.CharField(max_length=100,default='')
     product=models.IntegerField(default='0')
@@ -110,6 +111,7 @@ class Freelancerworks(models.Model):
     fr_categori=models.CharField(max_length=100,default='')
     fr_product=models.IntegerField(default='0')
     frelancer=models.ForeignKey(Register_freelance,on_delete=models.CASCADE,default='')
+    fr_desecr=models.TextField(default='')
     fr_service_id=models.IntegerField(default='0')
     start_date=models.DateField(auto_now_add=True,null=True,blank=True)
     end_date=models.DateField(auto_now_add=False,null=True,blank=True)

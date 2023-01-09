@@ -1,126 +1,545 @@
-{% extends 'admin_base.html' %} {% load static%} {% block body %}
+{% extends 'admin_base.html' %}
+ {% load static%} 
+ {% block body %}
 
+
+ <!-- Begin Page Content -->
+ <div class="container-fluid">
+  {% for i in adm %}
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800"> Freelancers </h1>
+     
+  </div>
+  {% endfor %}
+
+  <!-- Content Row -->
+  <div class="row">
+      <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
+       
+          <div class="card border-left-info  shadow h-100 py-2" id="card1">
+              <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                            UI DESIGNS</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{enq}}</div>
+                      </div>
+                      <div class="col-auto">
+                          <i class="fas fa-users fa-2x text-gray-300"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+       
+      </div>
+       <!-- Pending Requests Card Example -->
+       <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
+       
+          <div class="card border-left-warning shadow h-100 py-2" id="card2">
+              <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                            PHOTO SHOPS </div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{enq}}</div>
+                      </div>
+                      <div class="col-auto">
+                          <i class="fas fa-users fa-2x text-gray-300"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+       
+      </div> 
+
+      <!-- Earnings (Monthly) Card Example -->
+      <div class="col-xl-2 col-md-6  col-sm-3 mb-4">
+      
+          <div class="card border-left-primary shadow h-100 py-2" id="card3">
+              <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                            HOUSE PLANS</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{users}}</div>
+                      </div>
+                      <div class="col-auto">
+                          <i class="fas fa-users fa-2x text-gray-300"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+       
+      </div>
+
+      <!-- Earnings (Monthly) Card Example -->
+      <div class="col-xl-2 col-md-6  col-sm-3 mb-4">
+       
+          <div class="card border-left-success shadow h-100 py-2" id="card4">
+              <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            LOGO CREATION</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{models}}</div>
+                      </div>
+                      <div class="col-auto">
+                          <i class="fas fa-users fa-2x text-gray-300"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+     
+      </div>
+
+      <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
+       
+        <div class="card border-left-warning shadow h-100 py-2" id="card5">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                          DRAWINGS </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{enq}}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+    </div> 
+
+      <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
+       
+          <div class="card border-left-secondary shadow h-100 py-2" id="card6">
+              <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-secondary  text-uppercase mb-1">
+                            3D MODELS</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{models}}</div>
+                      </div>
+                      <div class="col-auto">
+                          <i class="fas fa-users fa-2x text-gray-300"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+     
+          
+      </div>
+  </div>
+
+ 
+
+</div>
+
+<!-- /.container-fluid -->
 
 <style>
-  a
-  {
-    text-decoration: none;
-    color: black;
+  #details .card {
+    background: #fff;
+    border-radius: 4px;
+   
+    max-width: 400px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 25px;
+    position: relative;
+    margin-bottom: 1em;
   }
-  a:hover
-  {
-    text-decoration: none;
+  #details .card h2 {
+    margin: 0;
+    padding: 0 1rem;
   }
-  .status
-  {
-    border-radius:100%;
-  max-width: 0.70em;
-    max-height: 0.70em;
-    animation: glowing 1700ms infinite;
+  #details .card .title {
+    padding: 1rem;
+    text-align: right;
+    color: green;
+    font-weight: bold;
+    font-size: 12px;
   }
-
+  #details .card .desc {
+    padding: 0.3rem 1rem;
+    font-size: 12px;
+  }
+  #details .card .actions {
+    display: flex;
+   justify-content: center;
+    align-items: center;
+    padding: 0.2rem 1rem;
+  }
+  #details .card img {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    border-radius: 50%;
+  }
   
-  @keyframes glowing {
-    0% { background-color: #2ce60b; box-shadow: 0 0 3px #2ce60b; }
-    50% { background-color: #2ce60b; box-shadow: 0 0 40px #2ce60b; }
-    100% { background-color: #2ce60b; box-shadow: 0 0 3px #2ce60b; }
+  #details .img-avatar {
+    width:  55px;
+    height: 55px;
+    position: absolute;
+    border-radius: 50%;
+    border: 6px solid white;
+   
+    top: 15px;
+    left: 20px;
   }
-  .status1
-  {
-    border-radius:100%;
-    width: 1em;
-    height: 1em;
-    
-  animation: glowing1 1700ms infinite;
-  }
-
   
-  @keyframes glowing1 {
-    0% { background-color: #f80202; box-shadow: 0 0 3px #f80202; }
-    50% { background-color: #f80202; box-shadow: 0 0 40px #f80202; }
-    100% { background-color: #f80202; box-shadow: 0 0 3px #f80202; }
+  #details .card-text {
+    display:flex;
+    grid-template-columns: 1fr 2fr;
   }
+  
+  #details  .title-total {
+    padding: 2.5em 1.5em 1.5em 1.5em;
+  }
+  
+  #dataTable path {
+    fill: white;
+  }
+  
+  #details .img-portada {
+    width: 100%;
+  }
+  
+  #details .portada {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 
-
+  }
+  
+  #details  button {
+    border: none;
+    background: none;
+    font-size: 13px;
+    color: #fbd309;
+    cursor: pointer;
+    transition:.5s;
+  }
+  #details button:hover{
+      color: #eef74c  ;
+      transform: rotate(22deg)
+    }
+  
+  
 </style>
 
-<div class="row">
-    <div class="col-12 p-0">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title">Freelancers</h4>
-          <div class="row">
-            <div class="col-md-12 col-lg-12 col-sm-12 col-12">
-              <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Search User" style="width:100%"/>
-            </div>
-          </div><br>
-          <div class="table-responsive">
-            <table  class="table table-striped">
-              <thead>
-                <tr class="header">
-                
-                  
-                  <div class="col-md-lg-6 ">
-                  
-                  <th>Photo</th>
-                  <th>Full Name</th>
-                  <th>Phone Number</th>
-                  <th>E-mail</th>
-                  <th>Service</th>
-                  <th>Status</th>
-                  
-                </tr>
-              </thead>
-
-              {% for i in person %}
-              <tbody id="myTable">
-                <tr>
-                 
-                  <td>
-                    {% if i.profile_pic %}
-                    <img src="{{i.profile_pic.url}}">
-                    {% endif %}
-                  </td>
-                  <td><a href="{% url 'freelancer_page' i.id %}">{{i.full_name}}</a></td>
-                  <td>{{i.mobile}}</td>
-                  <td>{{i.email}}</td>
-                  <td>{{i.service}}</td>
-                  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-                  <td>
-                    {% if i.w_status == '0' %}
-                    <div style="background: rgb(72, 203, 7);" class="text-center p-2 status"></div>
-                    
-                    {% else %}
-                    <div style="background: rgb(251, 5, 5);" class="text-center p-2 status1"></div>
-                    {% endif %}
-                  </td>
-                
-                </tr>
-              </tbody>
-              {% endfor %}
-            </table>
+ <!-- Begin Page Content -->
+ <div class="container-fluid mt-2" id="details">
+    <div class="row g-2" >
+    {% for i in person %}
+   
+    <div class="col-lg-3 col-md-5 col-sm-12">
+      <div class="card mt-2" id="card-details{{i.id}}">
+        <input type="text" value="{{i.id}}" id="perid{{i.id}}" hidden>
+       
+        <div class="img-avatar">
+          <img src="{{i.profile_pic.url}}">
+        </div>
+       
+        <div class="card-text">
+       
+          <div class="title-total">   
+            <h6 class="title" style="color: #1e5793;">{{i.full_name}}&nbsp;
+              {% if i.w_status == '1' %}
+              <span class=""><i class="fa fa-circle" style="color: #f80202;"></i></span>
+              {% else %}
+              <span class=""><i class="fa fa-circle" style="color: #08da24;"></i></span>
+              {% endif %}
+            </h6>
+           
+            <h6>{{i.service}}</h6> 
+          
+          <div class="desc">
+            <span>{{i.mobile}}</span>&nbsp;
+            <span>{{i.email}}</span>
+            <!-- <p></p> -->
           </div>
+          <div class="actions">
+            <button> 
+              <span style="color: #000;">&nbsp;{{i.rating}}</span> 
+              <i class="fa fa-star checked"></i>&nbsp; 
+            </button>
           </div>
-          <script>
-            $(document).ready(function(){
-              $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
-                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-              });
-            });
-            </script>
         </div>
       </div>
     </div>
+   
+    </div>  
+    
+    {% endfor %}
+    </div> 
+    
   </div>
+<!-- /.container-fluid -->
+
+
+<style>
+  #full-deatils .emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+#full-deatils .profile-img{
+    text-align: center;
+}
+#full-deatils .profile-img img{
+    width: 70%;
+    height: 100%;
+}
+#full-deatils.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
+}
+#full-deatils .profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+#full-deatils .profile-head h5{
+    color: #333;
+}
+#full-deatils .profile-head h6{
+    color: #0062cc;
+}
+#full-deatils .profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+    font-size: 13px;
+    color: #fff;
+    background: #000;
+}
+#full-deatils .rating
+{
+  width: 60%;
+  margin-bottom: 0.80em;
+  font-size: 12px;
+  padding: 0.20em 0.60em;
+}
+#full-deatils .proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+#full-deatils .proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+#full-deatils .profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+#full-deatils .profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+#full-deatils .profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+}
+#full-deatils .profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+#full-deatils .profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+#full-deatils .profile-work a{
+    text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
+}
+#full-deatils .profile-work ul{
+    list-style: none;
+}
+#full-deatils .profile-tab label{
+    font-weight: 600;
+}
+#full-deatils .profile-tab p{
+    font-weight: 600;
+    color: #0062cc;
+}
+</style>
+
+
+<div class="container-fluid" id="full-deatils">
+  
+
 </div>
+
 
 
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $("#card1").click(function () {
+       
+       
+        $.ajax({
+            url: '{% url "sortby_freelances" 1 %}',
+            data: {
+                'pk': 1
+            },
+
+            success: function (data) {
+                $("#details").html(data);
+                console.log(data);
+            }
+        });
+
+    });
+
+</script>
+<script type="text/javascript">
+  $("#card2").click(function () {
+     
+      $.ajax({
+          url: '{% url "sortby_freelances" 2 %}',
+          data: {
+              'pk': 7
+          },
+
+          success: function (data) {
+              $("#dataTable").html(data);
+              console.log(data);
+          }
+      });
+
+  });
+
+</script>
+
+<script type="text/javascript">
+  $("#card3").click(function () {
+     
+      $.ajax({
+          url: '{% url "sortby_freelances" 3 %}',
+          data: {
+              'pk': 7
+          },
+
+          success: function (data) {
+              $("#details").html(data);
+              console.log(data);
+          }
+      });
+
+  });
+
+</script>
+
+<script type="text/javascript">
+  $("#card4").click(function () {
+      
+      $.ajax({
+          url: '{% url "sortby_freelances" 4 %}',
+          data: {
+              'pk': 7
+          },
+
+          success: function (data) {
+              $("#details").html(data);
+              console.log(data);
+          }
+      });
+
+  });
+
+</script>
+
+<script type="text/javascript">
+  $("#card5").click(function () {
+      const deptId = $(this).val();
+      console.log(deptId);
+      $.ajax({
+          url: '{% url "sortby_freelances" 5 %}',
+          data: {
+              'pk': 7
+          },
+
+          success: function (data) {
+              $("#details").html(data);
+              console.log(data);
+          }
+      });
+
+  });
+
+</script>
+
+<script type="text/javascript">
+  $("#card6").click(function () {
+      const deptId = $(this).val();
+      console.log(deptId);
+      $.ajax({
+          url: '{% url "sortby_freelances" 6 %}',
+          data: {
+              'pk': 7
+          },
+
+          success: function (data) {
+              $("#details").html(data);
+              console.log(data);
+          }
+      });
+
+  });
+
+</script>
+
+
+{% for i in person %}
+<script type="text/javascript">
+  $("#card-details{{i.id}}").click(function () {
+    const persid = $('#perid{{i.id}}').val();
+    console.log(persid);
+      $.ajax({
+          url: '{% url "freelances_details"%}',
+          data: {
+              'persid': persid
+          },
+
+          success: function (data) {
+              $("#full-deatils").html(data);
+              console.log(data);
+          }
+      });
+
+  });
+
+</script>
+{% endfor %}
+
+
 
 
 {% endblock %}

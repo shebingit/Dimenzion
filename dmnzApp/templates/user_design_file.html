@@ -12,15 +12,16 @@
       
         /* Add space between the border and the content */
         padding: 4px;
-        height: 225px;
+       
         border-radius: 12px;
        
       }
-      img {
+      #image {
         
         object-fit: fit;
         border-radius: 12px;
         height: 214px;
+        padding: 0.60em;
       }
       
       
@@ -61,7 +62,7 @@
 </style>
 
 
-<div id="container">
+<div id="container" class="container-fluid">
 
     <!-- A div with card class for the card  -->
     {% if s.file %}
@@ -87,7 +88,7 @@
                    
                         {% if i.id == s.product %}
                        
-                            <img  src="{{i.gib.url}}" alt="Description of image">
+                            <img src="{{i.gib.url}}" id="image" alt="Description of image">
                         {% endif %}
                     {% endfor %}
                 {% endif  %}
@@ -108,10 +109,54 @@
             </div>
         </div>
         <div class="col-lg-12">
-            <div class="card mt-3">
+            <div class="card mt-3 p-3">
                 <div class="name mb-2 text-center">Description</div>
         
                 <p>{{s.description}}</p>
+
+                <form action="{% url 'freelancer_allocate' %}" method="post"class="p-1">
+                  {% csrf_token %}
+                  <div class="row">
+                    <input type="text" hidden value="{{s.id}}" name="u-id">
+                    <div class="col-lg-12 p-1">
+                      <label>Any Description</label>
+                      <textarea class="w-100" style="height: 100px;" name="admin_dese"></textarea>
+                    </div>
+                    <div class="col-lg-8 text-center">
+                      <select name="frid" class="p-2 w-100" required>
+                        {% for j in r %}
+    
+                        <option value={{j.id}} selected  clas="p-2">
+                            
+                            <span>{{j.full_name}}</span> 
+                            <span> {{j.service}}</span>
+                            {% if j.rating == 1 %}
+                            <span> &nbsp; &nbsp; &nbsp;★</span>
+                            {% elif j.rating == 2 %}
+                            <span style=" color: orange;">  &nbsp; &nbsp; &nbsp; ★★</span>
+                            {% elif j.rating == 3 %}
+                            <span >  &nbsp; &nbsp; &nbsp; ★★★</span> 
+                            {% elif j.rating == 4 %}
+                            <span>  &nbsp; &nbsp; &nbsp;★★★★</span>
+                            {% elif j.rating == 5 %}
+                            <span> &nbsp; &nbsp; &nbsp;★★★★★</span>
+                            {% endif %}
+                        </option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                    <div class="col-lg-2 text-center">
+                      <input type="date" name="fr-date" required>
+                    </div>
+                    <div class="col-lg-2 text-center">
+                      <button type="submit" class="btn btn-success">Allocate</button>
+                    </div>
+                  </div>
+                
+                  
+                   
+  
+                </form>
                 </div>
         </div>
         

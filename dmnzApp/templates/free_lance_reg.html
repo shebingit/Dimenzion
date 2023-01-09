@@ -81,11 +81,10 @@
                                     <div class="form-group">
                                         <select type="text" class="form-control form-control-lg "  name="service"  autocomplet off Required>
                                             <option value="">.........select service...........</option>
-                                            <option value="Software Developer">Software Developer</option>
-                                            <option value="Logo designer">Logo designer</option>
-                                            <option value="Drawings">Drawings</option>
-                                            <option value="Photo Shop">Photo Shop</option>
-                                            <option value="House Plans">House Plans</option>
+                                            {% for i in cate %}
+                                            <option value="{{i.category_name}}">{{i.category_name}}</option>
+                                            {% endfor %}
+                                            
                                         </select>
                                     </div>
 
