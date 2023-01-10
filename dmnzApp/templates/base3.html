@@ -67,14 +67,14 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-users"></i>
-                    <span>Users</span>
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Jobs Chart</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!-- <h6 class="collapse-header">Course:</h6> -->
                         <a class="collapse-item" href="{% url 'freelancer_work'%}">Works</a>
-                        <!-- <a class="collapse-item" href="{% url 'freelancers' %}">Freelancers</a> -->
+                        <a class="collapse-item" href="{% url 'freelancer_completed_work' %}">Completed</a>
                     </div>
                 </div>
             </li>

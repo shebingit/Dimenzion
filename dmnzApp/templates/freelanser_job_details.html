@@ -1,0 +1,57 @@
+<div class="container mt-5 mb-3" id="job-card-details">
+
+    <div class="card">
+        <div class="card__title">
+          <div class="icon">
+            <a href="#"><i class="fa fa-arrow-left"></i></a>
+          </div>
+          <h3>{{job.fr_categori}}</h3>
+        </div> 
+        <div class="card__body">
+          <div class="half">
+            <div class="featured_text">
+              <h1>{{job.fr_user}}</h1>
+              <p class="sub">{{job.end_date}}</p>
+              <!-- <p class="price">$210.00</p> -->
+            </div>
+          
+            <div class="image">
+                {% for j in serv %}
+                    {% if job.fr_service_id == j.id %}
+                        {% if j.file %}
+                            <img src="{{j.file.url}}" alt="">
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+          </div>
+          <div class="half">
+            <div class="description">
+               
+                <p>
+                    {% for j in serv %}
+                        {% if job.fr_service_id == j.id %}
+                        {{j.description}}
+                        {% endif %}
+                    {% endfor %}
+                <br><br>
+                {% if job.fr_desecr %}
+                    <h6><b>Admin</b> </h6>
+                    {{job.fr_desecr}}
+                {% endif %}
+                </p>
+            </div>
+            <!-- <span class="stock"><i class="fa fa-pen"></i> In stock</span> -->
+            
+          </div>
+        </div>
+        <div class="card__footer">
+          
+          <div class="action">
+            <button type="button"><a href="{% url 'freelancer_work_accept' job.id %}">Accept</a></button>
+            <button type="button"><a href="{% url 'freelancer_work_reject' job.id %}">Reject</a></button>
+          </div>
+        </div>
+      </div>
+
+</div>

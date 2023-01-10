@@ -8,7 +8,7 @@
   {% for i in adm %}
   <!-- Page Heading -->
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800"> Freelancers </h1>
+      <h1 class="h3 mb-0 text-gray-800"> Models </h1>
      
   </div>
   {% endfor %}
@@ -232,53 +232,11 @@
 </style>
 
  <!-- Begin Page Content -->
- <div class="container-fluid mt-2" id="details">
-    <div class="row g-2" >
-    {% for i in person %}
-   
-    <div class="col-lg-3 col-md-5 col-sm-12">
-      <div class="card mt-2" id="card-details{{i.id}}">
-        <input type="text" value="{{i.id}}" id="perid{{i.id}}" hidden>
-       
-        <div class="img-avatar">
-          <img src="{{i.profile_pic.url}}">
-        </div>
-       
-        <div class="card-text">
-       
-          <div class="title-total">   
-            <h6 class="title" style="color: #1e5793;">{{i.full_name}}&nbsp;
-              {% if i.w_status == '1' %}
-              <span class=""><i class="fa fa-circle" style="color: #f80202;"></i></span>
-              {% else %}
-              <span class=""><i class="fa fa-circle" style="color: #08da24;"></i></span>
-              {% endif %}
-            </h6>
-           
-            <h6>{{i.service}}</h6> 
-          
-          <div class="desc">
-            <span>{{i.mobile}}</span>&nbsp;
-            <span>{{i.email}}</span>
-            <!-- <p></p> -->
-          </div>
-          <div class="actions">
-            <button> 
-              <span style="color: #000;">&nbsp;{{i.rating}}</span> 
-              <i class="fa fa-star checked"></i>&nbsp; 
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-   
-    </div>  
-    
-    {% endfor %}
-    </div> 
+ <div class="container-fluid mt-2" id="models-details">
+  
     
   </div>
-<!-- /.container-fluid -->
+<!-- /.container-fluid   -->
 
 
 <style>
@@ -386,11 +344,128 @@
 }
 </style>
 
+<style>
+    #products
+    {
+        padding: 12px 13px;
+        border-radius: 10px;
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+        margin-bottom: 1em;
+    }
+    #products .image 
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #products .image img
+    {
+      
+        max-height: 200px;
+        max-width: 300px;
+        transform: scale(.9);
+      
+    }
+    #products .image img:hover{
+       
+        transform: scale(1);
+        transition: 3s;
+    }
+    .content 
+    {
+        padding-top: 2em;
+        font-size: 0.85em;
+    }
+    .content .review
+    {
+        display: flex;
+        text-align: center;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 1em;
+    }
+    .content .review h5{
+        font-weight: 600;
+        font-size: 1.5em;
+    }
+    .stars 
+    {
+        color: rgb(255, 237, 72);
+        font-size: 0.85em;
+    }
+    .stars span{
+        color: black;
+        font-weight: 600;
+        font-size: 1em;
+    }
+    .name
+    {
+        font-size: 1.5em;
+        font-weight: 600;
+        gap:2em;
+    }
+    .btn-box
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2px 4px;
+    }
+    .btn-box .like a i{
+        color: #000;
+    }
+    /* .btn-box .like{
+        color: rgb(71, 68, 68);
+        background-color: rgba(220, 219, 219, 0.74);
+        border-radius: 50%;
+        text-align: center;
+        min-width: 40px;
+        min-height: 40px;
+        padding-top: 0.83em;
+       
+    } */
+    .btn-box .like .fa-heart:hover
+    {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+       transform: scale(1.1);
+       color: rgb(255, 17, 17);
+    }
+    .btn-box .btn{
+       display: flex;
+        background-color: rgb(50, 9, 86);
+        color: #fff;
+        border-radius: 10px;
+       
+        flex-direction: row;
+        padding: 0px 5px;
+        max-height: 40px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    }
+    .btn-box .btn:hover{
+        background-color: rgb(4, 4, 4);
+    }
+    .btn-box .btn p{
+        padding: 3px 15px;
+        margin-top: 5px;
+        font-size: .85em;
+    }
+    .btn-box .cart-icon
+    {
+        margin-top: 5px;    
+    }
+    .filter
+    {
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        flex-direction: row;
+    }
+    .fa-filter:hover 
+    {
+        opacity: 0.6;
+    }
+</style>
 
-<div class="container-fluid" id="full-deatils">
-  
-
-</div>
 
 
 
@@ -405,13 +480,13 @@
        
        
         $.ajax({
-            url: '{% url "sortby_freelances" 1 %}',
+            url: '{% url "sortby_catagery" 1 %}',
             data: {
                 'pk': 1
             },
 
             success: function (data) {
-                $("#details").html(data);
+                $("#models-details").html(data);
                 console.log(data);
             }
         });
@@ -423,13 +498,13 @@
   $("#card2").click(function () {
      
       $.ajax({
-          url: '{% url "sortby_freelances" 2 %}',
+          url: '{% url "sortby_catagery" 2 %}',
           data: {
               'pk': 7
           },
 
           success: function (data) {
-              $("#details").html(data);
+              $("#models-details").html(data);
               console.log(data);
           }
       });
@@ -442,13 +517,13 @@
   $("#card3").click(function () {
      
       $.ajax({
-          url: '{% url "sortby_freelances" 3 %}',
+          url: '{% url "sortby_catagery" 3 %}',
           data: {
               'pk': 7
           },
 
           success: function (data) {
-              $("#details").html(data);
+              $("#models-details").html(data);
               console.log(data);
           }
       });
@@ -461,13 +536,13 @@
   $("#card4").click(function () {
       
       $.ajax({
-          url: '{% url "sortby_freelances" 4 %}',
+          url: '{% url "sortby_catagery" 4 %}',
           data: {
               'pk': 7
           },
 
           success: function (data) {
-              $("#details").html(data);
+              $("#models-details").html(data);
               console.log(data);
           }
       });
@@ -481,13 +556,13 @@
       const deptId = $(this).val();
       console.log(deptId);
       $.ajax({
-          url: '{% url "sortby_freelances" 5 %}',
+          url: '{% url "sortby_catagery" 5 %}',
           data: {
               'pk': 7
           },
 
           success: function (data) {
-              $("#details").html(data);
+              $("#models-details").html(data);
               console.log(data);
           }
       });
@@ -501,13 +576,13 @@
       const deptId = $(this).val();
       console.log(deptId);
       $.ajax({
-          url: '{% url "sortby_freelances" 6 %}',
+          url: '{% url "sortby_catagery" 6 %}',
           data: {
               'pk': 7
           },
 
           success: function (data) {
-              $("#details").html(data);
+              $("#models-details").html(data);
               console.log(data);
           }
       });
@@ -517,7 +592,7 @@
 </script>
 
 
-{% for i in person %}
+<!-- {% for i in person %}
 <script type="text/javascript">
   $("#card-details{{i.id}}").click(function () {
     const persid = $('#perid{{i.id}}').val();
@@ -537,7 +612,7 @@
   });
 
 </script>
-{% endfor %}
+{% endfor %} -->
 
 
 

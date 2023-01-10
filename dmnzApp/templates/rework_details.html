@@ -2,130 +2,6 @@
 {% load static %}
 {% block body %}
 
-<style>
-
-        html{
-           background-image: linear-gradient(120deg, #FF4081, #81D4FA)
-        }
-        body {
-            background-color: rgb(208, 206, 206)
-        }
-        
-        #job-card .card {
-            border: none;
-            border-radius: 10px;
-            background: #d6e2ef;
-           
-        }
-        
-        #job-card .c-details span {
-            font-weight: 400;
-            font-size: 13px;
-            padding-left: 0.50em;
-           
-           
-        }
-        
-        #job-card .icon {
-            width: 50px;
-            height: 50px;
-            background-color: rgb(197, 202, 218);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-           
-        }
-        
-        #job-card .badge span {
-            background-color: #fffbec;
-            width: 60px;
-            height: 25px;
-            padding-bottom: 3px;
-            border-radius: 5px;
-            display: flex;
-            color: #fed85d;
-            justify-content: center;
-            align-items: center;
-            
-        }
-        
-        #job-card.progress {
-            height: 10px;
-            border-radius: 10px
-        }
-        
-        #job-card.progress div {
-            background-color: red
-        }
-        
-        #job-card .text1 {
-            font-size: 14px;
-            font-weight: 600
-        }
-        
-        #job-card .text2 {
-            color: #34373e;
-            padding-left: 1em;
-        }
-        #job-card .heading
-        {
-            color: #464545;
-            font-weight: 800;
-            font-size: 15px;
-        }
-        #job-card .c-details h6{
-            color: #3a3939;
-            font-weight: 700;
-            font-size: 15px;
-        }
-        .vie-job
-        {
-            padding: 0.30em 0.80em;
-            border: none;
-            background: #130961;
-            color: #fcfdff;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 13px;
-        }
-
-   
-</style>
-
-
-
-<div class="container mt-5 mb-3" id="job-card">
-    <div class="row">
-        {% for i in frwork %}
-        <div class="col-md-4">
-            <input type="text"  value="{{i.id}}" id="details_id{{i.id}}" hidden >
-            <div class="card p-3 mb-2">
-                <div class="d-flex justify-content-between">
-                    <div class="d-flex flex-row align-items-center">
-                        <div class="icon"> <i class="fa fa-id-card" aria-hidden="true"></i></div>
-                        <div class="ms-3 c-details">
-                            <h6 class="mb-0">&nbsp;&nbsp;&nbsp;{{i.fr_user}}</h6> 
-                        </div>
-                    </div>
-                    <div class="badge"> <span>{{forloop.counter}}</span> </div>
-                    
-                </div>
-                <div class="mt-3">
-                    <h5 class="heading">{{i.fr_categori}}</h5>
-                    <div class="mt-2">
-                        <!-- <div class="progress">
-                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div> -->
-                        <div class="mt-3"> <span class="text1">{{i.end_date}} <span class="text2"><button class="vie-job" id="view-job{{i.id}}" >View Job</button></span></span> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</div>
 
 
 <style>
@@ -166,7 +42,12 @@
           justify-content: space-evenly;
           margin-bottom: 25px;
         }
-         
+         @media(max-width:932px)
+         {
+            #job-card-details  .card__body{
+                display: block;
+            }
+         }
           
         #job-card-details    .featured_text h1{
               margin: 0;
@@ -313,58 +194,161 @@
       
 </style>
 
-<div class="container mt-5 mb-3" id="job-card-details"></div>
+<div class="container mt-5 mb-3" id="job-card-details">
+
+    <div class="card">
+        <div class="card__title">
+          <div class="icon">
+            <a href="#"><i class="fa fa-arrow-left"></i></a>
+          </div>
+          <h3>{{frworks.fr_categori}}</h3>
+        </div> 
+        <div class="card__body">
+            
+           
+          <div class="half">
+            <div class="featured_text">
+              <h1>{{frworks.fr_user}}</h1>
+              <p class="sub">{{frworks.end_date}}</p>
+              <!-- <p class="price">$210.00</p> -->
+            </div>
+          
+            <div class="image">
+                
+               
+              
+                {% for j in s %}
+                    {% if frworks.fr_service_id == j.id %}
+                            
+                        {% if j.product == 0 %}
+                        <img id="image" src="{{s.file.url}}" alt="Description of image">
+                
+                        {% else %}
+                    
+                            {% for i in p %}
+                        
+                                {% if i.id == j.product %}
+                            
+                                    <img src="{{i.gib.url}}" id="image" alt="Description of image">
+                                {% endif %}
+                            {% endfor %}
+                        {% endif  %}
+
+                    {% endif %}
+                {% endfor %}
+              
+            </div>
+            <!-- <div class="image">
+            
+             
+           
+                {% if frworks.fr_file %}
+                    <img src="{{frworks.fr_file.url}}" alt="">
+                {% endif %}
+            
+      
+            </div> -->
+          </div>
+          <div class="half">
+            <div class="description">
+               
+                
+                <p>
+                    {% for j in s %}
+                        {% if frworks.fr_service_id == j.id %}
+                        {{j.description}}
+                        {% endif %}
+                    {% endfor %}
+                </p>
+            </div>
+            <!-- <span class="stock"><i class="fa fa-pen"></i> In stock</span> -->
+            
+          </div>
+         
+        </div>
+        <div class="card__footer">
+          
+          <div class="action">
+            
+          </div>
+        </div>
+      </div>
+
+</div>
 
 
+{% if frworks.fr_status == '6' %}
+<div class="container mt-5 mb-3" id="job-card-details">
 
+    <div class="card">
+        <div class="card__title">
+          <div class="icon">
+            <a href="#"><i class="fa fa-arrow-left"></i></a>
+          </div>
+          <h3>{{frworks.fr_categori}}</h3>
+        </div> 
+        <div class="card__body">
+            
+           
+          <div class="half">
+            <div class="featured_text">
+              <h1>{{frworks.fr_user}}</h1>
+              <p class="sub">{{frworks.end_date}}</p>
+              <!-- <p class="price">$210.00</p> -->
+            </div>
+          
+            <div class="image">
+                
+                    
+              
+                   
+                        {% if frworks.fr_file %}
+                            <img src="{{frworks.fr_file.url}}" alt="">
+                        {% endif %}
+                    
+              
+            </div>
+            <!-- <div class="image">
+            
+             
+           
+                {% if frworks.fr_file %}
+                    <img src="{{frworks.fr_file.url}}" alt="">
+                {% endif %}
+            
+      
+            </div> -->
+          </div>
+          <div class="half">
+            <div class="description">
+               
+                <p>
+                    {% for j in serv %}
+                        {% if job.fr_service_id == j.id %}
+                        {{j.description}}
+                        {% endif %}
+                    {% endfor %}
+                <br><br>
+                {% if frworks.fr_desecr %}
+                    <h6><b>Admin</b> </h6>
+                    {{frworks.fr_desecr}}
+                {% endif %}
+                </p>
+            </div>
+            <!-- <span class="stock"><i class="fa fa-pen"></i> In stock</span> -->
+            
+          </div>
+         
+        </div>
+        <div class="card__footer">
+          
+          <div class="action">
+            
+          </div>
+        </div>
+      </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-{% for i in frwork %}
-<script type="text/javascript">
-  $("#view-job{{i.id}}").click(function () {
-    const persid = $('#details_id{{i.id}}').val();
-    console.log(persid);
-      $.ajax({
-          url: '{% url "freelances_job_details" %}',
-          data: {
-              'persid': persid
-          },
-
-          success: function (data) {
-              $("#job-card-details").html(data);
-              console.log(data);
-          }
-      });
-
-  });
-
-</script>
-{% endfor %}
-
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>  
-
-
-{% if file_msg %}
-<script>
-    swal("Good job!", '{{file_msg}}', "success")
-</script>
-
+</div>
 {% endif %}
-{% if msg %}
-<script>
-    swal("Good job!", '{{msg}}', "success")
-</script>
-{% endif %}
 
-{% if rej %}
-<script>
-    swal("Good job!", '{{rej}}', "success")
-</script>
-{% endif %}
-
-    
-
-    {% endblock %}
+{% endblock %}

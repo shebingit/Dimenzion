@@ -1,0 +1,50 @@
+<div class="container-fluid" id="full-deatils" >
+
+
+    <div class="row g-4">
+        {% for p in all %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="container" id="products">
+                <div class="image">
+                    {% if p.gib %}
+                    <img src="{{p.gib.url}}" alt="Photo shop image">
+                    {% endif %}
+                </div>
+                <div class="content">
+                    <div class="review">
+                        <div class="stars">
+                            <span>Reviews</span>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                           
+                        </div>
+                        <h5>₹ {{p.price}}</h5>
+                    </div>
+                    <h4 class="name">{{p.modelname}}</h4>
+                    <div class="detail">
+                        <p>{{p.description}}
+                        <p>
+                    </div>
+                    <div class="btn-box">
+                        <a href="{% url 'remove_model' p.id  %}">
+                        <span class="like"><i class="fa fa-trash" style="color: #000;"  ></i></span>
+                        </a>
+                        <a href="{% url 'edit_model' p.id  %}">
+                        <div class="btn">
+                            <p>Edit</p>
+                            <div class="cart-icon">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  
+
+</div>

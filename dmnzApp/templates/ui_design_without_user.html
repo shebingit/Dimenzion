@@ -365,69 +365,131 @@
 
 
 
-      <!-- modal -->
-
-
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">REQUEST FORM</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            <form  action="{% url 'Request_form' %}" method="post"  autocomplete="off" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Name</label>
-                    <input type="text" name="name"  autocomplete="off" required  class="form-control" id="fullname" aria-describedby="emailHelp" >
-                  
-                  </div>
-    
+<style>
+    #exampleModal .modal-dialog, .modal-header, .modal-footer
+     {
+       border: none;
+       outline:none;
+       border-radius: none;
+     }
+     #exampleModal  .close
+     {
+       border: none;
+       outline:none;
+       border-radius: none;
+     
+     }
+     #exampleModal  .modal-content .form
+     {
+     
+     background:#fbfbfb;
+     border-radius:8px;
+     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+     padding:8px 20px;
+     box-sizing:border-box;
+     font-family:'Montserrat',sans-serif;
+     position:relative
+     }
+     #exampleModal   .modal-content  h4
+     {
+       margin:10px 0;
+       padding-bottom:10px;
+       width:120px;
+       color:#78788c;
+       border-bottom:3px solid #262628;
+       font-size: 1.2em;
+     }
+     
+     #exampleModal  .modal-content  input, select{
+       width:100%;
+       padding:10px;
+       box-sizing:border-box;
+       background:none;
+       outline:none;
+       resize:none;
+       border:0;
+       font-family:'Montserrat',sans-serif;
+       transition:all .3s;
+       border-bottom:2px solid #bebed2
+     }
+     #exampleModal  .modal-content  input:focus, option:focus{
+       border-bottom:2px solid #78788c
+     }
+     
+     #exampleModal  .modal-content  p:before{
+       content:attr(type);
+       display:block;
+       margin:28px 0 0;
+       font-size:12px;
+       color:#5a5a5a
+     }
+     #exampleModal   .modal-content  .btn-send
+     {
+       float:right;
+       padding:8px 12px;
+       margin:5px 0 0;
+       font-family:'Montserrat',sans-serif;
+       border:2px solid #78788c;
+       background:0;
+       color:#5a5a6e;
+       cursor:pointer;
+       transition:all .3s;
+       border-radius: 10px;
+     }
+       #exampleModal  .modal-content .btn-send:hover
+     {
+       background:#131364;
+       color:#fff
+     }
+     
+     
+     #exampleModal   .close:hover{
+       background: #fff;
+     }
+     
+     </style>
+ 
+     
+         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+         <div class="modal-dialog modal-notify modal-success" role="document">
+           <!--Content-->
+           <div class="modal-content">
+             <!--Header-->
+             <div class="modal-header">
+              
+               <h4> <i class="fa fa-paper-plane" aria-hidden="true" style="color:red;font-size:18px;"></i> Request </h4>
+       
+               <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true" class="white-text">&times;</span>
+               </button>
+             </div>
+       
+             <!--Body-->
+             <div class="modal-body">
+                 <form  action="{% url 'Request_form' %}" method="post" class="form"  autocomplete="off" enctype="multipart/form-data">
+                 {% csrf_token %}
                  
-    
-                  <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Address</label>
-                    <textarea type="text" name="address" required  class="form-control" autocomplete="off" id="address"></textarea>
-                  </div>
-    
-    
-                  <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Phone number</label>
-                    <input type="number" name="phone" required class="form-control" autocomplete="off" id="phone_number">
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Email</label>
-                    <input type="email" name="email" required  class="form-control" autocomplete="off" id="email" >
-                  </div>
-                  <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Category</label>
-                    <input type="text" name="cate" value="{{categ.category_name}}" autocomplete="off" required  class="form-control" id="cate"  >
-                  
-                  </div>
-    
-                  <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">File</label>
-                    <input type="file" name="example" required  class="form-control" autocomplete="off" id="file" >
-                  </div>
-    
-                  <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Description</label>
-                    <textarea type="text" name="description" required class="form-control" autocomplete="off" id="desc"></textarea>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                  </div>
+                 <p type="Name:"><input placeholder="Write your name here.."  name="name"></p>
+                 <p type="Email:"><input placeholder="Let us know how to contact you back.."name="email"></p>
+                 <p type="Phone:"><input placeholder="Let us know your number" pattern="[1-9]{1}[0-9]{9}" name="phone"></p>
+                 <p type="Address:"><input placeholder="Write your Address here.."  name="address"></p>
+                 <p type="Category:"><input placeholder="Write your name here.."  name="cate" value="{{categ.category_name}}"></p>
+                 <p type="File:"><input placeholder="What would you like to tell us.."  type="file" name="example"></p>
                  
-             </form>
-            </div>
-           
-          </div>
-        </div>
-      </div>
-
+                 <p type="Description:"><input placeholder="What would you like to tell us.." name="description"></p>
+                
+                 <button type="submit" class="btn-send">Request</button>
+                 
+               </form>
+             </div>
+       
+            
+           </div>
+           <!--/.Content-->
+         </div>
+       </div>
+ 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" ></script>
 

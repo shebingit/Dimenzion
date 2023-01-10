@@ -4,11 +4,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-
-
-
-
-
   <style>
     #dataTable
     {
@@ -61,6 +56,7 @@
                             </tfoot>
                             <tbody>
                               {% for i in s %}
+                              {% if i.status == '2' or i.status == '0' %}
                                 <tr>
                                   <td>{{i.req_date}}</td>
                                     <td>{{i.user_name}}</td>
@@ -78,15 +74,17 @@
                                     </td>
                                   
                                     <td>
+                                    
                                       {% if i.status == '2' %}
-                                      <a href="{% url 'uploaded_design_view' i.id %}"class="text-warning ">Pending</a>
-                                      {% else %}
-                                      <a href="{% url 'uploaded_design_view' i.id %}" >Allocate</a>
+                                      <a href="{% url 'uploaded_design_view' i.id %}"class="text-warning "><b>Pending</b></a>
+                                      {% elif i.status == '0' %}
+                                      <a href="{% url 'uploaded_design_view' i.id %}" ><b>Allocate</b></a>
                                       {% endif %}
                                     </td>
                                     
                                     
                                 </tr>
+                                {% endif %}
                               {% endfor %}
                                 
                             </tbody>

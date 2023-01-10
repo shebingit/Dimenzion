@@ -117,6 +117,16 @@ urlpatterns = [
 
 
      #shebin shaji
+     
+    path('Models',views.models_show,name='models_show'),
+    path('Model-page/<int:pk>',views.sortby_catagery,name='sortby_catagery'),
+    path('Model-Remove/<int:pk>',views.remove_model,name='remove_model'),
+    path('Model-Edit/<int:pk>',views.edit_model,name='edit_model'),
+    path('Model-Edit-Save/<int:pk>',views.edit_save_model,name='edit_save_model'),
+    
+   
+    
+    
 
     path('freelancers',views.freelancers,name='freelancers'),
     path('freelancer_page/<int:freel_id>',views.freelancer_page,name='freelancer_page'),
@@ -127,6 +137,13 @@ urlpatterns = [
     path('Freelancer-Allocate-work',views.freelancer_allocate,name='freelancer_allocate'),
     path('Freelancers-page/<int:pk>',views.sortby_freelances,name='sortby_freelances'),
     path('Freelancers-Details',views.freelances_details,name='freelances_details'),
+    path('Complete-job/<int:pk>',views.complete_job,name='complete_job'),
+    
+
+    path('Change-Status/<int:pk>',views.Change_status_form,name='Change_status_form'),
+    path('Change-Status-save/<int:pk>',views.Change_status_save,name='Change_status_save'),
+    
+    
     
     
      
@@ -134,10 +151,16 @@ urlpatterns = [
 
     #freelancers
 
-     path('Freelancer-Work',views.freelancer_work,name='freelancer_work'),
-     path('freelancer_work_accept/<int:fr_wstatus>',views.freelancer_work_accept,name='freelancer_work_accept'),
-     path('freelancer_work_reject/<int:fr_wrejejct>',views.freelancer_work_reject,name='freelancer_work_reject'),
-     path('freelancer_workfile_submit/<int:fr_workfile>',views.freelancer_workfile_submit,name='freelancer_workfile_submit'),
+    path('Freelancer-Work',views.freelancer_work,name='freelancer_work'),
+    path('freelancer_work_accept/<int:fr_wstatus>',views.freelancer_work_accept,name='freelancer_work_accept'),
+    path('freelancer_work_reject/<int:fr_wrejejct>',views.freelancer_work_reject,name='freelancer_work_reject'),
+    path('freelancer_workfile_submit/<int:fr_workfile>',views.freelancer_workfile_submit,name='freelancer_workfile_submit'),
+    path('Freelancer-Job-Details',views.freelances_job_details,name='freelances_job_details'),
+    path('Rework-Details/<int:pk>',views.rework_details,name='rework_details'),
+    path('Freelancer-Completed-Work',views.freelancer_completed_work,name='freelancer_completed_work'),
+     
+    
+     
 
      path('check_username',views.check_username,name='check_username'),
      path('check_useremail',views.check_useremail,name='check_useremail'),

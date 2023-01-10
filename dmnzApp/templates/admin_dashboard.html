@@ -3,7 +3,19 @@
 {% block body %}
 
 
-
+<style>
+    .dwn
+    {
+        border: none;
+        background: #000;
+        color: rgb(245, 246, 247);
+        padding: 0.40em 1.1em;
+        border-radius: 10px;
+    }
+    .dwn a{
+        color: rgb(245, 246, 247);
+    }
+</style>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -40,7 +52,7 @@
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <a href="#" style="text-decoration: none;">
+                            <a href="{% url 'ongoing_work' %}" style="text-decoration: none;">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -60,7 +72,7 @@
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <a href="#" style="text-decoration: none;">
+                            <a href="{% url 'completed_work' %}" style="text-decoration: none;">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -78,6 +90,7 @@
                             </a>
                         </div>
                         <div class="col-xl-3 col-md-6 mb-4">
+                            <a href="{% url 'models_show' %}" style="text-decoration: none;">
                             <div class="card border-left-secondary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -92,6 +105,7 @@
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
@@ -147,8 +161,72 @@
                 </div>
                 <!-- /.container-fluid -->
 
-            </div>
-            <!-- End of Main Content -->
+
+                 <!-- Begin Page Content -->
+                 <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Messages</h1>
+                    <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+                        For more information about DataTables, please visit the <a target="_blank"
+                            href="https://datatables.net">official DataTables documentation</a>.</p> -->
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <!-- <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary"></h6>
+                        </div> -->
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Full Name</th>
+                                            <th scope="col">Email</th>
+                                            <th scope="col">Phone No</th>
+                                            <th scope="col">Company Name</th>
+                                            <th scope="col">Message</th>
+                                            <th scope="col">Upload File</th>
+                                        </tr>
+                                    </thead>
+                                    <!-- <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </tfoot> -->
+                                    <tbody>
+                                        {% for i in messg %}
+                                        <tr>
+                                          
+                                          <td>{{i.mg_date}}</td>
+                                          <td>{{i.name}}</td>
+                                          <td>{{i.email}}</td>
+                                          <td>{{i.phno}}</td>
+                                          <td>{{i.company_name}}</td>
+                                          <td>{{i.messag}}</td>
+                                          <td>
+                                              {% if i.files %}
+                                              <button class="dwn"><a href="#"  download="{{i.files.url}}">Download</a></button>
+                                              
+                                              {% endif %}
+                                          </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+      
 
 {% endblock %}
 
@@ -161,20 +239,14 @@
     <div class="row mt-3">
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
-                <h5 class="mt-2 p-2"> Messages</h5>
+                <h5 class="mt-2 p-2"> </h5>
                 <div class="card-body overflow-auto p-1" style="height:52vh">
                    
                     <div class="container mt-4 mb-3">
                         <table class="table mb-2">
                             <thead class="table-dark">
                               <tr>
-                                <th scope="col">Date</th>
-                                <th scope="col">Full Name</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Phone No</th>
-                                <th scope="col">Company Name</th>
-                                <th scope="col">Message</th>
-                                <th scope="col">Upload File</th>
+                                
                                 
                               </tr>
                             </thead>

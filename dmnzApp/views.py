@@ -382,7 +382,7 @@ def Request_form(request):
         description=request.POST['description']
         categ=request.POST['cate']
         examp_file=request.FILES.get('example')
-        status='pending'
+        status='0'
         std=Service_form(user_name=name,
                                email=email,
                                Address=address,
@@ -510,7 +510,9 @@ def freelancer_home(request):
         free=Register_freelance.objects.get(id=std)
         fr_ongoing=Freelancerworks.objects.filter(fr_status='2',frelancer_id=std).count
         fr_complete=Freelancerworks.objects.filter(fr_status='1',frelancer_id=std).count
-        return render(request,'freelance_home.html',{'p':free,'fr_ongoing':fr_ongoing,'fr_complete':fr_complete})
+        frwork=Freelancerworks.objects.filter(frelancer=free,fr_status='2')
+        frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='1'),frelancer=free)
+        return render(request,'freelance_home.html',{'p':free,'fr_ongoing':fr_ongoing,'fr_complete':fr_complete,'frwork':frwork,'frworks':frworks})
     return redirect('user_logout')
 
 def userhome(request):
@@ -539,6 +541,12 @@ def admin_dashboard(request):
         messg=Messagebox.objects.all().order_by('-id')
         return render(request, 'admin_dashboard.html',{'adm': adm, 'users': users, 'models': models,'messg':messg})
     return redirect('user_logout')
+
+def models_show(request):
+    abc= request.session['admid']
+    adm=User.objects.filter(id=abc)
+    all=Product.objects.all()
+    return render(request, 'models.html',{'adm': adm,'all':all})
 
 
 def admin_log(request):
@@ -892,6 +900,32 @@ def createmodel(request):
     else:
         return redirect('createmodel')
 
+def edit_model(request,pk):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id= abc)
+    var = categories.objects.all()
+    item = Product.objects.get(id=pk)
+    return render(request, "edit_model.html", {'var': var,'adm':adm,'item':item})
+
+def edit_save_model(request,pk):
+    if request.method == 'POST':
+        item= Product.objects.get(id=pk)
+        item.modelname = request.POST['modelname']
+        item.description = request.POST['description']
+
+        img = request.FILES.get('gib')
+        if img:
+           item.gib=img
+        else:
+              item.gib= item.gib
+        item.price = request.POST['price']
+        item.types = request.POST['types']
+        item.format = request.POST['format']
+        item.modeltype = request.POST['modeltype']
+        item.category_id = request.POST['category']
+        item.save()
+        return redirect('models_show')
+
 
 def admin_payment_history(request):
     if 'admid' in request.session:
@@ -1221,13 +1255,68 @@ def requested_work(request):
 def ongoing_work(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
-    fr=Freelancerworks.objects.all().order_by('-id')
-    return render(request, 'ongoing_work.html', {'adm':adm,'fr':fr})
+    s=Service_form.objects.all().order_by('-id')
+    return render(request, 'ongoing_work.html', {'adm':adm,'s':s})
+
+
+
+def Change_status_form(request,pk):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    s=Service_form.objects.get(id=pk)
+    return render(request, 'work_status_change.html', {'adm':adm,'s':s})
+
+def Change_status_save(request,pk):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    if request.method=='POST':
+        n=request.POST['ser_des']
+        nu=request.POST['ser_date']
+        images=request.FILES.get('ser_file')
+        s=Service_form.objects.get(id=pk)
+        serv=Freelancerworks.objects.get(fr_service_id=s.id)
+        fr=Register_freelance.objects.get(id=serv.frelancer.id)
+        fr.w_status=1
+        fr.save()
+        serv.fr_status=6
+        serv.fr_desecr=n
+        serv.end_date=nu
+        serv.save()
+        if images:
+            s.file=images
+        else:
+            s.file=s.file
+        s.status=5
+        s.save()
+        return redirect('ongoing_work')
+    
+
+def complete_job(request,pk):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+  
+    s=Service_form.objects.get(id=pk)
+    fr_work=Freelancerworks.objects.get(fr_service_id=s.id)
+    fr=Register_freelance.objects.get(id=fr_work.frelancer.id)
+    s.status=1
+    s.save()
+    fr_work.fr_status=1
+    fr_work.save()
+    frwrk=Freelancerworks.objects.filter(Q(fr_status='2') | Q(fr_status='3')| Q(fr_status='5'),frelancer=fr)
+    if frwrk:
+        fr.w_status='1'
+        fr.save()
+    else:
+        fr.w_status='0'
+        fr.save()
+   
+    return redirect('ongoing_work')
+
 
 def completed_work(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
-    fr=Freelancerworks.objects.filter(fr_status='1').order_by('-id')
+    fr=Freelancerworks.objects.filter(fr_status='1')
     return render(request, 'completed_work.html', {'adm':adm,'fr':fr})
 
 #Freelancer Allocate
@@ -1265,9 +1354,18 @@ def freelancer_work(request):
     if 'F.id' in request.session:
         std=request.session['F.id']
         free=Register_freelance.objects.get(id=std)
-        frwork=Freelancerworks.objects.filter(frelancer=free,fr_status='2')
-        frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='1'),frelancer=free)
-        return render(request, 'freelancer_works.html', {'free':free,'frwork':frwork,'frworks':frworks})
+        #frwork=Freelancerworks.objects.filter(frelancer=free,fr_status='2').order_by('-id')
+        frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='6') ,frelancer=free).order_by('-id')
+        return render(request, 'freelancer_works.html', {'free':free,'frworks':frworks})
+    
+def freelancer_completed_work(request):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        #frwork=Freelancerworks.objects.filter(frelancer=free,fr_status='2').order_by('-id')
+        frworks=Freelancerworks.objects.filter(fr_status='1',frelancer=free).order_by('-id')
+        return render(request, 'freelancer_comleted_works.html', {'free':free,'frworks':frworks})
+
     
 def freelancer_work_accept(request,fr_wstatus):
     if 'F.id' in request.session:
@@ -1277,9 +1375,12 @@ def freelancer_work_accept(request,fr_wstatus):
         frwork.fr_status='3'
         frwork.save()
         msg='Successfuly Accepted the work.'
+        serv=Service_form.objects.get(id=frwork.fr_service_id)
+        serv.status='3'
+        serv.save()
         frwork=Freelancerworks.objects.filter(frelancer=free,fr_status='2')
         frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='1'),frelancer=free)
-        return render(request, 'freelancer_works.html', {'free':free,'frworks':frworks,'msg':msg,'frwork':frwork,})
+        return render(request, 'freelance_home.html', {'free':free,'frworks':frworks,'msg':msg,'frwork':frwork,})
     
 def freelancer_work_reject(request,fr_wrejejct):
     if 'F.id' in request.session:
@@ -1296,7 +1397,7 @@ def freelancer_work_reject(request,fr_wrejejct):
         serv.save()
         frwork=Freelancerworks.objects.filter(frelancer=free,fr_status='2')
         frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='1'),frelancer=free)
-        return render(request, 'freelancer_works.html', {'free':free,'frworks':frworks,'rej':rej,'frwork':frwork})
+        return render(request, 'freelance_home.html', {'free':free,'frworks':frworks,'rej':rej,'frwork':frwork})
 
 def freelancer_workfile_submit(request,fr_workfile):
     if 'F.id' in request.session:
@@ -1305,22 +1406,34 @@ def freelancer_workfile_submit(request,fr_workfile):
         if  request.method == 'POST':
             files= request.FILES.get('work_file')
             frwork=Freelancerworks.objects.get(id=fr_workfile)
-            frwork.fr_status='1'
+            frwork.fr_status='5'
             frwork.fr_file =files
             frwork.submitte_date=datetime.date.today()
             frwork.save()
             file_msg='Successfuly Uploaded the work File.'
+            serv=Service_form.objects.get(id=frwork.fr_service_id)
+            serv.status='4'
+            serv.save()
             
-            frwrk=Freelancerworks.objects.filter(Q(fr_status='2') | Q(fr_status='3'),frelancer=free)
+            frwrk=Freelancerworks.objects.filter(Q(fr_status='2') | Q(fr_status='3')| Q(fr_status='5'),frelancer=free)
             if frwrk:
                 free.w_status='1'
                 free.save()
             else:
                 free.w_status='0'
                 free.save()
-
-            frworks=Freelancerworks.objects.filter(Q(fr_status='3') | Q(fr_status='1'),frelancer=free)
+            frworks=Freelancerworks.objects.filter(fr_status='3',frelancer=free).order_by('-id')
             return render(request, 'freelancer_works.html', {'free':free,'frworks':frworks,'file_msg':file_msg})
+        
+
+def rework_details(request,pk):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        frworks=Freelancerworks.objects.get(id=pk)
+        s=Service_form.objects.all()
+        p=Product.objects.all()
+        return render(request, 'rework_details.html', {'free':free,'frworks':frworks,'s':s,'p':p})
 
 
 
@@ -1332,7 +1445,8 @@ def uploaded_design_view(request,pk):
     s=Service_form.objects.get(id=pk)
     p=Product.objects.all()
     r=Register_freelance.objects.all()
-    return render(request, 'user_design_file.html', {'adm':adm,'s':s,'p':p,'r':r})
+    fr=Freelancerworks.objects.all()
+    return render(request, 'user_design_file.html', {'adm':adm,'s':s,'p':p,'r':r,'fr':fr})
 
 
 def products(request):
@@ -1389,7 +1503,47 @@ def sortby_freelances(request,pk):
     elif pk==6:
         person=Register_freelance.objects.filter(service='3D')
         return render(request,'freelancers_list.html',{'person':person})
+    
+def sortby_catagery(request,pk):
 
+    if pk==1:
+        cate=categories.objects.get(category_name='UI DESIGN')
+        all=Product.objects.filter(category=cate)
+        return render(request,'model_list.html',{'all':all})
+    elif pk==2:
+        cate=categories.objects.get(category_name='PHOTOSHOP')
+        all=Product.objects.filter(category=cate)
+       
+        return render(request,'model_list.html',{'all':all})
+    elif pk==3:
+        cate=categories.objects.get(category_name='HOUSE PLANS')
+        all=Product.objects.filter(category=cate)
+    
+        return render(request,'model_list.html',{'all':all})
+    elif pk==4:
+        cate=categories.objects.get(category_name='LOGO CREATION')
+        all=Product.objects.filter(category=cate)
+      
+        return render(request,'model_list.html',{'all':all})
+    elif pk==5:
+        cate=categories.objects.get(category_name='DRAWINGS')
+        all=Product.objects.filter(category=cate)
+       
+        return render(request,'model_list.html',{'all':all})
+    elif pk==6:
+        cate=categories.objects.get(category_name='3D')
+        all=Product.objects.filter(category=cate)
+       
+        return render(request,'model_list.html',{'all':all})
+    
+def remove_model(request,pk):
+    abc= request.session['admid']
+    adm=User.objects.filter(id=abc)
+    pro=Product.objects.get(id=pk)
+    pro.delete()
+    return redirect('models_show')
+
+    
   
 def freelances_details(request):
     pr_id = request.GET.get('persid')
@@ -1400,6 +1554,12 @@ def freelances_details(request):
 
     return render(request,'freelancers_details.html',{'per':per,'r':range(r),'fr_ongoing':fr_ongoing,'fr_complete':fr_complete})
 
+
+def freelances_job_details(request):
+    detail_id = request.GET.get('persid')
+    job=Freelancerworks.objects.get(id=detail_id)
+    serv=Service_form.objects.all()
+    return render(request,'freelanser_job_details.html',{'job':job,'serv':serv})
 
 
 

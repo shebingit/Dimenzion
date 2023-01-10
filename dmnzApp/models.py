@@ -98,7 +98,7 @@ class Service_form(models.Model):
     phone_number=models.CharField(max_length=100,default='')
     email=models.CharField(max_length=100,default='')
     Address=models.CharField(max_length=100,default='')
-    description=models.CharField(max_length=100,default='')
+    description=models.TextField(default='')
     status=models.CharField(max_length=100,default='')
     file=models.FileField(upload_to="image",null=True,default='null')
 
