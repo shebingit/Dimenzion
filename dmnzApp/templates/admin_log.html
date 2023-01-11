@@ -2,6 +2,27 @@
 {% load static %}
 {% block body %}
 
+<style>
+    .error-msg
+    {
+        list-style: none;
+        padding-left: 2em;
+        font-weight: 500;
+        color: rgb(216, 24, 24);
+    }
+    @media(max-width:932px)
+
+    {
+        .error-msg
+        {
+            list-style: none;
+            padding-left: 1em;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgb(216, 24, 24);
+        }
+    }
+</style>
 
 
 
@@ -15,6 +36,11 @@
                             SIGN<span class="text-danger "> IN</span>
                         </h2>
                         <h6 class="font-weight-light  text-center">Sign in to continue.</h6>
+                        {% for message in messages %}
+                            <li class="{{ message.tags }} error-msg">
+                            {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
+                            </li>
+                        {% endfor %}
                        
                         <form class="pt-3" action="admin_login" method="post">
                             {% csrf_token %}

@@ -42,6 +42,7 @@
                                     <th>Category</th>
                                     <th>File</th>
                                     <th>Action</th>
+                                    <th>Remove</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -51,6 +52,7 @@
                                     <th>Category</th>
                                     <th>File</th>
                                     <th>Action</th>
+                                    <th>Remove</th>
                                     
                                 </tr>
                             </tfoot>
@@ -78,7 +80,15 @@
                                       {% if i.status == '2' %}
                                       <a href="{% url 'uploaded_design_view' i.id %}"class="text-warning "><b>Pending</b></a>
                                       {% elif i.status == '0' %}
-                                      <a href="{% url 'uploaded_design_view' i.id %}" ><b>Allocate</b></a>
+                                      <a href="{% url 'uploaded_design_view' i.id %}" ><b>Allocate</b></a>&nbsp;
+                                    
+                                      {% endif %}
+                                    </td>
+                                    <td>
+                                      {% if i.status == '0' %}
+                                      <a href="{% url 'request_reject' i.id %}" class="text-danger" ><b><i class="fa fa-trash" aria-hidden="true"></i></b></a>
+                                      {% else %}
+                                      <b><i class="fa fa-check text-success" aria-hidden="true"></i></b>
                                       {% endif %}
                                     </td>
                                     

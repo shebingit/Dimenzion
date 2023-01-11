@@ -124,7 +124,7 @@ urlpatterns = [
     path('Model-Edit/<int:pk>',views.edit_model,name='edit_model'),
     path('Model-Edit-Save/<int:pk>',views.edit_save_model,name='edit_save_model'),
     
-   
+    path('Message-Remove/<int:pk>',views.messge_remove,name='messge_remove'),
     
     
 
@@ -132,6 +132,8 @@ urlpatterns = [
     path('freelancer_page/<int:freel_id>',views.freelancer_page,name='freelancer_page'),
     path('rating/<int:freel_rt>',views.rating,name='rating'),
     path('Requested-work',views.requested_work,name='requested_work'),
+    path('Requested-Delete/<int:pk>',views.request_reject,name='request_reject'),
+    
     path('Ongoing-work',views.ongoing_work,name='ongoing_work'),
     path('Completed-work',views.completed_work,name='completed_work'),
     path('Freelancer-Allocate-work',views.freelancer_allocate,name='freelancer_allocate'),

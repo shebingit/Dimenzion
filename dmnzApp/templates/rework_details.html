@@ -221,7 +221,7 @@
                     {% if frworks.fr_service_id == j.id %}
                             
                         {% if j.product == 0 %}
-                        <img id="image" src="{{s.file.url}}" alt="Description of image">
+                        <img id="image" src="{{j.file.url}}" alt="Description of image">
                 
                         {% else %}
                     
@@ -300,11 +300,9 @@
             <div class="image">
                 
                     
-              
-                   
-                        {% if frworks.fr_file %}
-                            <img src="{{frworks.fr_file.url}}" alt="">
-                        {% endif %}
+              {% if frworks.fr_file %}
+              <img src="{{frworks.fr_file.url}}" alt="">
+              {% endif %}
                     
               
             </div>

@@ -81,18 +81,19 @@
 
       }
       .top-content-left p{
-        line-height: 1.7em;
+        line-height: 1.9em;
         font-weight: 500;
         font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        font-style: italic;
+        font-size: 0.93em;
+        color: rgb(235, 233, 231);
 
       }
       .top-content-left .head-top-span{
         font-size: 2em;
-        font-weight: 700;
-        color:orange;
+        font-weight: 600;
+        color:#ff0548;
         margin-right: 0.30em;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
        font-style:initial
         
       }
@@ -109,7 +110,7 @@
       .top-content-left .btn1-frl a{
         color: #fff;
         font-size: 1.05em;
-        font-family: ;
+        letter-spacing:0.15em;
       }
     
 </style>
@@ -119,10 +120,9 @@
         <div class="inner">
             
             <div class="top-content-left">
-                <p><span  class="head-top-span">Dimenzions</span> is known as one of the leading 
-                  corporate branding  service providers 
-                    for its amazing 3D designs, logo designing and  other works aimed at providing the 
-                    best for our clients.
+                <p><span  class="head-top-span">DIMENZIONS</span> 
+                    The World of Digital creation: 
+                    3D Modelling, Photoshop, Logo Design, House Plans, Drawings and UI/UX Design
                 </p>
                 <div class="btn-freelancer">
                     <button class="btn1-frl"><a href="{% url 'freereg' %}">Join As Freelancer</a></button>
@@ -235,28 +235,24 @@
     </section>
 
     
-    <section class="grayback " style="background-color: rgb(157, 157, 157);">
+    <section class="grayback " style="background:#111010 ">
         <section class="p-lg-5 ">
-            <h2 style="font-weight: 600;
-                       color: rgb(255, 255, 255);"
-                class="text-center pt-4 p-lg-0 "
-                data-aos="fade-up"
-                data-aos-delay="50">
+            <h4  class="head-categ text-center pt-4 p-lg-0 "data-aos="fade-up"data-aos-delay="50">
                 CHECK OUT OUR CATEGORIES
-            </h2>
-            <div class="flexy w-100">
+            </h4>
+            <!-- <div class="flexy w-100">
                 <div style="background-color: white;height: 2px; width: 20%;">
                 </div>
-            </div>
+            </div> -->
             <div class="cards-list">
                 <a class="card3" href="{% url 'price_low' %}"
                      style="background-image: url('{% static 'images/car-777159_960_720.jpg'%}'); ">
                     <div class="dark1 flex flex-column">
                         <h4 class="text-light">
-                            3D ARTISTS
+                            <span>3D</span>  ARTISTS
                         </h4>
-                        <p style="color: gray;">
-                            {{count_a}}
+                        <p>
+                            Bringing your ideas to life through 3D modeling
                         </p>
                     </div>
                 </a>
@@ -265,10 +261,10 @@
                
                     <div class="dark1 flex flex-column">
                         <h4 class="text-light">
-                            PHOTOSHOP
+                            <span>PHOTO</span>SHOP
                         </h4>
-                        <p style="color: gray;">
-                            {{count_b}} Products
+                        <p >
+                            Make your photos look Amazing with our Photoshop services
                         </p>
                     </div>
                 </a>
@@ -277,10 +273,10 @@
                  
                     <div class="dark1 flex flex-column">
                         <h4 class="text-light">
-                            UI DESIGN
+                            <span> UI </span>DESIGN
                         </h4>
-                        <p style="color: gray;">
-                            {{count_c}}
+                        <p>
+                            Professional house plans for your Dream Home
                         </p>
                     </div>
                 </a>
@@ -289,11 +285,10 @@
                      
                     <div class="dark1 flex flex-column">
                         <h4 class="text-light">
-                            HOUSE PLANS
+                            <span>HOUSE</span> PLANS
                         </h4>
-                        <p style="color: gray;">
-                            {{count_d}}
-                        </p>
+                        <p>Professional house plans for your Dream Home</p>
+                        
                     </div>
                 </a>
                 <a class="card3" href="{% url 'logo_creation'%}"
@@ -301,33 +296,59 @@
                
                     <div class="dark1 flex flex-column">
                         <h4 class="text-light">
-                            LOGO CREATION
+                            <span>LOGO</span> CREATION
                         </h4>
-                        <p style="color: gray;">
-                            {{count_e}}
+                        <p>
+                            Make your brand look its best with our logo design services.
                         </p>
                     </div>
                 </a>
                 <a class="card3" href="{% url 'drawings'%}"
                 
-                style="background-image: url('{% static 'images/images (6) 1.png'%}'); ">
+                style="background-image: url('{% static 'images/images (6) 1.png' %}'); ">
  
                     <div class="dark1 flex flex-column">
                         <h4 class="text-light">
-                            DRAWINGS 
+                            <span>DRAW</span>INGS 
                         </h4>
-                        <p style="color: gray;">
-                            {{count_f}}
-                        </p>
+                        <p >
+                            Precision drawings that can help you realize your visions
+                        </p> 
                     </div>
                 </a>
             </div>
         </section>
         <style>
+            .head-categ
+            {
+                font-weight: 700;   
+                letter-spacing: 0.04em; 
+                color: rgb(222, 222, 222);
+            }
             .flex {
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                padding: 0px 2.1em;
+            }
+            .flex h4{
+                margin-top: 7.5em;
+            }
+            .flex p{
+                color: rgb(209, 209, 209);
+                line-height: 1.6em;
+                letter-spacing: 0.04em;
+                font-size: 15px;
+                font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                margin-top: 0.60em;
+                margin-bottom: 0.90em;
+                font-weight: 500;
+                
+            }
+            .flex span{
+                color: #ff0749;
+                font-size: 1em;
+                font-weight: 600;
             }
 
             .cards-list {
@@ -336,25 +357,28 @@
                 display: flex;
                 justify-content: space-around;
                 flex-wrap: wrap;
-                background-color: rgba(0, 0, 0, 0);
+                margin-top: 2em;
+               
+               
             }
 
             .card3 {
                 margin: 30px auto;
-                width: 400px;
-                height: 400px;
+                width: 380px;
+                height: 380px;
 
                 background-size: 100% 100%;
                 cursor: pointer;
                 transition: 0.4s;
-                border-radius: 20px;
+              border-radius: 15%;
+              background-color: rgb(0, 0, 0);
             }
 
             .dark1 {
                 width: 100%;
                 height: 100%;
-                background-color: rgba(0, 0, 0, 0.3);
-                border-radius: 20px;
+                background-color: rgba(0, 0, 0, 0.7);
+                border-radius: 15%;
             }
 
 
@@ -375,6 +399,17 @@
                     width: 90%;
                     height: 250px;
                 }
+                .head-categ
+                {
+                    font-weight: 600;   
+                    letter-spacing: 0.01em; 
+                    color: rgb(222, 222, 222);
+                    font-size: 1em;
+                    margin-bottom: 1.4em;
+                }
+                .flex h4{
+                    margin-top: 5.5em;
+                }
 
 
 
@@ -382,16 +417,21 @@
         </style>
     </section>
 
+
+
     
+
+
+<!--     
     <section class="designers">
         <div class="cover1">
             <div class="left2 p-lg-5 p-4 text-center">
                 <h3 style="font-weight: 600;">
                     TOP DESIGNERS OF THIS WEEK
                 </h3>
-                <!-- <P>
+                 <P>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque suscipit beatae quas.
-                </P> -->
+                </P> 
                 <div class="row container-fluid">
                     {% for i in persons %}
                     <div class="col-lg-4 flexy my-2">
@@ -483,7 +523,7 @@
 
             }
         </style>
-    </section>
+    </section> -->
 
 
 

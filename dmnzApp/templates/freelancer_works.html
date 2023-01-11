@@ -131,14 +131,18 @@
 <div id="demo-modal{{i.id}}" class="modal">
     <div class="modal__content">
         
-        <div class="card p-3 text-center">
-            <h6 class="text-start pt-1 mb-4" style="font-size: 14px; color:rgb(15, 15, 49)">Upload Your Work</h6>
-        <form action="{% url 'freelancer_workfile_submit' i.id %}" method="post" enctype="multipart/form-data">
+        <div class="card" id="submit-box">
+            <h6 class="" >Upload Your Work</h6>
+        <form action="{% url 'freelancer_workfile_submit' i.id %}" class="submit-form" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            
-                <input type="file" class="form-control mb-3" name="work_file">
-                <button type="submit" class="btn btn-success w-50" id="success-btn">Save</button>
-            
+
+                <div class="group-box">
+                    <label>File</label>
+                    <input type="file" class="" name="work_file">
+                </div>
+                <div class="group-box-submit">
+                    <button type="submit" class="" id="success-btn">Save</button>
+                </div>
 
         </form>
         </div>

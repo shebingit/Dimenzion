@@ -312,7 +312,7 @@ def view_items(request,pk):
         k=request.session['USID']
         std=Product.objects.get(id=pk)
         new=Product.objects.filter(category=2)
-        
+        categ=categories.objects.get(category_name=std.category)
         if request.method=='POST':
             name=request.POST['name']
             email=request.POST['email']
@@ -320,7 +320,7 @@ def view_items(request,pk):
             phone=request.POST['phone']
             description=request.POST['desc']
             files=request.FILES.get('example_file')
-            status='pending'
+            status='0'
             product=std
            
             service_freelancer='null'
@@ -338,8 +338,8 @@ def view_items(request,pk):
             sfm.save()
             # messages.info(request,'Request sent succesfully')
             msg="Request sent successfully"
-            return render(request,'view_item_2.html',{'std':std,'new':new,'msg':msg})
-        return render(request,'view_item_2.html',{'std':std,'new':new})
+            return render(request,'view_item_2.html',{'std':std,'new':new,'msg':msg,'categ':categ})
+        return render(request,'view_item_2.html',{'std':std,'new':new,'categ':categ})
     
     else:
         std=Product.objects.get(id=pk)
@@ -496,11 +496,11 @@ def admin_login(request):
             return redirect('freelancer_home')
                         
         else:
-            print("hi3")
-            messages.info(request,'invalid username or password.Try again!')
+           
+            messages.info(request,'Invalid username or password.Try again!')
             return redirect('admin_log')
-       # messages.info(request, 'Invalid username or password')
-    print("hi4")
+        messages.info(request, 'Invalid username or password')
+   
     return redirect('admin_log')
 
 
@@ -538,9 +538,18 @@ def admin_dashboard(request):
         adm=User.objects.filter(id=abc)
         users = User.objects.all().count()
         models = Product.objects.all().count()
+        req1 = Service_form.objects.filter(status='0').count()
+        req2 = Service_form.objects.filter(Q(status='3') | Q(status='4')  | Q(status='5') ).count()
+        req3 = Freelancerworks.objects.filter(fr_status='1').count()
         messg=Messagebox.objects.all().order_by('-id')
-        return render(request, 'admin_dashboard.html',{'adm': adm, 'users': users, 'models': models,'messg':messg})
+        return render(request, 'admin_dashboard.html',{'adm': adm, 'users': users, 'models': models,'messg':messg,'req':req1,'req2':req2,'req3':req3})
     return redirect('user_logout')
+
+def messge_remove(request,pk):
+    messg=Messagebox.objects.filter(id=pk)
+    messg.delete()
+    return redirect('admin_dashboard')
+
 
 def models_show(request):
     abc= request.session['admid']
@@ -922,7 +931,8 @@ def edit_save_model(request,pk):
         item.types = request.POST['types']
         item.format = request.POST['format']
         item.modeltype = request.POST['modeltype']
-        item.category_id = request.POST['category']
+        cate=categories.objects.get(category_name= request.POST['category'])
+        item.category_id =cate
         item.save()
         return redirect('models_show')
 
@@ -1252,6 +1262,14 @@ def requested_work(request):
     r=Register_freelance.objects.all()
     return render(request, 'requested_work.html', {'adm':adm,'r':r,'s':s,'serv':serv})
 
+def request_reject(request,pk):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
+    s=Service_form.objects.get(id=pk)
+    s.delete()
+    return redirect('requested_work')
+
+
 def ongoing_work(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
@@ -1444,7 +1462,7 @@ def uploaded_design_view(request,pk):
     adm=User.objects.filter(id=abc)
     s=Service_form.objects.get(id=pk)
     p=Product.objects.all()
-    r=Register_freelance.objects.all()
+    r=Register_freelance.objects.filter(w_status='0',service=s.categori)
     fr=Freelancerworks.objects.all()
     return render(request, 'user_design_file.html', {'adm':adm,'s':s,'p':p,'r':r,'fr':fr})
 

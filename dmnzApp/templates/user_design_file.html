@@ -225,11 +225,15 @@
                 </div>
         </div>
 
-        {% if s.status == '6' or  s.status == '3' %}
+        {% if s.status == '5' %}
         <div class="card">
-          {% if s.file %}
-          <img src="{{s.file.url}}" class="card-img-top"alt="Description of image">
-          {% endif %}
+          {% for i in fr %}
+            {% if i.fr_service_id == s.id %}
+              {% if i.fr_file %}
+                <img src="{{i.fr_file.url}}" class="card-img-top"alt="Description of image">
+              {% endif %}
+            {% endif %}
+          {% endfor %}
           
               
           <div class="card-body">
@@ -247,38 +251,8 @@
         </div>
         {% endif %}
  
-
-
-
   </div>
 
 
-  
-  
-
 {% endblock %}
 
-
-
-
-<div class="row g-3">
- <div class="col-lg-5">
-   <div class="card">
-     {% if s.file %}
-     <img src="{{s.file.url}}">
-     {% endif %}
-   </div>
- </div>
- <div class="col-lg-7">
-   {% if s.description %}
-   <div class="card p-3">
-     <h4 class="m-3">Description</h4>
-     <p>{{s.description}}</p>
-   </div>
-   {% endif %}
-   <div class="card p-3">
-    
-   </div>
-
- </div>
-</div>

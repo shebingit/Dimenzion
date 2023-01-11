@@ -15,6 +15,10 @@
     .dwn a{
         color: rgb(245, 246, 247);
     }
+    #dataTable
+    {
+        font-size: 13px;
+    }
 </style>
 
                 <!-- Begin Page Content -->
@@ -38,7 +42,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                                 Work Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{users}}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{req}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-briefcase fa-2x text-gray-300"></i>
@@ -59,7 +63,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                               Ongoing Works</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{users}}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{req2}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-briefcase fa-2x text-gray-300"></i>
@@ -79,7 +83,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Completed Works</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{models}}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{req3}}</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-briefcase fa-2x text-gray-300"></i>
@@ -108,52 +112,7 @@
                             </a>
                         </div>
 
-                        <!-- Earnings (Monthly) Card Example -->
-                        <!-- <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-
-                        <!-- Pending Requests Card Example -->
-                        <!-- <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{enq}}</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+                        
                     </div>
 
                    
@@ -167,11 +126,9 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Messages</h1>
-                    <!-- <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p> -->
+                   
 
-                    <!-- DataTales Example -->
+                    <!-- Message Table-->
                     <div class="card shadow mb-4">
                         <!-- <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary"></h6>
@@ -188,18 +145,10 @@
                                             <th scope="col">Company Name</th>
                                             <th scope="col">Message</th>
                                             <th scope="col">Upload File</th>
+                                            <th scope="col">Remove</th>
                                         </tr>
                                     </thead>
-                                    <!-- <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot> -->
+                                    
                                     <tbody>
                                         {% for i in messg %}
                                         <tr>
@@ -216,6 +165,7 @@
                                               
                                               {% endif %}
                                           </td>
+                                          <td><a href="{% url 'messge_remove' i.id %}"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a></td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
