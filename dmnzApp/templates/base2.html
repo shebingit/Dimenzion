@@ -9,6 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dimenzions</title>
+     <!-- Favicons -->
+     <link href="{% static 'images/icon.png' %}" rel="icon">
+     <link href="{% static 'images/icon.png' %}" rel="apple-touch-icon">
+ 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <style>
@@ -160,7 +164,8 @@
     <section class="navbar m-0 p-0 ">
         <nav class="navbar navbar-expand-lg navbar-dark w-100 py-3" style="background-color:#2e3435;">
             <div class="container ">
-                <a class="navbar-brand text-light" href="{% url 'userhome'%}"><img src="{% static 'images/logod.png' %}" alt=""></a>
+                <a class="navbar-brand text-light" href="{% url 'userhome'%}">
+                    <img src="{% static 'images/logod.png' %}" alt="" style="max-width: 175px; max-height:150px;"></a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown2" aria-controls="navbarNavDropdown2" aria-expanded="false"
