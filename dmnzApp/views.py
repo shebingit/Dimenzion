@@ -344,6 +344,7 @@ def view_items(request,pk):
     else:
         std=Product.objects.get(id=pk)
         new=Product.objects.filter(category=2)
+        categ=categories.objects.get(category_name=std.category)
         if request.method=='POST':
             name=request.POST['name']
             email=request.POST['email']
@@ -351,7 +352,7 @@ def view_items(request,pk):
             phone=request.POST['phone']
             description=request.POST['desc']
             files=request.FILES.get('extra')
-            status='pending'
+            status='0'
             product=std
 
             service_freelancer='null'
@@ -369,8 +370,8 @@ def view_items(request,pk):
             sfm.save()
             # messages.info(request,'Request sent succesfully')
             msg="Request sent successfully"
-            return render(request,'view_item_without_user.html',{'std':std,'new':new,'msg':msg})
-        return render(request,'view_item_without_user.html',{'std':std,'new':new,})
+            return render(request,'view_item_without_user.html',{'std':std,'new':new,'msg':msg,'categ':categ})
+        return render(request,'view_item_without_user.html',{'std':std,'new':new,'categ':categ})
 
 
 def Request_form(request):
@@ -1478,7 +1479,7 @@ def send_message(request):
         send_msg.name= request.POST['name']
         send_msg.email= request.POST['email']
         send_msg.phno= request.POST['phone']
-        send_msg.company_name= request.POST['company']
+        send_msg.company_name= ''
         send_msg.messag= request.POST['message']
         send_msg.files= request.FILES.get('file-img')
         send_msg.save()
