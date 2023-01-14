@@ -129,7 +129,7 @@
                    
 
                     <!-- Message Table-->
-                    <div class="card shadow mb-4">
+                    <div class="card shadow mb-4 overflow-auto" style="max-height: 60vh;">
                         <!-- <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary"></h6>
                         </div> -->
@@ -180,96 +180,6 @@
 
 {% endblock %}
 
-<div class="container">
-    {% for i in adm %}
 
-
-    <label for="" style="font-weight: 700;">Welcome To {{ i.username}} &nbsp;Dashboard</label>
-    {% endfor %}
-    <div class="row mt-3">
-        <div class="col-md-12 grid-margin stretch-card">
-            <div class="card">
-                <h5 class="mt-2 p-2"> </h5>
-                <div class="card-body overflow-auto p-1" style="height:52vh">
-                   
-                    <div class="container mt-4 mb-3">
-                        <table class="table mb-2">
-                            <thead class="table-dark">
-                              <tr>
-                                
-                                
-                              </tr>
-                            </thead>
-                            <tbody>
-                                {% for i in messg %}
-                              <tr>
-                                
-                                <td>{{i.mg_date}}</td>
-                                <td>{{i.name}}</td>
-                                <td>{{i.email}}</td>
-                                <td>{{i.phno}}</td>
-                                <td>{{i.company_name}}</td>
-                                <td>{{i.messag}}</td>
-                                <td>
-                                    {% if i.files %}
-                                    <button class="dwn"><a href="#"  download="{{i.files.url}}">Download</a></button>
-                                    
-                                    {% endif %}
-                                </td>
-                              </tr>
-                              {% endfor %}
-                            </tbody>
-                          </table>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-6 grid-margin ">
-            <a style="text-decoration:none">
-                <div class="card" style="height:40vh">
-
-
-                    <div class="card-body">
-
-                        <center>
-
-                            <p class="card-title mb-0 mt-5 pt-3 text-info font-weight-bold">Total Users</p>
-
-                            <p class="card-title mb-0 mt-3 text-primary">{{users}}+</p>
-
-                        </center>
-                    </div>
-
-
-                </div>
-
-            </a>
-        </div>
-
-        <div class="col-md-6 grid-margin">
-            <a class="text-decoration-none">
-                <div class="card" style="height:40vh">
-
-
-                    <div class="card-body">
-                        <center>
-                            <p class="card-title mb-0 mt-5 pt-3 text-info font-weight-bold">Total Models</p>
-
-                            <p class="card-title mb-0 mt-3 text-primary">{{models}}+</p>
-                        </center>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-    </div>
-
-
-
-</div>
-</div>
 
 

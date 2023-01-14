@@ -140,13 +140,18 @@ urlpatterns = [
     path('Freelancers-page/<int:pk>',views.sortby_freelances,name='sortby_freelances'),
     path('Freelancers-Details',views.freelances_details,name='freelances_details'),
     path('Complete-job/<int:pk>',views.complete_job,name='complete_job'),
+    path('Freelancer-Delete/<int:pk>',views.freelancer_delete,name='freelancer_delete'),
+  
     
 
     path('Change-Status/<int:pk>',views.Change_status_form,name='Change_status_form'),
     path('Change-Status-save/<int:pk>',views.Change_status_save,name='Change_status_save'),
     
     
+    #Admin 
     
+    path('Admin-Profile',views.admin_profile,name='admin_profile'),
+    path('Admin-Password-Change/<int:pk>',views.admin_password_change,name='admin_password_change'),
     
      
    
@@ -175,6 +180,8 @@ urlpatterns = [
      path('Send',views.send_message,name='send_message'),#message Send
      path('Add-To-List/<int:pk>',views.add_toplist,name='add_toplist'),
      path('Remove-From-List/<int:pk>',views.remove_toplist,name='remove_toplist'),
+    path('User-Delete/<int:pk>',views.user_delete,name='user_delete'),
+     
 
 
      

@@ -1,0 +1,194 @@
+{% extends 'admin_base.html' %}
+ {% load static%} 
+ {% block body %}
+
+ <style>
+    #work-allocate-form
+    {
+      display: flex;
+      align-items: center;
+      justify-content:space-between;
+      gap: 1em;
+      margin-bottom: 1em;
+      font-size: 14px;
+    }
+    #work-allocate-form form{
+      width: 50%;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      padding: 2em 3em;
+    }
+    #work-allocate-form h4{
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 1em;
+    }
+    #work-allocate-form  .group, .btallocate
+    {
+      margin-top: 0.70em;
+    }
+    #work-allocate-form .group .star{
+      color: #ffff03;
+    }
+    #work-allocate-form input
+    {
+      width: 100%;
+      padding: 0.60em ;
+      font-size: 13px;
+      border: 1px solid rgb(230, 224, 224);
+    }
+    input:focus
+    {
+        border: 1px solid #1670BE;
+        box-shadow: 0 0 3px #1670BE;
+        outline-offset: 0px;
+        outline: none;
+    }
+
+    .btallocate
+    {
+      text-align:right;
+      margin-top: 1em;
+    }
+    .btallocate .back-to
+    {
+        text-decoration: none;
+        color: rgb(244, 244, 245);
+    }
+    .btallocate button, .back-to
+
+    {
+      border:none;
+      background: #0f0f11;
+      color: rgb(244, 244, 245);
+      font-weight: 600;
+      padding: 0.40em 1.3em;
+     
+    }
+    @media(max-width:932px)
+    {
+      .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl {
+         padding-left: 0.15rem; 
+        padding-right: 0.15rem; 
+    }
+      #work-allocate-form form{
+      width: 100%;
+      }
+      #work-allocate-form
+     {
+      flex-direction: column;
+     }
+       
+    }
+     
+  </style>
+
+  <!-- Begin Page Content -->
+  <div class="container-fluid">
+    {% for i in adm %}
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800"></h1>
+       
+    </div>
+    {% endfor %}
+
+    <style>
+        .error-message-box
+        {
+          width: 50%;
+          display: flex;
+          justify-content:space-between;
+        }
+        .error-message-box ul li 
+        {
+          list-style: none;
+          font-size: 15px;
+          width: 100%;
+          padding: 0.30em 0em;
+          font-style: italic;
+          line-height: 1.6em;
+        }
+       
+       
+      </style>
+
+    {% if messages %}
+    <div class="alert alert-success  error-message-box" id="your-div">  
+   
+        <ul class="messages">
+          {% for message in messages %}
+         <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i>&nbsp;&nbsp;{{ message }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+  </div>
+  {% endif %}
+
+
+    <div id="container" class="container-fluid">
+    
+    
+        <div class="container" id="work-allocate-form">
+         
+          <form action="{% url 'admin_password_change' adm1.id %}" method="post" >
+    
+            {% csrf_token %}
+            <h4 >Password Change</h4>
+              <input type="text" hidden value="{{s.id}}" name="u-id">
+              <div class="group">
+                <label>User Name</label><br>
+                <input type="text" class="w-100" style="height: 40px;" value="{{adm1.username}}" name="admin_user">
+              </div>
+    
+              <div class="group">
+                <label>New Password</label><br>
+                <input  type="password" class="w-100" style="height: 40px;"  name="admin_newpsw" id="new-password" onkeyup="checkPasswords()"  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,16}$" title="Password must contain at least one letter, one special character and at least 8 characters long!" required>
+              </div>
+    
+              <div class="group">
+                <label>Confirm Password</label><br>
+                <input  type="password" class="w-100" style="height: 40px;" name="admin_conpsw" id="confirm-password" onkeyup="checkPasswords()"  required>
+              </div>
+              <p class="mt-2" id="message"></p>
+              <p class="mt-2" id="message1"></p>
+              <div class="btallocate">
+                <button type="submit" id="submit-btn">Change</button>
+                <a class="back-to" href="{% url 'admin_dashboard' %}">Back</a>
+              </div>
+      
+          </form>
+    
+    
+     
+      </div>
+    
+
+      <script>
+        function checkPasswords() {
+            const newPassword = document.querySelector('#new-password').value;
+            const confirmPassword = document.querySelector('#confirm-password').value;
+           
+            const message = document.getElementById("message");
+            const message1 = document.getElementById("message1");
+            const btn =  document.getElementById("submit-btn");
+
+            
+                if (newPassword !== confirmPassword) {
+                    message.innerHTML = "";
+                    message.innerHTML = "Passwords do not match";
+                    btn.style.display = "none"
+                   
+                } 
+            
+            else {
+
+                message.innerHTML = "Passwords match";
+                btn.style.display = ""
+               
+                }
+        }
+    </script>
+
+ {% endblock %}

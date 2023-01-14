@@ -539,12 +539,52 @@ def admin_dashboard(request):
         adm=User.objects.filter(id=abc)
         users = User.objects.all().count()
         models = Product.objects.all().count()
+
+
+        # Notification Count
+        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
+      
+
+
         req1 = Service_form.objects.filter(status='0').count()
         req2 = Service_form.objects.filter(Q(status='3') | Q(status='4')  | Q(status='5') ).count()
         req3 = Freelancerworks.objects.filter(fr_status='1').count()
         messg=Messagebox.objects.all().order_by('-id')
-        return render(request, 'admin_dashboard.html',{'adm': adm, 'users': users, 'models': models,'messg':messg,'req':req1,'req2':req2,'req3':req3})
+        return render(request, 'admin_dashboard.html',{'adm': adm, 'users': users, 'models': models,
+            'messg':messg,'req':req1,'req2':req2,'req3':req3,'req_date':req_date,'msg_date':msg_date,
+            'req_date_data':req_date_data,'msg_date_data':msg_date_data})
+    
     return redirect('user_logout')
+
+
+def admin_profile(request):
+    abc= request.session['admid']
+    adm=User.objects.filter(id=abc)
+    adm1=User.objects.get(id=abc)
+     # Notification Count
+    req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+    msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+    req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+    msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
+      
+    return render(request, 'admin_profile.html',{'adm': adm,'req_date':req_date,'msg_date':msg_date,
+            'req_date_data':req_date_data,'msg_date_data':msg_date_data,'adm1':adm1})
+
+def admin_password_change(request,pk):
+    if request.method == 'POST':
+        psw=request.POST['admin_newpsw']
+        user=User.objects.get(id=pk)
+        user.set_password(psw)
+        user.save()
+        messages.info(request,'Old Password Changed To New')
+        return redirect('admin_profile')
+    else:
+        return redirect('admin_profile')
+
+
 
 def messge_remove(request,pk):
     messg=Messagebox.objects.filter(id=pk)
@@ -556,7 +596,15 @@ def models_show(request):
     abc= request.session['admid']
     adm=User.objects.filter(id=abc)
     all=Product.objects.all()
-    return render(request, 'models.html',{'adm': adm,'all':all})
+
+    # Notification Count
+    req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+    msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+    req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+    msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
+      
+    return render(request, 'models.html',{'adm': adm,'all':all,'req_date':req_date,'msg_date':msg_date,
+            'req_date_data':req_date_data,'msg_date_data':msg_date_data})
 
 
 def admin_log(request):
@@ -888,7 +936,15 @@ def addmodel(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id= abc)
     var = categories.objects.all()
-    return render(request, "addmodel.html", {'var': var,'adm':adm})
+
+    # Notification Count
+    req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+    msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+    req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+    msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
+
+    return render(request, "addmodel.html", {'var': var,'adm':adm,'req_date':req_date,
+        'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
 
 
 def createmodel(request):
@@ -915,7 +971,17 @@ def edit_model(request,pk):
     adm=User.objects.filter(id= abc)
     var = categories.objects.all()
     item = Product.objects.get(id=pk)
-    return render(request, "edit_model.html", {'var': var,'adm':adm,'item':item})
+
+    # Notification Count
+    req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+    msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+    req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+    msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
+
+    return render(request, "edit_model.html", {'var': var,'adm':adm,'item':item,
+'req_date':req_date,'msg_date':msg_date,
+            'req_date_data':req_date_data,'msg_date_data':msg_date_data})
+
 
 def edit_save_model(request,pk):
     if request.method == 'POST':
@@ -970,9 +1036,14 @@ def payment_table(request):
 def registeredusers(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
-    
+    # Notification Count
+    req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+    msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+    req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+    msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
     use = User.objects.filter(is_superuser=0)
-    return render(request, 'registeredusers.html', {'use': use,'adm':adm})
+    return render(request, 'registeredusers.html', {'use': use,'adm':adm,'req_date':req_date,
+        'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
     
 
 
@@ -1230,7 +1301,14 @@ def freelancers(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
     person=Register_freelance.objects.all()
-    return render(request, 'freelancers.html', {'person': person,'adm':adm})
+    # Notification Count
+    req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+    msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+    req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+    msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
+
+    return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
+        'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
 
 
 def freelancer_page(request,freel_id):
@@ -1261,13 +1339,22 @@ def requested_work(request):
     s=Service_form.objects.all().order_by('-id')
     serv=Freelancerworks.objects.all()
     r=Register_freelance.objects.all()
-    return render(request, 'requested_work.html', {'adm':adm,'r':r,'s':s,'serv':serv})
+
+    # Notification Count
+    req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+    msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+    req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+    msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
+
+    return render(request, 'requested_work.html', {'adm':adm,'r':r,'s':s,'serv':serv,
+        'req_date':req_date,'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
 
 def request_reject(request,pk):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
     s=Service_form.objects.get(id=pk)
     s.delete()
+
     return redirect('requested_work')
 
 
@@ -1275,7 +1362,14 @@ def ongoing_work(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
     s=Service_form.objects.all().order_by('-id')
-    return render(request, 'ongoing_work.html', {'adm':adm,'s':s})
+
+    # Notification Count
+    req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+    msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+    req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+    msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
+    return render(request, 'ongoing_work.html', {'adm':adm,'s':s,'req_date':req_date,'msg_date':msg_date,
+        'req_date_data':req_date_data,'msg_date_data':msg_date_data})
 
 
 
@@ -1336,7 +1430,15 @@ def completed_work(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
     fr=Freelancerworks.objects.filter(fr_status='1')
-    return render(request, 'completed_work.html', {'adm':adm,'fr':fr})
+
+    # Notification Count
+    req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+    msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+    req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+    msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
+
+    return render(request, 'completed_work.html', {'adm':adm,'fr':fr,'req_date':req_date,
+        'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
 
 #Freelancer Allocate
 
@@ -1504,24 +1606,68 @@ def remove_toplist(request,pk):
 
 
 def sortby_freelances(request,pk):
+    abc= request.session["admid"]
+    adm=User.objects.filter(id=abc)
     if pk==1:
+        # Notification Count
+        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
         person=Register_freelance.objects.filter(service='UI DESIGN')
-        return render(request,'freelancers_list.html',{'person':person})
+        return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
+        'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
+    
     elif pk==2:
+            # Notification Count
+        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
         person=Register_freelance.objects.filter(service='PHOTOSHOP')
-        return render(request,'freelancers_list.html',{'person':person})
+        return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
+        'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
+    
+
     elif pk==3:
+        # Notification Count
+        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
         person=Register_freelance.objects.filter(service='HOUSE PLANS')
-        return render(request,'freelancers_list.html',{'person':person})
+        return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
+        'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
+    
     elif pk==4:
+        # Notification Count
+        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
         person=Register_freelance.objects.filter(service='LOGO CREATION')
-        return render(request,'freelancers_list.html',{'person':person})
+        return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
+        'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
+    
     elif pk==5:
+        # Notification Count
+        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
         person=Register_freelance.objects.filter(service='DRAWINGS')
-        return render(request,'freelancers_list.html',{'person':person})
+        return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
+        'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
+    
     elif pk==6:
+        # Notification Count
+        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
         person=Register_freelance.objects.filter(service='3D')
-        return render(request,'freelancers_list.html',{'person':person})
+        return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
+        'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
     
 def sortby_catagery(request,pk):
 
@@ -1574,6 +1720,15 @@ def freelances_details(request):
     return render(request,'freelancers_details.html',{'per':per,'r':range(r),'fr_ongoing':fr_ongoing,'fr_complete':fr_complete})
 
 
+def freelancer_delete(request,pk):
+    fr=Register_freelance.objects.get(id=pk)
+    if fr.w_status==0:
+        fr.delete()
+    else:
+        messages.error(request,'Freelancer {} is already assigned a work'.format(fr.full_name))
+    return redirect('freelancers')
+
+
 def freelances_job_details(request):
     detail_id = request.GET.get('persid')
     job=Freelancerworks.objects.get(id=detail_id)
@@ -1581,6 +1736,9 @@ def freelances_job_details(request):
     return render(request,'freelanser_job_details.html',{'job':job,'serv':serv})
 
 
-
+def user_delete(request,pk):
+    user=User.objects.get(id=pk)
+    user.delete()
+    return redirect('registeredusers')
 
 

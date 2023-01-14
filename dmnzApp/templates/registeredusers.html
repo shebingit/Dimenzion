@@ -59,7 +59,7 @@
                     <td id="username2">{{i.username}}</td>
                     <td>{{i.email}}</td>
                     <td>
-                      <a href="#" class="">
+                      <a href="{% url 'user_delete' i.id %}" class="">
                          
                             <i class="fa fa-trash text-danger" aria-hidden="true" style="font-size:10px;"></i>
                            

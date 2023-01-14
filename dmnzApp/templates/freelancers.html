@@ -16,7 +16,8 @@
   <!-- Content Row -->
   <div class="row">
       <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
-       
+        <a href="{% url 'sortby_freelances' 1 %}">
+
           <div class="card border-left-info  shadow h-100 py-2" id="card1">
               <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -31,11 +32,12 @@
                   </div>
               </div>
           </div>
-       
+        </a>
       </div>
        <!-- Pending Requests Card Example -->
        <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
-       
+        <a href="{% url 'sortby_freelances' 2 %}">
+
           <div class="card border-left-warning shadow h-100 py-2" id="card2">
               <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -50,12 +52,13 @@
                   </div>
               </div>
           </div>
-       
+        </a>
       </div> 
 
       <!-- Earnings (Monthly) Card Example -->
       <div class="col-xl-2 col-md-6  col-sm-3 mb-4">
-      
+        <a href="{% url 'sortby_freelances' 3 %}">
+
           <div class="card border-left-primary shadow h-100 py-2" id="card3">
               <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -70,12 +73,13 @@
                   </div>
               </div>
           </div>
-       
+        </a>
       </div>
 
       <!-- Earnings (Monthly) Card Example -->
       <div class="col-xl-2 col-md-6  col-sm-3 mb-4">
-       
+        <a href="{% url 'sortby_freelances' 4 %}">
+
           <div class="card border-left-success shadow h-100 py-2" id="card4">
               <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -90,11 +94,12 @@
                   </div>
               </div>
           </div>
-     
+        </a>
       </div>
 
       <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
-       
+        <a href="{% url 'sortby_freelances' 5 %}">
+
         <div class="card border-left-warning shadow h-100 py-2" id="card5">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
@@ -109,11 +114,12 @@
                 </div>
             </div>
         </div>
-     
+    </a>
     </div> 
 
       <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
-       
+        <a href="{% url 'sortby_freelances' 6 %}">
+
           <div class="card border-left-secondary shadow h-100 py-2" id="card6">
               <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -128,14 +134,58 @@
                   </div>
               </div>
           </div>
-     
+        </a>
           
       </div>
   </div>
 
- 
+  <!-- Eroor message  section CSS and Code-->
+  <style>
+    .error-message-box
+    {
+      width: 100%;
+      display: flex;
+      justify-content:space-between;
+    }
+    .error-message-box ul li 
+    {
+      list-style: none;
+      font-size: 15px;
+      width: 100%;
+      padding: 0.30em 0em;
+      font-style: italic;
+      line-height: 1.6em;
+    }
+    #close-button
+    {
+      background: #000;
+      padding-left: 0.50em;
+      width: 1.5em;
+      height: 1.5em;
+      border-radius: 50%;
+    }
+    #close-button i{
+      color: rgb(255, 255, 255);
+      font-size: 11px;
+    }
+  </style>
 
+  {% if messages %}
+  <div class="alert alert-danger  error-message-box" id="your-div">  
+    <div>
+      <ul class="messages">
+        {% for message in messages %}
+       <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+         <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>&nbsp;&nbsp;{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="text-end pr-2" id="close-button">
+      <i class="fa fa-times" aria-hidden="true" ></i>
+     </div>
+  </div>
 </div>
+{% endif %}
 
 <!-- /.container-fluid -->
 
@@ -227,6 +277,14 @@
       color: #eef74c  ;
       transform: rotate(22deg)
     }
+    .actions .act-link 
+    {
+      padding-right: 1em;
+    }
+    .actions a
+    {
+      font-size: 13px;
+    }
   
   
 </style>
@@ -267,6 +325,8 @@
               <span style="color: #000;">&nbsp;{{i.rating}}</span> 
               <i class="fa fa-star checked"></i>&nbsp; 
             </button>
+           
+            <span class="act-link"><a href="{% url 'freelancer_delete' i.id %}">Delete</a></span>
           </div>
         </div>
       </div>
@@ -400,121 +460,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<script type="text/javascript">
-    $("#card1").click(function () {
-       
-       
-        $.ajax({
-            url: '{% url "sortby_freelances" 1 %}',
-            data: {
-                'pk': 1
-            },
-
-            success: function (data) {
-                $("#details").html(data);
-                console.log(data);
-            }
-        });
-
-    });
-
-</script>
-<script type="text/javascript">
-  $("#card2").click(function () {
-     
-      $.ajax({
-          url: '{% url "sortby_freelances" 2 %}',
-          data: {
-              'pk': 7
-          },
-
-          success: function (data) {
-              $("#details").html(data);
-              console.log(data);
-          }
-      });
-
-  });
-
-</script>
-
-<script type="text/javascript">
-  $("#card3").click(function () {
-     
-      $.ajax({
-          url: '{% url "sortby_freelances" 3 %}',
-          data: {
-              'pk': 7
-          },
-
-          success: function (data) {
-              $("#details").html(data);
-              console.log(data);
-          }
-      });
-
-  });
-
-</script>
-
-<script type="text/javascript">
-  $("#card4").click(function () {
-      
-      $.ajax({
-          url: '{% url "sortby_freelances" 4 %}',
-          data: {
-              'pk': 7
-          },
-
-          success: function (data) {
-              $("#details").html(data);
-              console.log(data);
-          }
-      });
-
-  });
-
-</script>
-
-<script type="text/javascript">
-  $("#card5").click(function () {
-      const deptId = $(this).val();
-      console.log(deptId);
-      $.ajax({
-          url: '{% url "sortby_freelances" 5 %}',
-          data: {
-              'pk': 7
-          },
-
-          success: function (data) {
-              $("#details").html(data);
-              console.log(data);
-          }
-      });
-
-  });
-
-</script>
-
-<script type="text/javascript">
-  $("#card6").click(function () {
-      const deptId = $(this).val();
-      console.log(deptId);
-      $.ajax({
-          url: '{% url "sortby_freelances" 6 %}',
-          data: {
-              'pk': 7
-          },
-
-          success: function (data) {
-              $("#details").html(data);
-              console.log(data);
-          }
-      });
-
-  });
-
-</script>
 
 
 {% for i in person %}
@@ -539,7 +484,13 @@
 </script>
 {% endfor %}
 
-
-
+<script>
+  var closeButton = document.getElementById("close-button");
+  console.log('clicked')
+  var div = document.getElementById("your-div");
+  closeButton.addEventListener("click", function(){
+      div.style.display = "none";
+  });
+</script>
 
 {% endblock %}
