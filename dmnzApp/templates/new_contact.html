@@ -32,7 +32,7 @@ body:before {
         color: #000; }
       
       .content {
-        padding: 3rem 0; }
+        padding: 2.6rem 0; }
       
       .heading {
         font-size: 2.5rem;
@@ -167,21 +167,29 @@ body:before {
       .contact-ionc  a:hover{
         color: rgb(43, 58, 135);
       }
+     
    
 </style>
 
+
+                      
+ 
+
 <div class="content">
     <div class="container">
+      {% if messages %}
+       
+          <div class="alert alert-success" id="hideDiv">
+          {% for message in messages %}
+          <p>{{ message }}</p>    
+          {% endfor %}
+          </div>
+        {% endif %}
+       
       <form action="{% url 'send_message'  %}" class="mb-2" method="post" id="contactForm" name="contactForm" enctype="multipart/form-data">
         {% csrf_token %}
 
-        {% if messages %}
-        <div class="error text-center" id="hideDiv">
-                              
-          {% for message in messages %}
-          <p>{{ message }}</p>    
-           {% endfor %}
-        {% endif %}
+       
       <div class="row align-items-stretch no-gutters contact-wrap">
         <div class="col-md-7">
           <div class="form h-100">

@@ -1,11 +1,14 @@
+
 <div class="container-fluid" id="full-deatils">
+
+
     <div class="container emp-profile">
       <form method="post" action="{% url 'rating' per.id %}" >
         {% csrf_token %}
           <div class="row">
               <div class="col-md-3">
                   <div class="profile-img">
-                      <img src="{{per.profile_pic.url}}" alt="" style="width: 170px; height:190px;">
+                      <img src="{{per.profile_pic.url}}" alt="" >
                       <!-- <div class="file btn btn-lg btn-primary">
                           Change Photo
                           <input type="file" name="file"/>

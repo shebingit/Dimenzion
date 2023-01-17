@@ -36,6 +36,7 @@ class Product(models.Model):
     format = models.CharField(max_length=255,default='')
     modeltype = models.CharField(max_length=255,default='')
     image = models.ImageField(null=True, blank=True,default='')
+    rating = models.IntegerField(default=0)
 
 class Register_freelance(models.Model):
     #profileinfo

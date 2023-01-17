@@ -355,7 +355,7 @@
                 {% endif %}
             </div>
             <div class="pruduct-details-box">
-                <h4>{{p.modelname}}</h4>
+                <h4 style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">{{p.modelname}}</h4>
                 
                 <p>{{p.description}}</p>
 
@@ -372,7 +372,7 @@
               <div class="product-bottom">
                 <a href="{% url 'view_items' p.id  %}" class="cart-btn">
                 <i class="fa fa-shopping-cart" style="color: #000000;" aria-hidden="true"></i>&nbsp;&nbsp;Add Cart</a>
-                <span class="like-heart" id=""><i class="fa fa-heart"></i>
+                <!-- <span class="like-heart" id=""><i class="fa fa-heart"></i> -->
               </div>
 
               
@@ -383,32 +383,6 @@
         
       
 
-        <!-- <div class="our-products">
-            {% for p in all %}
-            <div class="product text-center">
-                <div class="product-img">
-                    {% if p.gib %}
-                    <img src="{{p.gib.url}}" alt="Photo shop image">
-                    {% endif %}
-                </div> 
-                <div class="review pt-4 pb-2">
-                    <span class="like"><i class="fa fa-heart"></i></span><span>{{p.modelname}}</span><br>
-                    <span>₹ <b>{{p.price}}</b></span>
-                    
-                    <div class="stars pt-2">
-                        
-                          <i class="fa fa-star" aria-hidden="true"></i>
-                          <i class="fa fa-star" aria-hidden="true"></i>
-                          <i class="fa fa-star" aria-hidden="true"></i>
-                          <i class="fa fa-star" aria-hidden="true"></i>
-                          <a href="{% url 'view_items' p.id  %}">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                          </a>  
-                    </div> 
-                </div>    
-            </div>
-            {% endfor %}
-        </div> -->
 
     </div>
 
@@ -585,20 +559,10 @@
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" ></script>
 
 
 
-<script>
-    document.getElementById('toggleButton').addEventListener('click', function() {
-      var div = document.getElementById('myDiv');
-      if (div.style.display === 'none') {
-        div.style.display = 'block';
-      } else {
-        div.style.display = 'none';
-      }
-    });
-  </script>
 
 
 

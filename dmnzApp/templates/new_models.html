@@ -62,7 +62,7 @@
             </div> -->
             <div class="cards-list">
                 <a class="card3" href="{% url 'price_low' %}"
-                     style="background-image: url('{% static 'images/car-777159_960_720.jpg'%}'); ">
+                     style="background-image: url('{% static 'images/car.jpg'%}'); ">
                     <div class="dark1 flex flex-column">
                         <h4 class="text-light">
                             <span>3D</span>  ARTISTS
@@ -85,7 +85,7 @@
                     </div>
                 </a>
                 <a class="card3" href="{% url 'ui_design' %}"
-                style="background-image: url('{% static 'images/1642762135_resized-image.jpg'%}'); ">
+                style="background-image: url('{% static 'images/ui1.jpg'%}'); ">
                  
                     <div class="dark1 flex flex-column">
                         <h4 class="text-light">
@@ -97,7 +97,7 @@
                     </div>
                 </a>
                 <a class="card3" href="{% url 'house_plans'%}"
-                style="background-image: url('{% static 'images/RoomSketcher-High-Quality-3D-Floor-Plans.jpg'%}'); ">
+                style="background-image: url('{% static 'images/house.jpg'%}'); ">
                      
                     <div class="dark1 flex flex-column">
                         <h4 class="text-light">
@@ -146,6 +146,7 @@
                 align-items: center;
                 justify-content: center;
                 padding: 0px 2.1em;
+                background: #111010;
             }
             .flex h4{
                 margin-top: 7.5em;
@@ -196,7 +197,9 @@
                 background-color: rgba(0, 0, 0, 0.2);
                 border-radius: 15%;
             }
-
+            .dark1 p{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
 
             .card3:hover .dark1 {
                 background-color: rgba(0, 0, 0, 0.8);

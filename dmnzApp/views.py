@@ -337,7 +337,7 @@ def view_items(request,pk):
                             )
             sfm.save()
             # messages.info(request,'Request sent succesfully')
-            msg="Request sent successfully"
+            msg="Your Request Is Successful"
             return render(request,'view_item_2.html',{'std':std,'new':new,'msg':msg,'categ':categ})
         return render(request,'view_item_2.html',{'std':std,'new':new,'categ':categ})
     
@@ -369,7 +369,7 @@ def view_items(request,pk):
                             )
             sfm.save()
             # messages.info(request,'Request sent succesfully')
-            msg="Request sent successfully"
+            msg="Your Request Is Successful"
             return render(request,'view_item_without_user.html',{'std':std,'new':new,'msg':msg,'categ':categ})
         return render(request,'view_item_without_user.html',{'std':std,'new':new,'categ':categ})
 
@@ -394,8 +394,10 @@ def Request_form(request):
                                file=examp_file)
         std.save()
         if 'USID' in request.session:
+            messages.success(request,'Success')
             return redirect('userhome')
         else:
+            messages.success(request,'Success')
             return redirect('home')
 
         
@@ -958,9 +960,11 @@ def createmodel(request):
         format = request.POST['format']
         modeltype = request.POST['modeltype']
         category = request.POST['category']
+        rating = request.POST['rate']
         # fbx = request.FILES['fbx']
 
-        item = Product(modelname=modelname, description=description, gib=gib, price=price, types=types, format=format, modeltype=modeltype, category_id=category)
+        item = Product(modelname=modelname, description=description, gib=gib, price=price, 
+            types=types, format=format, modeltype=modeltype, category_id=category,rating=rating)
         item.save()
         return redirect('addmodel')
     else:
@@ -998,6 +1002,7 @@ def edit_save_model(request,pk):
         item.types = request.POST['types']
         item.format = request.POST['format']
         item.modeltype = request.POST['modeltype']
+        item.rating = request.POST['edit_rate']
         cate=categories.objects.get(category_name= request.POST['category'])
         item.category_id =cate
         item.save()
@@ -1586,10 +1591,17 @@ def send_message(request):
         send_msg.files= request.FILES.get('file-img')
         send_msg.save()
         messages.info(request,'Thank you for your Time, We will catch you soon..')
-        return redirect('contact')
+        if 'USID' in request.session:
+            return redirect('contact_two')  
+        else: 
+         return redirect('contact')   
     
     else:
-        return redirect('contact')
+        if 'USID' in request.session:
+            return redirect('contact_two')  
+        else: 
+            return redirect('contact')   
+        
     
 def add_toplist(request,pk):
     person=Register_freelance.objects.get(id=pk)
