@@ -123,6 +123,8 @@ urlpatterns = [
     path('Model-Remove/<int:pk>',views.remove_model,name='remove_model'),
     path('Model-Edit/<int:pk>',views.edit_model,name='edit_model'),
     path('Model-Edit-Save/<int:pk>',views.edit_save_model,name='edit_save_model'),
+    path('Model-Approve/<int:pk>',views.approve_model,name='approve_model'),
+    
     
     path('Message-Remove/<int:pk>',views.messge_remove,name='messge_remove'),
     
@@ -165,6 +167,12 @@ urlpatterns = [
     path('Freelancer-Job-Details',views.freelances_job_details,name='freelances_job_details'),
     path('Rework-Details/<int:pk>',views.rework_details,name='rework_details'),
     path('Freelancer-Completed-Work',views.freelancer_completed_work,name='freelancer_completed_work'),
+    path('Freelancer-products',views.freelancer_product,name='freelancer_product'),
+    path('Freelancer-products-Add',views.Freelancer_product_add,name='Freelancer_product_add'),
+    path('freelancer_product_remove/<int:pk>',views.freelancer_product_remove,name='freelancer_product_remove'),
+    
+    
+    
      
     
      

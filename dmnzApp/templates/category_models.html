@@ -1,6 +1,140 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+  #first-content
+  {
+   height: 70vh;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  #first-content .container
+  {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1.2fr 1fr;
+  
+    gap:3em;
+  }
+  .content-box1 h2{
+    font-size: 1.6em;
+    font-weight: 600;
+    font-family:'Times New Roman', Times, serif;
+    letter-spacing: 0.15em;
+    margin-bottom: 1em;
+   
+  }
+  .content-box1 p{
+    line-height: 1.8em;
+  }
+  #first-content  .list-box
+  {
+    display: grid;
+    align-items: center;
+  justify-content: flex-start;
+    flex-direction: column;
+    padding: 2em 1em;
+  }
+  
+  .list-box  .tick
+  {
+    color: #f7ce18;
+    font-weight: 800;
+    font-size: 1em;
+    margin-right: 0.40em;
+  }
+  #content-bottom
+  {
+    
+    padding: 2em 3em;
+  }
+  #content-bottom .container
+  {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 0.60fr 1fr;
+    background-color: #f5f5f5;
+   
+  }
+  .box-disp h3{
+    font-size: 2em;
+    font-weight: 600;
+    font-family:'Times New Roman', Times, serif;
+    letter-spacing: 0.35em;
+  }
+  .box-disp p{
+    line-height: 2em;
+    padding: 0em 0.50em;
+   
+  }
+  .register
+  {
+    margin-top: 2.5em;
+    margin-bottom: 2em;
+  }
+  .register a
+  {
+    padding: 0.90em 1.2em;
+    border:1px solid #111010;
+    background-color: #111010;
+    color: #f5f5f5;
+    letter-spacing: 0.05em;
+  }
+  @media(max-width:932px)
+  {
+    #content-bottom
+    {
+      
+      padding: 1em 0.1em;
+    }
+  #content-bottom .container
+  {
+    grid-template-columns:repeat(1,1fr)
+  }
+  .freelancer-img
+  {
+    width: 250px;
+    height: 210px;
+    
+  }
+  .freelancer-img img {
+    width: 100%;
+    height: 100%;
+  }
+  #first-content
+  {
+   height: auto;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .content-box1 h2
+  {
+    margin-top: 1em;
+    line-height: 1.6em;
+   font-weight: 900;
+    text-align: center;
+  }
+  #first-content .container
+  {
+    display: grid;
+    align-items: center;
+    grid-template-columns:repeat(1,1.3fr);
+    gap:1em;
+  }
+  .list-box
+  {
+    flex-direction: column;
+  }
+  }
+</style>
     <section class="banner">
         <div class="inner">
             <b>
@@ -49,460 +183,48 @@
         </style>
     </section>
     
-
-    <section class="mt-4" id="first-content">
-        <div class="container p-2">
-            <h2 class="bld pb-3 mb-3 pl-2 ">
-                Why prefer 3D <span class="red bld py-4">modelling</span>
-            </h2>
-            <div class="row">
-                <div class="col-lg-5">
-                    <ul>
-                        <li> <span>✓</span>Branding for your business</li>
-                        <li> <span>✓</span>Better product development</li>
-                        <li> <span>✓</span>Easy product testing and prototyping</li>
-                        <li> <span>✓</span>More precise measurements</li>
-                        <li><span>✓</span>	3D modelling fixes errors before the final product design </li>
-                        <li><span>✓</span> Highly efficient and save time during presentations</li>
-                        <li><span>✓</span> Excellent communication tool for your end users</li>
-                        <li> <span>✓</span>It helps in visualizing the scenario</li>
-                        <li> <span>✓</span> Highly realistic and cost-effective</li>
-                    </ul>
-    
-                </div>
-                <div class="col-lg-7">
-                    <p>
-                        Since our inception, we have been satisfying the demands of our valued clients, 
-                        providing excellent and accurate services on time, and have become the recognized 
-                        name in 3D modelling, rendering, sketching caricature and many more. In order to 
-                        create a highly realistic final product, we have the best platforms and software. 
-                        The solution we provide spans the entire process of conceptualizing, sketching, 
-                        and building a 3D model. In addition to using these models in your presentation, 
-                        they can also assist employees and engineers in gaining a greater understanding of 
-                        the product. Our design and development enable you to achieve fantastic outcomes and 
-                        provide a powerful resource for your communication needs of your business.
-                    </p>
-                </div>
-            </div>
-            
-            
-        </div>
-    </section>
-    
-    
-    
-    <style>
-        
-          .row {
-            display: flex;
-            flex-wrap: wrap;
-          }
-          .column {
-            width: 100%;
-            padding: 0 1em 1em 1em;
-            text-align: center;
-          }
-          .card {
-            width: 100%;
-            height: 100%;
-            padding: 1em 1.5em;
-            background: linear-gradient(#ffffff 50%, #2c7bfe 50%);
-            background-size: 100% 200%;
-            background-position: 0 2.5%;
-            border-radius: 5px;
-            box-shadow: 0 0 35px rgba(0, 0, 0, 0.12);
-            cursor: pointer;
-            transition: 0.5s;
-          }
-          h3 {
-            font-size: 16px;
-            font-weight: 600;
-            color: #1f194c;
-            margin: 1em 0;
-          }
-          p {
-            color: #575a7b;
-            font-size: 0.92em;
-            line-height: 1.6;
-            letter-spacing: 0.03em;
-            word-spacing: 0.03em;
-            text-align: justify;
-          }
-          .icon-wrapper {
-            background-color: #2c7bfe;
-            position: relative;
-            margin: auto;
-            font-size: 20px;
-            height: 1.5em;
-            width: 1.5em;
-            color: #ffffff;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            transition: 0.5s;
-          }
-          .card:hover {
-            background-position: 0 100%;
-          }
-          .card:hover .icon-wrapper {
-            background-color: #ffffff;
-            color: #2c7bfe;
-          }
-          .card:hover h3 {
-            color: #ffffff;
-          }
-          .card:hover p {
-            color: #f0f0f0;
-          }
-          @media screen and (min-width: 768px) {
-            .servi {
-              padding: 1 2em;
-            }
-            .column {
-              flex: 0 50%;
-              max-width: 50%;
-            }
-          }
-          @media screen and (min-width: 992px) {
-            .servi {
-              padding: 1em 3em;
-            }
-            .column {
-              flex: 0 0 33.33%;
-              max-width: 33.33%;
-            }
-          }
-    </style>
-    
-    
-    <section class="mt-3 mb-4" id="content-bottom">
-      <div class="container box-disp" >
-          <h3>Freelance</h3>
-          <p class="content">Looking for extra income is always appreciated. Though, are you satisfied with 
-              your current part-time job, which does not help in building your career? Well, 
-              you are not alone. We are here to help you.
-              <br>
-              Dimenzions opens a door to whole other levels of opportunities in freelancing services 
-              in Kerala. Work from anywhere, at your own disposal, all you have to do is register your 
-              expertise with Dimenzions. Website development, Digital marketing, Game development, Auditing, 
-              Graphic designing, Content writing, Video editing, whatever profession you are looking for 
-              will be available at your fingertips.
+    <section class="" id="first-content" >
+      <div class="container">
+        <div class="content-box1" data-aos="fade-down-right" data-aos-duration="2000">
+          <h2 class="">
+            Why prefer 3D modelling
+        </h2>
+          <p>
+            Since our inception, we have been satisfying the demands of our valued clients, 
+            providing excellent and accurate services on time, and have become the recognized 
+            name in 3D modelling, rendering, sketching caricature and many more. In order to 
+            create a highly realistic final product, we have the best platforms and software. 
+            The solution we provide spans the entire process of conceptualizing, sketching, 
+            and building a 3D model. In addition to using these models in your presentation, 
+            they can also assist employees and engineers in gaining a greater understanding of 
+            the product. Our design and development enable you to achieve fantastic outcomes and 
+            provide a powerful resource for your communication needs of your business.
           </p>
-      <span class="top"></span>
-        <span class="right"></span>
-        <span class="bottom"></span>
-        <span class="left"></span>
-      </div>
-    </section>
-    
-    
-    
-    <section class="servi">
-        <div class="row text-center">
-            <h2 class="bld pb-3 mb-4">
-                Services <span class="red bld py-4">We Offer</span>
-            </h2>
         </div>
-        <div class="row">
-          <div class="column">
-            <div class="card">
-              <div class="icon-wrapper">
-                <i class="fas fa-hammer"></i>
-              </div>
-              <h3>Logo Creation</h3>
-              <p>
-                An elegant Logo Design is what make your brand immortal, 
-                leaving an impression worth a llifetime etched into the hearts 
-                of audience. One can say that you are at the right place, 
-                given the circumstance that you are searching for one right 
-                now. Dimenzions is one the leading Logo designing company 
-                in Kerala and cover your requirements by providing the best 
-                logo one ever going to get. Wordmarks/logotypes, Letterforms, 
-                Monogram logos, with symbols/brand marks/pictorial marks, 
-                Abstract logo marks, Mascots, we deliver as your choice.
-              </p>
-            </div>
-          </div>
-          <div class="column">
-            <div class="card">
-              <div class="icon-wrapper">
-                <i class="fas fa-brush"></i>
-              </div>
-              <h3>UI/UX Designing (front end)</h3>
-              <p>
-                We at Dimenzions understand that user experience pertains 
-                        to everything that affects users and their interactions with 
-                        a product. It is our goal to create products that enhance the 
-                        digital experience for organizations and help brand custodians 
-                        unlock growth, credibility, and ROI. Designing digital experiences 
-                        that are clear, purposeful, and visually captivating is our specialty. 
-                        Our SEO-friendly websites are tested with various quality controls to 
-                        ensure that they're bug-free, easy to use, and aesthetically pleasing.
-              </p>
-            </div>
-          </div>
-          <div class="column">
-            <div class="card">
-              <div class="icon-wrapper">
-                <i class="fas fa-wrench"></i>
-              </div>
-              <h3>3D Artistg</h3>
-              <p>
-                3D artists - highly sought after personnel in fields such 
-                as medicine, automotive, gaming, and many others, who keep 
-                perfecting & nurturing their gifts. From characters to 
-                environments to special effects, they create images with 
-                a keen eye for composition, photo-realism, and lighting. 
-                3ds Max, V-Ray, Adobe Creative Suite, Maya are only a few 
-                of the tools they are dancing with. Our 3D Rendering Artist 
-                team builder will help you hire the right people to succeed.
-              </p>
-            </div>
-          </div>
-          <div class="column">
-            <div class="card">
-              <div class="icon-wrapper">
-                <i class="fas fa-truck-pickup"></i>
-              </div>
-              <h3>Photoshop</h3>
-              <p>
-                The art of graphic design consists of making use of 
-                        various design elements to convey information about 
-                        a product or anything else. Making the audience consume 
-                        what you imply. We offer Graphic design services within reach, 
-                        ranging from publications, social media posters, Visiting 
-                        cards, Packet designing, ID cards, Brochure creation, 
-                        Flyer Design, Flex Design, and magazines to websites and billboards.
-              </p>
-            </div>
-          </div>
-          <div class="column">
-            <div class="card">
-              <div class="icon-wrapper">
-                <i class="fas fa-broom"></i>
-              </div>
-              <h3>House Plan</h3>
-              <p>
-                Has there ever been a place that would blow your mind off 
-                        and grab your attention with its sheer elegance and brilliance? 
-                        As the best interior designer in Kochi, we create the trends 
-                        of tomorrow's exquisite residential spaces of all kinds. 
-                        Each interior design requirement is treated with the utmost 
-                        professionalism by our interior designers. Architect your 
-                        home in luxury with the help of master minds of Dimenzions. 
-                        The brilliance in setting Home & Offices Interior & Exterior 
-                        is yours to unlock.
-              </p>
-            </div>
-          </div>
-          <div class="column">
-            <div class="card">
-              <div class="icon-wrapper">
-                <i class="fas fa-plug"></i>
-              </div>
-              <h3>Drawings</h3>
-              <p>
-                Immerse yourself in the beauty of handcrafted drawings of 
-                your favourite places, persons, or anything. Photo sketches, 
-                Caricature works, Photo frame pictures, let it be anything; 
-                the magic hands are ready to pull out the best in them within 
-                a short period of time, effortlessly. Sketches, watercolour, 
-                oil, acrylic, marble, and granite drawings are born again with 
-                an elegant touch of expertise.
-              </p>
-            </div>
-          </div>
-        </div>
-    </section>
-    
-    
-    <style>
-        #content-bottom{
-            margin: 0.25em;
-        }
-        #content-bottom .container
-        {
-           box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-           padding: 1em 1.2em;
-        }
-        #content-bottom h3{
-            font-size: 1.3em;
-            font-weight: 600;
-        }
-        #content-bottom .box-disp {
-            position: relative;
-           
-            color: #fff;
-            background: transparent;
-            overflow: hidden;
-            border-top: 2px solid rgba(255, 49, 49, 0.5);
-            border-right: 2px solid rgba(0, 255, 255, 0.5);
-            border-bottom: 2px solid rgba(57, 255, 20, 0.5);
-            border-left: 2px solid rgba(255, 255, 113, 0.5);
-            font-family: sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
           
-          }
-    
-          #content-bottom p {
-            font-size: 0.92rem;
-            text-align: center;
-          }
-    
-          #content-bottom span {
-            position: absolute;
-            border-radius: 100vmax;
-          }
-    
-          #content-bottom .top {
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 5px;
-            background: linear-gradient(
-              90deg,
-              transparent 50%,
-              rgba(255, 49, 49, 0.5),
-              rgb(255, 49, 49)
-            );
-          }
-    
-          #content-bottom .bottom {
-            right: 0;
-            bottom: 0;
-            height: 5px;
-            background: linear-gradient(
-              90deg,
-              rgb(57, 255, 20),
-              rgba(57, 255, 20, 0.5),
-              transparent 50%
-            );
-          }
-    
-          #content-bottom .right {
-            top: 0;
-            right: 0;
-            width: 5px;
-            height: 0;
-            background: linear-gradient(
-              180deg,
-              transparent 30%,
-              rgba(0, 255, 255, 0.5),
-              rgb(0, 255, 255)
-            );
-          }
-    
-          #content-bottom .left {
-            left: 0;
-            bottom: 0;
-            width: 5px;
-            height: 0;
-            background: linear-gradient(
-              180deg,
-              rgb(255, 255, 113),
-              rgba(255, 255, 113, 0.5),
-              transparent 70%
-            );
-          }
-    
-          #content-bottom .top {
-            animation: animateTop 3s ease-in-out infinite;
-          }
-    
-          #content-bottom .bottom {
-            animation: animateBottom 3s ease-in-out infinite;
-          }
-    
-          #content-bottom .right {
-            animation: animateRight 3s linear infinite;
-          }
-    
-          #content-bottom .left {
-            animation: animateLeft 3s ease-in-out infinite;
-          }
-    
-          @keyframes animateTop {
-            25% {
-              width: 100%;
-              opacity: 1;
-            }
-    
-            30%,
-            100% {
-              opacity: 0;
-            }
-          }
-    
-          @keyframes animateBottom {
-            0%,
-            50% {
-              opacity: 0;
-              width: 0;
-            }
-    
-            75% {
-              opacity: 1;
-              width: 100%;
-            }
-    
-            76%,
-            100% {
-              opacity: 0;
-            }
-          }
-    
-          @keyframes animateRight {
-            0%,
-            25% {
-              opacity: 0;
-              height: 0;
-            }
-    
-            50% {
-              opacity: 1;
-              height: 100%;
-            }
-    
-            55%,
-            100% {
-              height: 100%;
-              opacity: 0;
-            }
-          }
-    
-          @keyframes animateLeft {
-            0%,
-            75% {
-              opacity: 0;
-              bottom: 0;
-              height: 0;
-            }
-    
-            100% {
-              opacity: 1;
-              height: 100%;
-            }
-          }
-    
-    </style>
-    
-    
-    
-    
-           
-        <style>
-                .gry{
-                    color: rgb(97, 95, 95);
-                }
-               
-                
-                
-        </style>
-    </section>
-   
+          <div class="list-box" data-aos="fade-down-left" data-aos-duration="2000">
+            <p><span class="tick">✓ </span>	3D modelling fixes errors before the final product design </p>
+            <p><span class="tick">✓ </span> Highly efficient and save time during presentations</p>
+            <p><span class="tick">✓ </span> Excellent communication tool for your end users
+            <p><span class="tick">✓ </span>It helps in visualizing the scenario</p>
+            <p><span class="tick">✓ </span> Highly realistic and cost-effective</p>
+      
+            <p><span class="tick">✓ </span>Branding for your business</p>
+            <p><span class="tick">✓ </span>Better product development</p>
+            <p><span class="tick">✓ </span>Easy product testing and prototyping</p>
+            <p><span class="tick">✓ </span>More precise measurements</p>
+          
+            
+        </div>
+
+       
+                 
+         
+          
+      </div>
+  </section>
+
+ 
     <section class="grayback m-0 " style="background:#111010 ">
         <section class="p-lg-5 ">
             <h4  class="head-categ text-center pt-4 p-lg-0 "data-aos="fade-up"data-aos-delay="50">
@@ -687,4 +409,254 @@
             }
         </style>
     </section>
+  
+
+    <section class="mt-3 mb-4" id="content-bottom">
+      <div class="container" >
+        <div class="freelancer-img" data-aos="fade-up"
+        data-aos-duration="3000">
+          <img src="{% static 'images/freelance.webp' %}">
+        </div>
+        <div class="box-disp" data-aos="fade-up"
+        data-aos-duration="3000">
+          <h3>Freelance</h3>
+          <p class="content">Looking for extra income is always appreciated. Though, are you satisfied with 
+              your current part-time job, which does not help in building your career? Well, 
+              you are not alone. We are here to help you.
+              <br>
+              Dimenzions opens a door to whole other levels of opportunities in freelancing services 
+              in Kerala. Work from anywhere, at your own disposal, all you have to do is register your 
+              expertise with Dimenzions. Website development, Digital marketing, Game development, Auditing, 
+              Graphic designing, Content writing, Video editing, whatever profession you are looking for 
+              will be available at your fingertips.
+          </p>
+          <div class="register">
+            <a href="{% url 'freereg' %}">Register As Freelancer</a>
+          </div>
+         
+        </div>
+        
+          
+     
+    </section>
+  
+  
+  <style>
+      
+        .row {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .column {
+          width: 100%;
+          padding: 0 1em 1em 1em;
+          text-align: center;
+        }
+        .servi h2
+        {
+          font-weight: 700;
+          color: #2d507d;
+          letter-spacing: 0.07em;
+          font-family: 'Times New Roman', Times, serif;
+          padding: 1.6em 1em;
+          font-size: 2.1em;
+          margin-bottom: 1em;
+        }
+        .card {
+          width: 100%;
+          height: 100%;
+          padding: 1em 1.5em;
+          background: linear-gradient(#ffffff 50%, #2c7bfe 50%);
+          background-size: 100% 200%;
+          background-position: 0 2.5%;
+          border-radius: 5px;
+          box-shadow: 0 0 35px rgba(0, 0, 0, 0.12);
+          cursor: pointer;
+          transition: 0.5s;
+        }
+        h3 {
+          font-size: 16px;
+          font-weight: 600;
+          color: #1f194c;
+          margin: 1em 0;
+        }
+        p {
+          color: #575a7b;
+          font-size: 0.92em;
+          line-height: 1.6;
+          letter-spacing: 0.03em;
+          word-spacing: 0.03em;
+          text-align: justify;
+        }
+        .icon-wrapper {
+          background-color: #2c7bfe;
+          position: relative;
+          margin: auto;
+          font-size: 20px;
+          height: 1.5em;
+          width: 1.5em;
+          color: #ffffff;
+          border-radius: 50%;
+          display: grid;
+          place-items: center;
+          transition: 0.5s;
+        }
+        .card:hover {
+          background-position: 0 100%;
+        }
+        .card:hover .icon-wrapper {
+          background-color: #ffffff;
+          color: #2c7bfe;
+        }
+        .card:hover h3 {
+          color: #ffffff;
+        }
+        .card:hover p {
+          color: #f0f0f0;
+        }
+        @media screen and (min-width: 768px) {
+          .servi {
+            padding: 1 2em;
+          }
+          .column {
+            flex: 0 50%;
+            max-width: 50%;
+          }
+        }
+        @media screen and (min-width: 992px) {
+          .servi {
+            padding: 1em 3em;
+          }
+          .column {
+            flex: 0 0 33.33%;
+            max-width: 33.33%;
+          }
+        }
+  </style>
+  
+
+  
+  <section class="servi">
+      <div class="row text-center">
+          <h2 class="bld pb-3 ">
+              Services <span class="red bld py-4">We Offer</span>
+          </h2>
+      </div>
+      <div class="row">
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fas fa-hammer"></i>
+            </div>
+            <h3>Logo Creation</h3>
+            <p>
+              An elegant Logo Design is what make your brand immortal, 
+              leaving an impression worth a llifetime etched into the hearts 
+              of audience. One can say that you are at the right place, 
+              given the circumstance that you are searching for one right 
+              now. Dimenzions is one the leading Logo designing company 
+              in Kerala and cover your requirements by providing the best 
+              logo one ever going to get. Wordmarks/logotypes, Letterforms, 
+              Monogram logos, with symbols/brand marks/pictorial marks, 
+              Abstract logo marks, Mascots, we deliver as your choice.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fas fa-brush"></i>
+            </div>
+            <h3>UI/UX Designing (front end)</h3>
+            <p>
+              We at Dimenzions understand that user experience pertains 
+                      to everything that affects users and their interactions with 
+                      a product. It is our goal to create products that enhance the 
+                      digital experience for organizations and help brand custodians 
+                      unlock growth, credibility, and ROI. Designing digital experiences 
+                      that are clear, purposeful, and visually captivating is our specialty. 
+                      Our SEO-friendly websites are tested with various quality controls to 
+                      ensure that they're bug-free, easy to use, and aesthetically pleasing.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fas fa-wrench"></i>
+            </div>
+            <h3>3D Artistg</h3>
+            <p>
+              3D artists - highly sought after personnel in fields such 
+              as medicine, automotive, gaming, and many others, who keep 
+              perfecting & nurturing their gifts. From characters to 
+              environments to special effects, they create images with 
+              a keen eye for composition, photo-realism, and lighting. 
+              3ds Max, V-Ray, Adobe Creative Suite, Maya are only a few 
+              of the tools they are dancing with. Our 3D Rendering Artist 
+              team builder will help you hire the right people to succeed.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fas fa-truck-pickup"></i>
+            </div>
+            <h3>Photoshop</h3>
+            <p>
+              The art of graphic design consists of making use of 
+                      various design elements to convey information about 
+                      a product or anything else. Making the audience consume 
+                      what you imply. We offer Graphic design services within reach, 
+                      ranging from publications, social media posters, Visiting 
+                      cards, Packet designing, ID cards, Brochure creation, 
+                      Flyer Design, Flex Design, and magazines to websites and billboards.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fas fa-broom"></i>
+            </div>
+            <h3>House Plan</h3>
+            <p>
+              Has there ever been a place that would blow your mind off 
+                      and grab your attention with its sheer elegance and brilliance? 
+                      As the best interior designer in Kochi, we create the trends 
+                      of tomorrow's exquisite residential spaces of all kinds. 
+                      Each interior design requirement is treated with the utmost 
+                      professionalism by our interior designers. Architect your 
+                      home in luxury with the help of master minds of Dimenzions. 
+                      The brilliance in setting Home & Offices Interior & Exterior 
+                      is yours to unlock.
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="card">
+            <div class="icon-wrapper">
+              <i class="fas fa-plug"></i>
+            </div>
+            <h3>Drawings</h3>
+            <p>
+              Immerse yourself in the beauty of handcrafted drawings of 
+              your favourite places, persons, or anything. Photo sketches, 
+              Caricature works, Photo frame pictures, let it be anything; 
+              the magic hands are ready to pull out the best in them within 
+              a short period of time, effortlessly. Sketches, watercolour, 
+              oil, acrylic, marble, and granite drawings are born again with 
+              an elegant touch of expertise.
+            </p>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+  </script>
+  
 {% endblock %}

@@ -105,7 +105,11 @@
                                       </td>
                                       <td>
                                         {% if i.status == '4' %}
-                                        <a href="#"><b>File</b></a>
+                                          {% for j in fr %}
+                                          {% if j.fr_service_id == i.id %}
+                                            <a href="{{j.fr_file.url}}" download="{{j.fr_file.url}}"><b>File</b></a>
+                                          {% endif %}
+                                          {% endfor %}
                                         {% endif %}
                                       </td>
                                       <td>

@@ -37,6 +37,8 @@ class Product(models.Model):
     modeltype = models.CharField(max_length=255,default='')
     image = models.ImageField(null=True, blank=True,default='')
     rating = models.IntegerField(default=0)
+    fr_id=models.IntegerField(default='0')
+    product_status=models.IntegerField(default='0')
 
 class Register_freelance(models.Model):
     #profileinfo

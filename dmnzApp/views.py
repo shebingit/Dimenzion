@@ -82,73 +82,73 @@ def model(request):
 def photoshop(request):
     if 'USID' in request.session:
         categ=categories.objects.get(id=4)
-        all=Product.objects.filter(category_id=4)
-        price_low=Product.objects.filter(category_id=4).order_by('price')
-        price_high=Product.objects.filter(category_id=4).order_by('-price')
+        all=Product.objects.filter(category_id=4,product_status=1)
+        price_low=Product.objects.filter(category_id=4,product_status=1).order_by('price')
+        price_high=Product.objects.filter(category_id=4,product_status=1).order_by('-price')
         return render(request,'category_photoshop.html',{'all':all,'three':price_low,'high_to':price_high,'categ':categ})
     else:
         categ=categories.objects.get(id=4)
-        all=Product.objects.filter(category_id=4)
-        price_low=Product.objects.filter(category_id=4).order_by('price')
-        price_high=Product.objects.filter(category_id=4).order_by('-price')
+        all=Product.objects.filter(category_id=4,product_status=1)
+        price_low=Product.objects.filter(category_id=4,product_status=1).order_by('price')
+        price_high=Product.objects.filter(category_id=4,product_status=1).order_by('-price')
         return render(request,'photoshop_without_user.html',{'all':all,'three':price_low,'high_to':price_high,'categ':categ})
 
 def ui_design(request):
     if 'USID' in request.session:
         categ=categories.objects.get(id=5)
-        all=Product.objects.filter(category_id=5)
-        price_low=Product.objects.filter(category_id=5).order_by('price')
-        price_high=Product.objects.filter(category_id=5).order_by('-price')
+        all=Product.objects.filter(category_id=5,product_status=1)
+        price_low=Product.objects.filter(category_id=5,product_status=1).order_by('price')
+        price_high=Product.objects.filter(category_id=5,product_status=1).order_by('-price')
         return render(request,'category_uidesign.html',{'all':all,'three':price_low,'high_to':price_high,'categ':categ})
     else:
         categ=categories.objects.get(id=5)
-        all=Product.objects.filter(category_id=5)
-        price_low=Product.objects.filter(category_id=5).order_by('price')
-        price_high=Product.objects.filter(category_id=5).order_by('-price')
+        all=Product.objects.filter(category_id=5,product_status=1)
+        price_low=Product.objects.filter(category_id=5,product_status=1).order_by('price')
+        price_high=Product.objects.filter(category_id=5,product_status=1).order_by('-price')
         return render(request,'ui_design_without_user.html',{'all':all,'three':price_low,'high_to':price_high,'categ':categ})
         
 
 def house_plans(request):
     if 'USID' in request.session:
         categ=categories.objects.get(id=6)
-        all=Product.objects.filter(category_id=6)
-        price_low=Product.objects.filter(category_id=6).order_by('price')
-        price_high=Product.objects.filter(category_id=6).order_by('-price')
+        all=Product.objects.filter(category_id=6,product_status=1)
+        price_low=Product.objects.filter(category_id=6,product_status=1).order_by('price')
+        price_high=Product.objects.filter(category_id=6,product_status=1).order_by('-price')
         return render(request,'category_houseplans.html',{'all':all,'three':price_low,'high_to':price_high,'categ':categ})
     else:
         categ=categories.objects.get(id=6)
-        all=Product.objects.filter(category_id=6)
-        price_low=Product.objects.filter(category_id=6).order_by('price')
-        price_high=Product.objects.filter(category_id=6).order_by('-price')
+        all=Product.objects.filter(category_id=6,product_status=1)
+        price_low=Product.objects.filter(category_id=6,product_status=1).order_by('price')
+        price_high=Product.objects.filter(category_id=6,product_status=1).order_by('-price')
         return render(request,'houseplan_without_user.html',{'all':all,'three':price_low,'high_to':price_high,'categ':categ})
         
 
 def logo_creation(request):
     if 'USID' in request.session:
         categ=categories.objects.get(id=7)
-        all=Product.objects.filter(category_id=7)
-        price_low=Product.objects.filter(category_id=7).order_by('price')
-        price_high=Product.objects.filter(category_id=7).order_by('-price')
+        all=Product.objects.filter(category_id=7,product_status=1)
+        price_low=Product.objects.filter(category_id=7,product_status=1).order_by('price')
+        price_high=Product.objects.filter(category_id=7,product_status=1).order_by('-price')
         return render(request,'category_logo.html',{'all':all,'three':price_low,'high_to':price_high,'categ':categ})
     else:
         categ=categories.objects.get(id=7)
-        all=Product.objects.filter(category_id=7)
-        price_low=Product.objects.filter(category_id=7).order_by('price')
-        price_high=Product.objects.filter(category_id=7).order_by('-price')
+        all=Product.objects.filter(category_id=7,product_status=1)
+        price_low=Product.objects.filter(category_id=7,product_status=1).order_by('price')
+        price_high=Product.objects.filter(category_id=7,product_status=1).order_by('-price')
         return render(request,'logo_without_user.html',{'all':all,'three':price_low,'high_to':price_high,'categ':categ})
 
 def drawings(request):
     if 'USID' in request.session:
         categ=categories.objects.get(id=8)
-        all=Product.objects.filter(category_id=8)
-        price_low=Product.objects.filter(category_id=8).order_by('price')
-        price_high=Product.objects.filter(category_id=8).order_by('-price')
+        all=Product.objects.filter(category_id=8,product_status=1)
+        price_low=Product.objects.filter(category_id=8,product_status=1).order_by('price')
+        price_high=Product.objects.filter(category_id=8,product_status=1).order_by('-price')
         return render(request,'category_drawings.html',{'all':all,'three':price_low,'high_to':price_high,'categ':categ})
     else:
         categ=categories.objects.get(id=8)
-        all=Product.objects.filter(category_id=8)
-        price_low=Product.objects.filter(category_id=8).order_by('price')
-        price_high=Product.objects.filter(category_id=8).order_by('-price')
+        all=Product.objects.filter(category_id=8,product_status=1)
+        price_low=Product.objects.filter(category_id=8,product_status=1).order_by('price')
+        price_high=Product.objects.filter(category_id=8,product_status=1).order_by('-price')
         return render(request,'drawing_without_user.html',{'all':all,'three':price_low,'high_to':price_high,'categ':categ})
 
 
@@ -163,15 +163,15 @@ def model_two(request):
 def price_low(request):
     if 'USID' in request.session:
         categ=categories.objects.get(id=1)
-        default=Product.objects.filter(category_id=1)
-        price_low=Product.objects.filter(category_id=1).order_by('price')
-        price_high=Product.objects.filter(category_id=1).order_by('-price')
+        default=Product.objects.filter(category_id=1,product_status=1)
+        price_low=Product.objects.filter(category_id=1,product_status=1).order_by('price')
+        price_high=Product.objects.filter(category_id=1,product_status=1).order_by('-price')
         return render(request,'cat_price_low.html',{'three':price_low,'normal':default,'high':price_high,'categ':categ})
     else:
-        default=Product.objects.filter(category_id=1)
+        default=Product.objects.filter(category_id=1,product_status=1)
         categ=categories.objects.get(id=1)
-        price_low=Product.objects.filter(category_id=1).order_by('price')
-        price_high=Product.objects.filter(category_id=1).order_by('-price')
+        price_low=Product.objects.filter(category_id=1,product_status=1).order_by('price')
+        price_high=Product.objects.filter(category_id=1,product_status=1).order_by('-price')
         return render(request,'3dmodel_without_user.html',{'three':price_low,'normal':default,'high':price_high,'categ':categ})
 
 
@@ -964,7 +964,7 @@ def createmodel(request):
         # fbx = request.FILES['fbx']
 
         item = Product(modelname=modelname, description=description, gib=gib, price=price, 
-            types=types, format=format, modeltype=modeltype, category_id=category,rating=rating)
+            types=types, format=format, modeltype=modeltype, category_id=category,rating=rating,product_status=1)
         item.save()
         return redirect('addmodel')
     else:
@@ -985,6 +985,15 @@ def edit_model(request,pk):
     return render(request, "edit_model.html", {'var': var,'adm':adm,'item':item,
 'req_date':req_date,'msg_date':msg_date,
             'req_date_data':req_date_data,'msg_date_data':msg_date_data})
+
+
+
+def approve_model(request,pk):
+    item = Product.objects.get(id=pk)
+    item.product_status=1
+    item.save()
+    return redirect('models_show')
+   
 
 
 def edit_save_model(request,pk):
@@ -1373,8 +1382,9 @@ def ongoing_work(request):
     msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
     req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
     msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
+    fr=Freelancerworks.objects.all()
     return render(request, 'ongoing_work.html', {'adm':adm,'s':s,'req_date':req_date,'msg_date':msg_date,
-        'req_date_data':req_date_data,'msg_date_data':msg_date_data})
+        'req_date_data':req_date_data,'msg_date_data':msg_date_data,'fr':fr})
 
 
 
@@ -1488,9 +1498,53 @@ def freelancer_completed_work(request):
     if 'F.id' in request.session:
         std=request.session['F.id']
         free=Register_freelance.objects.get(id=std)
-        #frwork=Freelancerworks.objects.filter(frelancer=free,fr_status='2').order_by('-id')
+      
         frworks=Freelancerworks.objects.filter(fr_status='1',frelancer=free).order_by('-id')
         return render(request, 'freelancer_comleted_works.html', {'free':free,'frworks':frworks})
+    
+def freelancer_product(request):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        prodt=Product.objects.filter(fr_id=std)
+        var = categories.objects.all()
+        return render(request, 'freelancer_products.html', {'free':free,'prodt':prodt,'var':var})
+
+
+def freelancer_product_remove(request,pk):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        prodt=Product.objects.get(id=pk)
+        prodt.delete()
+        prodt=Product.objects.filter(fr_id=std)
+        var = categories.objects.all()
+        return render(request, 'freelancer_products.html', {'free':free,'prodt':prodt,'var':var})
+    
+
+def Freelancer_product_add(request):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        if request.method == 'POST':
+
+            modelname = request.POST['frmodelname']
+            description = request.POST['frdescription']
+            gib = request.FILES['frgib']
+            price = request.POST['frprice']
+            types = request.POST['frtypes']
+            format = request.POST['frformat']
+            modeltype = request.POST['frmodeltype']
+            category = request.POST['frcategory']
+          
+            # fbx = request.FILES['fbx']
+
+            item = Product(modelname=modelname, description=description, gib=gib, price=price, 
+                types=types, format=format, modeltype=modeltype, category_id=category,rating=0,fr_id=std)
+            item.save()
+        prodt=Product.objects.filter(fr_id=std)
+        var = categories.objects.all()
+        return render(request, 'freelancer_products.html', {'free':free,'prodt':prodt,'var':var})
 
     
 def freelancer_work_accept(request,fr_wstatus):
@@ -1678,6 +1732,16 @@ def sortby_freelances(request,pk):
         req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
         msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
         person=Register_freelance.objects.filter(service='3D')
+        return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
+        'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
+    
+    elif pk==7:
+        # Notification Count
+        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
+        person=Register_freelance.objects.filter(service='OTHER')
         return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
         'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
     

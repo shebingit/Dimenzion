@@ -59,22 +59,12 @@
                                   <th>User</th>
                                   <th>Start Date</th>
                                   <th>End Date</th>
-                                  <th>File</th>
+                                  <!-- <th>File</th> -->
                                   <th>Status</th>
                                   <th>Action</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Category</th>
-                            <th>User</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>File</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
+                    
                     <tbody>
                         {% for i in frworks %}
                         {% if i.fr_status == '3' or  i.fr_status == '6'  %}   
@@ -84,14 +74,14 @@
                          
                          <td>{{i.start_date}}</td>
                          <td>{{i.end_date}}</td>
-                         <td>
+                         <!-- <td>
                             {% if i.fr_file %}
                             <a href="#" download="{{i.fr_file.url}}"><i class="fa fa-file" style="color: rgb(255, 5, 72);"></i></a>
                             {% else %} 
                             <a href="#" ><i class="fa fa-file" style="color: rgb(255, 5, 72);"></i></a> 
                             {% endif %}
                             
-                         </td>
+                         </td> -->
                          <td>
                             {% if i.fr_status == '3' %}
                             <a href="{% url  'rework_details' i.id %}" class="text-info"><b>Progress</b></a>
@@ -122,7 +112,36 @@
 
 </div>
 <!-- /.container-fluid -->
-
+<style>
+    #submit-box
+    {
+        padding: 2em 1.2em;
+        border: none;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+    #submit-box h6{
+        margin-bottom: 1em;
+        font-weight: 600;
+        font-size: 1.2em;
+        color: #1f044e;
+    }
+    .group-box
+    {
+        padding: 1em ;
+    }
+    .group-box-submit
+    {
+        text-align: right;
+    }
+    #success-btn
+    {
+        padding: 0.40em 1.6em;
+        background: #2e1b50;
+        color: #fff;
+        font-size: 0.90em;
+        font-weight: 600;
+    }
+</style>
 
  
 

@@ -1,0 +1,352 @@
+{% extends 'base3.html' %}
+{% load static %}
+<head>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
+</head>
+{% block body %}
+
+<div class="container">
+    <form  action="{% url 'Freelancer_product_add' %}" method="post" class="post-form" action="createmodel" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group row">
+            <div class="col-md-10 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body ml-5">
+                        <br /><br />
+                        <h4 class="card-title">Add Your Product</h4>
+                        <br /><br />
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-3 col-form-label">Model
+                                Name</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="modelname" name="frmodelname" required/>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-3 col-form-label">Description</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" rows="4" placeholder="description"
+                                    name="frdescription" required></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Upload .gib
+                                model</label>
+                            <div class="col-sm-6">
+                                <input type="file" name="frgib" required/>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-3 col-form-label">Price</label>
+                            <div class="col-sm-6">
+                                <span style="position: absolute; margin-left: 10px; margin-top: 7px;">₹</span>
+                                <input type="number" name="frprice" id="price" class="form-control w-100" style="padding-left: 20px;" required>
+                            </div>
+                        </div>
+                        
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-3 col-form-label">Type</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control w-100" placeholder="type" name="frtypes" required/>
+                            </div>
+                        </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-3">
+                                            <label class="form-check-label" for="inlineRadio2">Model format</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select class="form-control w-100" id="inlineRadio2" aria-label="Default select example"
+                                                name="frformat" required>
+                                                <option value="">
+                                                    --select--
+                                                </option>
+                                                <option value=".fbx">fbx</option>
+                                                <option value=".obj">obj</option>
+                                                <option value=".3dx">3dx</option>
+            
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-3">
+                                            <label class="form-check-label" for="inlineRadio2">Model Type</label>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <select class="form-control w-100" id="inlineRadio2" aria-label="Default select example"
+                                                name="frmodeltype" required>
+                                                <option value="">
+                                                    --select--
+                                                </option>
+                                                <option value="Free">Free</option>
+                                                <option value="Paid">Paid</option>
+                                                
+            
+                                            </select>
+                                        </div>
+                                    </div>
+
+                       
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label class="form-check-label" for="inlineRadio2">Category</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <select class="form-control w-100" id="inlineRadio2" aria-label="Default select example"
+                                    name="frcategory" required>
+                                    <option value="">
+                                        --select--
+                                    </option>
+                                    {% for i in var %}
+                                    <option value="{{i.id}}">{{i.category_name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        {% comment %} <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label class="form-check-label" for="inlineRadio2">Sub Category</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <select class="form-control w-100" id="inlineRadio2" aria-label="Default select example"
+                                    name="frsubcategory" required>
+                                    <option value="">
+                                        --select--
+                                    </option>
+                                    {% for i in sub %}
+                                    <option value="{{i.id}}">{{i.subcategory}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div> {% endcomment %}
+
+
+                        {% comment %} <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Upload .fbx
+                                model</label>
+                            <div class="col-sm-6">
+                                <input type="file" name="frfbx" required/>
+                            </div>
+                        </div> {% endcomment %}
+
+                        <div class="form-group row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-6">
+                                <button type="submit" class="btn btn-primary
+                                    w-100">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div> 
+
+<div class="container mt-2" id="full-deatils" >
+
+ <h3 class="m-4">My Products</h3>
+
+    <div class="row g-4">
+        {% for p in prodt %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="container" id="products">
+                <div class="image">
+                    {% if p.gib %}
+                    <img src="{{p.gib.url}}" alt="Photo shop image">
+                    {% endif %}
+                </div>
+                <div class="content">
+                    <div class="review">
+                        <div class="stars">
+                            <span>Reviews</span>
+                            {% if p.rating == 1 %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            {% elif  p.rating == 2 %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            {% elif  p.rating == 3 %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            {% elif  p.rating == 4 %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            {% else %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            {% endif %}
+                           
+                        </div>
+                        <h5>₹ {{p.price}}</h5>
+                    </div>
+                    <h4 class="name">{{p.modelname}}</h4>
+                    <div class="detail">
+                        <p>{{p.description}}</p>
+                        {% if p.product_status == 0 %}
+                            <p>Not Confirmed </p>
+                        {% else %}
+                            <p>Confirmed </p>
+                        {% endif %}
+                    </div>
+                    <div class="btn-box">
+                        <a href="{% url 'freelancer_product_remove' p.id %}">
+                        <span class="like"><i class="fa fa-trash" style="color: #000;"  ></i></span>
+                        </a>
+                        <a href="#">
+                        <div class="btn">
+                            <p>Edit</p>
+                            <div class="cart-icon">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  
+
+</div>
+
+
+<style>
+    #products
+    {
+        padding: 12px 13px;
+        border-radius: 10px;
+        box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+        margin-bottom: 1em;
+    }
+    #products .image 
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #products .image img
+    {
+      
+        max-height: 200px;
+        max-width: 300px;
+        transform: scale(.9);
+      
+    }
+    #products .image img:hover{
+       
+        transform: scale(1);
+        transition: 3s;
+    }
+    .content 
+    {
+        padding-top: 2em;
+        font-size: 0.85em;
+    }
+    .content .review
+    {
+        display: flex;
+        text-align: center;
+        justify-content: space-between;
+        flex-direction: row;
+        gap: 1em;
+    }
+    .content .review h5{
+        font-weight: 600;
+        font-size: 1.5em;
+    }
+    .stars 
+    {
+        color: rgb(255, 237, 72);
+        font-size: 0.85em;
+    }
+    .stars span{
+        color: black;
+        font-weight: 600;
+        font-size: 1em;
+    }
+    .name
+    {
+        font-size: 1.5em;
+        font-weight: 600;
+        gap:2em;
+    }
+    .btn-box
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2px 4px;
+    }
+    .btn-box .like a i{
+        color: #000;
+    }
+    /* .btn-box .like{
+        color: rgb(71, 68, 68);
+        background-color: rgba(220, 219, 219, 0.74);
+        border-radius: 50%;
+        text-align: center;
+        min-width: 40px;
+        min-height: 40px;
+        padding-top: 0.83em;
+       
+    } */
+    .btn-box .like .fa-heart:hover
+    {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+       transform: scale(1.1);
+       color: rgb(255, 17, 17);
+    }
+    .btn-box .btn{
+       display: flex;
+        background-color: rgb(50, 9, 86);
+        color: #fff;
+        border-radius: 10px;
+       
+        flex-direction: row;
+        padding: 0px 5px;
+        max-height: 40px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    }
+    .btn-box .btn:hover{
+        background-color: rgb(4, 4, 4);
+    }
+    .btn-box .btn p{
+        padding: 3px 15px;
+        margin-top: 5px;
+        font-size: .85em;
+    }
+    .btn-box .cart-icon
+    {
+        margin-top: 5px;    
+    }
+    .filter
+    {
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        flex-direction: row;
+    }
+    .fa-filter:hover 
+    {
+        opacity: 0.6;
+    }
+</style>
+
+{% endblock %}

@@ -48,6 +48,7 @@
                         <a href="{% url 'remove_model' p.id  %}">
                         <span class="like"><i class="fa fa-trash" style="color: #000;"  ></i></span>
                         </a>
+                        
                         <a href="{% url 'edit_model' p.id  %}">
                         <div class="btn">
                             <p>Edit</p>
@@ -56,6 +57,27 @@
                             </div>
                         </div>
                         </a>
+                        {%if p.product_status == 1 %}
+                        <a href="#">
+                            <div class="btn">
+                              
+                                <p>Approved</p>
+                                <div class="cart-icon">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </a>
+                        {% else %}
+                        <a href="{% url 'approve_model' p.id  %}">
+                            <div class="btn">
+                               
+                                <p>Approve</p>
+                                <div class="cart-icon">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

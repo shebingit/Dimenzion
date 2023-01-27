@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
   body
   {
@@ -36,7 +37,7 @@
           padding: 4.3em 2.2em;
           display: grid;
           grid-template-columns: 2fr 1.5fr;
-          background: #ffffff;
+         
           gap:1em;
          
           
@@ -56,17 +57,26 @@
         }
         .content-box-about
         {
-          background:transparent;
-          padding: 1em;
+          background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+          padding: 0.70em 1.6em;
+        }
+        .content-box-about h3
+        {
+          letter-spacing: 0.05em;
+          font-size: 1.9em;
         }
         .aboutus-img
         {
           height: 360px;
           width: 500px;
+          margin-top: 1.30em;
+          padding: 1em;
+          
         }
         .aboutus-img img{
           width: 100%;
           height: 100%;
+          border-radius: 10px;
         }
         .more-about
         {
@@ -81,10 +91,41 @@
         }
         .more-about .card
         {
-          height: 320px;
+          height: 340px;
           padding: 1.5em;
           width: 350px;
+          font-size: 0.95em;
         }
+        .more-about .card:nth-child(1)
+        {
+          background: #70bae5;
+          color: #ffffff;
+          line-height: 1.8em;
+        }
+        .more-about .card:nth-child(1) h2{
+          font-weight: 600;
+          margin-bottom: 0.60em;
+        }
+        .more-about .card:nth-child(2)
+        {
+          background: #d0e7eb;
+          line-height: 1.6em;
+        }
+        .more-about .card:nth-child(2) h2{
+          font-weight: 600;
+          margin-bottom: 0.60em;
+        }
+        .more-about .card:nth-child(3)
+        {
+          background: #1d2e49;
+          color: #dedada;
+          line-height: 1.8em;
+        }
+        .more-about .card:nth-child(3) h2{
+          font-weight: 600;
+          margin-bottom: 0.60em;
+        }
+
 
         @media only screen and (max-width:800px) {
 
@@ -101,14 +142,31 @@
             }
             .inner .container 
             {
-              padding: 1.3em 1.2em;
-              grid-template-columns:repeat(1,1fr) 
+              padding: 1em 0.30em;
+              grid-template-columns:repeat(1,1fr) ;
+              gap:0.40em;
+            
             }
+            .aboutus-img
+            {
+              height: auto;
+              width: auto;
+              margin-top: 0.30em;
+              margin-bottom: 1em;
+              aspect-ratio: 3/2;
+            }
+            .more-about
+            {
+             
+              grid-template-columns:repeat(1,1fr) ;
+             
         }
+        
         .pe-lg-4
         {
             font-size: .91em;
         }
+      }
         
 
        
@@ -120,7 +178,8 @@
 <section class="banner">
   <div class="inner">
     <div class="container">
-      <div class="content-box-about">
+      <div class="content-box-about" data-aos="fade-right"
+      data-aos-duration="2000">
         <h3> About US</h3>
       <p>
        
@@ -138,13 +197,13 @@
      
 
       </div>
-      <div class="aboutus-img">
+      <div class="aboutus-img" data-aos="fade-left"  data-aos-duration="2000">
         <img src="{% static 'images/assn.png' %}">
       </div>
     </div>
     <div class="more-about">
     
-      <div class="card">
+      <div class="card" data-aos="fade-up"  data-aos-duration="2000">
         <h2>01</h2>
         <p>
           At Dimenzions, we are committed to staying at the forefront of the 3D modeling industry. 
@@ -153,7 +212,7 @@
           service to our clients.
         </p>
       </div>
-      <div class="card">
+      <div class="card" data-aos="fade-up"  data-aos-duration="2500">
         <h2>02</h2>
         <p>
           In addition to our technical expertise, we also pride ourselves on our customer service. 
@@ -162,7 +221,7 @@
            are committed to building long-term relationships with our clients.
         </p>
       </div>
-      <div class="card">
+      <div class="card" data-aos="fade-up"  data-aos-duration="3000">
         <h2>03</h2>
         <p>
           If you are in need of 3D modeling services in Kerala, we would love the opportunity to work with you. 
@@ -179,6 +238,9 @@
 
 
 
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+  </script>
 
 {% endblock %}
