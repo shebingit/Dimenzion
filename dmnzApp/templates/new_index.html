@@ -4,6 +4,11 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@600;700&display=swap'); 
+   #navbarNavDropdown2 .home-link
+   {
+    color:#fcf461;
+    font-weight: 600;
+   }
     .top-content-right .container {
         position: absolute;
         width: 320px;
@@ -115,17 +120,22 @@
 
       #about-dimen
       {
-        background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+        background: #171717;
       }
       #about-dimen .about-all
       {
         display: grid;
         align-items: center;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 1.2fr 1.1fr;
         padding: 2.5em 2.1em;
         gap: 1em;
        
       }
+      .about-content-box  
+      {
+        padding: 4em 1em;
+      }
+     
       .about-content-box h3{
         font-size: 2.5em;
         font-weight: 600;
@@ -143,22 +153,80 @@
         display: flex;
         align-items: center;
         flex-direction: column;
+        
+      }
+      .about-image-box img{
+        width: 100%;
+        height: 100%;
       }
       .about-content-box p{
-        line-height: 1.8em;
-        letter-spacing: 0.03em;
-        color: #0e0000;
+        line-height: 2.1em;
+        letter-spacing: 0.05em;
+        color: #b7b5b5;
+        
         font-weight: 500;
       }
-      
+      .about-content-box  p span{
+        font-size: 2.2rem; 
+        font-weight:700;
+        padding-left:6px;
+        color:#ffff;
+      }
+   
+      .more_cont
+      {
+        
+        padding: 2rem 1.2rem;
+       
+      }
+      #more-content
+      {
+        display:grid;
+        align-items: center;
+        grid-template-columns: 0.70fr 0.90fr;
+        gap: 0.20rem;
+        flex-direction: column;
+        
+        
+      }
+    
+    
+    
       @media(width <= 932px)
       {
+        body
+        {
+            background: #171717;
+        }
+       
+        .more_cont
+        {
+            
+            padding: 3rem 1.3rem;
+        }
+        .about-content-box  
+        {
+            padding: 2em 1em;
+        }
         #about-dimen .about-all
         {
-            grid-template-columns: repeat(1,1fr);
-            padding: 1.4em 1em;
+            grid-template-columns:repeat(1,1fr);
+            padding: 1.4em 0.50em;
+          
         }
+        #more-content
+      {
+    
+        grid-template-columns:repeat(1,1.3fr);
+       
       }
+      .about-content-box  p span{
+        font-size: 1.8rem; 
+        
+      }
+   
+    }
+
     
 </style>
 
@@ -283,16 +351,16 @@
     </section>
 
     <!-- content goes here -->
-<section class="p-2" id="about-dimen">
+<section class="" id="about-dimen">
    
-      <div class="container about-all">
+    <div class="container about-all">
         
-        <div class="about-content-box" data-aos="fade-right"
-        data-aos-duration="2000">
-            <h3 class="" data-aos="fade-right">
+        <div class="about-content-box" >
+            <h3 class="">
                 <span class="">ABOUT</span> Dimenzions  
             </h3>
-            <p style="text-align: justify;" class="pe-lg-4 p-1">
+            <p data-aos="fade-right"
+            data-aos-duration="2000" >
                 Dimenzions is known as one of the leading corporate branding service providers 
                 for its amazing 3D designs, logo designing and other works aimed at providing the 
                 best for our clients. Having been a creative design agency, we employ a talented 
@@ -301,45 +369,66 @@
                 at Dimenzions. 3D animation company in Kerala with its original concepts, cutting-edge 
                 technology, technical competence, and in-depth knowledge is stable, trustworthy, durable, 
                 and sustainable. 
+                <div class="read-more" data-aos="fade-left"
+                data-aos-duration="2000">
+                     <a href="{% url 'registration'%}" class="btn btn-danger">Join Now</a>
+                </div>
+               
             </p>
-       
-            <p  class="pe-lg-4 p-1" style="text-align: justify;"> 
-                In place of following trends, we aim to create trends that offer perfection. 
-                By combining unrivalled animation solutions with immaculate artistry, 
-                we help you establish a distinctive brand identity among the competitors. 
-                With the help of our team of animators and artists, we ensure that our 
-                animation solutions are the best in the world. Throughout the entire process, 
-                our team is constantly looking for ways to improve our strategies based on the 
+        </div>
+        <div class="about-image-box" data-aos="fade-left"
+        data-aos-duration="2000">
+            <img class="img-fluid" src="{% static 'images/rem.png' %}"  alt="About-first-image">
+        </div>
+        
+        <div class="about-content-box"  data-aos="fade-down"
+        data-aos-duration="2000">
+            <p>
+                In place of following trends,  <span> We aim to create </span>  trends that offer perfection. 
+                    By combining unrivalled animation solutions with immaculate artistry, 
+                    we help you establish a distinctive brand identity among the competitors. 
+                    With the help of our team of animators and artists, we ensure that our 
+                    animation solutions are the best in the world.
+            </p>
+            <div class="about-image-box" data-aos="fade-up"
+        data-aos-duration="2000">
+            <img class="img-fluid" src="{% static 'images/face.jpg' %}"  alt="About-first-image">
+        </div>
+        </div> 
+        <div class="about-content-box"  data-aos="fade-left"
+        data-aos-duration="2000" >
+            <p>
+                Throughout the entire process, 
+                <span>Our team is  </span> looking for ways to improve our strategies based on the 
                 pace faster than the market. The 3D printing industry is a full-time profession 
                 for us, and we are eager to provide our clients with numerous 3D capabilities. 
-                We provide 3D modelling services for various purposes, such as presentations, 
+                <span style="font-size: 1.15rem; font-weight:600;padding-left:6px">We provide 3D modelling services </span>We provide 3D modelling services for various purposes, such as presentations, 
                 medical and business needs, character sketches, game creations, automotive needs,
-                animations, and more. We are also taking the design industry to new heights by 
+                animations, and more.
+            </p>
+        
+        </div>
+        <div class="about-image-box" data-aos="fade-up"
+        data-aos-duration="2000">
+            <img class="img-fluid" src="{% static 'images/more-bg.png' %}"  alt="About-first-image">
+        </div>
+        <div class="about-content-box" data-aos="fade-left"
+        data-aos-duration="2000" >
+            <p>
+                <span style="padding-right:6px">We are also taking</span> the design industry to new heights by 
                 providing services like Logo creation, UI/UX designing, Interior design for homes 
                 and offices, Character sketching, Caricature drawing, Letterhead designs, and all 
                 kinds of graphic design works affordably.
             </p>
-            <a href="{% url 'registration'%}" class="btn btn-danger">Join Now</a>
         </div>
+    </div>
 
-       
-        <div class="about-image-box" data-aos="fade-left"
-        data-aos-anchor="#example-anchor"
-        data-aos-offset="500"
-        data-aos-duration="2000">
-            <img class="img-fluid" src="{% static 'images/inner_about_img01 1.png' %}"  alt="About-first-image">
-            <img class="imagedown img-fluid"src="{% static 'images/inner_about_img02 1.png' %}"  alt="About-second-image">
-        </div>
-        
-      </div> 
 </section>
-    
-
 
 
     <section class="grayback m-0 " style="background:#111010 ">
-        <section class="p-lg-5 ">
-            <h4  class="head-categ text-center pt-4 p-lg-0 "data-aos="fade-up"data-aos-delay="50">
+        <section class="p-lg-5 "data-aos="fade-up"data-aos-delay="500" data-aos-duration="2000">
+            <h4  class="head-categ text-center pt-4 p-lg-0 ">
                 CHECK OUT OUR CATEGORIES
             </h4>
             <!-- <div class="flexy w-100">
@@ -534,3 +623,30 @@
   </script>
     {% endblock %}
 
+<div class="about-image-box" data-aos="fade-left"
+        data-aos-anchor="#example-anchor"
+        data-aos-offset="500"
+        data-aos-duration="2000">
+          
+            <img class="imagedown img-fluid"src="{% static 'images/inner_about_img02 1.png' %}"  alt="About-second-image">
+        </div>
+        <div class="about-content-box" data-aos="fade-right"
+        data-aos-duration="2000">
+            <p  class="pe-lg-4 p-1" style="text-align: justify;"> 
+                In place of following trends, we aim to create trends that offer perfection. 
+                By combining unrivalled animation solutions with immaculate artistry, 
+                we help you establish a distinctive brand identity among the competitors. 
+                With the help of our team of animators and artists, we ensure that our 
+                animation solutions are the best in the world. Throughout the entire process, 
+                our team is constantly looking for ways to improve our strategies based on the 
+                pace faster than the market. The 3D printing industry is a full-time profession 
+                for us, and we are eager to provide our clients with numerous 3D capabilities. 
+                We provide 3D modelling services for various purposes, such as presentations, 
+                medical and business needs, character sketches, game creations, automotive needs,
+                animations, and more. We are also taking the design industry to new heights by 
+                providing services like Logo creation, UI/UX designing, Interior design for homes 
+                and offices, Character sketching, Caricature drawing, Letterhead designs, and all 
+                kinds of graphic design works affordably.
+            </p>
+            <a href="{% url 'registration'%}" class="btn btn-danger">Join Now</a>
+        </div>

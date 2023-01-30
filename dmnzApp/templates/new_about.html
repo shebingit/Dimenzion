@@ -3,18 +3,23 @@
 {% block body %}
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
+  #navbarNavDropdown2 .about-link
+  {
+   color:#fcf461;
+   font-weight: 600;
+  }
   body
   {
-    background: #f7f7f7;
+    background: #080808;
+           
   }
   
         .banner {
            
-            background-image: url("{% static 'images/assn.png' %}");
+            /*background-image: url("{% static 'images/assn.png' %}");*/
             background-size: cover;
             background-attachment: fixed;
-
-
+         
         }
 
         .headtext {
@@ -25,39 +30,43 @@
         .inner {
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 0, 0, 0.6);
             display: flex;
             align-items: center;
-            
+          padding-bottom: 2em;
             flex-direction: column;
             
         }
         .inner .container
         {
-          padding: 4.3em 2.2em;
+          padding: 0.30em 2.2em;
+          padding-bottom: 4em;
           display: grid;
-          grid-template-columns: 2fr 1.5fr;
-         
-          gap:1em;
-         
-          
+          grid-template-columns: 1fr 1.3fr;
+          background:#00000019;
+          gap: 1em;
+        
+
         }
         .inner .container h3{
-          font-weight: 600;
+          font-weight: 800;
           font-family: 'Times New Roman', Times, serif;
-          color: rgb(8, 8, 8);
-          margin-top: 1em;
+          color: rgb(255, 255, 255);
+          font-size: 2.3rem;
+          margin-top: 2em;
+         
           margin-bottom: 1.1em;
         }
         .inner .container p{
-         line-height: 1.7em;
-         letter-spacing: 0.04em;
-         text-align: justify;
-         color: rgb(43, 43, 43);
+         line-height: 2em;
+         letter-spacing: 0.05em;
+          font-size:0.94em;
+         color: #b7b5b5;
+        
         }
         .content-box-about
         {
-          background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+        
           padding: 0.70em 1.6em;
         }
         .content-box-about h3
@@ -65,36 +74,46 @@
           letter-spacing: 0.05em;
           font-size: 1.9em;
         }
+        .aboutus-img  p span{
+          color: #ffffff;
+          font-size: 2.2rem;
+          font-weight: 700;
+          padding-right: 6px;
+        }
         .aboutus-img
         {
-          height: 360px;
+        
           width: 500px;
           margin-top: 1.30em;
           padding: 1em;
-          
+
         }
         .aboutus-img img{
           width: 100%;
-          height: 100%;
-          border-radius: 10px;
+         
+          border-radius: 50px;
         }
         .more-about
         {
-          display: grid;
+          display: flex;
           align-items: center;
-          grid-template-columns: 1fr 1fr 1fr;
+        justify-content: space-evenly;
           padding: 0.02em 3em;
-          gap: 1em;
+          gap: 2em;
           margin-bottom: 3em;
           margin-top: -2em;
+          background:#00000019;
         
         }
         .more-about .card
         {
-          height: 340px;
+          height: 360px;
           padding: 1.5em;
-          width: 350px;
-          font-size: 0.95em;
+          width: 300px;
+          font-size: 0.93em;
+          border-radius: 20px;
+          
+          
         }
         .more-about .card:nth-child(1)
         {
@@ -158,7 +177,7 @@
             .more-about
             {
              
-              grid-template-columns:repeat(1,1fr) ;
+             flex-direction: column;
              
         }
         
@@ -177,7 +196,10 @@
 
 <section class="banner">
   <div class="inner">
-    <div class="container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000E6" fill-opacity="1" d="M0,288L80,245.3C160,203,320,117,480,106.7C640,96,800,160,960,170.7C1120,181,1280,139,1360,117.3L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
+    <div class="container mt-0">
+     
+      
       <div class="content-box-about" data-aos="fade-right"
       data-aos-duration="2000">
         <h3> About US</h3>
@@ -188,51 +210,53 @@
           grown into a full-service 3D modeling company, providing high-quality 3D models for a 
           wide range of industries and applications.
       </p>
-      <p>
-          Our team is made up of talented and experienced 3D artists who are skilled in a variety of areas, 
-          including 3D modeling, texturing, animation, and graphic designing. We have worked on projects for 
-          clients in industries such as architecture, product design, character sketches, and video game development, 
-          and we have a strong track record of delivering exceptional results.
-      </p>
-     
-
       </div>
       <div class="aboutus-img" data-aos="fade-left"  data-aos-duration="2000">
-        <img src="{% static 'images/assn.png' %}">
-      </div>
-    </div>
-    <div class="more-about">
-    
-      <div class="card" data-aos="fade-up"  data-aos-duration="2000">
-        <h2>01</h2>
-        <p>
-          At Dimenzions, we are committed to staying at the forefront of the 3D modeling industry. 
-          We use the latest software and techniques to ensure that our models are of the highest quality and realism. 
-          We also make it a priority to continuously learn and improve our skills, so that we can provide the best possible 
-          service to our clients.
+        <img src="{% static 'images/about-page.jpg' %}">
+        <p class="mt-5">
+          <span> Our team </span>is made up of talented and experienced 3D artists who are skilled in a variety of areas, 
+            including 3D modeling, texturing, animation, and graphic designing. We have worked on projects for 
+            clients in industries such as architecture, product design, character sketches, and video game development, 
+            and we have a strong track record of delivering exceptional results.
         </p>
       </div>
-      <div class="card" data-aos="fade-up"  data-aos-duration="2500">
-        <h2>02</h2>
-        <p>
-          In addition to our technical expertise, we also pride ourselves on our customer service. 
-          We understand that every project is unique, and we work closely with our clients to understand their 
-          specific needs and goals. We are dedicated to delivering personalized, high-quality service, and we
-           are committed to building long-term relationships with our clients.
-        </p>
-      </div>
-      <div class="card" data-aos="fade-up"  data-aos-duration="3000">
-        <h2>03</h2>
-        <p>
-          If you are in need of 3D modeling services in Kerala, we would love the opportunity to work with you. 
-          We are committed to delivering exceptional results to our clients and we pride ourselves on our attention 
-          to detail and ability to bring our clients' visions to life.
-        
-        </p>  
-      </div>
+      
     </div>
-
   </div>  
+</section>
+
+<section>
+  <div class="more-about">
+    
+    <div class="card" data-aos="fade-right"  data-aos-duration="2000">
+      <h2>01</h2>
+      <p>
+        At Dimenzions, we are committed to staying at the forefront of the 3D modeling industry. 
+        We use the latest software and techniques to ensure that our models are of the highest quality and realism. 
+        We also make it a priority to continuously learn and improve our skills, so that we can provide the best possible 
+        service to our clients.
+      </p>
+    </div>
+    <div class="card" data-aos="fade-left"  data-aos-duration="3000">
+      <h2>02</h2>
+      <p>
+        In addition to our technical expertise, we also pride ourselves on our customer service. 
+        We understand that every project is unique, and we work closely with our clients to understand their 
+        specific needs and goals. We are dedicated to delivering personalized, high-quality service, and we
+         are committed to building long-term relationships with our clients.
+      </p>
+    </div>
+    <div class="card" data-aos="fade-up"  data-aos-duration="2500">
+      <h2>03</h2>
+      <p>
+        If you are in need of 3D modeling services in Kerala, we would love the opportunity to work with you. 
+        We are committed to delivering exceptional results to our clients and we pride ourselves on our attention 
+        to detail and ability to bring our clients' visions to life.
+      
+      </p>  
+    </div>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000" fill-opacity="1" d="M0,256L48,256C96,256,192,256,288,218.7C384,181,480,107,576,112C672,117,768,203,864,197.3C960,192,1056,96,1152,53.3C1248,11,1344,21,1392,26.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
 </section>
 
 
