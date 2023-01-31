@@ -41,6 +41,13 @@
         font-size: 2rem;
       }
       
+      #top-content
+      {
+       margin-top: 1rem;
+       font-size:1em;
+       font-weight: 500;
+       line-height: 1.8em
+      }
       
       .carousel__face:nth-child(1) {
         background-image: url("static/images/b1.jpg");
@@ -235,10 +242,12 @@
         <div class="inner">
             
             <div class="top-content-left">
-                <p><span  class="head-top-span">DIMENZIONS</span> 
-                    The World of Digital creation: 
-                    3D Modelling, Photoshop, Logo Design, House Plans, Drawings and UI/UX Design
-                </p>
+                <p><span  class="head-top-span">DIMENZIONS</span> </p>
+                <p id="top-content">The World of Digital creation: 
+                 3D Modelling, Photoshop, Logo Design,<br>
+                  House Plans, 
+                 Drawings and UI/UX Design
+             </p>
                 <div class="btn-freelancer">
                     <button class="btn1-frl"><a href="{% url 'freereg' %}">Join As Freelancer</a></button>
                 </div>
@@ -622,31 +631,3 @@
     AOS.init();
   </script>
     {% endblock %}
-
-<div class="about-image-box" data-aos="fade-left"
-        data-aos-anchor="#example-anchor"
-        data-aos-offset="500"
-        data-aos-duration="2000">
-          
-            <img class="imagedown img-fluid"src="{% static 'images/inner_about_img02 1.png' %}"  alt="About-second-image">
-        </div>
-        <div class="about-content-box" data-aos="fade-right"
-        data-aos-duration="2000">
-            <p  class="pe-lg-4 p-1" style="text-align: justify;"> 
-                In place of following trends, we aim to create trends that offer perfection. 
-                By combining unrivalled animation solutions with immaculate artistry, 
-                we help you establish a distinctive brand identity among the competitors. 
-                With the help of our team of animators and artists, we ensure that our 
-                animation solutions are the best in the world. Throughout the entire process, 
-                our team is constantly looking for ways to improve our strategies based on the 
-                pace faster than the market. The 3D printing industry is a full-time profession 
-                for us, and we are eager to provide our clients with numerous 3D capabilities. 
-                We provide 3D modelling services for various purposes, such as presentations, 
-                medical and business needs, character sketches, game creations, automotive needs,
-                animations, and more. We are also taking the design industry to new heights by 
-                providing services like Logo creation, UI/UX designing, Interior design for homes 
-                and offices, Character sketching, Caricature drawing, Letterhead designs, and all 
-                kinds of graphic design works affordably.
-            </p>
-            <a href="{% url 'registration'%}" class="btn btn-danger">Join Now</a>
-        </div>
