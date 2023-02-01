@@ -15,7 +15,7 @@
 
   <!-- Content Row -->
   <div class="row">
-      <div class="col-xl-3 col-md-6 col-sm-3 mb-4">
+      <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
         <a href="{% url 'sortby_freelances' 1 %}">
 
           <div class="card border-left-info  shadow h-100 py-2" id="card1">
@@ -35,7 +35,7 @@
         </a>
       </div>
        <!-- Pending Requests Card Example -->
-       <div class="col-xl-3 col-md-6 col-sm-3 mb-4">
+       <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
         <a href="{% url 'sortby_freelances' 2 %}">
 
           <div class="card border-left-warning shadow h-100 py-2" id="card2">
@@ -56,7 +56,7 @@
       </div> 
 
       <!-- Earnings (Monthly) Card Example -->
-      <div class="col-xl-3 col-md-6  col-sm-3 mb-4">
+      <div class="col-xl-2 col-md-6  col-sm-3 mb-4">
         <a href="{% url 'sortby_freelances' 3 %}">
 
           <div class="card border-left-primary shadow h-100 py-2" id="card3">
@@ -77,7 +77,7 @@
       </div>
 
       <!-- Earnings (Monthly) Card Example -->
-      <div class="col-xl-3 col-md-6  col-sm-3 mb-4">
+      <div class="col-xl-2 col-md-6  col-sm-3 mb-4">
         <a href="{% url 'sortby_freelances' 4 %}">
 
           <div class="card border-left-success shadow h-100 py-2" id="card4">
@@ -97,7 +97,7 @@
         </a>
       </div>
 
-      <div class="col-xl-3 col-md-6 col-sm-3 mb-4">
+      <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
         <a href="{% url 'sortby_freelances' 5 %}">
 
         <div class="card border-left-warning shadow h-100 py-2" id="card5">
@@ -117,7 +117,7 @@
     </a>
     </div> 
 
-      <div class="col-xl-3 col-md-6 col-sm-3 mb-4">
+      <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
         <a href="{% url 'sortby_freelances' 6 %}">
 
           <div class="card border-left-secondary shadow h-100 py-2" id="card6">
@@ -137,7 +137,7 @@
         </a>
           
       </div>
-      <div class="col-xl-3 col-md-6  col-sm-3 mb-4">
+      <div class="col-xl-2 col-md-6  col-sm-3 mb-4">
         <a href="{% url 'sortby_freelances' 7 %}">
 
           <div class="card border-left-primary shadow h-100 py-2" id="card3">
@@ -229,7 +229,7 @@
     align-items: center;
     justify-content:center;
     gap: 1em;
-    flex-direction: column;
+   
     
   }
   .wrapper-box .card-box 
@@ -306,7 +306,7 @@
 </style>
 
 <div class="row">
-  <div class="col-lg-4">
+  <div class="col-lg-12">
     <div class="container-fluid mt-2" id="details">
       <div class="wrapper-box">
         {% for i in person %}
@@ -337,7 +337,7 @@
       </div>
     </div>
   </div>
-  <div class="col-lg-8">
+  <div class="col-lg-12">
     <div class="container-fluid" id="full-deatils"></div>
     
   </div>

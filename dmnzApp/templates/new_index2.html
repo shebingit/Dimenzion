@@ -1,646 +1,665 @@
 {% extends 'base2.html' %}
 {% load static %}
 {% block body %}
+
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@600;700&display=swap'); 
-    #navbarNavDropdown2 .home-link
-    {
-     color:#fcf461;
-     font-weight: 600;
-    }
-     .top-content-right .container {
-         position: absolute;
-         width: 320px;
-         margin: 100px auto 0 auto;
-         perspective: 1000px;
-         background-color: rgba(0, 0, 0, 0.7);
-       }
-       
-       .carousel {
-         position: absolute;
-         width: 100%;
-         height: 100%;
-         transform-style: preserve-3d; 
-         animation: rotate360 60s infinite forwards linear;
-       }
-       .carousel__face { 
-         position: absolute;
-         width: 200px;
-         height: 157px;
-         top: 20px;
-        
-         right: 4em;
-         background-size: cover;
-         box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);
-         display: flex;
-       }
-       
-       span {
-         margin: auto;
-         font-size: 2rem;
-       }
-       #top-content
-       {
-        margin-top: 1rem;
-        font-size:1em;
-        font-weight: 500;
-        line-height: 1.8em
-       }
-       
-       
-       .carousel__face:nth-child(1) {
-         background-image: url("static/images/b1.jpg");
-         transform: rotateY(  0deg) translateZ(180px); }
-       .carousel__face:nth-child(2) { 
-         background-image: url("static/images/b2.jpg");
-           transform: rotateY( 60deg) translateZ(180px); }
-       .carousel__face:nth-child(3) {
-         background-image: url("static/images/b4.jpg");
-         transform: rotateY( 120deg) translateZ(180px); }
-       .carousel__face:nth-child(4) {
-         background-image: url("static/images/b3.jpg");
-         transform: rotateY(180deg) translateZ(180px); }
-       .carousel__face:nth-child(5) { 
-         background-image: url("static/images/b5.jpg");
-        transform: rotateY(240deg) translateZ(180px); }
-       .carousel__face:nth-child(6) { 
-         background-image: url("static/images/b6.jpg");
-        transform: rotateY(300deg) translateZ(180px); }
-       .carousel__face:nth-child(7) { 
-         background-image: url("");
-        transform: rotateY(360deg) translateZ(180px); }
-       
-       
-       
-       @keyframes rotate360 {
-         from {
-           transform: rotateY(0deg);
-         }
-         to {
-           transform: rotateY(-360deg);
-         }
-       }
- 
-       .top-content-left
-       {
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         margin:0 auto;
-         padding: 0em 4.6em;
-         flex-direction: column;
- 
-       }
-       .top-content-left p{
-         line-height: 1.9em;
-         font-weight: 500;
-         font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-         font-size: 0.93em;
-         color: rgb(235, 233, 231);
- 
-       }
-       .top-content-left .head-top-span{
-         font-size: 2em;
-         font-weight: 600;
-         color: #fcd731;
-         margin-right: 0.30em;
-         font-family:'Times New Roman', Times, serif;
-        font-style:initial
-         
-       }
-       .top-content-left .btn1-frl
-       {
-         border: none;
-         outline: none;
-         padding: 0.60em .90em;
-         background:rgb(255, 55, 55);
-         color: #fff;
-         font-weight: 600;
-         margin-top: 1em;
-       }
-       .top-content-left .btn1-frl a{
-         color: #fff;
-         font-size: 1.05em;
-         letter-spacing:0.15em;
-       }
- 
-       #about-dimen
-       {
-         background: #171717;
-       }
-       #about-dimen .about-all
-       {
-         display: grid;
-         align-items: center;
-         grid-template-columns: 1.2fr 1.1fr;
-         padding: 2.5em 2.1em;
-         gap: 1em;
-        
-       }
-       .about-content-box  
-       {
-         padding: 4em 1em;
-       }
+    
+
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Habibi&family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;600&family=Quicksand:wght@300;400;500&family=Roboto+Condensed&family=Rosarivo&family=Work+Sans:wght@200&display=swap');
+     
       
-       .about-content-box h3{
-         font-size: 2.5em;
-         font-weight: 600;
-         margin-bottom: 1em;
-         color: #ffffff;
-         font-family: 'Times New Roman', Times, serif;
-         letter-spacing: 0.06em;
-       }
-       .about-content-box h3 span{
-         font-size: 0.60em;
-         font-weight: 400;
-       }
-       .about-image-box
-       {
-         display: flex;
-         align-items: center;
-         flex-direction: column;
-         
-       }
-       .about-image-box img{
-         width: 100%;
-         height: 100%;
-       }
-       .about-content-box p{
-         line-height: 2.1em;
-         letter-spacing: 0.05em;
-         color: #b7b5b5;
-         
-         font-weight: 500;
-       }
-       .about-content-box .content-3rd
-       {
-        margin-top: 8em;
-       }
-       .about-content-box  p span{
-         font-size: 2.2rem; 
-         font-weight:700;
-         padding-left:6px;
-         color:#ffff;
-       }
+   #navbarNavDropdown2 .home-link
+   {
+    color:#fcf461;
+    font-weight: 600;
+   }
+
+    .top-content-right .container {
+        position: absolute;
+        width: 320px;
+        margin: 100px auto 0 auto;
+        perspective: 1000px;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+      
+      .carousel {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d; 
+        animation: rotate360 60s infinite forwards linear;
+      }
+      .carousel__face { 
+        position: absolute;
+        width: 200px;
+        height: 157px;
+        top: 20px;
+       
+        right: 4em;
+        background-size: cover;
+        box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);
+        display: flex;
+      }
+      
+      span {
+        margin: auto;
+        font-size: 2rem;
+      }
+      
+      #top-content
+      {
+        line-height: 2.1em;
+        font-weight: 400;
+        font-family:Rosarivo;
+        font-size: 0.90em;
+        color: rgb(235, 233, 231);
+        letter-spacing: 0.05em;
+      }
+      
+      .carousel__face:nth-child(1) {
+        background-image: url("static/images/b1.jpg");
+        transform: rotateY(  0deg) translateZ(180px); }
+      .carousel__face:nth-child(2) { 
+        background-image: url("static/images/b2.jpg");
+          transform: rotateY( 60deg) translateZ(180px); }
+      .carousel__face:nth-child(3) {
+        background-image: url("static/images/b4.jpg");
+        transform: rotateY( 120deg) translateZ(180px); }
+      .carousel__face:nth-child(4) {
+        background-image: url("static/images/b3.jpg");
+        transform: rotateY(180deg) translateZ(180px); }
+      .carousel__face:nth-child(5) { 
+        background-image: url("static/images/b5.jpg");
+       transform: rotateY(240deg) translateZ(180px); }
+      .carousel__face:nth-child(6) { 
+        background-image: url("static/images/b6.jpg");
+       transform: rotateY(300deg) translateZ(180px); }
+      .carousel__face:nth-child(7) { 
+        background-image: url("");
+       transform: rotateY(360deg) translateZ(180px); }
+      
+      
+      
+      @keyframes rotate360 {
+        from {
+          transform: rotateY(0deg);
+        }
+        to {
+          transform: rotateY(-360deg);
+        }
+      }
+
+      .top-content-left
+      {
+        display: flex;
+        justify-content: center;
+        margin:0 auto;
+       
+        flex-direction: column;
+
+      }
+      .top-content-left p{
+        line-height: 2.1em;
+        font-weight: 400;
+        font-family:Quicksand;
+        font-size: 0.87em;
+        color: rgb(235, 233, 231);
+        letter-spacing: 0.05em;
+
+      }
+      .top-content-left .head-top-span{
+        font-size: 2.4em;
+        font-weight: 800;
+        color: #ffffff;
+        margin-right: 0.30em;
+        font-family:Playfair Display;
+        letter-spacing: 0.05em;
+       text-align: start;
+      
+      }
+      .top-content-left .btn1-frl
+      {
+        border: none;
+        outline: none;
+        padding: 0.60em .90em;
+        background:rgb(255, 55, 55);
+        color: #fff;
+        font-weight: 600;
+        margin-top: 1em;
+      }
+      .top-content-left .btn1-frl a{
+        color: #fff;
+        font-size: 1.05em;
+        letter-spacing:0.15em;
+      }
+
+      #about-dimen
+      {
+        background: #171717;
+      }
+      #about-dimen .about-all
+      {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1.2fr 1.1fr;
+        padding: 2.5em 2.1em;
+        gap: 1em;
+       
+      }
+      .about-content-box  
+      {
+        padding: 4em 1em;
+      }
+     
+      .about-content-box h3{
+        font-size: 2.6em;
+        font-weight: 600;
+        margin-bottom: 1em;
+        color: #ffffff;
+        font-family:Cormorant Garamond;
+        letter-spacing: 0.06em;
+      }
+      .about-content-box h3 span{
+        font-size: 0.60em;
+        font-weight: 400;
+        font-family:Cormorant Garamond;
+      }
+      .about-image-box
+      {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        
+      }
+      .about-image-box img{
+        width: 100%;
+        height: 100%;
+      }
+      .about-content-box p{
+        line-height: 2.1em;
+        letter-spacing: 0.06em;
+        color: #b7b5b5;
+        font-family: Playfair Display;
+        font-size: .95em;
+        text-align: justify;
+        
+        font-weight: 500;
+      }
+      .about-content-box  p span{
+        font-size: 2.2rem; 
+        font-weight:700;
+        padding-left:6px;
+        color:#ffff;
+        font-family:Cormorant Garamond;
+      }
+   
+      .more_cont
+      {
+        
+        padding: 2rem 1.2rem;
+       
+      }
+      #more-content
+      {
+        display:grid;
+        align-items: center;
+        grid-template-columns: 0.70fr 0.90fr;
+        gap: 0.20rem;
+        flex-direction: column;
+        
+        
+      }
     
-       .more_cont
-       {
-         
-         padding: 2rem 1.2rem;
-        
-       }
-       #more-content
-       {
-         display:grid;
-         align-items: center;
-         grid-template-columns: 0.70fr 0.90fr;
-         gap: 0.20rem;
-         flex-direction: column;
-         
-         
-       }
-     
-     
-     
-       @media(width <= 932px)
-       {
-         body
-         {
-             background: #171717;
-         }
-        
-         .more_cont
-         {
-             
-             padding: 3rem 1.3rem;
-         }
-         .about-content-box  
-         {
-             padding: 2em 1em;
-         }
-         #about-dimen .about-all
-         {
-             grid-template-columns:repeat(1,1fr);
-             padding: 1.4em 0.50em;
-           
-         }
-         #more-content
-       {
-     
-         grid-template-columns:repeat(1,1.3fr);
-        
-       }
-       .about-content-box  p span{
-         font-size: 1.8rem; 
-         
-       }
-       .about-content-box .content-3rd
-       {
-        margin-top: 0.10em;
-       }
     
-     }
- 
-     
- </style>
- 
- 
-     <section class="banner">
-         <div class="inner">
-             
-             <div class="top-content-left">
-                 <p><span  class="head-top-span">DIMENZIONS</span> </p>
-                    <p id="top-content">The World of Digital creation: 
-                     3D Modelling, Photoshop, Logo Design,<br>
-                      House Plans, 
-                     Drawings and UI/UX Design
-                 </p>
-                 <div class="btn-freelancer">
-                     <button class="btn1-frl"><a href="{% url 'freereg' %}">Join As Freelancer</a></button>
-                 </div>
-                
-             </div>
-             <div class="top-content-right">
-                 <div class="container">
-                     <div class="carousel">
-                       <div class="carousel__face"><span></span></div>
-                       <div class="carousel__face"><span></span></div>
-                       <div class="carousel__face"><span></span></div>
-                       <div class="carousel__face"><span></span></div>
-                       <div class="carousel__face"><span></span></div>
-                       <div class="carousel__face"><span></span></div>
-                       <div class="carousel__face"><span></span></div>
-                     </div>
-                   </div>
- 
-             </div>
+    
+      @media(max-width:732px)
+      {
+        #top-content
+        {
+          line-height: 2em;
+          font-weight: 300;
+          font-family:Quicksand;
+          font-size: 0.95em;
+          color: rgb(235, 233, 231);
+          letter-spacing: 0.04em;
+          text-align: center;
+        }
+        .btn-freelancer
+        {
+            text-align: center;
+        }
+
+        .top-content-left p
+        {
+            text-align: center;
+        }
+        .head-top-span
+        {
+            text-align: center;
+        }
+       
+        #about-dimen
+        {
+            overflow: hidden;
+        }
+        body
+        {
+            background: #171717;
+        }
+       
+        .more_cont
+        {
+            
+            padding: 3rem 1.3rem;
+        }
+        .about-content-box  
+        {
+            padding: 2em 1em;
+        }
+        #about-dimen .about-all
+        {
+            grid-template-columns:repeat(1,1fr);
+            padding: 1.4em 0.50em;
+          
+        }
+        #more-content
+      {
+    
+        grid-template-columns:repeat(1,1.3fr);
+       
+      }
+      .about-content-box  p span{
+        font-size: 1.8rem; 
         
-             <!-- <b>
-                 <h1 class="text-light headtext">Create your own</h1>
-             </b> 
+      }
+   
+    }
+
+    
+</style>
+
+
+    <section class="banner">
+        <div class="inner">
+            
+            <div class="top-content-left" data-aos="fade-right"
+            data-aos-duration="2000">
+                <p><span  class="head-top-span">DIMENZIONS</span> </p>
+                <p id="top-content">The World of Digital creation: 3D Modelling, <br> Photoshop, Logo Design, House Plans, Drawings and UI/UX Design
+             </p>
+                <div class="btn-freelancer">
+                    <button class="btn1-frl"><a href="{% url 'freereg' %}">Join As Freelancer</a></button>
+                </div>
+               
+            </div>
+            <div class="top-content-right">
+                <div class="container">
+                    <div class="carousel">
+                      <div class="carousel__face"><span></span></div>
+                      <div class="carousel__face"><span></span></div>
+                      <div class="carousel__face"><span></span></div>
+                      <div class="carousel__face"><span></span></div>
+                      <div class="carousel__face"><span></span></div>
+                      <div class="carousel__face"><span></span></div>
+                      <div class="carousel__face"><span></span></div>
+                    </div>
+                  </div>
+
+            </div>
+       
+          
+        <style>
+            .banner {
              
-             <b>
-                 <h1 style="color: rgb(255, 5, 72);" class="headtext">3D Models</h1>
-             </b> 
-             <div class="my-3">
-                 <a href="{% url 'model' %}"
-                    class="btn w-100 mx-2"
-                    style="background-color: rgb(255, 5, 72);
-                           color: white;">Buy 3D Model</a>
-                  {% comment %} <a href="{% url 'freelancer'%}"
-                    class="btn mx-2 text-light"
-                    style="background-color: gray;">Frelancer</a>  {% endcomment %}
-             </div>
-         </div> -->
-         <style>
-             .banner {
-                 height: 80vh;
-                 background-image: url("{% static 'images/assn.png' %}");
-                 background-size: 100% 100%;
-                 background-attachment: fixed;
- 
- 
-             }
- 
-             .headtext {
-                 font-size: 70px;
-                 font-weight: 600;
-             }
-             span {
-                 margin: auto;
-               font-size: 0.80rem; 
-               }
- 
-             .inner {
-                 width: 100%;
-                 height: 100%;
-                 background-color: rgba(0, 0, 0, 0.7);
-                 display: grid;
-                 grid-template-columns: 1fr 1fr;
-                 color: rgb(178, 178, 177);
-                
-             }
-             @media(max-width:932px)
-             {
-                 .banner {
-                     height: 60vh;
-                     }
-             
-                 .top-content-left
-                 {
-                     margin:0 auto;
-                     padding: 0.70em 1em;
-                   
- 
-                 }
-                 .top-content-left p {
-                     font-size: 0.90em;
-                     line-height: 2em;
-                 }
-                             .inner {
-                                 grid-template-columns: repeat(1,1fr);
-                                
-                             }
-                .top-content-right
+                height: 80vh;
+                background-image: url('static/images/mobile-bg.webp');
+                background-size: 100% 100%;
+                background-attachment: fixed;
+            }
+
+            .headtext {
+                font-size: 70px;
+                font-weight: 600;
+            }
+            span {
+                margin: auto;
+              font-size: 0.80rem; 
+              }
+
+            .inner {
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                color: rgb(178, 178, 177);
+               
+            }
+            @media(max-width:932px)
+            {
+                .banner {
+                    height: 60vh;
+                    background-image: url('static/images/mobile-bg.jpg');
+                    }
+            
+                .top-content-left
                 {
-                 display: none;
-                }
-                 
-         }
- 
-             @media only screen and (max-width:800px) {
- 
-                 .headtext {
-                     font-size: 40px;
-                     font-weight: 600;
-                 }
- 
-                 .banner {
-                    
- 
-                     background-size: cover;
-                     background: ;
- 
-                 }
-             }
-         </style>
-     </section>
- 
-     <!-- content goes here -->
- <section class="" id="about-dimen">
-    
-     <div class="container about-all">
-         
-         <div class="about-content-box" >
-             <h3 class="">
-                 <span class="">ABOUT</span> Dimenzions  
-             </h3>
-             <p data-aos="fade-right"
-             data-aos-duration="2000" >
-                 Dimenzions is known as one of the leading corporate branding service providers 
-                 for its amazing 3D designs, logo designing and other works aimed at providing the 
-                 best for our clients. Having been a creative design agency, we employ a talented 
-                 team of employees who bring a combination of creativity and technology to the table. 
-                 The role of brand awareness in successfully establishing a business is well understood 
-                 at Dimenzions. 3D animation company in Kerala with its original concepts, cutting-edge 
-                 technology, technical competence, and in-depth knowledge is stable, trustworthy, durable, 
-                 and sustainable. 
-                 <!-- <div class="read-more" data-aos="fade-left"
-                 data-aos-duration="2000">
-                      <a href="{% url 'registration'%}" class="btn btn-danger">Join Now</a>
-                 </div> -->
-                
-             </p>
-         </div>
-         <div class="about-image-box" data-aos="fade-left"
-         data-aos-duration="2000">
-             <img class="img-fluid" src="{% static 'images/rem.png' %}"  alt="About-first-image">
-         </div>
-         
-         <div class="about-content-box"  data-aos="fade-down"
-         data-aos-duration="2000">
-             <p>
-                 In place of following trends,  <span> We aim to create </span>  trends that offer perfection. 
-                     By combining unrivalled animation solutions with immaculate artistry, 
-                     we help you establish a distinctive brand identity among the competitors. 
-                     With the help of our team of animators and artists, we ensure that our 
-                     animation solutions are the best in the world.
-             </p>
-             <div class="about-image-box" data-aos="fade-up"
-         data-aos-duration="2000">
-             <img class="img-fluid" src="{% static 'images/face.jpg' %}"  alt="About-first-image">
-         </div>
-         </div> 
-         <div class="about-content-box"  data-aos="fade-left"
-         data-aos-duration="2000" >
-             <p class="content-3rd">
-                 Throughout the entire process, 
-                 <span>Our team is  </span> looking for ways to improve our strategies based on the 
-                 pace faster than the market. The 3D printing industry is a full-time profession 
-                 for us, and we are eager to provide our clients with numerous 3D capabilities. 
-                 <span style="font-size: 1.15rem; font-weight:600;padding-left:6px">We provide 3D modelling services </span>We provide 3D modelling services for various purposes, such as presentations, 
-                 medical and business needs, character sketches, game creations, automotive needs,
-                 animations, and more.
-             </p>
-         
-         </div>
-         <div class="about-image-box" data-aos="fade-up"
-         data-aos-duration="2000">
-             <img class="img-fluid" src="{% static 'images/more-bg.png' %}"  alt="About-first-image">
-         </div>
-         <div class="about-content-box" data-aos="fade-left"
-         data-aos-duration="2000" >
-             <p>
-                 <span style="padding-right:6px">We are also taking</span> the design industry to new heights by 
-                 providing services like Logo creation, UI/UX designing, Interior design for homes 
-                 and offices, Character sketching, Caricature drawing, Letterhead designs, and all 
-                 kinds of graphic design works affordably.
-             </p>
-         </div>
-     </div>
- 
- </section>
- 
- 
-     <section class="grayback m-0 " style="background:#111010 ">
-         <section class="p-lg-5 "data-aos="fade-up"data-aos-delay="500" data-aos-duration="2000">
-             <h4  class="head-categ text-center pt-4 p-lg-0 ">
-                 CHECK OUT OUR CATEGORIES
-             </h4>
-             <!-- <div class="flexy w-100">
-                 <div style="background-color: white;height: 2px; width: 20%;">
-                 </div>
-             </div> -->
-             <div class="cards-list">
-                 <a class="card3" href="{% url 'price_low' %}"
-                      style="background-image: url('{% static 'images/car.jpg'%}'); ">
-                     <div class="dark1 flex flex-column">
-                         <h4 class="text-light">
-                             <span>3D</span>  ARTISTS
-                         </h4>
-                         <p>
-                             Bringing your ideas to life through 3D modeling
-                         </p>
-                     </div>
-                 </a>
-                 <a class="card3" href="{% url 'photoshop' %}"
-                 style="background-image: url('{% static 'images/Moon-Photoshop.jpg'%}'); ">
-                
-                     <div class="dark1 flex flex-column">
-                         <h4 class="text-light">
-                             <span>PHOTO</span>SHOP
-                         </h4>
-                         <p >
-                             Make your photos look Amazing with our Photoshop services
-                         </p>
-                     </div>
-                 </a>
-                 <a class="card3" href="{% url 'ui_design' %}"
-                 style="background-image: url('{% static 'images/ui1.jpg'%}'); ">
+                    margin:0 auto;
+                    padding: 0.70em 1em;
                   
-                     <div class="dark1 flex flex-column">
-                         <h4 class="text-light">
-                             <span> UI </span>DESIGN
-                         </h4>
-                         <p>
-                             UI/UX design for web pages to enhance your users' experience
-                         </p>
-                     </div>
-                 </a>
-                 <a class="card3" href="{% url 'house_plans'%}"
-                 style="background-image: url('{% static 'images/house.jpg'%}'); ">
-                      
-                     <div class="dark1 flex flex-column">
-                         <h4 class="text-light">
-                             <span>HOUSE</span> PLANS
-                         </h4>
-                         <p>Professional house plans for your Dream Home</p>
-                         
-                     </div>
-                 </a>
-                 <a class="card3" href="{% url 'logo_creation'%}"
-                 style="background-image: url('{% static 'images/b-letter-boutique-logo-design-159417325.jpg'%}'); ">
+
+                }
+                .top-content-left p {
+                    font-size: 0.90em;
+                    line-height: 2em;
+                }
+                            .inner {
+                                grid-template-columns: repeat(1,1fr);
+                               
+                            }
+               .top-content-right
+               {
+                display: none;
+               }
                 
-                     <div class="dark1 flex flex-column">
-                         <h4 class="text-light">
-                             <span>LOGO</span> CREATION
-                         </h4>
-                         <p>
-                             Make your brand look its best with our logo design services.
-                         </p>
-                     </div>
-                 </a>
-                 <a class="card3" href="{% url 'drawings'%}"
+        }
+
+            @media only screen and (max-width:800px) {
+
+                .headtext {
+                    font-size: 40px;
+                    font-weight: 600;
+                }
+
+                .banner {
+                   
+
+                    background-size: cover;
+                    background-image: url('static/images/mobile-bg.jpg');
+
+                }
+            }
+        </style>
+    </section>
+
+    <!-- content goes here -->
+<section class="" id="about-dimen">
+   
+    <div class="container about-all">
+        
+        <div class="about-content-box" >
+            <h3 class="">
+                <span class="">ABOUT</span> Dimenzions  
+            </h3>
+            <p data-aos="fade-left"
+            data-aos-duration="2000" >
+                Dimenzions is known as one of the leading corporate branding service providers 
+                for its amazing 3D designs, logo designing and other works aimed at providing the 
+                best for our clients. Having been a creative design agency, we employ a talented 
+                team of employees who bring a combination of creativity and technology to the table. 
+                The role of brand awareness in successfully establishing a business is well understood 
+                at Dimenzions. 3D animation company in Kerala with its original concepts, cutting-edge 
+                technology, technical competence, and in-depth knowledge is stable, trustworthy, durable, 
+                and sustainable. 
+                <div class="read-more" data-aos="fade-left"
+                data-aos-duration="2000">
+                     <a href="{% url 'registration'%}" class="btn btn-danger">Join Now</a>
+                </div>
+               
+            </p>
+        </div>
+        <div class="about-image-box" data-aos="fade-left"
+        data-aos-duration="2000">
+            <img class="img-fluid" src="{% static 'images/rem.png' %}"  alt="About-first-image">
+        </div>
+        
+        <div class="about-content-box"  data-aos="fade-down"
+        data-aos-duration="2000">
+            <p>
+                In place of following trends,  <span> We aim to create </span>  trends that offer perfection. 
+                    By combining unrivalled animation solutions with immaculate artistry, 
+                    we help you establish a distinctive brand identity among the competitors. 
+                    With the help of our team of animators and artists, we ensure that our 
+                    animation solutions are the best in the world.
+            </p>
+            <div class="about-image-box" data-aos="fade-up"
+        data-aos-duration="2000">
+            <img class="img-fluid" src="{% static 'images/face.jpg' %}"  alt="About-first-image">
+        </div>
+        </div> 
+        <div class="about-content-box"  data-aos="fade-left"
+        data-aos-duration="2000" >
+            <p>
+                Throughout the entire process, 
+                <span>Our team is  </span> looking for ways to improve our strategies based on the 
+                pace faster than the market. The 3D printing industry is a full-time profession 
+                for us, and we are eager to provide our clients with numerous 3D capabilities. 
+                <span style="font-size: 1.15rem; font-weight:600;padding-left:6px">We provide 3D modelling services </span>We provide 3D modelling services for various purposes, such as presentations, 
+                medical and business needs, character sketches, game creations, automotive needs,
+                animations, and more.
+            </p>
+        
+        </div>
+        <div class="about-image-box" data-aos="fade-up"
+        data-aos-duration="2000">
+            <img class="img-fluid" src="{% static 'images/more-bg.png' %}"  alt="About-first-image">
+        </div>
+        <div class="about-content-box" data-aos="fade-left"
+        data-aos-duration="2000" >
+            <p>
+                <span style="padding-right:6px">We are also taking</span> the design industry to new heights by 
+                providing services like Logo creation, UI/UX designing, Interior design for homes 
+                and offices, Character sketching, Caricature drawing, Letterhead designs, and all 
+                kinds of graphic design works affordably.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+
+    <section class="grayback m-0 " style="background:#111010 ">
+        <section class="p-lg-5 "data-aos="fade-up"data-aos-delay="500" data-aos-duration="2000">
+            <h4  class="head-categ text-center pt-4 p-lg-0 ">
+                CHECK OUT OUR CATEGORIES
+            </h4>
+            <!-- <div class="flexy w-100">
+                <div style="background-color: white;height: 2px; width: 20%;">
+                </div>
+            </div> -->
+            <div class="cards-list">
+                <a class="card3" href="{% url 'price_low' %}"
+                     style="background-image: url('{% static 'images/car.jpg'%}'); ">
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            <span>3D</span>  ARTISTS
+                        </h4>
+                        <p>
+                            Bringing your ideas to life through 3D modeling
+                        </p>
+                    </div>
+                </a>
+                <a class="card3" href="{% url 'photoshop' %}"
+                style="background-image: url('{% static 'images/Moon-Photoshop.jpg'%}'); ">
+               
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            <span>PHOTO</span>SHOP
+                        </h4>
+                        <p >
+                            Make your photos look Amazing with our Photoshop services
+                        </p>
+                    </div>
+                </a>
+                <a class="card3" href="{% url 'ui_design' %}"
+                style="background-image: url('{% static 'images/ui1.jpg'%}'); ">
                  
-                 style="background-image: url('{% static 'images/images (6) 1.png' %}'); ">
-  
-                     <div class="dark1 flex flex-column">
-                         <h4 class="text-light">
-                             <span>DRAW</span>INGS 
-                         </h4>
-                         <p >
-                             Precision drawings that can help you realize your visions
-                         </p> 
-                     </div>
-                 </a>
-             </div>
-         </section>
-         <style>
-             .head-categ
-             {
-                 font-weight: 700;   
-                 letter-spacing: 0.04em; 
-                 color: rgb(222, 222, 222);
-             }
-             .flex {
-                 display: flex;
-                 align-items: center;
-                 justify-content: center;
-                 padding: 0px 2.1em;
-                 background: #111010;
-             }
-             .flex h4{
-                 margin-top: 7.5em;
-             }
-             .flex p{
-                 color: rgb(209, 209, 209);
-                 line-height: 1.6em;
-                 letter-spacing: 0.04em;
-                 font-size: 15px;
-                 font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-                 margin-top: 0.60em;
-                 margin-bottom: 0.90em;
-                 font-weight: 500;
-                 
-             }
-             .flex span{
-                 color: #fcd731;
-                 font-size: 1em;
-                 font-weight: 700;
-             }
- 
-             .cards-list {
-                 z-index: 0;
-                 width: 100%;
-                 display: flex;
-                 justify-content: space-around;
-                 flex-wrap: wrap;
-                 margin-top: 2em;
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            <span> UI </span>DESIGN
+                        </h4>
+                        <p>
+                            UI/UX design for web pages to enhance your users' experience
+                        </p>
+                    </div>
+                </a>
+                <a class="card3" href="{% url 'house_plans'%}"
+                style="background-image: url('{% static 'images/house.jpg'%}'); ">
+                     
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            <span>HOUSE</span> PLANS
+                        </h4>
+                        <p>Professional house plans for your Dream Home</p>
+                        
+                    </div>
+                </a>
+                <a class="card3" href="{% url 'logo_creation'%}"
+                style="background-image: url('{% static 'images/b-letter-boutique-logo-design-159417325.jpg'%}'); ">
+               
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            <span>LOGO</span> CREATION
+                        </h4>
+                        <p>
+                            Make your brand look its best with our logo design services.
+                        </p>
+                    </div>
+                </a>
+                <a class="card3" href="{% url 'drawings'%}"
                 
+                style="background-image: url('{% static 'images/images (6) 1.png' %}'); ">
+ 
+                    <div class="dark1 flex flex-column">
+                        <h4 class="text-light">
+                            <span>DRAW</span>INGS 
+                        </h4>
+                        <p >
+                            Precision drawings that can help you realize your visions
+                        </p> 
+                    </div>
+                </a>
+            </div>
+        </section>
+        <style>
+            .head-categ
+            {
+                font-weight: 800;   
+                letter-spacing: 0.05em; 
+                color: rgb(222, 222, 222);
+                font-size: 2.1em;
+                font-family: Cormorant Garamond;
+            }
+            .flex {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0px 2.1em;
+                background: #111010;
+            }
+            .flex h4{
+                margin-top: 7.5em;
+            }
+            .flex p{
+                color: rgb(209, 209, 209);
+                line-height: 1.6em;
+                letter-spacing: 0.04em;
+                font-size: 15px;
+                font-family:Rosarivo;
+                font-style: italic;
+                margin-top: 0.60em;
+                margin-bottom: 0.90em;
+                font-weight: 500;
                 
-             }
- 
-             .card3 {
-                 margin: 30px auto;
-                 width: 380px;
-                 height: 380px;
- 
-                 background-size: 100% 100%;
-                 cursor: pointer;
-                 transition: 0.4s;
-               border-radius: 15%;
-               background-color: rgb(0, 0, 0);
-             }
- 
-             .dark1 {
-                 width: 100%;
-                 height: 100%;
-                 background-color: rgba(0, 0, 0, 0.2);
-                 border-radius: 15%;
-             }
-             .dark1 p{
-                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-             }
- 
-             .card3:hover .dark1 {
-                 background-color: rgba(0, 0, 0, 0.8);
-                 transition: 1s;
- 
-             }
- 
-             @media all and (max-width: 800px) {
-                 .card-list {
-                     /* On small screens, we are no longer using row direction but column */
-                     flex-direction: column;
-                 }
- 
-                 .card3 {
-                     margin: 10px auto;
-                     width: 90%;
-                     height: 250px;
-                 }
-                 .head-categ
-                 {
-                     font-weight: 600;   
-                     letter-spacing: 0.01em; 
-                     color: rgb(222, 222, 222);
-                     font-size: 1em;
-                     margin-bottom: 1.4em;
-                 }
-                 .flex h4{
-                     margin-top: 5.5em;
-                 }
- 
- 
- 
-             }
-         </style>
-     </section>
-     
- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script> 
- 
- {% if messages %}
- <script>
-     swal("Good job!", 'Your Request Is Successful', "success")
- </script>
- {% endif %}
- 
- 
- <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
- <script>
-     AOS.init();
- </script>
- 
-    {% endblock %}
+            }
+            .flex span{
+                color: #fcd731;
+                font-size: 1em;
+                font-weight: 700;
+            }
+
+            .cards-list {
+                z-index: 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                margin-top: 2em;
+               
+               
+            }
+
+            .card3 {
+                margin: 30px auto;
+                width: 380px;
+                height: 380px;
+
+                background-size: 100% 100%;
+                cursor: pointer;
+                transition: 0.4s;
+              border-radius: 15%;
+              background-color: rgb(0, 0, 0);
+            }
+
+            .dark1 {
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.2);
+                border-radius: 15%;
+            }
+            .dark1 p{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            .card3:hover .dark1 {
+                background-color: rgba(0, 0, 0, 0.8);
+                transition: 1s;
+
+            }
+
+            @media all and (max-width: 800px) {
+                .card-list {
+                    /* On small screens, we are no longer using row direction but column */
+                    flex-direction: column;
+                }
+
+                .card3 {
+                    margin: 10px auto;
+                    width: 90%;
+                    height: 250px;
+                }
+                .head-categ
+                {
+                    font-weight: 700;   
+                    letter-spacing: 0.01em; 
+                    color: rgb(222, 222, 222);
+                    font-size: 1.8em;
+                    margin-bottom: 1.4em;
+                    margin-top: 1.4em;
+                }
+                .flex h4{
+                    margin-top: 5.5em;
+                }
+
+
+
+            }
+        </style>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000" fill-opacity="1" d="M0,256L48,256C96,256,192,256,288,218.7C384,181,480,107,576,112C672,117,768,203,864,197.3C960,192,1056,96,1152,53.3C1248,11,1344,21,1392,26.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+    </section>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script> 
+{% if messages %}
+<script>
+    swal("Good job!", 'Your Request Is Successful', "success")
+</script>
+{% endif %}
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
+    
+{% endblock %}
 

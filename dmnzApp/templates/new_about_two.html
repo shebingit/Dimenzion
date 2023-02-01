@@ -1,6 +1,7 @@
 {% extends 'base2.html' %}
 {% load static %}
 {% block body %}
+
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
   #navbarNavDropdown2 .about-link
@@ -53,9 +54,9 @@
           font-family: 'Times New Roman', Times, serif;
           color: rgb(255, 255, 255);
           font-size: 2.3rem;
-          margin-top: 2em;
+          margin-top: 0.50em;
          
-          margin-bottom: 1.1em;
+          margin-bottom: 1em;
         }
         .inner .container p{
          line-height: 2em;
@@ -69,10 +70,19 @@
         
           padding: 0.70em 1.6em;
         }
+        .content-box-about p{
+          font-family: Playfair Display;
+          text-align: justify;
+        } 
         .content-box-about h3
         {
           letter-spacing: 0.05em;
           font-size: 1.9em;
+        }
+        .aboutus-img  p
+        {
+          font-family: Playfair Display;
+          text-align: justify;
         }
         .aboutus-img  p span{
           color: #ffffff;
@@ -112,6 +122,7 @@
           width: 300px;
           font-size: 0.93em;
           border-radius: 20px;
+          font-family: Playfair Display;
           
           
         }
@@ -147,6 +158,12 @@
 
 
         @media only screen and (max-width:800px) {
+          .inner .container h3{
+           
+            margin-top: 0.01em;
+           
+            margin-bottom: 0.89em;
+          }
 
             .headtext {
                 font-size: 30px;
@@ -186,7 +203,14 @@
             font-size: .91em;
         }
       }
-        
+        .banner
+        {
+          overflow: hidden;
+        }
+      .more-about
+      {
+       overflow: hidden;
+      }
 
        
         
@@ -196,7 +220,7 @@
 
 <section class="banner">
   <div class="inner">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000E6" fill-opacity="1" d="M0,288L80,245.3C160,203,320,117,480,106.7C640,96,800,160,960,170.7C1120,181,1280,139,1360,117.3L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250"><path fill="#000000E6" fill-opacity="1" d="M0,288L80,245.3C160,203,320,117,480,106.7C640,96,800,160,960,170.7C1120,181,1280,139,1360,117.3L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path></svg>
     <div class="container mt-0">
      
       

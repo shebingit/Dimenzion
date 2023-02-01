@@ -3,12 +3,17 @@
 {% block body %}
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <style>
-   @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@600;700&display=swap'); 
+    
+
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&family=Habibi&family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;600&family=Quicksand:wght@300;400;500&family=Roboto+Condensed&family=Rosarivo&family=Work+Sans:wght@200&display=swap');
+     
+      
    #navbarNavDropdown2 .home-link
    {
     color:#fcf461;
     font-weight: 600;
    }
+
     .top-content-right .container {
         position: absolute;
         width: 320px;
@@ -43,10 +48,12 @@
       
       #top-content
       {
-       margin-top: 1rem;
-       font-size:1em;
-       font-weight: 500;
-       line-height: 1.8em
+        line-height: 2.1em;
+        font-weight: 400;
+        font-family:Rosarivo;
+        font-size: 0.90em;
+        color: rgb(235, 233, 231);
+        letter-spacing: 0.05em;
       }
       
       .carousel__face:nth-child(1) {
@@ -85,29 +92,30 @@
       .top-content-left
       {
         display: flex;
-        align-items: center;
         justify-content: center;
         margin:0 auto;
-        padding: 0em 4.6em;
+       
         flex-direction: column;
 
       }
       .top-content-left p{
-        line-height: 1.9em;
-        font-weight: 500;
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        font-size: 0.93em;
+        line-height: 2.1em;
+        font-weight: 400;
+        font-family:Quicksand;
+        font-size: 0.87em;
         color: rgb(235, 233, 231);
+        letter-spacing: 0.05em;
 
       }
       .top-content-left .head-top-span{
-        font-size: 2em;
-        font-weight: 600;
-        color: #fcd731;
+        font-size: 2.4em;
+        font-weight: 800;
+        color: #ffffff;
         margin-right: 0.30em;
-        font-family:'Times New Roman', Times, serif;
-       font-style:initial
-        
+        font-family:Playfair Display;
+        letter-spacing: 0.05em;
+       text-align: start;
+      
       }
       .top-content-left .btn1-frl
       {
@@ -144,16 +152,17 @@
       }
      
       .about-content-box h3{
-        font-size: 2.5em;
+        font-size: 2.6em;
         font-weight: 600;
         margin-bottom: 1em;
         color: #ffffff;
-        font-family: 'Times New Roman', Times, serif;
+        font-family:Cormorant Garamond;
         letter-spacing: 0.06em;
       }
       .about-content-box h3 span{
         font-size: 0.60em;
         font-weight: 400;
+        font-family:Cormorant Garamond;
       }
       .about-image-box
       {
@@ -168,8 +177,11 @@
       }
       .about-content-box p{
         line-height: 2.1em;
-        letter-spacing: 0.05em;
+        letter-spacing: 0.06em;
         color: #b7b5b5;
+        font-family: Playfair Display;
+        font-size: .95em;
+        text-align: justify;
         
         font-weight: 500;
       }
@@ -178,6 +190,7 @@
         font-weight:700;
         padding-left:6px;
         color:#ffff;
+        font-family:Cormorant Garamond;
       }
    
       .more_cont
@@ -199,8 +212,36 @@
     
     
     
-      @media(width <= 932px)
+      @media(max-width:732px)
       {
+        #top-content
+        {
+          line-height: 2em;
+          font-weight: 300;
+          font-family:Quicksand;
+          font-size: 0.95em;
+          color: rgb(235, 233, 231);
+          letter-spacing: 0.04em;
+          text-align: center;
+        }
+        .btn-freelancer
+        {
+            text-align: center;
+        }
+
+        .top-content-left p
+        {
+            text-align: center;
+        }
+        .head-top-span
+        {
+            text-align: center;
+        }
+       
+        #about-dimen
+        {
+            overflow: hidden;
+        }
         body
         {
             background: #171717;
@@ -241,12 +282,10 @@
     <section class="banner">
         <div class="inner">
             
-            <div class="top-content-left">
+            <div class="top-content-left" data-aos="fade-right"
+            data-aos-duration="2000">
                 <p><span  class="head-top-span">DIMENZIONS</span> </p>
-                <p id="top-content">The World of Digital creation: 
-                 3D Modelling, Photoshop, Logo Design,<br>
-                  House Plans, 
-                 Drawings and UI/UX Design
+                <p id="top-content">The World of Digital creation: 3D Modelling, <br> Photoshop, Logo Design, House Plans, Drawings and UI/UX Design
              </p>
                 <div class="btn-freelancer">
                     <button class="btn1-frl"><a href="{% url 'freereg' %}">Join As Freelancer</a></button>
@@ -268,31 +307,14 @@
 
             </div>
        
-            <!-- <b>
-                <h1 class="text-light headtext">Create your own</h1>
-            </b> 
-            
-            <b>
-                <h1 style="color: rgb(255, 5, 72);" class="headtext">3D Models</h1>
-            </b> 
-            <div class="my-3">
-                <a href="{% url 'model' %}"
-                   class="btn w-100 mx-2"
-                   style="background-color: rgb(255, 5, 72);
-                          color: white;">Buy 3D Model</a>
-                 {% comment %} <a href="{% url 'freelancer'%}"
-                   class="btn mx-2 text-light"
-                   style="background-color: gray;">Frelancer</a>  {% endcomment %}
-            </div>
-        </div> -->
+          
         <style>
             .banner {
+             
                 height: 80vh;
-                background-image: url("{% static 'images/assn.png' %}");
+                background-image: url('static/images/mobile-bg.webp');
                 background-size: 100% 100%;
                 background-attachment: fixed;
-
-
             }
 
             .headtext {
@@ -317,6 +339,7 @@
             {
                 .banner {
                     height: 60vh;
+                    background-image: url('static/images/mobile-bg.jpg');
                     }
             
                 .top-content-left
@@ -352,7 +375,7 @@
                    
 
                     background-size: cover;
-                    background: ;
+                    background-image: url('static/images/mobile-bg.jpg');
 
                 }
             }
@@ -368,7 +391,7 @@
             <h3 class="">
                 <span class="">ABOUT</span> Dimenzions  
             </h3>
-            <p data-aos="fade-right"
+            <p data-aos="fade-left"
             data-aos-duration="2000" >
                 Dimenzions is known as one of the leading corporate branding service providers 
                 for its amazing 3D designs, logo designing and other works aimed at providing the 
@@ -521,9 +544,11 @@
         <style>
             .head-categ
             {
-                font-weight: 700;   
-                letter-spacing: 0.04em; 
+                font-weight: 800;   
+                letter-spacing: 0.05em; 
                 color: rgb(222, 222, 222);
+                font-size: 2.1em;
+                font-family: Cormorant Garamond;
             }
             .flex {
                 display: flex;
@@ -540,7 +565,8 @@
                 line-height: 1.6em;
                 letter-spacing: 0.04em;
                 font-size: 15px;
-                font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-family:Rosarivo;
+                font-style: italic;
                 margin-top: 0.60em;
                 margin-bottom: 0.90em;
                 font-weight: 500;
@@ -604,11 +630,12 @@
                 }
                 .head-categ
                 {
-                    font-weight: 600;   
+                    font-weight: 700;   
                     letter-spacing: 0.01em; 
                     color: rgb(222, 222, 222);
-                    font-size: 1em;
+                    font-size: 1.8em;
                     margin-bottom: 1.4em;
+                    margin-top: 1.4em;
                 }
                 .flex h4{
                     margin-top: 5.5em;
@@ -618,6 +645,7 @@
 
             }
         </style>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#000000" fill-opacity="1" d="M0,256L48,256C96,256,192,256,288,218.7C384,181,480,107,576,112C672,117,768,203,864,197.3C960,192,1056,96,1152,53.3C1248,11,1344,21,1392,26.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
     </section>
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script> 
@@ -629,5 +657,7 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
     AOS.init();
-  </script>
+</script>
+
+
     {% endblock %}
