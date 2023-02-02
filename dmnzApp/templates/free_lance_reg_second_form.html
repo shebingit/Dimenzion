@@ -1,0 +1,281 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block body %}
+
+<style>
+    #register-box
+    {
+        padding: 2em 3em;
+        
+        background: rgb(234, 234, 234);
+
+        
+    }
+    #register-box .container
+    {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 1em;
+    }
+    .register-img
+    {
+        
+        height: 350px;
+        padding: 3em 0.10em
+    }
+    .register-img h4{
+        font-size: 1.8em;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        margin-bottom: 1em;
+    }
+    .register-img p{
+        font-size: 0.95em;
+        line-height: 1.7em;
+        letter-spacing: 0.04em;
+        margin-bottom: 3em;
+    }
+    .bcak-btns
+    {
+        text-align:start;
+       
+    }
+    .bcak-btns a{
+        background:#000;
+        padding: 0.80em 2.5em;
+        font-size: 0.97em;
+        color: #fff;
+        letter-spacing: 0.03em;
+    }
+    .register-form 
+    {
+        background: url('static/images/register-bg.png');
+    }
+    .register-form .card
+    {
+        background: transparent;
+        border: none;
+        padding: 2em ;
+    }
+    .register-form .card h4{
+        font-size: 1.4em;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: 0.06em;
+        line-height: 1.8em;
+        border-bottom: 3px solid #32557f;
+    }
+    .information-box 
+    {
+        display: flex;
+       align-items: center;
+        padding-top: 3em;
+    }
+    .profile-pic
+    {
+        width: 100px;
+        height: 130px;
+    }
+    .profile-pic img{
+        width: 110%;
+        height: 100%;
+    }
+    .details label
+    {
+        margin-bottom: 0.50em;
+        color: rgb(251, 251, 251);
+        letter-spacing: 0.04em;
+        font-size: 0.90em;
+        margin-top: 0.80em;
+    }
+    .details .insert-group input, textarea, select{
+        width: 95%;
+        background:transparent;
+        border: none;
+        border-bottom: 1px solid #32557f;
+        padding: 0.30em;
+     
+    }
+    .details .insert-group  select
+    {
+        color: #fff;
+        font-size: 0.92em;
+        background: #0d2c53;
+        padding: 0.80em;
+    }
+   
+    .details .insert-group input:focus,   select:focus{
+        outline: none;
+        background:transparent;
+    }
+    .service-addbtn
+    {
+      
+        text-align: center;
+       
+    }
+    .service-addbtn ion-icon
+    {
+        font-size: 2em;
+        color: #fff;
+    }
+    .confirm-box
+    {
+        text-align: end;
+        margin-top: 1.3em;
+    }
+  .confirm-box button{
+    padding: 0.50em 1.5em;
+    border: none;
+    background: #1558a9;
+    color: #fff;
+    font-size: 0.93em;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  @media(width <= 850px)
+  {
+    #register-box .container
+    {
+        grid-template-columns: repeat(1,2.5fr);
+    }
+    #register-box
+    {
+        padding: 0.40em 0.10em;
+    }
+    .register-img 
+    {
+        height: auto;
+    }
+    .information-box 
+    {
+       flex-direction: column;
+        padding-top: 0.20em;
+       
+    }
+    .profile-pic
+    {
+        width: 80px;
+        height: 90px;
+        border-radius: 50%;
+        margin-bottom: 1em;   
+    }
+    .profile-pic img 
+    {
+        border-radius: 50%;
+    }
+    .details .insert-group input{
+        width: 100%;
+  }
+}
+</style>
+
+<!--Register form -->
+
+<section id="register-box">
+
+    <div class="container">
+        <div class="register-img">
+            <h4>INFORMATION</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Suspendisse maximus dignissim lacus vitae mollis. 
+                Integer non urna sit amet nunc finibus iaculis a nec libero.
+            </p>
+            <div class="bcak-btns">
+                <a href="{% url 'home' %}">Back </a>
+            </div>
+           
+        </div>
+        <div class="register-form">
+            <div class="card">
+                <form class="" action="{% url 'freelances_details_save' %}"  method="post" autocomplete="off" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h4>Fill Out Service Details</h4>
+                  
+                    <div class="information-box">
+                       
+                        <div class="details">
+                            <div class="row g-2">
+                                
+                               
+                                <div class="col-lg-12">
+                                    <label>Select Your Services</label> 
+                                    <input type="text" id="perid" value="{{result.id}}" name="perid" hidden>
+                                    <div class="insert-group">
+                                       
+                                        <select type="text"  id="serviid" name="service"  autocomplet off >
+                                           
+                                            {% for i in cate %}
+                                            <option value="{{i.category_name}}">{{i.category_name}}</option>
+                                            {% endfor %}
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Work file 1</label>
+                                    <div class="insert-group">
+                                       
+                                        <input type="file" id="work1"  name="first_work" >  
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Work file 2</label>
+                                    <div class="insert-group">
+                                       
+                                        <input type="file" id="work2"  name="second_work" >  
+                                    </div>
+                                </div>
+                                <
+                            </div>
+                           
+                        </div>
+
+                    </div>
+                    <div class="war-message-boxmt mt-3 text-center" >
+                        <span id="password-strength" ></span><br>
+                        <span id="password-match"></span>
+                    </div>
+                   
+                    <div class="confirm-box">
+                        <button type="submit">Save</button>
+                    </div>
+
+                   
+                  
+                </form>
+
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+
+
+
+
+<!-- End Register form -->
+    
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script> 
+
+
+    {% if msg_reg %}
+    <script>
+        swal("Good job!", '{{msg}}', "success")
+    </script>
+    {% endif %}
+
+
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
+{% endblock %}
+

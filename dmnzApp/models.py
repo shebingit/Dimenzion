@@ -50,9 +50,7 @@ class Register_freelance(models.Model):
     Address=models.CharField(max_length=255,default='')
     #portfio
     position2=models.CharField(max_length=255,default='')
-    work_1=models.FileField( upload_to="images/",null=True,blank=True,default='')
-    work_2=models.FileField( upload_to="images/",null=True,blank=True,default='')
-    work_3=models.FileField( upload_to="images/",null=True,blank=True,default='')
+    
   
     #Expirence
     Total_exp=models.CharField(max_length=255,default='')
@@ -68,7 +66,7 @@ class Register_freelance(models.Model):
     qualification=models.CharField(max_length=255,default='')
     #skills
     proffecional_title=models.CharField(max_length=255,default='')
-    service=models.CharField(max_length=255,default='')
+    
     skills=models.CharField(max_length=255,default='')
     over_view=models.CharField(max_length=255,default='')
     username=models.CharField(max_length=255,default='')
@@ -78,6 +76,13 @@ class Register_freelance(models.Model):
     ranking=models.IntegerField(default=0)
     w_status=models.CharField(max_length=10,default='0')
 
+
+class FreelancerService(models.Model):
+    free_id = models.ForeignKey(Register_freelance, on_delete=models.CASCADE, null=True,default='')
+    service=models.CharField(max_length=255,default='')
+    work_1=models.FileField( upload_to="images/",null=True,blank=True,default='')
+    work_2=models.FileField( upload_to="images/",null=True,blank=True,default='')
+    work_3=models.FileField( upload_to="images/",null=True,blank=True,default='')
 
 class cart(models.Model):
     product=models.ForeignKey(Product,on_delete=models.CASCADE)

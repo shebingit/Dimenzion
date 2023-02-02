@@ -6,6 +6,8 @@ urlpatterns = [
     # path('',views.index,name='index'),
     # path('register',views.register,name='register'),
     path('freereg',views.freereg,name='freereg'),
+    path('Second-Form',views.freelances_details_save,name='freelances_details_save'),
+    
     re_path(r'^$', views.home, name='home'),
     re_path(r'^about$', views.about, name='about'),
      re_path(r'^about_two$', views.about_two, name='about_two'),

@@ -215,70 +215,79 @@ def admin_log(request):
 def freereg(request):
     cate=categories.objects.all()
     if request.method == 'POST':
-        #education
-        # ini=request.POST['insti']
-        # special=request.POST['speci']
-        education=request.POST['quali']
-        
-        #skills
-        proffectional=request.POST['desi']
-        service=request.POST['service']
-        # title=request.POST['title']
-        previous_work_1=request.FILES.get('first_work')
-        previous_work_2=request.FILES.get('example_work')
-        previous_work_3=request.FILES.get('previous_work_3')
-        overview=request.POST['overview']
-        #expireince
-        # company=request.POST['compny']
-        # position=request.POST['postn']
-        total_exp=request.POST['Expirence']
-        
-        #protfolio
-        # project=request.POST['project']
-        # address=request.POST['url']
-        # Position2=request.POST['Position2']
-        Resume=request.FILES['resume']
-        #profile
+
         fullname=request.POST['name']
         email=request.POST['email']
         mobile=request.POST['phone_number']
-        addres=request.POST['address']
-        # country=request.POST['country']
         profilepic=request.FILES['profile_picture']
+        # addres=request.POST['address']
+        # country=request.POST['country']
         username=request.POST['user_name']
         password=request.POST['password']
         cpassword=request.POST['cpassword']
+
+    
         if User.objects.filter(username=username):
             messages.info(request,'username already exists')
+           
             return redirect('freereg')
         elif Register_freelance.objects.filter(username=username):
-            messages.info(request,'username already exists')
+            messages.info(request,'username already exists') 
+           
             return redirect('freereg')
         
         elif (password==cpassword):
-            std=Register_freelance(full_name=fullname,
-                                   email=email,
-                                   mobile=mobile,
-                                   Address=addres,
-                                   profile_pic=profilepic,
-                                   Resume=Resume,
-                                   Total_exp=total_exp,
-                                   over_view=overview,
-                                   work_3=previous_work_3,
-                                   work_2=previous_work_2,
-                                   work_1=previous_work_1,
-                                   proffecional_title=proffectional,
-                                   service=service,
-                                   qualification=education,
-                                   username=username,
-                                   password=password,)
-            std.save()
-            msg="Registraion  successfully"
-            return render(request,'free_lance_reg.html',{'msg':msg,'cate':cate})
-       
-        return redirect('freereg')
-  
+
+            education=request.POST['quali']
+            profi=request.POST['desi']
+            total_exp=request.POST['Expirence']
+            Resume=request.FILES['resume']
+            overview=request.POST['overview']
+            result=Register_freelance(full_name=fullname,
+                                    email=email,
+                                    mobile=mobile,
+                                    profile_pic=profilepic,
+                                    username=username,
+                                    password=password,Resume=Resume,Total_exp=total_exp,
+                                    over_view=overview,qualification=education,proffecional_title=profi)
+            result.save()
+
+            msg_reg="Registraion  successfull"
+            return render(request,'free_lance_reg_second_form.html',{'msg_reg':msg_reg,'result':result,'cate':cate})
+        else:
+            messages.info(request,'Password Does not match') 
+            return redirect('freereg')
+        
     return render(request,'free_lance_reg.html',{'cate':cate})
+
+
+
+def freelances_details_save(request):
+    cate=categories.objects.all()
+    if request.method == 'POST':
+      
+        pr_id = request.POST['perid']
+    
+        result=Register_freelance.objects.get(id=pr_id)
+    
+
+        service=request.POST['service']
+        previous_work_1=request.FILES.get('first_work')
+    
+        previous_work_2=request.FILES.get('second_work')
+        #previous_work_3=request.FILES.get('previous_work_3')
+
+        result_other=FreelancerService(free_id=result,
+                                work_2=previous_work_2,
+                                work_1=previous_work_1,
+                                service=service)
+        result_other.save()
+        msg_ser="Service Added."
+        return render(request,'free_lance_reg_second_form.html',{'cate':cate,'result':result,'msg_ser':msg_ser})  
+    else:
+        return render(request,'free_lance_reg_second_form.html',{'cate':cate,'result':result})                         
+
+
 
 def cartitem(request,pk):
     if 'USID' in request.session:
