@@ -1,163 +1,83 @@
 
-<div class="container-fluid" id="full-deatils">
-
-
-    <div class="container emp-profile">
-      <form method="post" action="{% url 'rating' per.id %}" >
-        {% csrf_token %}
-          <div class="row">
-              <div class="col-md-3">
-                  <div class="profile-img">
-                      <img src="{{per.profile_pic.url}}" alt="" >
-                      <!-- <div class="file btn btn-lg btn-primary">
-                          Change Photo
-                          <input type="file" name="file"/>
-                      </div> -->
-                  </div>
-              </div>
-              <div class="col-md-5">
-                  <div class="profile-head">
-                              <h5 class="mt-2">
-                                {{per.full_name}}
-                              </h5>
-                              <h6>
-                                 {{per.service}}
-                              </h6>
-                              <p class="proile-rating">
-                                {% for i in r %}
-                                    <span><i class="fa fa-star" aria-hidden="true" style="color: rgb(255, 213, 3);"></i></span>
-                                {% endfor %}
-                              </p>
-                      <ul class="nav nav-tabs" id="myTab" role="tablist">
-                          <li class="nav-item">
-                              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Works</a>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
-              <div class="col-md-2">
-                <label>Add Rating</label><br>
-               <input type="number" class="rating" name="rt"  min="1" max="5" required>
+    <div class="row py-5">
+        <div class="col-md-5 col-lg-6 col-sm-12 mx-auto"> <!-- Profile widget --> 
+            <div class="bg-white shadow rounded overflow-hidden"> 
+                <div class="px-4 pt-0 pb-4 cover"> 
+                    <div class="media align-items-end profile-head"> 
+                        <div class="profile mr-3">
+                            <img src="{{per.profile_pic.url}}" alt="Profile -image" width="120" class="rounded mb-2 img-thumbnail">
+                        
+                        </div> 
+                        <div class="media-body mb-5 text-black pt-3"> 
+                            <h4 class="mt-0 mb-0">{{per.full_name}}</h4> 
+                            <p class="small mb-1"> <i class="fas fa-envelope mr-2"></i>{{per.email}}</p> 
+                            <p class="small mb-1"> <i class="fas fa-phone mr-2"></i>{{per.mobile}}</p> 
+                            {% for i in r %}
+                                <span><i class="fa fa-star" aria-hidden="true" style="color: rgb(255, 213, 3);"></i></span>
+                            {% endfor %}
+                        </div> 
+                    </div> 
+                </div> 
+                <div class="bg-light p-4 d-flex justify-content-end text-center"> 
+                    <ul class="list-inline mb-0"> 
+                        <li class="list-inline-item"> 
+                            <h5 class="font-weight-bold mb-0 d-block">{{per.Total_exp}}</h5>
+                            <small class="text-muted"> <i class="fas fa-image mr-1"></i>Exp</small> 
+                        </li> 
+                        <li class="list-inline-item"> 
+                            <h5 class="font-weight-bold mb-0 d-block">{{fr_complete}}</h5>
+                            <small class="text-muted"> <i class="fas fa-briefcase mr-1"></i>completd works</small> 
+                        </li> 
+                        <li class="list-inline-item"> 
+                            <h5 class="font-weight-bold mb-0 d-block">{{fr_ongoing}}</h5>
+                            <small class="text-muted"> <i class="fas  fa-briefcase mr-1"></i>Ongoing Works</small> 
+                        </li> 
+                        <li class="list-inline-item"> 
+                            {% if fr_status == '1' %}
+                            <h6 class="font-weight-bold mb-0 d-block"> <i class="fa fa-circle" style="color: #f42f07;"></i></h6>
+                                {% else %}
+                                <h6 class="font-weight-bold mb-0 d-block"> <i class="fa fa-circle" style="color: #45cb18;"></i></h6>
+                                {% endif %}
+                          
+                            <small class="text-muted"> <i class="fas  fa-briefcase mr-1"></i>Work Staus</small> 
+                        </li>
+                    </ul> 
+                </div> 
+                <div class="px-4 py-3"> 
+                    <h5 class="mb-0">About</h5> 
+                    <div class="p-4 rounded shadow-sm bg-light"> 
+                        <!-- <p class="font-italic mb-0">Web Developer</p> 
+                        <p class="font-italic mb-0">Lives in New York</p> 
+                        <p class="font-italic mb-0">Photographer</p>  -->
+                    </div> 
+                    <form method="post" action="{% url 'rating' per.id %}" >
+                        {% csrf_token %}
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Add Rating</label> <input type="number"  class="form-control" name="rt"  min="1" max="5" required></div>
+                        </div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Rating</button></div>
+                    </form>
+                </div> 
+                <div class="py-4 px-4"> 
+                    <div class="d-flex align-items-center justify-content-between mb-3"> 
+                        <h5 class="mb-0">Service and Works</h5>
+                        
+                    </div> 
+                    <div class="row"> 
+                        {% for k in fr_servi %}
+                        <p>{{k.service}}</p>
+                        {% if per.id == k.free_id_id %}
+                        <div class="col-lg-12 mb-2 pr-lg-6">
+                           <a href="{{k.work_1.url}}" download="{{k.work_1.url}}">Work - 1</a>,
+                           <a href="{{k.work_2.url}}" download="{{k.work_2.url}}">Work - 2</a>
+                          
+                        </div> 
+                        {% endif %}
+                        {% endfor %}
+                       
+                    </div> 
+                </div> 
             </div>
-              <div class="col-md-2">
-                  <button type="submit" class="profile-edit-btn" name="btnAddMore">Save</button>
-              </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4">
-                <div class="profile-work">
-                    <p>WORKS LINK</p>
-                    <a href="" download="{{per.work_1}}">Download - 1</a><br/>
-                    <a href="" download="{{per.work_2}}">Download - 2</a><br/>
-                    <a href="" download="{{per.work_3}}">Download - 3</a>
-                    <p>Resume</p>
-                            <a href="" download="{{per.work_1}}"><i class="fa fa-download" aria-hidden="true"></i></a><br/>
-                </div>
-            </div>
-              
-              <div class="col-md-8">
-                  <div class="tab-content profile-tab" id="myTabContent">
-                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <label>User Id</label>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <p>{{per.id}}</p>
-                                      </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <label>Name</label>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <p> {{per.full_name}}</p>
-                                      </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <label>Email</label>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <p>{{per.email}}</p>
-                                      </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <label>Phone</label>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <p>{{per.mobile}}</p>
-                                      </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <label>Address</label>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <p>{{per.Address}}</p>
-                                      </div>
-                                  </div>
-                      </div>
-                      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <label>Experience</label>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <p>{{per.Total_exp}}</p>
-                                      </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <label>On Going Works</label>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <p>{{fr_ongoing}}</p>
-                                      </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <label>Compeletd Works</label>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <p>{{fr_complete}}</p>
-                                      </div>
-                                  </div>
-                                   <div class="row">
-                                      <div class="col-md-6">
-                                          <label>Work Status</label>
-                                      </div>
-                                      <div class="col-md-6">
-                                        {% if fr_status == '1' %}
-                                          <p>Assigned</p>
-                                          {% else %}
-                                          <p>Not Assigned</p>
-                                        {% endif %}
-                                      </div>
-                                  </div>
-                                  <div class="row">
-                                 <!--     <div class="col-md-6">
-                                          <label>Availability</label>
-                                      </div>
-                                      <div class="col-md-6">
-                                          <p>6 months</p>
-                                      </div>
-                                  </div> -->
-                          <!-- <div class="row">
-                              <div class="col-md-12">
-                                  <label>Your Bio</label><br/>
-                                  <p>Your detail description</p>
-                              </div>
-                          </div> -->
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </form>           
-  </div>
-  
-  </div>
+        </div>
+    </div>
+

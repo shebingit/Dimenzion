@@ -14,36 +14,100 @@
   {% endfor %}
 
   <!-- Content Row -->
-  <div class="row">
-      <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
-        <a href="{% url 'sortby_freelances' 1 %}">
-
-          <div class="card border-left-info  shadow h-100 py-2" id="card1">
-              <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                            UI DESIGNS</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{enq}}</div>
-                      </div>
-                      <div class="col-auto">
-                          <i class="fas fa-users fa-2x text-gray-300"></i>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </a>
-      </div>
-       <!-- Pending Requests Card Example -->
-       <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
-        <a href="{% url 'sortby_freelances' 2 %}">
-
-          <div class="card border-left-warning shadow h-100 py-2" id="card2">
+  <div class="row g-3">
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="col-xl-3 col-md-6 col-sm-3 mb-4">
+          <a href="{% url 'sortby_freelances' 1 %}">
+  
+            <div class="card border-left-info  shadow h-100 py-2" id="card1">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                              UI DESIGNS</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{enq}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </a>
+        </div>
+         <!-- Pending Requests Card Example -->
+         <div class="col-xl-3 col-md-6 col-sm-3 mb-4">
+          <a href="{% url 'sortby_freelances' 2 %}">
+  
+            <div class="card border-left-warning shadow h-100 py-2" id="card2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                              PHOTO SHOPS </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{enq}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </a>
+        </div> 
+  
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6  col-sm-3 mb-4">
+          <a href="{% url 'sortby_freelances' 3 %}">
+  
+            <div class="card border-left-primary shadow h-100 py-2" id="card3">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                              HOUSE PLANS</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{users}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </a>
+        </div>
+  
+        <!-- Earnings (Monthly) Card Example -->
+        <div class="col-xl-3 col-md-6  col-sm-3 mb-4">
+          <a href="{% url 'sortby_freelances' 4 %}">
+  
+            <div class="card border-left-success shadow h-100 py-2" id="card4">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                              LOGO CREATION</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{models}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </a>
+        </div>
+  
+        <div class="col-xl-3 col-md-6 col-sm-3 mb-4">
+          <a href="{% url 'sortby_freelances' 5 %}">
+  
+          <div class="card border-left-warning shadow h-100 py-2" id="card5">
               <div class="card-body">
                   <div class="row no-gutters align-items-center">
                       <div class="col mr-2">
                           <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            PHOTO SHOPS </div>
+                            DRAWINGS </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">{{enq}}</div>
                       </div>
                       <div class="col-auto">
@@ -52,112 +116,90 @@
                   </div>
               </div>
           </div>
-        </a>
+      </a>
       </div> 
-
-      <!-- Earnings (Monthly) Card Example -->
-      <div class="col-xl-2 col-md-6  col-sm-3 mb-4">
-        <a href="{% url 'sortby_freelances' 3 %}">
-
-          <div class="card border-left-primary shadow h-100 py-2" id="card3">
-              <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            HOUSE PLANS</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{users}}</div>
-                      </div>
-                      <div class="col-auto">
-                          <i class="fas fa-users fa-2x text-gray-300"></i>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- Earnings (Monthly) Card Example -->
-      <div class="col-xl-2 col-md-6  col-sm-3 mb-4">
-        <a href="{% url 'sortby_freelances' 4 %}">
-
-          <div class="card border-left-success shadow h-100 py-2" id="card4">
-              <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            LOGO CREATION</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{models}}</div>
-                      </div>
-                      <div class="col-auto">
-                          <i class="fas fa-users fa-2x text-gray-300"></i>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </a>
-      </div>
-
-      <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
-        <a href="{% url 'sortby_freelances' 5 %}">
-
-        <div class="card border-left-warning shadow h-100 py-2" id="card5">
-            <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                          DRAWINGS </div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{enq}}</div>
-                    </div>
-                    <div class="col-auto">
-                        <i class="fas fa-users fa-2x text-gray-300"></i>
+  
+        <div class="col-xl-3 col-md-6 col-sm-3 mb-4">
+          <a href="{% url 'sortby_freelances' 6 %}">
+  
+            <div class="card border-left-secondary shadow h-100 py-2" id="card6">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-secondary  text-uppercase mb-1">
+                              3D MODELS</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{models}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
                     </div>
                 </div>
             </div>
+          </a>
+            
         </div>
-    </a>
-    </div> 
-
-      <div class="col-xl-2 col-md-6 col-sm-3 mb-4">
-        <a href="{% url 'sortby_freelances' 6 %}">
-
-          <div class="card border-left-secondary shadow h-100 py-2" id="card6">
-              <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-secondary  text-uppercase mb-1">
-                            3D MODELS</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{models}}</div>
-                      </div>
-                      <div class="col-auto">
-                          <i class="fas fa-users fa-2x text-gray-300"></i>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </a>
-          
-      </div>
-      <div class="col-xl-2 col-md-6  col-sm-3 mb-4">
-        <a href="{% url 'sortby_freelances' 7 %}">
-
-          <div class="card border-left-primary shadow h-100 py-2" id="card3">
-              <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                           Other</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">{{users}}</div>
-                      </div>
-                      <div class="col-auto">
-                          <i class="fas fa-users fa-2x text-gray-300"></i>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </a>
-      </div>
-
+        <div class="col-xl-3 col-md-6  col-sm-3 mb-4">
+          <a href="{% url 'sortby_freelances' 7 %}">
+  
+            <div class="card border-left-primary shadow h-100 py-2" id="card3">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                             Other</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{users}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </a>
+        </div>
+  
+    </div>
+    </div>
   </div>
+
+  <div class="container-fluid "  id="details">
+    <div class="row">
+      {% for i in person %}
+        <div class="col-lg-3"  id="card-details{{i.id}}">
+          <div class="card">
+          <input type="text" value="{{i.id}}" id="perid{{i.id}}" hidden>
+          <figure class="fir-image-figure">
+               <input type="text" value="{{i.id}}" id="perid{{i.id}}" hidden>
+            <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+              <img class="fir-author-image fir-clickcircle" src="{{i.free_id.profile_pic.url}}" alt="Image">
+              <div class="fir-imageover-color"></div>
+              <img class="fir-imageover-image fir-clickcircle" src="{{i.free_id.profile_pic.url}}" alt="Image" />
+            </a>
+  
+            <figcaption>
+              <div class="fig-author-figure-title main-head">{{i.free_id.full_name}}</div>
+              <div class="fig-author-figure-title">{{i.service}} &#8212; 
+                <span>
+                  {% if i.w_status == '1' %}  
+                  <i class="fa fa-circle" style="color: #f42f07;"></i>
+                  {% else %}
+                  <i class="fa fa-circle" style="color: #08da24;"></i>
+                  {% endif %}
+                </span>
+              </div>
+            
+              <a href="{% url 'freelancer_delete' i.id %}"><i class="fa fa-trash fa-1x text-gray-300 " aria-hidden="true"></i></a>
+            </figcaption>
+          </figure>
+        </div>
+        </div>
+       
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="container-fluid" id="full-deatils"></div>
 
   <!-- Eroor message  section CSS and Code-->
   <style>
@@ -207,141 +249,79 @@
 </div>
 {% endif %}
 
-
 <style>
-  #details 
+  #details .card
   {
-    height: 50vh;
-    overflow-y: scroll;
-    margin-top: 1em;
-    background: rgb(248, 246, 246);
-  
+    padding: 1em;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+    margin-bottom: 0.80em;
+    border: none;
+    background: linear-gradient(150deg, #39ef74, #4600f1 100%);
   }
- ::-webkit-scrollbar
-  {
-    width: 3px;
-    color: #333;
-    height: 1em;
-  }
-  .wrapper-box
-  {
-    display: flex;
-    align-items: center;
-    justify-content:center;
-    gap: 1em;
-   
-    
-  }
-  .wrapper-box .card-box 
-  {
-    background: rgb(223, 219, 219);
-    width: 380px;
-    border-radius: 100px 20px 20px 100px;
-    display: flex;
-    align-items: center;
-    padding:10px;
-    justify-content: space-between;
-    position: relative;
-    margin-top: 1em;
+
+  #details   .fir-clickcircle {
+    height: 70px;
+    width: 70px;
+    border-radius: 100px;
     cursor: pointer;
   }
-  .card-box .content-box
-  {
+  
+  #details   .fir-image-figure {
+    margin: 0;
     display: flex;
-  align-items: center;
-  }
-  .wrapper-box .card-box .img-box
-  {
-    height: 65px;
-    width: 65px;
-    position: absolute;
-    left: 5px;
-    background: #fff;
-   border-radius: 50%;
-   padding: 5px;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
-  }
-  .card-box .img-box img
-  {
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  .card-box .details-box
-  {
-    margin-left: 80px;
-  }
-  .details-box span{
-    font-weight: 800;
-    font-size: 13px;
-    color: #000;
-  }
-  .details-box p{
-    font-size: 13px;
-    font-weight: 500;
-    color: #333;
-  }
-  .card-box a{
+    align-items: center;
+    margin-bottom: 5px;
+    position: relative;
     text-decoration: none;
-    padding: 4px 6px;
-    border-radius: 10px;
-    background: rgb(39, 4, 119);
-    color: #fdfdfd;
-    font-size: 12px;
-
   }
-  @media(max-width:932px)
-  {
-    .wrapper-box
-    {
-      flex-direction: column;
-    }
-    .wrapper-box .card-box 
-  {
-    background: rgb(223, 219, 219);
-    width: 300px;
+  
+  #details  .fir-image-figure .caption,   #details  .fir-image-figure figcaption {
+    padding-left: 40px;
+    color: #fff;
   }
-}
-</style>
+  
+ 
+  #details .fir-image-figure .fig-author-figure-title {
+    color: var(--fir-color-grey);
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    margin-top:0.50em;
+  }
+  #details .fir-image-figure .main-head
+  {
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+  
+  #details   .fir-imageover {
+    position: relative;
+    display: flex;
+  }
+  
 
-<div class="row">
-  <div class="col-lg-12">
-    <div class="container-fluid mt-2" id="details">
-      <div class="wrapper-box">
-        {% for i in person %}
-        <div class="card-box" id="card-details{{i.id}}">
-          <input type="text" value="{{i.id}}" id="perid{{i.id}}" hidden>
-          <div class="content-box">
-            <div class="img-box"> 
-              <img src="{{i.profile_pic.url}}" alt="Image">
-            </div>
-            <div class="details-box">
-              <span class="name-box">{{i.full_name}}</span>
-              <p>{{i.service}}&nbsp;
-              <span>
-                {% if i.w_status == '1' %}  
-                <i class="fa fa-circle" style="color: #f80202;"></i>
-                {% else %}
-                <i class="fa fa-circle" style="color: #08da24;"></i>
-                {% endif %}
-              </span>
-            </p>
-            </div>
-          </div>
-          <a href="{% url 'freelancer_delete' i.id %}">Remove</a>
-         
-        </div>
-        
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-12">
-    <div class="container-fluid" id="full-deatils"></div>
+  #details   .fir-imageover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
     
-  </div>
-</div>
+  }
+  #details span
+  {
+    animation: fadeInFadeOut 2s infinite;
+  }
+  
+  @keyframes fadeInFadeOut {
+    0%   { opacity:1; }
+    50%  { opacity:0; }
+    100% { opacity:1; }
+  }
+  #details a{
+    font-size: 13px;
+    margin-top: 0.80em;
+   color: #f94627;
+  }
+</style>
 
 
 
@@ -457,7 +437,7 @@
     const persid = $('#perid{{i.id}}').val();
     console.log(persid);
       $.ajax({
-          url: '{% url "freelances_details"%}',
+          url: '{% url "freelances_details" %}',
           data: {
               'persid': persid
           },

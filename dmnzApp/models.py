@@ -41,6 +41,7 @@ class Product(models.Model):
     product_status=models.IntegerField(default='0')
 
 class Register_freelance(models.Model):
+    
     #profileinfo
     full_name=models.CharField(max_length=255,default='')
     country=models.CharField(max_length=255,default='')

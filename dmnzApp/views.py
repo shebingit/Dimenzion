@@ -1323,7 +1323,7 @@ def deletereq(request,id):
 def freelancers(request):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
-    person=Register_freelance.objects.all()
+    person=FreelancerService.objects.all()
     # Notification Count
     req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
     msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
@@ -1683,74 +1683,49 @@ def remove_toplist(request,pk):
 def sortby_freelances(request,pk):
     abc= request.session["admid"]
     adm=User.objects.filter(id=abc)
+    req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
+    msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
+    req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
+    msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
+
     if pk==1:
-        # Notification Count
-        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
-        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
-        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
-        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
-        person=Register_freelance.objects.filter(service='UI DESIGN')
+    
+        person=FreelancerService.objects.filter(service='UI DESIGN')
         return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
         'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
     
     elif pk==2:
-            # Notification Count
-        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
-        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
-        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
-        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
-        person=Register_freelance.objects.filter(service='PHOTOSHOP')
+
+        person=FreelancerService.objects.filter(service='PHOTOSHOP')
         return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
         'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
     
-
     elif pk==3:
-        # Notification Count
-        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
-        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
-        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
-        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
-        person=Register_freelance.objects.filter(service='HOUSE PLANS')
+        person=FreelancerService.objects.filter(service='HOUSE PLANS')
         return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
         'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
     
     elif pk==4:
-        # Notification Count
-        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
-        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
-        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
-        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
-        person=Register_freelance.objects.filter(service='LOGO CREATION')
+       
+        person=FreelancerService.objects.filter(service='LOGO CREATION')
         return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
         'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
     
     elif pk==5:
-        # Notification Count
-        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
-        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
-        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
-        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
-        person=Register_freelance.objects.filter(service='DRAWINGS')
+       
+        person=FreelancerService.objects.filter(service='DRAWINGS')
         return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
         'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
     
     elif pk==6:
-        # Notification Count
-        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
-        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
-        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
-        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
-        person=Register_freelance.objects.filter(service='3D')
+       
+        person=FreelancerService.objects.filter(service='3D')
         return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
         'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
     
     elif pk==7:
-        # Notification Count
-        req_date = Service_form.objects.filter(status='0',req_date=datetime.date.today()).count()
-        msg_date = Messagebox.objects.filter(mg_date=datetime.date.today()).count()
-        req_date_data=Service_form.objects.filter(status='0',req_date=datetime.date.today())
-        msg_date_data= Messagebox.objects.filter(mg_date=datetime.date.today())
-        person=Register_freelance.objects.filter(service='OTHER')
+        
+        person=FreelancerService.objects.filter(service='OTHER')
         return render(request, 'freelancers.html', {'person': person,'adm':adm,'req_date':req_date,
         'msg_date':msg_date,'req_date_data':req_date_data,'msg_date_data':msg_date_data})
     
@@ -1796,13 +1771,14 @@ def remove_model(request,pk):
     
   
 def freelances_details(request):
-    pr_id = request.GET.get('persid')
-    per=Register_freelance.objects.get(id=pr_id)
+  
+    serfr=FreelancerService.objects.get(id=request.GET.get('persid'))
+    per=Register_freelance.objects.get(id=serfr.free_id.id)
     r= int(per.rating)
     fr_ongoing=Freelancerworks.objects.filter(fr_status='2',frelancer=per.id).count
     fr_complete=Freelancerworks.objects.filter(fr_status='1',frelancer=per.id).count
-
-    return render(request,'freelancers_details.html',{'per':per,'r':range(r),'fr_ongoing':fr_ongoing,'fr_complete':fr_complete})
+    fr_servi=FreelancerService.objects.all()
+    return render(request,'freelancers_details.html',{'per':per,'r':range(r),'fr_ongoing':fr_ongoing,'fr_complete':fr_complete,'fr_servi':fr_servi})
 
 
 def freelancer_delete(request,pk):
