@@ -10,21 +10,28 @@
     {
         padding: 2em 3em;
         
-        background: rgb(234, 234, 234);
+        /*background: rgb(234, 234, 234);*/
+        background: url('static/images/register-bg.png');
+        background-size: cover;
 
         
     }
     #register-box .container
     {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1.2fr 2fr;
         gap: 1em;
     }
     .register-img
     {
         
-        height: 500px;
+       
         padding: 3em 0.10em
+
+    }
+    .register-img img{
+        width: 100%;
+        height: 90%;
     }
     .register-img h4{
         font-size: 1.8em;
@@ -44,29 +51,35 @@
        
     }
     .bcak-btns a{
-        background:#000;
-        padding: 0.80em 2.5em;
-        font-size: 0.97em;
+        background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%);
+       
+        padding: 0.50em 2.5em;
+        border: none;
+      
         color: #fff;
-        letter-spacing: 0.03em;
+        font-size: 0.93em;
+        letter-spacing: 0.05em;
+        font-weight: 500;
     }
     .register-form 
     {
-        background: url('static/images/register-bg.png');
+        background: transparent
     }
     .register-form .card
     {
         background: transparent;
         border: none;
-        padding: 2em ;
+        padding: 1em ;
     }
     .register-form .card h4{
         font-size: 1.4em;
         font-weight: 600;
         color: #fff;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.07em;
         line-height: 1.8em;
         border-bottom: 3px solid #32557f;
+        font-family: 'Times New Roman', Times, serif;
+        
     }
     .information-box 
     {
@@ -83,12 +96,12 @@
         width: 110%;
         height: 100%;
     }
-    .details label
+    .details label, textarea
     {
         margin-bottom: 0.50em;
         color: rgb(251, 251, 251);
         letter-spacing: 0.04em;
-        font-size: 0.90em;
+        font-size: 0.85em;
         margin-top: 0.80em;
     }
     .details .insert-group input, textarea{
@@ -96,21 +109,24 @@
         background:transparent;
         border: none;
         border-bottom: 1px solid #32557f;
-     
+        color: #fff;
+        font-size: 0.84em;
     }
     .details .insert-group input:focus, textarea:focus{
         outline: none;
         background:transparent;
     }
-  .confirm-box
-  {
-    text-align: end;
-    margin-top: 1.3em;
-  }
+    .buttons-box
+    {
+        display: flex;
+        text-align: center;
+        justify-content: space-around;
+    }
+
   .confirm-box button{
     padding: 0.50em 1.5em;
     border: none;
-    background: #1558a9;
+   background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
     color: #fff;
     font-size: 0.93em;
     letter-spacing: 0.05em;
@@ -123,6 +139,10 @@
     {
         grid-template-columns: repeat(1,2.5fr);
     }
+    #register-box .container .register-img:nth-of-type(1)
+    {
+        order: 2;
+    }
     #register-box
     {
         padding: 0.40em 0.10em;
@@ -130,6 +150,7 @@
     .register-img 
     {
         height: auto;
+        
     }
     .information-box 
     {
@@ -139,14 +160,18 @@
     }
     .profile-pic
     {
-        width: 80px;
-        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
         border-radius: 50%;
         margin-bottom: 1em;   
     }
     .profile-pic img 
     {
         border-radius: 50%;
+        width: 95%;
+        height: 80%;
     }
     .details .insert-group input{
         width: 100%;
@@ -161,15 +186,13 @@
 
     <div class="container">
         <div class="register-img">
-            <h4>INFORMATION</h4>
+            <img src="static/images/freelance.webp">
+            <!-- <h4>INFORMATION</h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                 Suspendisse maximus dignissim lacus vitae mollis. 
                 Integer non urna sit amet nunc finibus iaculis a nec libero.
             </p>
-            <div class="bcak-btns">
-                <a href="{% url 'home' %}">Back </a>
-            </div>
-           
+            -->
         </div>
         <div class="register-form">
             <div class="card">
@@ -275,9 +298,17 @@
                         <span id="password-match"></span>
                     </div>
                    
-                    <div class="confirm-box">
-                        <button type="submit">Save and Next</button>
+                    <div class="buttons-box">
+                        <div class="bcak-btns">
+                            <a href="{% url 'home' %}">Back </a>
+                        </div>
+                        <div class="confirm-box">
+                            <button type="submit">Save and Next</button>
+                           
+                        </div>
+                       
                     </div>
+                    
 
                    
                   
