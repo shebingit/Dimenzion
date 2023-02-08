@@ -10,7 +10,7 @@ urlpatterns = [
     
     re_path(r'^$', views.home, name='home'),
     re_path(r'^about$', views.about, name='about'),
-     re_path(r'^about_two$', views.about_two, name='about_two'),
+    re_path(r'^about_two$', views.about_two, name='about_two'),
     re_path(r'^checkout$', views.checkout, name='checkout'),
     re_path(r'^contact$', views.contact, name='contact'),
     re_path(r'^contact_two$', views.contact_two, name='contact_two'),

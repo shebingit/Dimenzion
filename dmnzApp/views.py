@@ -1633,7 +1633,8 @@ def uploaded_design_view(request,pk):
     adm=User.objects.filter(id=abc)
     s=Service_form.objects.get(id=pk)
     p=Product.objects.all()
-    r=Register_freelance.objects.filter(w_status='0',service=s.categori)
+    c=FreelancerService.objects.filter(service=s.categori).values_list('free_id', flat=True)
+    r=Register_freelance.objects.filter(w_status='0',id__in=c)
     fr=Freelancerworks.objects.all()
     return render(request, 'user_design_file.html', {'adm':adm,'s':s,'p':p,'r':r,'fr':fr})
 

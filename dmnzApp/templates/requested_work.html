@@ -17,18 +17,192 @@
   }
 
   </style>
+
+<!-- Work List Styleing -->
+
+  <style>
+    #work-list
+    {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+    }
+    #work-list .card
+    {
+     background: #fcfcfc;
+     
+    }
+    #work-list .card .work-head
+    {
+      background: #4E73DF;
+    }
+    #work-list .card .work-head h5
+    {
+      padding: 0.90em;
+      text-align: center;
+      font-weight: 800;
+      font-size: 0.70em;
+      color: #ffff;
+      letter-spacing: 0.04em;
+
+    }
+   
+    #work-list .work-details-box
+    {
+      display: flex;
+      align-items: center;
+      justify-content:start;
+      flex-wrap: wrap;
+      gap: 0.40em;
+    }
+    #work-list .work-box
+    {
+      width: 300px;
+      height: 135px;
+      border: none;
+      padding: 0.96em 0.90em;
+      box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+      border-radius: 10px;
+    }
+    .work-box .head-top
+    {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .work-box h5{
+      font-size: 0.96em;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+    }
+    .work-box span
+    {
+      font-size: 0.82em;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .work-box .middle-work-box p{
+      font-size: 0.92em;
+      margin-top: 0.50em;
+      font-weight: 600;
+
+    }
+    .work-box .bottom-work-box
+    {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .bottom-work-box .action a, .view-product a
+    {
+      font-size: 0.80em;
+      letter-spacing: 0.04em;
+      font-weight: 800;
+     
+      padding: 0.40em 0.90em;
+    
+    }
+    .bottom-work-box .action a:hover, .view-product  a:hover
+    {
+      text-decoration: none;
+    }
+    @media(max-width:832px)
+    {
+      #work-list 
+      {
+        grid-template-columns: repeat(1,2.2fr);
+      }
+      #work-list  .work-details-box
+      {
+        flex-direction: column;
+      }
+      #work-list .work-box
+      {
+        width: 270px;
+        height: 120px;
+        border: none;
+        padding: 0.70em 0.80em;
+        box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+      }
+    }
+  </style>
+
+  <!--  End Work List Styleing -->
+
+  <div class="container-fluid" id="work-list">
+    <div class="card">
+      <div class="work-head"> 
+        <h5>WORK LIST</h5>
+      </div>
+      <div class="card-body">
+        <div class="work-details-box">
+          {% for i in s %}
+          {% if i.status == '2' or i.status == '0' %}
+            <div class="card work-box">
+              <div class="head-top">
+                <h5>{{i.categori}}</h5>
+                  <span>{{i.req_date}}</span>
+              </div>
+
+              <div class="middle-work-box">
+
+                <p>{{i.user_name}}</p>
+                
+              </div>
+          
+              <div class="bottom-work-box">
+                
+                <div class="view-product">
+                  {% if i.product == 0 %}
+                    {% if i.file %}
+                      <a href="{% url 'uploaded_design_view' i.id %}" >View</a>
+                    {% endif %}
+                  {% else %}
+                    <a href="{% url 'uploaded_design_view' i.id %}" >Product</a>
+                  {% endif %}
+                </div>
+
+                <div class="action">
+                  {% if i.status == '2' %}
+                    <a href="{% url 'uploaded_design_view' i.id %}"class="text-warning ">Pending</a>
+                  {% elif i.status == '0' %}
+                    <a href="{% url 'uploaded_design_view' i.id %}" >Allocate</a>
+                  {% endif %}
+                </div>
+                
+                <div class="action-delete">
+                  {% if i.status == '0' %}
+                    <a href="{% url 'request_reject' i.id %}" class="text-danger" ><b><i class="fa fa-trash" aria-hidden="true"></i></b></a>
+                  {% else %}
+                    <b><i class="fa fa-check text-success" aria-hidden="true"></i></b>
+                  {% endif %}
+                </div>
+              </div>
+             
+            </div>
+          {% endif %}
+          {% endfor %}
+
+        </div>
+
+      </div>
+     
+    </div>
+  </div>
  
-  <div class="container-fluid" id="work_check" >
+  <!-- <div class="container-fluid" id="work_check" >
     
       <div class="row g-2">
         <div class="col-lg-12">
-          <div class="container-fluid p-0" id="work-details"></div>
+          <div class="container-fluid p-0" id="work-details"></div> -->
           <!-- Begin Page Content -->
-          <div class="container-fluid p-0 mt-3">
+          <!-- <div class="container-fluid p-0 mt-3"> -->
 
             
             <!-- DataTales Example -->
-            <div class="card shadow mt-3 mb-4  ">
+            <!-- <div class="card shadow mt-3 mb-4  ">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Requested Works</h6>
                 </div>
@@ -103,12 +277,12 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
         <!-- /.container-fluid -->
-        </div>
+        <!-- </div>
       </div>
       
-  </div>
+  </div> -->
 
 
 
