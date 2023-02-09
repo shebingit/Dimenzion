@@ -1,0 +1,115 @@
+{% extends 'base3.html' %}
+ {% load static%} 
+ {% block body %}
+
+ <style>
+    #freelancer_profile
+    {
+        display: grid;
+        grid-template-columns: 0.80fr 3.5fr;
+        margin-top: 1em;
+    }
+    .profile-box
+    {
+        width: 130px;
+        height: 130px;
+    }
+    .profile-box img{
+        width:100%;
+        height:100%
+    }
+    #service-box 
+    {
+        box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+    padding: 0.90em 1.2em;
+    margin: 1em;
+    }
+    #service-box h5{
+        font-size: 1em;
+        margin-top: 0.80rem;
+    }
+    #service-box span a{
+        font-size: 0.85em;
+        color: rgb(43, 41, 41);
+        font-weight: 500;
+    }
+    #service-box a{
+        font-size: 0.91em;
+        color: rgb(237, 14, 14);
+        font-weight: 700;
+    }
+    #service-box a:hover{
+        color: rgb(226, 19, 19);
+    }
+ </style>
+
+
+ <div class="container rounded bg-white mt-1 mb-5">
+    <form class="" action="{% url 'free_edit_save' free.id %}"  method="post" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    {% if free.profile_pic %}
+                    <img src="{{free.profile_pic.url}}" class="rounded-circle mt-5" width="150px"  alt="Profile-image">
+                    {% else %}
+                        <img src="static/images/profile-dummy.png" class="rounded-circle mt-5" width="150px"  alt="Profile-image">
+                    {% endif %}
+                    <span class="font-weight-bold">{{free.full_name}}</span><span class="text-black-50">{{free.email}}{{free.id}}</span>
+                    <span>
+                    {% for i in r %}
+                        <span><i class="fa fa-star" aria-hidden="true" style="color: rgb(255, 213, 3);"></i></span>
+                    {% endfor %} </span>
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Settings</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" name="name" value="{{free.full_name}}"></div>
+                        
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" name="phone_number" value="{{free.mobile}}"></div>
+                        <div class="col-md-12"><label class="labels">Address</label><textarea  class="form-control" name="addre" placeholder="enter address line 1">{{free.Address}}</textarea></div>
+                        <div class="col-md-12"><label class="labels">Profession</label><input type="text" class="form-control" name="profi" placeholder="enter address line 2" value="{{free.proffecional_title}}"></div>
+                        <!-- <div class="col-md-12"><label class="labels">Postcode</label><input type="text" class="form-control" placeholder="enter address line 2" value="{{free.full_name}}"></div>
+                        <div class="col-md-12"><label class="labels">State</label><input type="text" class="form-control" placeholder="enter address line 2" value="{{free.full_name}}"></div>
+                        <div class="col-md-12"><label class="labels">Area</label><input type="text" class="form-control" placeholder="enter address line 2" value="{{free.full_name}}"></div> -->
+                        <div class="col-md-12"><label class="labels">Email ID</label><input type="text" class="form-control" name="email" value="{{free.email}}"></div>
+                        <div class="col-md-12"><label class="labels">qualification</label><input type="text" class="form-control"  name="quali" placeholder="education" value="{{free.qualification}}"></div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" name="country" placeholder="country" value="{{free.country}}"></div>
+                        <div class="col-md-6"><label class="labels">Upload Profile </label><input type="file" class="form-control" name="profile_picture"></div>
+                        <div class="col-md-12"><label class="labels">About You </label><textarea class="form-control" name="overview">{{free.over_view}}</textarea></div>
+                    </div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center experience"><span>Services you provide</span></div><br>
+                    {% for i in serv %}
+                    <div class="card" id="service-box">
+                        <h5 class=""><b>{{i.service}}</b></h5>
+                    <span> <a href="#" download="#">Download File-1</a>&nbsp;
+                        <a href="#" download="#">Download File-2</a>
+                    </span>
+                        <!-- <input type="file" class="form-control mt-1" value=""> 
+                        <input type="file" class="form-control mt-2" value=""> -->
+                        <a href="{% url 'free_service_delete' i.id %}" class="mt-2">Remove</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+ {% endblock %}

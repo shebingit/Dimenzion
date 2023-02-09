@@ -115,7 +115,15 @@ urlpatterns = [
     path('drawings',views.drawings,name='drawings'),
     path('delete_cart/<int:pk>',views.delete_cart,name='delete_cart'),
     path('freelance_home',views.freelancer_home,name='freelancer_home'),
-    path('request_form/',views.Request_form,name='Request_form'),
+    path('request_form',views.Request_form,name='Request_form'),
+    path('freelancer_password',views.freelancer_password,name='freelancer_password'),
+    path('free_password_change/<int:pk>',views.free_password_change,name='free_password_change'),
+    path('free_edit_save/<int:pk>',views.free_edit_save,name='free_edit_save'),
+    path('freelancer_profile',views.freelancer_profile,name='freelancer_profile'),
+    path('free_service_delete/<int:pk>',views.free_service_delete,name='free_service_delete'),
+    
+    
+    
 
 
      #shebin shaji

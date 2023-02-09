@@ -527,6 +527,68 @@ def freelancer_home(request):
         return render(request,'freelance_home.html',{'p':free,'fr_ongoing':fr_ongoing,'fr_complete':fr_complete,'frwork':frwork,'frworks':frworks})
     return redirect('user_logout')
 
+
+def freelancer_profile(request):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        r=free.rating
+        serv=FreelancerService.objects.filter(free_id=free)
+        return render(request,'freelancer_profile.html',{'free':free,'serv':serv,'r':range(r)})
+    return redirect('user_logout')
+
+def free_edit_save(request,pk):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        free=Register_freelance.objects.get(id=std)
+        if request.method == 'POST':
+
+            free.full_name=request.POST['name']
+            free.email=request.POST['email']
+            free.mobile=request.POST['phone_number']
+            free.Address=request.POST['addre']
+            free.qualification=request.POST['quali']
+            free.proffecional_title=request.POST['profi']
+            free.country=request.POST['country']
+            free.over_view=request.POST['overview']
+            
+            if request.FILES.get('profile_picture'):
+                free.profile_pic=request.FILES.get('profile_picture')
+            else:
+                free.profile_pic=  free.profile_pic
+            
+            free.save()
+            return redirect('freelancer_profile')
+        else:
+            return redirect('freelancer_profile')
+    return redirect('user_logout')
+
+def free_service_delete(request,pk):
+    serv=FreelancerService.objects.get(id=pk)
+    serv.delete()
+    return redirect('freelancer_profile')
+
+
+def freelancer_password(request):
+    if 'F.id' in request.session:
+        std=request.session['F.id']
+        fr=Register_freelance.objects.get(id=std)
+        return render(request,'freelancer_password.html',{'fr':fr})
+    return redirect('user_logout')
+
+
+def free_password_change(request,pk):
+    if request.method == 'POST':
+        user=Register_freelance.objects.get(id=pk)
+        user.username=request.POST['fr_user']
+        user.password=request.POST['admin_newpsw']
+        user.save()
+        messages.info(request,'Old Password Changed To New')
+        return redirect('freelancer_password')
+    else:
+        return redirect('freelancer_password')
+
+
 def userhome(request):
     if 'USID' in request.session: 
        new=Product.objects.all().order_by('-id')[:3]

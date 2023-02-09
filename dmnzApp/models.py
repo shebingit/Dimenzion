@@ -40,9 +40,9 @@ class Product(models.Model):
     fr_id=models.IntegerField(default='0')
     product_status=models.IntegerField(default='0')
 
+
 class Register_freelance(models.Model):
-    
-    #profileinfo
+     #profileinfo
     full_name=models.CharField(max_length=255,default='')
     country=models.CharField(max_length=255,default='')
     mobile=models.CharField(max_length=255,default='')
@@ -69,7 +69,7 @@ class Register_freelance(models.Model):
     proffecional_title=models.CharField(max_length=255,default='')
     
     skills=models.CharField(max_length=255,default='')
-    over_view=models.CharField(max_length=255,default='')
+    over_view=models.TextField(default='')
     username=models.CharField(max_length=255,default='')
     password=models.CharField(max_length=255,default='')
     #work
